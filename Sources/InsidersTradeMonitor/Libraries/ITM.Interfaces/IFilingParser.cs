@@ -24,44 +24,15 @@
         }
     }
 
-    public class StatementRecord
+    public interface IStatementRecord
     {
-        public StatementRecord(string title, object value, string unit, DateTime periodStart, DateTime periodEnd, DateTime instant, string sourceFactId, string factId = null)
-        {
-            Title = title;
-            Value = value;
-            Unit = unit;
-            PeriodStart = periodStart;
-            PeriodEnd = periodEnd;
-            Instant = instant;
-            SourceFactId = sourceFactId;
-            FactId = factId;
-        }
-        public string Title
-        {
-            get;
-            set;
-        }
-
-        public object Value
-        {
-            get;
-            set;
-        }
-
-        public string Unit
-        {
-            get;
-            set;
-        }
-
         public DateTime PeriodStart
         {
             get;
             set;
         }
 
-        public DateTime PeriodEnd
+        DateTime PeriodEnd
         {
             get;
             set;
@@ -73,84 +44,25 @@
             set;
         }
 
-        public string SourceFactId
+        string SourceFactId
         {
             get;
             set;
         }
 
-        public string FactId
+        string FactId
         {
             get;
             set;
         }
-
-        public override bool Equals(object obj)
-        {
-            StatementRecord other = obj as StatementRecord;
-            if (other != null)
-            {
-                return (!string.IsNullOrEmpty(SourceFactId) && SourceFactId.Equals(other.SourceFactId)) ||
-                    (Title.Equals(other.Title) && PeriodStart.Equals(other.PeriodStart) && PeriodEnd.Equals(other.PeriodEnd) && (FactId != null && FactId.Equals(other.FactId)));
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-
-        public override int GetHashCode()
-        {
-            if (!string.IsNullOrEmpty(SourceFactId))
-            {
-                return SourceFactId.GetHashCode();
-            }
-            else
-            {
-                unchecked // Overflow is fine, just wrap
-                {
-                    int hash = 117;
-
-                    hash = hash * 123 + Title.GetHashCode();
-                    hash = hash * 123 + PeriodStart.GetHashCode();
-                    hash = hash * 123 + PeriodEnd.GetHashCode();
-
-                    return hash;
-                }
-            }
-        }
-
-        public override string ToString()
-        {
-            return Title + ": " + Value;
-        }
-
     }
 
 
-    public class Statement
+    public interface IStatement
     {
-        public Statement(string title = null)
-        {
-            Records = new List<StatementRecord>();
-            Title = title;
-        }
-
-        public string Title
+        string ReportType
         {
             get;
-            set;
-        }
-
-        public List<StatementRecord> Records
-        {
-            get;
-        }
-
-        public override string ToString()
-        {
-            return Title + " (" + Records.Count + " records)";
         }
     }
 
@@ -189,7 +101,7 @@
             get;
         }
 
-        List<Statement> Statements
+        IStatement Statement
         {
             get;
         }
