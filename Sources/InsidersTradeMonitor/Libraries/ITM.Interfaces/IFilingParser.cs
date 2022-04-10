@@ -2,61 +2,12 @@
 {
     public interface IFilingParserParams
     {
-        IDictionary<string, Stream> FileContent
-        {
-            get;
-            set;
-        }
-
-        bool ExtractNumbers
-        {
-            get; set;
-        }
-
-        bool ExtractDates
-        {
-            get; set;
-        }
-
-        bool ExtractStrings
-        {
-            get; set;
-        }
-    }
-
-    public interface IStatementRecord
-    {
-        public DateTime PeriodStart
-        {
-            get;
-            set;
-        }
-
-        DateTime PeriodEnd
-        {
-            get;
-            set;
-        }
-
-        public DateTime Instant
-        {
-            get;
-            set;
-        }
-
-        string SourceFactId
-        {
-            get;
-            set;
-        }
-
-        string FactId
+        Stream FileContent
         {
             get;
             set;
         }
     }
-
 
     public interface IStatement
     {
@@ -68,42 +19,10 @@
 
     public interface IFilingParserResult : IResult
     {
-        string RegulatorCode
-        {
-            get;
-            set;
-        }
-
-        Dictionary<string, string> CompanyData
-        {
-            get;
-            set;
-        }
-
-        Dictionary<string, string> FilingData
-        {
-            get;
-            set;
-        }
-
-        string Type
-        {
-            get;
-        }
-
-        DateTime PeriodStart
-        {
-            get;
-        }
-
-        DateTime PeriodEnd
-        {
-            get;
-        }
-
         IStatement Statement
         {
             get;
+            set;
         }
     }
 
