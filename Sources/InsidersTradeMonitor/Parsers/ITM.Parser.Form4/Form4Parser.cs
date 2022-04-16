@@ -32,6 +32,8 @@ namespace ITM.Parser.Form4
                 var statement = new Form4Report();
 
                 ExtractReportInfo(xmlDoc, statement);
+                ExtractReportingOwnerData(xmlDoc, statement);
+                ExtractNonDerivaties(xmlDoc, statement);
 
                 result.Statement = statement;
             }
@@ -61,6 +63,98 @@ namespace ITM.Parser.Form4
             statement.IssuerName = values[tags[0]];
             statement.IssuerSymbol = values[tags[1]];
             statement.IssuerCIK = values[tags[2]];
+        }
+
+        private void ExtractReportingOwnerData(XmlDocument xmlDoc, Form4Report statement)
+        {
+            string[] tags =
+            {
+                "rptOwnerName", 
+                "rptOwnerCik", 
+                "rptOwnerStreet1", 
+                "rptOwnerStreet2", 
+                "rptOwnerCity", 
+                "rptOwnerState",
+                "rptOwnerZipCode", 
+                "rptOwnerStateDescription", 
+
+                "isDirector",
+                "isOfficer",
+                "isTenPercentOwner",
+                "isOther",
+                "officerTitle",
+                "otherText"
+            };
+
+            Dictionary<string, string> values = new Dictionary<string, string>();
+            ExtractXmlData(xmlDoc, tags, values);
+
+            statement.OwnerName = values["rptOwnerName"];
+            statement.OwnerCIK = values["rptOwnerCik"];
+            statement.OwnerStreet1 = values["rptOwnerStreet1"];
+            statement.OwnerStreet2 = values["rptOwnerStreet2"];
+            statement.OwnerCity = values["rptOwnerCity"];
+            statement.OwnerState = values["rptOwnerState"];
+            statement.OwnerZipCode = values["rptOwnerZipCode"];
+            statement.OwnerStateDescription = values["rptOwnerStateDescription"];
+
+            statement.IsDirector = "1".Equals(values["isDirector"]);
+            statement.IsOfficer = "1".Equals(values["isOfficer"]);
+            statement.IsTenPercentHolder = "1".Equals(values["isTenPercentOwner"]);
+            statement.IsOther = "1".Equals(values["isOther"]);
+            statement.OfficerTitle = values["officerTitle"];
+            statement.OwnerOtherText = values["otherText"];
+        }
+
+        private void ExtractNonDerivaties(XmlDocument xmlDoc, Form4Report statement)
+        {
+            string[] xpaths = { "//nonDerivativeTable//nonDerivativeTransaction", "//nonDerivativeTable//nonDerivativeHolding" };
+
+            foreach (var xpath in xpaths)
+            {
+                XmlNodeList nsNonDerivs = xmlDoc.SelectNodes(xpath);
+                if (nsNonDerivs != null && nsNonDerivs.Count > 0)
+                {
+                    statement.NonDerivativeTransactions = new List<NonDerivativeTransaction>();
+                    foreach (XmlNode n in nsNonDerivs)
+                    {
+                        XmlNode? nSecurityTitle = n.SelectSingleNode("securityTitle//value");
+
+                        XmlNode? nTransactionDate = n.SelectSingleNode("transactionDate//value");
+                        XmlNode? nTransactionDeemedExecDate = n.SelectSingleNode("deemedExecutionDate//value");
+
+                        XmlNode? nTransactionFormType = n.SelectSingleNode("transactionCoding//transactionFormType");
+                        XmlNode? nTransactionFormTransCode = n.SelectSingleNode("transactionCoding//transactionCode");
+                        XmlNode? nTransactionFormEquitySwapInvolved = n.SelectSingleNode("transactionCoding//equitySwapInvolved");
+
+                        XmlNode? nTransactionAmountShares = n.SelectSingleNode("transactionAmounts//transactionShares//value");
+                        XmlNode? nTransactionAmountPrice = n.SelectSingleNode("transactionAmounts//transactionPricePerShare//value");
+                        XmlNode? nTransactionAmountADCode = n.SelectSingleNode("transactionAmounts//transactionAcquiredDisposedCode//value");
+
+                        XmlNode? nPostShares = n.SelectSingleNode("postTransactionAmounts//sharesOwnedFollowingTransaction//value");
+
+                        XmlNode? nPostOwnership = n.SelectSingleNode("ownershipNature//directOrIndirectOwnership//value");
+
+                        XmlNode? nOwnershipNature = n.SelectSingleNode("ownershipNature//natureOfOwnership//value");
+
+                        NonDerivativeTransaction t = new NonDerivativeTransaction();
+                        statement.NonDerivativeTransactions.Add(t);
+
+                        if(nSecurityTitle != null) t.TitleOfSecurity = nSecurityTitle.InnerText;
+                        if (nTransactionDeemedExecDate != null) t.DeemedExecDate = !string.IsNullOrEmpty(nTransactionDeemedExecDate.InnerText) ? DateTime.Parse(nTransactionDeemedExecDate.InnerText) : null;
+                        if (nTransactionDate != null) t.TransactionDate = DateTime.Parse(nTransactionDate.InnerText);
+                        if (nTransactionAmountADCode != null) t.TransactionADType = nTransactionAmountADCode.InnerText;
+                        if (nTransactionFormTransCode != null) t.TransactionCode = nTransactionFormTransCode.InnerText;
+                        if (nTransactionAmountShares != null) t.SharesAmount = long.Parse(nTransactionAmountShares.InnerText);
+                        if (nTransactionAmountPrice != null) t.Price = decimal.Parse(nTransactionAmountPrice.InnerText);
+                        if (nPostShares != null) t.AmountFollowingReport = long.Parse(nPostShares.InnerText);
+                        if (nPostOwnership != null) t.OwnershipType = nPostOwnership.InnerText;
+                        if (nOwnershipNature != null) t.NatureOfIndirectOwnership = nOwnershipNature.InnerText;
+                        
+                    }
+                }
+            }
+
         }
 
         private XmlDocument GetXmlFromStream(Stream s)

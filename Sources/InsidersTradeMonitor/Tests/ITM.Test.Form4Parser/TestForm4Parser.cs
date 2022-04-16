@@ -1,3 +1,4 @@
+using ITM.Parser.Form4;
 using ITM.Test.Common;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
@@ -26,7 +27,7 @@ namespace ITM.Test.Form4Parser
             IConfiguration config = GetConfiguration();
             var testParams = config.GetSection("TestAAPLForm4Params").Get<TestAAPLForm4Params>();
 
-            var filePath = ConfigurationPath.Combine(base.TestBaseFolder, testParams.Form4_NonDerivs_Only);
+            var filePath = Path.Combine(base.TestBaseFolder, testParams.Form4_NonDerivs_Only);
             var stream = new FileStream(filePath, FileMode.Open);
 
             var parser = new ITM.Parser.Form4.Form4Parser();
@@ -36,6 +37,17 @@ namespace ITM.Test.Form4Parser
             };
 
             var result = parser.Parse(parserParams);
+
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Statement);
+            Assert.IsTrue(result.Statement is Form4Report);
+
+            Assert.IsNotNull((result.Statement as Form4Report).NonDerivativeTransactions);
+            Assert.IsNotEmpty((result.Statement as Form4Report).NonDerivativeTransactions);
+            Assert.AreEqual(5, (result.Statement as Form4Report).NonDerivativeTransactions.Count);
+
+            Assert.IsNull((result.Statement as Form4Report).DerivativeTransactions);
+
         }
 
         #region Support methods

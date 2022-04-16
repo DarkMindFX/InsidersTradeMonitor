@@ -99,7 +99,7 @@ namespace ITM.Test.Common
         {
             get
             {
-                return Path.Combine(TestContext.CurrentContext.TestDirectory, "..\\..\\..");
+                return Path.Combine(TestContext.CurrentContext.TestDirectory, "..\\..\\..\\");
             }
         }
 

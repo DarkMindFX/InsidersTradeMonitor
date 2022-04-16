@@ -27,6 +27,8 @@ namespace ITM.Parser.Form4
 
         public string OwnerStreet1 { get; set; }
 
+        public string OwnerStreet2 { get; set; }
+
         public string OwnerCity { get; set; }
 
         public string OwnerState { get; set; }

@@ -12,7 +12,7 @@ namespace ITM.Parser.Form4
 
         public DateTime TransactionDate { get; set; }
 
-        public DateTime DeemedExecDate { get; set; }
+        public DateTime? DeemedExecDate { get; set; }
 
         public string TransactionCode { get; set; }
 
@@ -20,13 +20,13 @@ namespace ITM.Parser.Form4
 
         public long SharesAmount { get; set; }
 
-        public string TransactionType { get; set; }
+        public string TransactionADType { get; set; }
 
         public decimal Price { get; set; }
 
         public long AmountFollowingReport { get; set; }
 
-        public long OwnershipType { get; set; }
+        public string OwnershipType { get; set; }
 
         public string NatureOfIndirectOwnership { get; set; }
     }
