@@ -1,0 +1,83 @@
+
+
+
+-- original values --
+DECLARE @ID BIGINT = NULL
+DECLARE @IssuerID BIGINT = NULL
+DECLARE @ReporterID BIGINT = NULL
+DECLARE @IsOfficer BIT = 0
+DECLARE @IsDirector BIT = 0
+DECLARE @Is10PctHolder BIT = 0
+DECLARE @IsOther BIT = 0
+DECLARE @OtherText BIT = 0
+DECLARE @OfficerTitle NVARCHAR(50) = 'OfficerTitle 4a2750f825214cc89e67b7c702f0c6b8'
+DECLARE @Date DATE = '4/9/2024 8:39:45 PM'
+ 
+-- updated values --
+
+DECLARE @updID BIGINT = NULL
+DECLARE @updIssuerID BIGINT = NULL
+DECLARE @updReporterID BIGINT = NULL
+DECLARE @updIsOfficer BIT = 0
+DECLARE @updIsDirector BIT = 0
+DECLARE @updIs10PctHolder BIT = 0
+DECLARE @updIsOther BIT = 0
+DECLARE @updOtherText BIT = 0
+DECLARE @updOfficerTitle NVARCHAR(50) = 'OfficerTitle cd23acfb4a4749f7b8b586d9d030083c'
+DECLARE @updDate DATE = '4/9/2024 8:39:45 PM'
+ 
+
+DECLARE @Fail AS BIT = 0
+
+IF(NOT EXISTS(SELECT 1 FROM 
+				[dbo].[Form4Report]
+				WHERE 
+	(CASE WHEN @updIssuerID IS NOT NULL THEN (CASE WHEN [IssuerID] = @updIssuerID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updReporterID IS NOT NULL THEN (CASE WHEN [ReporterID] = @updReporterID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIsOfficer IS NOT NULL THEN (CASE WHEN [IsOfficer] = @updIsOfficer THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIsDirector IS NOT NULL THEN (CASE WHEN [IsDirector] = @updIsDirector THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIs10PctHolder IS NOT NULL THEN (CASE WHEN [Is10PctHolder] = @updIs10PctHolder THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIsOther IS NOT NULL THEN (CASE WHEN [IsOther] = @updIsOther THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updOtherText IS NOT NULL THEN (CASE WHEN [OtherText] = @updOtherText THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updOfficerTitle IS NOT NULL THEN (CASE WHEN [OfficerTitle] = @updOfficerTitle THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updDate IS NOT NULL THEN (CASE WHEN [Date] = @updDate THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+ ))
+					
+BEGIN
+
+DELETE FROM 
+	[dbo].[Form4Report]
+	WHERE 
+	(CASE WHEN @IssuerID IS NOT NULL THEN (CASE WHEN [IssuerID] = @IssuerID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @ReporterID IS NOT NULL THEN (CASE WHEN [ReporterID] = @ReporterID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @IsOfficer IS NOT NULL THEN (CASE WHEN [IsOfficer] = @IsOfficer THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @IsDirector IS NOT NULL THEN (CASE WHEN [IsDirector] = @IsDirector THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @Is10PctHolder IS NOT NULL THEN (CASE WHEN [Is10PctHolder] = @Is10PctHolder THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @IsOther IS NOT NULL THEN (CASE WHEN [IsOther] = @IsOther THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @OtherText IS NOT NULL THEN (CASE WHEN [OtherText] = @OtherText THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @OfficerTitle IS NOT NULL THEN (CASE WHEN [OfficerTitle] = @OfficerTitle THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @Date IS NOT NULL THEN (CASE WHEN [Date] = @Date THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+
+	SET @Fail = 1
+END
+ELSE
+BEGIN
+DELETE FROM 
+	[dbo].[Form4Report]
+	WHERE 
+	(CASE WHEN @updIssuerID IS NOT NULL THEN (CASE WHEN [IssuerID] = @updIssuerID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updReporterID IS NOT NULL THEN (CASE WHEN [ReporterID] = @updReporterID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIsOfficer IS NOT NULL THEN (CASE WHEN [IsOfficer] = @updIsOfficer THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIsDirector IS NOT NULL THEN (CASE WHEN [IsDirector] = @updIsDirector THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIs10PctHolder IS NOT NULL THEN (CASE WHEN [Is10PctHolder] = @updIs10PctHolder THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updIsOther IS NOT NULL THEN (CASE WHEN [IsOther] = @updIsOther THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updOtherText IS NOT NULL THEN (CASE WHEN [OtherText] = @updOtherText THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updOfficerTitle IS NOT NULL THEN (CASE WHEN [OfficerTitle] = @updOfficerTitle THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updDate IS NOT NULL THEN (CASE WHEN [Date] = @updDate THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+END
+
+
+IF(@Fail = 1) 
+BEGIN
+	THROW 51001, 'Form4Report was not updated', 1
+END
