@@ -34,6 +34,7 @@ namespace ITM.Parser.Form4
                 ExtractReportInfo(xmlDoc, statement);
                 ExtractReportingOwnerData(xmlDoc, statement);
                 ExtractNonDerivaties(xmlDoc, statement);
+                ExtractDerivaties(xmlDoc, statement);
 
                 result.Statement = statement;
             }
@@ -106,6 +107,98 @@ namespace ITM.Parser.Form4
             statement.OwnerOtherText = values["otherText"];
         }
 
+        private void ExtractDerivaties(XmlDocument xmlDoc, Form4Report statement)
+        {
+            string xpath = "//derivativeTable//derivativeTransaction";
+
+            XmlNodeList nsNonDerivs = xmlDoc.SelectNodes(xpath);
+            if (nsNonDerivs != null && nsNonDerivs.Count > 0)
+            {
+                statement.DerivativeTransactions = new List<DerivativeTransaction>();
+                foreach (XmlNode n in nsNonDerivs)
+                {
+
+                    XmlNode? nSecurityTitle = n.SelectSingleNode("securityTitle//value");
+                    XmlNode? nConvExPrice = n.SelectSingleNode("conversionOrExercisePrice//value");
+
+                    XmlNode? nTransactionDate = n.SelectSingleNode("transactionDate//value");
+                    XmlNode? nTransactionDeemedExecDate = n.SelectSingleNode("deemedExecutionDate//value");
+
+                    XmlNode? nTransactionFormType = n.SelectSingleNode("transactionCoding//transactionFormType");
+                    XmlNode? nTransactionFormTransCode = n.SelectSingleNode("transactionCoding//transactionCode");
+                    XmlNode? nTransactionFormEquitySwapInvolved = n.SelectSingleNode("transactionCoding//equitySwapInvolved");
+
+                    XmlNode? nTransactionAmountShares = n.SelectSingleNode("transactionAmounts//transactionShares//value");
+                    XmlNode? nTransactionAmountPrice = n.SelectSingleNode("transactionAmounts//transactionPricePerShare//value");
+                    XmlNode? nTransactionAmountADCode = n.SelectSingleNode("transactionAmounts//transactionAcquiredDisposedCode//value");
+
+                    XmlNode? nExDate = n.SelectSingleNode("exerciseDate//value");
+                    XmlNode? nExpDate = n.SelectSingleNode("expirationDate//value");
+
+                    XmlNode? nUnderSecurityTitle = n.SelectSingleNode("underlyingSecurity//underlyingSecurityTitle//value");
+                    XmlNode? nUnderSecuritySharesAmount = n.SelectSingleNode("underlyingSecurity//underlyingSecurityShares//value");
+
+                    XmlNode? nPostShares = n.SelectSingleNode("postTransactionAmounts//sharesOwnedFollowingTransaction//value");
+
+                    XmlNode? nPostOwnership = n.SelectSingleNode("ownershipNature//directOrIndirectOwnership//value");
+
+                    XmlNode? nOwnershipNature = n.SelectSingleNode("ownershipNature//natureOfOwnership//value");
+
+
+                    DerivativeTransaction t = new DerivativeTransaction();
+                    statement.DerivativeTransactions.Add(t);
+
+                    if(nSecurityTitle != null) 
+                        t.TitleOfDerivative = nSecurityTitle.InnerText;
+
+                    if(nConvExPrice != null) 
+                        t.ConversionExcercisePrice = !string.IsNullOrEmpty(nConvExPrice.InnerText) ? decimal.Parse(nConvExPrice.InnerText) : 0;
+
+                    if(nTransactionDate != null) 
+                        t.TransactionDate = !string.IsNullOrEmpty(nTransactionDate.InnerText) ? DateTime.Parse(nTransactionDate.InnerText) : DateTime.MinValue;
+                    
+                    if (nTransactionDeemedExecDate != null) 
+                        t.DeemedExecDate = !string.IsNullOrEmpty(nTransactionDeemedExecDate.InnerText) ? DateTime.Parse(nTransactionDeemedExecDate.InnerText) : null;
+                    
+                    if (nTransactionFormTransCode != null) 
+                        t.TransactionCode = nTransactionFormTransCode.InnerText;
+                    
+                    if (nTransactionFormEquitySwapInvolved != null) 
+                        t.EquitySwapsInvolved = "1".Equals(nTransactionFormEquitySwapInvolved.InnerText);
+                    
+                    if (nExDate != null) 
+                        t.DateExercisable = !string.IsNullOrEmpty(nExDate.InnerText) ? DateTime.Parse(nExDate.InnerText) : null;
+                    
+                    if (nExpDate != null) 
+                        t.ExpirationDate = !string.IsNullOrEmpty(nExpDate.InnerText) ? DateTime.Parse(nExDate.InnerText) : null;
+                    
+                    if (nTransactionAmountShares != null) 
+                        t.SharesAmount = long.Parse(nTransactionAmountShares.InnerText);
+                    
+                    if (nTransactionAmountPrice != null) 
+                        t.DerivativeSecurityPrice = decimal.Parse(nTransactionAmountPrice.InnerText);
+
+                    if (nTransactionAmountADCode != null)
+                        t.TransactionADType = nTransactionAmountADCode.InnerText;
+
+                    if (nUnderSecurityTitle != null)
+                        t.UnderlyingTitle = nUnderSecurityTitle.InnerText;
+
+                    if (nUnderSecuritySharesAmount != null)
+                        t.UnderlyingSharesAmount = !string.IsNullOrEmpty(nUnderSecuritySharesAmount.InnerText) ? (long)decimal.Parse(nUnderSecuritySharesAmount.InnerText) : 0;
+
+                    if (nPostShares != null) 
+                        t.AmountFollowingReport = long.Parse(nPostShares.InnerText);
+                    
+                    if (nPostOwnership != null) 
+                        t.OwnershipType = nPostOwnership.InnerText;
+                    
+                    if (nOwnershipNature != null) 
+                        t.NatureOfIndirectOwnership = nOwnershipNature.InnerText;
+                }
+            }
+        }
+
         private void ExtractNonDerivaties(XmlDocument xmlDoc, Form4Report statement)
         {
             string[] xpaths = { "//nonDerivativeTable//nonDerivativeTransaction", "//nonDerivativeTable//nonDerivativeHolding" };
@@ -140,16 +233,38 @@ namespace ITM.Parser.Form4
                         NonDerivativeTransaction t = new NonDerivativeTransaction();
                         statement.NonDerivativeTransactions.Add(t);
 
-                        if(nSecurityTitle != null) t.TitleOfSecurity = nSecurityTitle.InnerText;
-                        if (nTransactionDeemedExecDate != null) t.DeemedExecDate = !string.IsNullOrEmpty(nTransactionDeemedExecDate.InnerText) ? DateTime.Parse(nTransactionDeemedExecDate.InnerText) : null;
-                        if (nTransactionDate != null) t.TransactionDate = DateTime.Parse(nTransactionDate.InnerText);
-                        if (nTransactionAmountADCode != null) t.TransactionADType = nTransactionAmountADCode.InnerText;
-                        if (nTransactionFormTransCode != null) t.TransactionCode = nTransactionFormTransCode.InnerText;
-                        if (nTransactionAmountShares != null) t.SharesAmount = long.Parse(nTransactionAmountShares.InnerText);
-                        if (nTransactionAmountPrice != null) t.Price = decimal.Parse(nTransactionAmountPrice.InnerText);
-                        if (nPostShares != null) t.AmountFollowingReport = long.Parse(nPostShares.InnerText);
-                        if (nPostOwnership != null) t.OwnershipType = nPostOwnership.InnerText;
-                        if (nOwnershipNature != null) t.NatureOfIndirectOwnership = nOwnershipNature.InnerText;
+                        if(nSecurityTitle != null) 
+                            t.TitleOfSecurity = nSecurityTitle.InnerText;
+                        
+                        if (nTransactionDeemedExecDate != null) 
+                            t.DeemedExecDate = !string.IsNullOrEmpty(nTransactionDeemedExecDate.InnerText) ? DateTime.Parse(nTransactionDeemedExecDate.InnerText) : null;
+                        
+                        if (nTransactionDate != null) 
+                            t.TransactionDate = DateTime.Parse(nTransactionDate.InnerText);
+                        
+                        if (nTransactionAmountADCode != null) 
+                            t.TransactionADType = nTransactionAmountADCode.InnerText;
+                        
+                        if (nTransactionFormTransCode != null) 
+                            t.TransactionCode = nTransactionFormTransCode.InnerText;
+                        
+                        if (nTransactionFormEquitySwapInvolved != null) 
+                            t.EquitySwapsInvolved = "1".Equals(nTransactionFormEquitySwapInvolved.InnerText);
+                        
+                        if (nTransactionAmountShares != null) 
+                            t.SharesAmount = long.Parse(nTransactionAmountShares.InnerText);
+                        
+                        if (nTransactionAmountPrice != null) 
+                            t.Price = decimal.Parse(nTransactionAmountPrice.InnerText);
+                        
+                        if (nPostShares != null) 
+                            t.AmountFollowingReport = long.Parse(nPostShares.InnerText);
+                        
+                        if (nPostOwnership != null) 
+                            t.OwnershipType = nPostOwnership.InnerText;
+                        
+                        if (nOwnershipNature != null) 
+                            t.NatureOfIndirectOwnership = nOwnershipNature.InnerText;
                         
                     }
                 }

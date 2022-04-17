@@ -1,6 +1,6 @@
 {
-  "TestAAPLForm4Params": {
-    "Form4_NonDerivs_Only": "Reports\\AAPL\\wf-form4_155718184308434.xml",
-    "Form4_NonDerivs_Derivs": "Reports\\AAPL\\wf-form4_156694501621463.xml"
+  "TestForm4Params": {
+    "AAPL_Form4_NonDerivs_Only": "Reports\\AAPL\\wf-form4_155718184308434.xml",
+    "AAPL_Form4_NonDerivs_Derivs": "Reports\\AAPL\\wf-form4_156694501621463.xml"
   }  
 }

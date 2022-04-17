@@ -14,6 +14,8 @@ namespace ITM.Parser.Form4
 
         public DateTime? DeemedExecDate { get; set; }
 
+        public bool EquitySwapsInvolved { get; set; }
+
         public string TransactionCode { get; set; }
 
         public bool EarlyVoluntarilyReport { get; set; }

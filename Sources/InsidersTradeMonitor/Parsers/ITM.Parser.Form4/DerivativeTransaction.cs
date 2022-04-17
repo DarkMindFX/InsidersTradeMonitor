@@ -14,23 +14,28 @@ namespace ITM.Parser.Form4
 
         public DateTime TransactionDate { get; set; }
 
+        public DateTime? DeemedExecDate { get; set; }
+
+        public bool EquitySwapsInvolved { get; set; }
+
         public string TransactionCode { get; set; }
 
         public bool EarlyVoluntarilyReport { get; set; }
 
-        public long NumberAcquired { get; set; }
+        
+        public DateTime? DateExercisable { get; set; }
 
-        public long NumberDisposed { get; set; }
+        public DateTime? ExpirationDate { get; set; }
 
-        public DateTime DateExercisable { get; set; }
-
-        public DateTime ExpirationDate { get; set; }
-
-        public string UnderlyingTitle  { get; set; }
-
-        public long AmountShares { get; set; }
+        public long SharesAmount { get; set; }
 
         public decimal DerivativeSecurityPrice { get; set; }
+
+        public string TransactionADType { get; set; }
+        
+        public string UnderlyingTitle { get; set; }
+
+        public long UnderlyingSharesAmount { get; set; }
 
         public long AmountFollowingReport { get; set; }
 
