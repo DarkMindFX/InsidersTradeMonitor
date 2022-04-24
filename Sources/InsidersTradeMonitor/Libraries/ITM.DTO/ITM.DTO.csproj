@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>PPT.DTO</RootNamespace>
+    <RootNamespace>ITM.DTO</RootNamespace>
   </PropertyGroup>
 
 </Project>

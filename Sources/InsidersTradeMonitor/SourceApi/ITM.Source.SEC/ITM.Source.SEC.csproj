@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\ITM.Interfaces\ITM.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Libraries\ITM.Logging\ITM.Logging.csproj" />
+    <ProjectReference Include="..\ITM.SEC.Api\ITM.SEC.Api.csproj" />
+  </ItemGroup>
+
+</Project>
