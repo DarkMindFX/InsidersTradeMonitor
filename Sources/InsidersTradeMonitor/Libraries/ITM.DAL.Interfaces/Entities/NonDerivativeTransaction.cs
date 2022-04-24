@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPT.Interfaces.Entities
+namespace ITM.Interfaces.Entities
 {
     public class NonDerivativeTransaction 
     {

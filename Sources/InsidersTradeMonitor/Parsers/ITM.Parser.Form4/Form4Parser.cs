@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace ITM.Parser.Form4
 {
-    [Export( typeof(IFilingParser))]
+    [Export(typeof(IFilingParser))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class Form4Parser : IFilingParser
     {

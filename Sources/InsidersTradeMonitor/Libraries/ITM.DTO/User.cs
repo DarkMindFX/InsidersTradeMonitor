@@ -2,7 +2,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace PPT.DTO
+namespace ITM.DTO
 {
     public class User : HateosDto
     {

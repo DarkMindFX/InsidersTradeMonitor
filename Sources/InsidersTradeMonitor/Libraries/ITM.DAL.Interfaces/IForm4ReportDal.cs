@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PPT.Interfaces.Entities;
-using PPT.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Interfaces;
 
-namespace PPT.Interfaces
+namespace ITM.Interfaces
 {
     public interface IForm4ReportDal : IDalBase<Form4Report>
     {

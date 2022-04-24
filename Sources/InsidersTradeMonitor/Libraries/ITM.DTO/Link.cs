@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PPT.DTO
+namespace ITM.DTO
 {
     public class Link
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PPT.Interfaces
+namespace ITM.Interfaces
 {
     public interface IInitParams
     {

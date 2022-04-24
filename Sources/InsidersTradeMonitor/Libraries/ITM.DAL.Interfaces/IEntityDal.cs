@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PPT.Interfaces.Entities;
-using PPT.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Interfaces;
 
-namespace PPT.Interfaces
+namespace ITM.Interfaces
 {
     public interface IEntityDal : IDalBase<Entity>
     {
@@ -18,7 +18,7 @@ namespace PPT.Interfaces
         bool Delete(System.Int64 ID);
 
         IList<Entity> GetByEntityTypeID(System.Int64 EntityTypeID);
-        
-            }
+
+    }
 }
 
