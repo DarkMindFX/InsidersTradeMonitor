@@ -9,7 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ITM.Service.DataImporter.Helpers;
-using ITM.Interfaces.Entities
+using ITM.Interfaces.Entities;
+using ITM.Services.Dal;
+using ITM.Services.Common.Helpers;
 
 namespace ITM.Service.DataImporter.MiddleWare
 {

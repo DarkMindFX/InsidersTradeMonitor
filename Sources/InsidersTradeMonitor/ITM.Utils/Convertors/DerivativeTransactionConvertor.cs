@@ -1,109 +1,105 @@
 
 
-
-
-
-
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace PPT.Utils.Convertors
+namespace ITM.Utils.Convertors
 {
     public class DerivativeTransactionConvertor
     {
-        public static DTO.DerivativeTransaction Convert(Interfaces.Entities.DerivativeTransaction entity, IUrlHelper url)
+        public static ITM.DTO.DerivativeTransaction Convert(ITM.Interfaces.Entities.DerivativeTransaction entity, IUrlHelper url)
         {
-            var dto = new DTO.DerivativeTransaction()
+            var dto = new ITM.DTO.DerivativeTransaction()
             {
-        		        ID = entity.ID,
+                ID = entity.ID,
 
-				        Form4ReportID = entity.Form4ReportID,
+                Form4ReportID = entity.Form4ReportID,
 
-				        TitleOfDerivative = entity.TitleOfDerivative,
+                TitleOfDerivative = entity.TitleOfDerivative,
 
-				        ConversionExercisePrice = entity.ConversionExercisePrice,
+                ConversionExercisePrice = entity.ConversionExercisePrice,
 
-				        TransactionDate = entity.TransactionDate,
+                TransactionDate = entity.TransactionDate,
 
-				        TransactionCodeID = entity.TransactionCodeID,
+                TransactionCodeID = entity.TransactionCodeID,
 
-				        EarlyVoluntarilyReport = entity.EarlyVoluntarilyReport,
+                EarlyVoluntarilyReport = entity.EarlyVoluntarilyReport,
 
-				        SharesAmount = entity.SharesAmount,
+                SharesAmount = entity.SharesAmount,
 
-				        DerivativeSecurityPrice = entity.DerivativeSecurityPrice,
+                DerivativeSecurityPrice = entity.DerivativeSecurityPrice,
 
-				        TransactionTypeID = entity.TransactionTypeID,
+                TransactionTypeID = entity.TransactionTypeID,
 
-				        DateExercisable = entity.DateExercisable,
+                DateExercisable = entity.DateExercisable,
 
-				        ExpirationDate = entity.ExpirationDate,
+                ExpirationDate = entity.ExpirationDate,
 
-				        UnderlyingTitle = entity.UnderlyingTitle,
+                UnderlyingTitle = entity.UnderlyingTitle,
 
-				        UnderlyingSharesAmount = entity.UnderlyingSharesAmount,
+                UnderlyingSharesAmount = entity.UnderlyingSharesAmount,
 
-				        AmountFollowingReport = entity.AmountFollowingReport,
+                AmountFollowingReport = entity.AmountFollowingReport,
 
-				        OwnershipTypeID = entity.OwnershipTypeID,
+                OwnershipTypeID = entity.OwnershipTypeID,
 
-				        NatureOfIndirectOwnership = entity.NatureOfIndirectOwnership,
+                NatureOfIndirectOwnership = entity.NatureOfIndirectOwnership,
 
-				
+
             };
 
-                        if(url != null)
+            if (url != null)
             {
-                dto.Links.Add(new DTO.Link(url.Action("GetDerivativeTransaction", "derivativetransactions", new { id = dto.ID  }), "self", "GET"));
-                dto.Links.Add(new DTO.Link(url.Action("DeleteDerivativeTransaction", "derivativetransactions", new { id = dto.ID  }), "delete_derivativetransaction", "DELETE"));
-                dto.Links.Add(new DTO.Link(url.Action("InsertDerivativeTransaction", "derivativetransactions"), "insert_derivativetransaction", "POST"));
-                dto.Links.Add(new DTO.Link(url.Action("UpdateDerivativeTransaction", "derivativetransactions"), "update_derivativetransaction", "PUT"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("GetDerivativeTransaction", "derivativetransactions", new { id = dto.ID }), "self", "GET"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("DeleteDerivativeTransaction", "derivativetransactions", new { id = dto.ID }), "delete_derivativetransaction", "DELETE"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("InsertDerivativeTransaction", "derivativetransactions"), "insert_derivativetransaction", "POST"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("UpdateDerivativeTransaction", "derivativetransactions"), "update_derivativetransaction", "PUT"));
             }
             return dto;
 
         }
 
-        public static Interfaces.Entities.DerivativeTransaction Convert(DTO.DerivativeTransaction dto)
+        public static ITM.Interfaces.Entities.DerivativeTransaction Convert(ITM.DTO.DerivativeTransaction dto)
         {
-            var entity = new Interfaces.Entities.DerivativeTransaction()
+            var entity = new ITM.Interfaces.Entities.DerivativeTransaction()
             {
-                
-        		        ID = dto.ID,
 
-				        Form4ReportID = dto.Form4ReportID,
+                ID = dto.ID,
 
-				        TitleOfDerivative = dto.TitleOfDerivative,
+                Form4ReportID = dto.Form4ReportID,
 
-				        ConversionExercisePrice = dto.ConversionExercisePrice,
+                TitleOfDerivative = dto.TitleOfDerivative,
 
-				        TransactionDate = dto.TransactionDate,
+                ConversionExercisePrice = dto.ConversionExercisePrice,
 
-				        TransactionCodeID = dto.TransactionCodeID,
+                TransactionDate = dto.TransactionDate,
 
-				        EarlyVoluntarilyReport = dto.EarlyVoluntarilyReport,
+                TransactionCodeID = dto.TransactionCodeID,
 
-				        SharesAmount = dto.SharesAmount,
+                EarlyVoluntarilyReport = dto.EarlyVoluntarilyReport,
 
-				        DerivativeSecurityPrice = dto.DerivativeSecurityPrice,
+                SharesAmount = dto.SharesAmount,
 
-				        TransactionTypeID = dto.TransactionTypeID,
+                DerivativeSecurityPrice = dto.DerivativeSecurityPrice,
 
-				        DateExercisable = dto.DateExercisable,
+                TransactionTypeID = dto.TransactionTypeID,
 
-				        ExpirationDate = dto.ExpirationDate,
+                DateExercisable = dto.DateExercisable,
 
-				        UnderlyingTitle = dto.UnderlyingTitle,
+                ExpirationDate = dto.ExpirationDate,
 
-				        UnderlyingSharesAmount = dto.UnderlyingSharesAmount,
+                UnderlyingTitle = dto.UnderlyingTitle,
 
-				        AmountFollowingReport = dto.AmountFollowingReport,
+                UnderlyingSharesAmount = dto.UnderlyingSharesAmount,
 
-				        OwnershipTypeID = dto.OwnershipTypeID,
+                AmountFollowingReport = dto.AmountFollowingReport,
 
-				        NatureOfIndirectOwnership = dto.NatureOfIndirectOwnership,
+                OwnershipTypeID = dto.OwnershipTypeID,
 
-				
-     
+                NatureOfIndirectOwnership = dto.NatureOfIndirectOwnership,
+
+
+
             };
 
             return entity;

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\ITM.DAL.Interfaces\ITM.DAL.Interfaces.csproj" />
+    <ProjectReference Include="..\ITM.Services.DAL\ITM.Services.DAL.csproj" />
   </ItemGroup>
 
 </Project>

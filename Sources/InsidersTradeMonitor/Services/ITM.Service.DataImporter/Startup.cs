@@ -8,7 +8,6 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using ITM.Service.DataImporter.Helpers;
-using PPT.PhotoPrint.API.MiddleWare;
 using ITM.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using ITM.Service.DataImporter.Helpers;
+using ITM.Service.DataImporter.MiddleWare;
 
 namespace ITM.Service.DataImporter
 {
@@ -38,7 +38,7 @@ namespace ITM.Service.DataImporter
             Console.WriteLine("Starting service with parameters:");
             Console.WriteLine($"StorageType: {serviceConfig.StorageType}");
             Console.WriteLine("StorageInitParams");
-            foreach(var k in serviceConfig.StorageInitParams.Keys)
+            foreach (var k in serviceConfig.StorageInitParams.Keys)
             {
                 Console.WriteLine($"{k}: {serviceConfig.StorageInitParams[k]}");
             }
@@ -53,10 +53,10 @@ namespace ITM.Service.DataImporter
             services.AddCors();
             services.AddControllers();
 
-            services.AddSwaggerGen( c =>
-            {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "PhotoPrint.API", Version = "v1" });
-            });
+            services.AddSwaggerGen(c =>
+           {
+               c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "PhotoPrint.API", Version = "v1" });
+           });
 
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -92,8 +92,8 @@ namespace ITM.Service.DataImporter
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name:"PhotoPrint API v1");
-            }); 
+                c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "PhotoPrint API v1");
+            });
 
             app.UseRouting();
 
@@ -141,164 +141,46 @@ namespace ITM.Service.DataImporter
 
         private void AddInjections(IServiceCollection services, ServiceConfig serviceCfg)
         {
-            var dalAddressDal = InitDal<IAddressDal>(serviceCfg);
-            services.AddSingleton<IAddressDal>(dalAddressDal);
-            services.AddSingleton<PPT.Services.Dal.IAddressDal, PPT.Services.Dal.AddressDal>();
+            var dalDerivativeTransactionDal = InitDal<IDerivativeTransactionDal>(serviceCfg);
+            services.AddSingleton<IDerivativeTransactionDal>(dalDerivativeTransactionDal);
+            services.AddSingleton<ITM.Services.Dal.IDerivativeTransactionDal, ITM.Services.Dal.DerivativeTransactionDal>();
 
-            var dalAddressTypeDal = InitDal<IAddressTypeDal>(serviceCfg);
-            services.AddSingleton<IAddressTypeDal>(dalAddressTypeDal);
-            services.AddSingleton<PPT.Services.Dal.IAddressTypeDal, PPT.Services.Dal.AddressTypeDal>();
+            var dalEntityDal = InitDal<IEntityDal>(serviceCfg);
+            services.AddSingleton<IEntityDal>(dalEntityDal);
+            services.AddSingleton<ITM.Services.Dal.IEntityDal, ITM.Services.Dal.EntityDal>();
 
-            var dalCategoryDal = InitDal<ICategoryDal>(serviceCfg);
-            services.AddSingleton<ICategoryDal>(dalCategoryDal);
-            services.AddSingleton<PPT.Services.Dal.ICategoryDal, PPT.Services.Dal.CategoryDal>();
+            var dalEntityTypeDal = InitDal<IEntityTypeDal>(serviceCfg);
+            services.AddSingleton<IEntityTypeDal>(dalEntityTypeDal);
+            services.AddSingleton<ITM.Services.Dal.IEntityTypeDal, ITM.Services.Dal.EntityTypeDal>();
 
-            var dalCityDal = InitDal<ICityDal>(serviceCfg);
-            services.AddSingleton<ICityDal>(dalCityDal);
-            services.AddSingleton<PPT.Services.Dal.ICityDal, PPT.Services.Dal.CityDal>();
+            var dalForm4ReportDal = InitDal<IForm4ReportDal>(serviceCfg);
+            services.AddSingleton<IForm4ReportDal>(dalForm4ReportDal);
+            services.AddSingleton<ITM.Services.Dal.IForm4ReportDal, ITM.Services.Dal.Form4ReportDal>();
 
-            var dalContactDal = InitDal<IContactDal>(serviceCfg);
-            services.AddSingleton<IContactDal>(dalContactDal);
-            services.AddSingleton<PPT.Services.Dal.IContactDal, PPT.Services.Dal.ContactDal>();
+            var dalNonDerivativeTransactionDal = InitDal<INonDerivativeTransactionDal>(serviceCfg);
+            services.AddSingleton<INonDerivativeTransactionDal>(dalNonDerivativeTransactionDal);
+            services.AddSingleton<ITM.Services.Dal.INonDerivativeTransactionDal, ITM.Services.Dal.NonDerivativeTransactionDal>();
 
-            var dalContactTypeDal = InitDal<IContactTypeDal>(serviceCfg);
-            services.AddSingleton<IContactTypeDal>(dalContactTypeDal);
-            services.AddSingleton<PPT.Services.Dal.IContactTypeDal, PPT.Services.Dal.ContactTypeDal>();
+            var dalOwnershipTypeDal = InitDal<IOwnershipTypeDal>(serviceCfg);
+            services.AddSingleton<IOwnershipTypeDal>(dalOwnershipTypeDal);
+            services.AddSingleton<ITM.Services.Dal.IOwnershipTypeDal, ITM.Services.Dal.OwnershipTypeDal>();
 
-            var dalCountryDal = InitDal<ICountryDal>(serviceCfg);
-            services.AddSingleton<ICountryDal>(dalCountryDal);
-            services.AddSingleton<PPT.Services.Dal.ICountryDal, PPT.Services.Dal.CountryDal>();
+            var dalSecurityTypeDal = InitDal<ISecurityTypeDal>(serviceCfg);
+            services.AddSingleton<ISecurityTypeDal>(dalSecurityTypeDal);
+            services.AddSingleton<ITM.Services.Dal.ISecurityTypeDal, ITM.Services.Dal.SecurityTypeDal>();
 
-            var dalCurrencyDal = InitDal<ICurrencyDal>(serviceCfg);
-            services.AddSingleton<ICurrencyDal>(dalCurrencyDal);
-            services.AddSingleton<PPT.Services.Dal.ICurrencyDal, PPT.Services.Dal.CurrencyDal>();
+            var dalTransactionCodeDal = InitDal<ITransactionCodeDal>(serviceCfg);
+            services.AddSingleton<ITransactionCodeDal>(dalTransactionCodeDal);
+            services.AddSingleton<ITM.Services.Dal.ITransactionCodeDal, ITM.Services.Dal.TransactionCodeDal>();
 
-            var dalDeliveryServiceDal = InitDal<IDeliveryServiceDal>(serviceCfg);
-            services.AddSingleton<IDeliveryServiceDal>(dalDeliveryServiceDal);
-            services.AddSingleton<PPT.Services.Dal.IDeliveryServiceDal, PPT.Services.Dal.DeliveryServiceDal>();
-
-            var dalDeliveryServiceCityDal = InitDal<IDeliveryServiceCityDal>(serviceCfg);
-            services.AddSingleton<IDeliveryServiceCityDal>(dalDeliveryServiceCityDal);
-            services.AddSingleton<PPT.Services.Dal.IDeliveryServiceCityDal, PPT.Services.Dal.DeliveryServiceCityDal>();
-
-            var dalFrameTypeDal = InitDal<IFrameTypeDal>(serviceCfg);
-            services.AddSingleton<IFrameTypeDal>(dalFrameTypeDal);
-            services.AddSingleton<PPT.Services.Dal.IFrameTypeDal, PPT.Services.Dal.FrameTypeDal>();
-
-            var dalImageDal = InitDal<IImageDal>(serviceCfg);
-            services.AddSingleton<IImageDal>(dalImageDal);
-            services.AddSingleton<PPT.Services.Dal.IImageDal, PPT.Services.Dal.ImageDal>();
-
-            var dalImageCategoryDal = InitDal<IImageCategoryDal>(serviceCfg);
-            services.AddSingleton<IImageCategoryDal>(dalImageCategoryDal);
-            services.AddSingleton<PPT.Services.Dal.IImageCategoryDal, PPT.Services.Dal.ImageCategoryDal>();
-
-            var dalImageRelatedDal = InitDal<IImageRelatedDal>(serviceCfg);
-            services.AddSingleton<IImageRelatedDal>(dalImageRelatedDal);
-            services.AddSingleton<PPT.Services.Dal.IImageRelatedDal, PPT.Services.Dal.ImageRelatedDal>();
-
-            var dalImageThumbnailDal = InitDal<IImageThumbnailDal>(serviceCfg);
-            services.AddSingleton<IImageThumbnailDal>(dalImageThumbnailDal);
-            services.AddSingleton<PPT.Services.Dal.IImageThumbnailDal, PPT.Services.Dal.ImageThumbnailDal>();
-
-            var dalMatDal = InitDal<IMatDal>(serviceCfg);
-            services.AddSingleton<IMatDal>(dalMatDal);
-            services.AddSingleton<PPT.Services.Dal.IMatDal, PPT.Services.Dal.MatDal>();
-
-            var dalMaterialTypeDal = InitDal<IMaterialTypeDal>(serviceCfg);
-            services.AddSingleton<IMaterialTypeDal>(dalMaterialTypeDal);
-            services.AddSingleton<PPT.Services.Dal.IMaterialTypeDal, PPT.Services.Dal.MaterialTypeDal>();
-
-            var dalMountingTypeDal = InitDal<IMountingTypeDal>(serviceCfg);
-            services.AddSingleton<IMountingTypeDal>(dalMountingTypeDal);
-            services.AddSingleton<PPT.Services.Dal.IMountingTypeDal, PPT.Services.Dal.MountingTypeDal>();
-
-            var dalOrderDal = InitDal<IOrderDal>(serviceCfg);
-            services.AddSingleton<IOrderDal>(dalOrderDal);
-            services.AddSingleton<PPT.Services.Dal.IOrderDal, PPT.Services.Dal.OrderDal>();
-
-            var dalOrderItemDal = InitDal<IOrderItemDal>(serviceCfg);
-            services.AddSingleton<IOrderItemDal>(dalOrderItemDal);
-            services.AddSingleton<PPT.Services.Dal.IOrderItemDal, PPT.Services.Dal.OrderItemDal>();
-
-            var dalOrderPaymentDetailsDal = InitDal<IOrderPaymentDetailsDal>(serviceCfg);
-            services.AddSingleton<IOrderPaymentDetailsDal>(dalOrderPaymentDetailsDal);
-            services.AddSingleton<PPT.Services.Dal.IOrderPaymentDetailsDal, PPT.Services.Dal.OrderPaymentDetailsDal>();
-
-            var dalOrderStatusDal = InitDal<IOrderStatusDal>(serviceCfg);
-            services.AddSingleton<IOrderStatusDal>(dalOrderStatusDal);
-            services.AddSingleton<PPT.Services.Dal.IOrderStatusDal, PPT.Services.Dal.OrderStatusDal>();
-
-            var dalOrderStatusFlowDal = InitDal<IOrderStatusFlowDal>(serviceCfg);
-            services.AddSingleton<IOrderStatusFlowDal>(dalOrderStatusFlowDal);
-            services.AddSingleton<PPT.Services.Dal.IOrderStatusFlowDal, PPT.Services.Dal.OrderStatusFlowDal>();
-
-            var dalOrderTrackingDal = InitDal<IOrderTrackingDal>(serviceCfg);
-            services.AddSingleton<IOrderTrackingDal>(dalOrderTrackingDal);
-            services.AddSingleton<PPT.Services.Dal.IOrderTrackingDal, PPT.Services.Dal.OrderTrackingDal>();
-
-            var dalPaymentMethodDal = InitDal<IPaymentMethodDal>(serviceCfg);
-            services.AddSingleton<IPaymentMethodDal>(dalPaymentMethodDal);
-            services.AddSingleton<PPT.Services.Dal.IPaymentMethodDal, PPT.Services.Dal.PaymentMethodDal>();
-
-            var dalPrintingHouseDal = InitDal<IPrintingHouseDal>(serviceCfg);
-            services.AddSingleton<IPrintingHouseDal>(dalPrintingHouseDal);
-            services.AddSingleton<PPT.Services.Dal.IPrintingHouseDal, PPT.Services.Dal.PrintingHouseDal>();
-
-            var dalPrintingHouseAddressDal = InitDal<IPrintingHouseAddressDal>(serviceCfg);
-            services.AddSingleton<IPrintingHouseAddressDal>(dalPrintingHouseAddressDal);
-            services.AddSingleton<PPT.Services.Dal.IPrintingHouseAddressDal, PPT.Services.Dal.PrintingHouseAddressDal>();
-
-            var dalPrintingHouseContactDal = InitDal<IPrintingHouseContactDal>(serviceCfg);
-            services.AddSingleton<IPrintingHouseContactDal>(dalPrintingHouseContactDal);
-            services.AddSingleton<PPT.Services.Dal.IPrintingHouseContactDal, PPT.Services.Dal.PrintingHouseContactDal>();
-
-            var dalRegionDal = InitDal<IRegionDal>(serviceCfg);
-            services.AddSingleton<IRegionDal>(dalRegionDal);
-            services.AddSingleton<PPT.Services.Dal.IRegionDal, PPT.Services.Dal.RegionDal>();
-
-            var dalSizeDal = InitDal<ISizeDal>(serviceCfg);
-            services.AddSingleton<ISizeDal>(dalSizeDal);
-            services.AddSingleton<PPT.Services.Dal.ISizeDal, PPT.Services.Dal.SizeDal>();
-
-            var dalUnitDal = InitDal<IUnitDal>(serviceCfg);
-            services.AddSingleton<IUnitDal>(dalUnitDal);
-            services.AddSingleton<PPT.Services.Dal.IUnitDal, PPT.Services.Dal.UnitDal>();
-
-            var dalUserDal = InitDal<IUserDal>(serviceCfg);
-            services.AddSingleton<IUserDal>(dalUserDal);
-            services.AddSingleton<PPT.Services.Dal.IUserDal, PPT.Services.Dal.UserDal>();
-
-            var dalUserConfirmationDal = InitDal<IUserConfirmationDal>(serviceCfg);
-            services.AddSingleton<IUserConfirmationDal>(dalUserConfirmationDal);
-            services.AddSingleton<PPT.Services.Dal.IUserConfirmationDal, PPT.Services.Dal.UserConfirmationDal>();
-
-            var dalUserInteriorThumbnailDal = InitDal<IUserInteriorThumbnailDal>(serviceCfg);
-            services.AddSingleton<IUserInteriorThumbnailDal>(dalUserInteriorThumbnailDal);
-            services.AddSingleton<PPT.Services.Dal.IUserInteriorThumbnailDal, PPT.Services.Dal.UserInteriorThumbnailDal>();
-
-            var dalUserAddressDal = InitDal<IUserAddressDal>(serviceCfg);
-            services.AddSingleton<IUserAddressDal>(dalUserAddressDal);
-            services.AddSingleton<PPT.Services.Dal.IUserAddressDal, PPT.Services.Dal.UserAddressDal>();
-
-            var dalUserContactDal = InitDal<IUserContactDal>(serviceCfg);
-            services.AddSingleton<IUserContactDal>(dalUserContactDal);
-            services.AddSingleton<PPT.Services.Dal.IUserContactDal, PPT.Services.Dal.UserContactDal>();
-
-            var dalUserStatusDal = InitDal<IUserStatusDal>(serviceCfg);
-            services.AddSingleton<IUserStatusDal>(dalUserStatusDal);
-            services.AddSingleton<PPT.Services.Dal.IUserStatusDal, PPT.Services.Dal.UserStatusDal>();
-
-            var dalUserTypeDal = InitDal<IUserTypeDal>(serviceCfg);
-            services.AddSingleton<IUserTypeDal>(dalUserTypeDal);
-            services.AddSingleton<PPT.Services.Dal.IUserTypeDal, PPT.Services.Dal.UserTypeDal>();
+            var dalTransactionTypeDal = InitDal<ITransactionTypeDal>(serviceCfg);
+            services.AddSingleton<ITransactionTypeDal>(dalTransactionTypeDal);
+            services.AddSingleton<ITM.Services.Dal.ITransactionTypeDal, ITM.Services.Dal.TransactionTypeDal>();
 
             /** Connection Tester for health endpoint **/
             var dalConnTest = InitDal<IConnectionTestDal>(serviceCfg);
             services.AddSingleton<IConnectionTestDal>(dalConnTest);
 
-            var storage = InitBinaryStorage(serviceCfg);
-            services.AddSingleton<IBinaryStorage>(storage);
         }
 
         private TDal InitDal<TDal>(ServiceConfig serviceCfg) where TDal : IInitializable
@@ -312,19 +194,5 @@ namespace ITM.Service.DataImporter
             return dal;
         }
 
-        private IBinaryStorage InitBinaryStorage(ServiceConfig serviceCfg)
-        {
-            var s = Container.GetExportedValue<IBinaryStorage>(serviceCfg.StorageType);
-
-            var initParams = s.CreateInitParams();
-            foreach(var k in initParams.Parameters.Keys)
-            {
-                initParams.Parameters[k] = serviceCfg.StorageInitParams[k];
-            }
-            s.Init(initParams);
-
-            return s;
-
-        }
     }
 }

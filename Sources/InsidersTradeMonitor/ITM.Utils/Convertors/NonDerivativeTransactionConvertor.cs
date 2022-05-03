@@ -1,93 +1,88 @@
 
-
-
-
-
-
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace PPT.Utils.Convertors
+namespace ITM.Utils.Convertors
 {
     public class NonDerivativeTransactionConvertor
     {
-        public static DTO.NonDerivativeTransaction Convert(Interfaces.Entities.NonDerivativeTransaction entity, IUrlHelper url)
+        public static ITM.DTO.NonDerivativeTransaction Convert(ITM.Interfaces.Entities.NonDerivativeTransaction entity, IUrlHelper url)
         {
-            var dto = new DTO.NonDerivativeTransaction()
+            var dto = new ITM.DTO.NonDerivativeTransaction()
             {
-        		        ID = entity.ID,
+                ID = entity.ID,
 
-				        Form4ReportID = entity.Form4ReportID,
+                Form4ReportID = entity.Form4ReportID,
 
-				        TitleOfSecurity = entity.TitleOfSecurity,
+                TitleOfSecurity = entity.TitleOfSecurity,
 
-				        TransactionDate = entity.TransactionDate,
+                TransactionDate = entity.TransactionDate,
 
-				        DeemedExecDate = entity.DeemedExecDate,
+                DeemedExecDate = entity.DeemedExecDate,
 
-				        TransactionCodeID = entity.TransactionCodeID,
+                TransactionCodeID = entity.TransactionCodeID,
 
-				        EarlyVoluntarilyReport = entity.EarlyVoluntarilyReport,
+                EarlyVoluntarilyReport = entity.EarlyVoluntarilyReport,
 
-				        SharesAmount = entity.SharesAmount,
+                SharesAmount = entity.SharesAmount,
 
-				        TransactionTypeID = entity.TransactionTypeID,
+                TransactionTypeID = entity.TransactionTypeID,
 
-				        Price = entity.Price,
+                Price = entity.Price,
 
-				        AmountFollowingReport = entity.AmountFollowingReport,
+                AmountFollowingReport = entity.AmountFollowingReport,
 
-				        OwnershipTypeID = entity.OwnershipTypeID,
+                OwnershipTypeID = entity.OwnershipTypeID,
 
-				        NatureOfIndirectOwnership = entity.NatureOfIndirectOwnership,
+                NatureOfIndirectOwnership = entity.NatureOfIndirectOwnership,
 
-				
+
             };
 
-                        if(url != null)
+            if (url != null)
             {
-                dto.Links.Add(new DTO.Link(url.Action("GetNonDerivativeTransaction", "nonderivativetransactions", new { id = dto.ID  }), "self", "GET"));
-                dto.Links.Add(new DTO.Link(url.Action("DeleteNonDerivativeTransaction", "nonderivativetransactions", new { id = dto.ID  }), "delete_nonderivativetransaction", "DELETE"));
-                dto.Links.Add(new DTO.Link(url.Action("InsertNonDerivativeTransaction", "nonderivativetransactions"), "insert_nonderivativetransaction", "POST"));
-                dto.Links.Add(new DTO.Link(url.Action("UpdateNonDerivativeTransaction", "nonderivativetransactions"), "update_nonderivativetransaction", "PUT"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("GetNonDerivativeTransaction", "nonderivativetransactions", new { id = dto.ID }), "self", "GET"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("DeleteNonDerivativeTransaction", "nonderivativetransactions", new { id = dto.ID }), "delete_nonderivativetransaction", "DELETE"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("InsertNonDerivativeTransaction", "nonderivativetransactions"), "insert_nonderivativetransaction", "POST"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("UpdateNonDerivativeTransaction", "nonderivativetransactions"), "update_nonderivativetransaction", "PUT"));
             }
             return dto;
 
         }
 
-        public static Interfaces.Entities.NonDerivativeTransaction Convert(DTO.NonDerivativeTransaction dto)
+        public static ITM.Interfaces.Entities.NonDerivativeTransaction Convert(ITM.DTO.NonDerivativeTransaction dto)
         {
-            var entity = new Interfaces.Entities.NonDerivativeTransaction()
+            var entity = new ITM.Interfaces.Entities.NonDerivativeTransaction()
             {
-                
-        		        ID = dto.ID,
 
-				        Form4ReportID = dto.Form4ReportID,
+                ID = dto.ID,
 
-				        TitleOfSecurity = dto.TitleOfSecurity,
+                Form4ReportID = dto.Form4ReportID,
 
-				        TransactionDate = dto.TransactionDate,
+                TitleOfSecurity = dto.TitleOfSecurity,
 
-				        DeemedExecDate = dto.DeemedExecDate,
+                TransactionDate = dto.TransactionDate,
 
-				        TransactionCodeID = dto.TransactionCodeID,
+                DeemedExecDate = dto.DeemedExecDate,
 
-				        EarlyVoluntarilyReport = dto.EarlyVoluntarilyReport,
+                TransactionCodeID = dto.TransactionCodeID,
 
-				        SharesAmount = dto.SharesAmount,
+                EarlyVoluntarilyReport = dto.EarlyVoluntarilyReport,
 
-				        TransactionTypeID = dto.TransactionTypeID,
+                SharesAmount = dto.SharesAmount,
 
-				        Price = dto.Price,
+                TransactionTypeID = dto.TransactionTypeID,
 
-				        AmountFollowingReport = dto.AmountFollowingReport,
+                Price = dto.Price,
 
-				        OwnershipTypeID = dto.OwnershipTypeID,
+                AmountFollowingReport = dto.AmountFollowingReport,
 
-				        NatureOfIndirectOwnership = dto.NatureOfIndirectOwnership,
+                OwnershipTypeID = dto.OwnershipTypeID,
 
-				
-     
+                NatureOfIndirectOwnership = dto.NatureOfIndirectOwnership,
+
+
+
             };
 
             return entity;

@@ -1,53 +1,46 @@
 
 
-
-
-
-
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace PPT.Utils.Convertors
+namespace ITM.Utils.Convertors
 {
     public class TransactionTypeConvertor
     {
-        public static DTO.TransactionType Convert(Interfaces.Entities.TransactionType entity, IUrlHelper url)
+        public static ITM.DTO.TransactionType Convert(ITM.Interfaces.Entities.TransactionType entity, IUrlHelper url)
         {
-            var dto = new DTO.TransactionType()
+            var dto = new ITM.DTO.TransactionType()
             {
-        		        ID = entity.ID,
+                ID = entity.ID,
 
-				        Code = entity.Code,
+                Code = entity.Code,
 
-				        Description = entity.Description,
+                Description = entity.Description,
 
-				
+
             };
 
-                        if(url != null)
+            if (url != null)
             {
-                dto.Links.Add(new DTO.Link(url.Action("GetTransactionType", "transactiontypes", new { id = dto.ID  }), "self", "GET"));
-                dto.Links.Add(new DTO.Link(url.Action("DeleteTransactionType", "transactiontypes", new { id = dto.ID  }), "delete_transactiontype", "DELETE"));
-                dto.Links.Add(new DTO.Link(url.Action("InsertTransactionType", "transactiontypes"), "insert_transactiontype", "POST"));
-                dto.Links.Add(new DTO.Link(url.Action("UpdateTransactionType", "transactiontypes"), "update_transactiontype", "PUT"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("GetTransactionType", "transactiontypes", new { id = dto.ID }), "self", "GET"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("DeleteTransactionType", "transactiontypes", new { id = dto.ID }), "delete_transactiontype", "DELETE"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("InsertTransactionType", "transactiontypes"), "insert_transactiontype", "POST"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("UpdateTransactionType", "transactiontypes"), "update_transactiontype", "PUT"));
             }
             return dto;
 
         }
 
-        public static Interfaces.Entities.TransactionType Convert(DTO.TransactionType dto)
+        public static ITM.Interfaces.Entities.TransactionType Convert(ITM.DTO.TransactionType dto)
         {
-            var entity = new Interfaces.Entities.TransactionType()
+            var entity = new ITM.Interfaces.Entities.TransactionType()
             {
-                
-        		        ID = dto.ID,
 
-				        Code = dto.Code,
+                ID = dto.ID,
 
-				        Description = dto.Description,
+                Code = dto.Code,
 
-				
-     
+                Description = dto.Description,
             };
 
             return entity;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
-using PPT.Interfaces;
+using ITM.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -42,9 +42,9 @@ namespace ITM.Services.Common.Helpers
             return token;
         }
 
-        public static PPT.Interfaces.Entities.User GetUserFromToken(string token, string secret, PPT.Services.Dal.IUserDal dalUser)
+        public static ITM.Interfaces.Entities.User GetUserFromToken(string token, string secret, ITM.Services.Dal.IUserDal dalUser)
         {
-            PPT.Interfaces.Entities.User user = null;
+            ITM.Interfaces.Entities.User user = null;
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();

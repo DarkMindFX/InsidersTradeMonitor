@@ -1,53 +1,43 @@
 
-
-
-
-
-
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace PPT.Utils.Convertors
+namespace ITM.Utils.Convertors
 {
     public class TransactionCodeConvertor
     {
-        public static DTO.TransactionCode Convert(Interfaces.Entities.TransactionCode entity, IUrlHelper url)
+        public static ITM.DTO.TransactionCode Convert(ITM.Interfaces.Entities.TransactionCode entity, IUrlHelper url)
         {
-            var dto = new DTO.TransactionCode()
+            var dto = new ITM.DTO.TransactionCode()
             {
-        		        ID = entity.ID,
+                ID = entity.ID,
 
-				        Code = entity.Code,
+                Code = entity.Code,
 
-				        Description = entity.Description,
-
-				
+                Description = entity.Description,
             };
 
-                        if(url != null)
+            if (url != null)
             {
-                dto.Links.Add(new DTO.Link(url.Action("GetTransactionCode", "transactioncodes", new { id = dto.ID  }), "self", "GET"));
-                dto.Links.Add(new DTO.Link(url.Action("DeleteTransactionCode", "transactioncodes", new { id = dto.ID  }), "delete_transactioncode", "DELETE"));
-                dto.Links.Add(new DTO.Link(url.Action("InsertTransactionCode", "transactioncodes"), "insert_transactioncode", "POST"));
-                dto.Links.Add(new DTO.Link(url.Action("UpdateTransactionCode", "transactioncodes"), "update_transactioncode", "PUT"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("GetTransactionCode", "transactioncodes", new { id = dto.ID }), "self", "GET"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("DeleteTransactionCode", "transactioncodes", new { id = dto.ID }), "delete_transactioncode", "DELETE"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("InsertTransactionCode", "transactioncodes"), "insert_transactioncode", "POST"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("UpdateTransactionCode", "transactioncodes"), "update_transactioncode", "PUT"));
             }
             return dto;
 
         }
 
-        public static Interfaces.Entities.TransactionCode Convert(DTO.TransactionCode dto)
+        public static ITM.Interfaces.Entities.TransactionCode Convert(ITM.DTO.TransactionCode dto)
         {
-            var entity = new Interfaces.Entities.TransactionCode()
+            var entity = new ITM.Interfaces.Entities.TransactionCode()
             {
-                
-        		        ID = dto.ID,
 
-				        Code = dto.Code,
+                ID = dto.ID,
 
-				        Description = dto.Description,
+                Code = dto.Code,
 
-				
-     
+                Description = dto.Description,
             };
 
             return entity;

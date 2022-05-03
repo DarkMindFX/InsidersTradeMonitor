@@ -7,75 +7,72 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace PPT.Utils.Convertors
+namespace ITM.Utils.Convertors
 {
     public class Form4ReportConvertor
     {
-        public static DTO.Form4Report Convert(Interfaces.Entities.Form4Report entity, IUrlHelper url)
+        public static ITM.DTO.Form4Report Convert(ITM.Interfaces.Entities.Form4Report entity, IUrlHelper url)
         {
-            var dto = new DTO.Form4Report()
+            var dto = new ITM.DTO.Form4Report()
             {
-        		        ID = entity.ID,
+                ID = entity.ID,
 
-				        IssuerID = entity.IssuerID,
+                IssuerID = entity.IssuerID,
 
-				        ReporterID = entity.ReporterID,
+                ReporterID = entity.ReporterID,
 
-				        IsOfficer = entity.IsOfficer,
+                IsOfficer = entity.IsOfficer,
 
-				        IsDirector = entity.IsDirector,
+                IsDirector = entity.IsDirector,
 
-				        Is10PctHolder = entity.Is10PctHolder,
+                Is10PctHolder = entity.Is10PctHolder,
 
-				        IsOther = entity.IsOther,
+                IsOther = entity.IsOther,
 
-				        OtherText = entity.OtherText,
+                OtherText = entity.OtherText,
 
-				        OfficerTitle = entity.OfficerTitle,
+                OfficerTitle = entity.OfficerTitle,
 
-				        Date = entity.Date,
+                Date = entity.Date,
 
-				
+
             };
 
-                        if(url != null)
+            if (url != null)
             {
-                dto.Links.Add(new DTO.Link(url.Action("GetForm4Report", "form4reports", new { id = dto.ID  }), "self", "GET"));
-                dto.Links.Add(new DTO.Link(url.Action("DeleteForm4Report", "form4reports", new { id = dto.ID  }), "delete_form4report", "DELETE"));
-                dto.Links.Add(new DTO.Link(url.Action("InsertForm4Report", "form4reports"), "insert_form4report", "POST"));
-                dto.Links.Add(new DTO.Link(url.Action("UpdateForm4Report", "form4reports"), "update_form4report", "PUT"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("GetForm4Report", "form4reports", new { id = dto.ID }), "self", "GET"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("DeleteForm4Report", "form4reports", new { id = dto.ID }), "delete_form4report", "DELETE"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("InsertForm4Report", "form4reports"), "insert_form4report", "POST"));
+                dto.Links.Add(new ITM.DTO.Link(url.Action("UpdateForm4Report", "form4reports"), "update_form4report", "PUT"));
             }
             return dto;
 
         }
 
-        public static Interfaces.Entities.Form4Report Convert(DTO.Form4Report dto)
+        public static ITM.Interfaces.Entities.Form4Report Convert(ITM.DTO.Form4Report dto)
         {
-            var entity = new Interfaces.Entities.Form4Report()
+            var entity = new ITM.Interfaces.Entities.Form4Report()
             {
-                
-        		        ID = dto.ID,
 
-				        IssuerID = dto.IssuerID,
+                ID = dto.ID,
 
-				        ReporterID = dto.ReporterID,
+                IssuerID = dto.IssuerID,
 
-				        IsOfficer = dto.IsOfficer,
+                ReporterID = dto.ReporterID,
 
-				        IsDirector = dto.IsDirector,
+                IsOfficer = dto.IsOfficer,
 
-				        Is10PctHolder = dto.Is10PctHolder,
+                IsDirector = dto.IsDirector,
 
-				        IsOther = dto.IsOther,
+                Is10PctHolder = dto.Is10PctHolder,
 
-				        OtherText = dto.OtherText,
+                IsOther = dto.IsOther,
 
-				        OfficerTitle = dto.OfficerTitle,
+                OtherText = dto.OtherText,
 
-				        Date = dto.Date,
+                OfficerTitle = dto.OfficerTitle,
 
-				
-     
+                Date = dto.Date,
             };
 
             return entity;

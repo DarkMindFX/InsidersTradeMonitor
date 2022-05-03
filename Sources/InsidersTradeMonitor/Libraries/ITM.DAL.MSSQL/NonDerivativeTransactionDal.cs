@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Data;
 using System.Data.SqlClient;
-using PPT.Common;
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using ITM.Common;
+using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
 
-namespace PPT.DAL.MSSQL 
+namespace ITM.DAL.MSSQL 
 {
     class NonDerivativeTransactionDalInitParams : InitParamsImpl
     {
