@@ -18,22 +18,22 @@ namespace ITM.Services.Dal
 
         public Form4Report Get(System.Int64? ID)
         {
-            return _dalImpl.Get(            ID);
+            return _dalImpl.Get(ID);
         }
 
         public bool Delete(System.Int64? ID)
         {
-            return _dalImpl.Delete(            ID);
+            return _dalImpl.Delete(ID);
         }
-
 
         public IList<Form4Report> GetByIssuerID(System.Int64 IssuerID)
         {
             return _dalImpl.GetByIssuerID(IssuerID);
         }
+
         public IList<Form4Report> GetByReporterID(System.Int64 ReporterID)
         {
             return _dalImpl.GetByReporterID(ReporterID);
         }
-            }
+    }
 }

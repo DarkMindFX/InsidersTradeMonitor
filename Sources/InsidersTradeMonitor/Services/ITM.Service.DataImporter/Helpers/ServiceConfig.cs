@@ -11,15 +11,12 @@ namespace ITM.Service.DataImporter.Helpers
         [JsonPropertyName("DALType")]
         public string DALType { get; set; }
 
-        [JsonPropertyName("StorageType")]
-        public string StorageType { get; set; }
+        [JsonPropertyName("Source")]
+        public string Source { get; set; }
 
 
         [JsonPropertyName("DALInitParams")]
         public Dictionary<string, string> DALInitParams { get; set; }
 
-
-        [JsonPropertyName("StorageInitParams")]
-        public Dictionary<string, string> StorageInitParams { get; set; }
     }
 }

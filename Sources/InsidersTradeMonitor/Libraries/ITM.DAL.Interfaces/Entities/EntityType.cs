@@ -9,12 +9,18 @@ using System.Threading.Tasks;
 
 namespace ITM.Interfaces.Entities
 {
-    public class EntityType 
+    public enum EEntityType
     {
-				public System.Int64? ID { get; set; }
+        Company = 1,
+        Person = 2
+    }
 
-				public System.String TypeName { get; set; }
+    public class EntityType
+    {
+        public System.Int64? ID { get; set; }
 
-				
+        public System.String TypeName { get; set; }
+
+
     }
 }

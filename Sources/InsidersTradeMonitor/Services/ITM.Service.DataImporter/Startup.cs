@@ -22,7 +22,6 @@ namespace ITM.Service.DataImporter
 {
     public class Startup
     {
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,12 +35,8 @@ namespace ITM.Service.DataImporter
             var serviceConfig = Configuration.GetSection("ServiceConfig").Get<ServiceConfig>();
 
             Console.WriteLine("Starting service with parameters:");
-            Console.WriteLine($"StorageType: {serviceConfig.StorageType}");
             Console.WriteLine("StorageInitParams");
-            foreach (var k in serviceConfig.StorageInitParams.Keys)
-            {
-                Console.WriteLine($"{k}: {serviceConfig.StorageInitParams[k]}");
-            }
+            
             Console.WriteLine($"DALType: {serviceConfig.DALType}");
             foreach (var k in serviceConfig.DALInitParams.Keys)
             {
@@ -55,7 +50,7 @@ namespace ITM.Service.DataImporter
 
             services.AddSwaggerGen(c =>
            {
-               c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "PhotoPrint.API", Version = "v1" });
+               c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "ITM.Service.DataImporter", Version = "v1" });
            });
 
             // configure strongly typed settings objects
@@ -164,10 +159,6 @@ namespace ITM.Service.DataImporter
             var dalOwnershipTypeDal = InitDal<IOwnershipTypeDal>(serviceCfg);
             services.AddSingleton<IOwnershipTypeDal>(dalOwnershipTypeDal);
             services.AddSingleton<ITM.Services.Dal.IOwnershipTypeDal, ITM.Services.Dal.OwnershipTypeDal>();
-
-            var dalSecurityTypeDal = InitDal<ISecurityTypeDal>(serviceCfg);
-            services.AddSingleton<ISecurityTypeDal>(dalSecurityTypeDal);
-            services.AddSingleton<ITM.Services.Dal.ISecurityTypeDal, ITM.Services.Dal.SecurityTypeDal>();
 
             var dalTransactionCodeDal = InitDal<ITransactionCodeDal>(serviceCfg);
             services.AddSingleton<ITransactionCodeDal>(dalTransactionCodeDal);

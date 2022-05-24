@@ -29,7 +29,7 @@ namespace ITM.DTO
         public System.Boolean IsOther { get; set; }
 
         [JsonPropertyName("OtherText")]
-        public System.Boolean OtherText { get; set; }
+        public System.String OtherText { get; set; }
 
         [JsonPropertyName("OfficerTitle")]
         public System.String OfficerTitle { get; set; }

@@ -23,24 +23,38 @@ namespace ITM.Parser.Form4
 
         public IFilingParserResult Parse(IFilingParserParams parserParams)
         {
-            IFilingParserResult result = null;
-            var form4Params = parserParams as Form4ParserParams;
-            if (form4Params != null)
+            IFilingParserResult result = new Form4ParserResult();
+            try
             {
-                var xmlDoc = GetXmlFromStream(form4Params.FileContent);
-                result = new Form4ParserResult();
-                var statement = new Form4Report();
+                
+                var form4Params = parserParams as Form4ParserParams;
+                if (form4Params != null)
+                {
+                    var xmlDoc = GetXmlFromStream(form4Params.FileContent);
+                    result = new Form4ParserResult();
+                    var statement = new Form4Report();
 
-                ExtractReportInfo(xmlDoc, statement);
-                ExtractReportingOwnerData(xmlDoc, statement);
-                ExtractNonDerivaties(xmlDoc, statement);
-                ExtractDerivaties(xmlDoc, statement);
+                    ExtractReportInfo(xmlDoc, statement);
+                    ExtractReportingOwnerData(xmlDoc, statement);
+                    ExtractNonDerivaties(xmlDoc, statement);
+                    ExtractDerivaties(xmlDoc, statement);
 
-                result.Statement = statement;
+                    result.Statement = statement;
+                }
+                else
+                {
+                    throw new ArgumentException($"Expected type Form4ParserParams but got {parserParams.GetType().ToString()}");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                throw new ArgumentException($"Expected type Form4ParserParams but got {parserParams.GetType().ToString()}");
+                result.Success = false;
+                result.Errors.Add(new Error()
+                {
+                    Code = EErrorCodes.ParserError,
+                    Message = ex.Message,
+                    Type = EErrorType.Error
+                });
             }
 
             return result;
