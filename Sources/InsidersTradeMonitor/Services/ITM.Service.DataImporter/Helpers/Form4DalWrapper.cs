@@ -51,6 +51,20 @@ namespace ITM.Service.DataImporter.Helpers
 
             var result = _form4ReportDal.Insert(form4);
 
+            foreach(var r in form4Report.NonDerivativeTransactions)
+            {
+                var ndt = Convert(r);
+                ndt.Form4ReportID = (long)result.ID;
+                var ndtResult = _nonDerivTransDal.Insert(ndt);
+            }
+
+            foreach (var r in form4Report.DerivativeTransactions)
+            {
+                var dt = Convert(r);
+                dt.Form4ReportID = (long)result.ID;
+                var dtResult = _derivTransDal.Insert(dt);
+            }
+
             return (long)result.ID;
         }
 
@@ -60,8 +74,58 @@ namespace ITM.Service.DataImporter.Helpers
             result.TransactionTypeID = (long)GetTransactionTypeIDByCode(trans.TransactionADType);
             result.TransactionCodeID = (long)GetTransactionCodeIDByCode(trans.TransactionCode);
             result.OwnershipTypeID = (long)GetOwnershipTypeIDByCode(trans.OwnershipType);
+            result.AmountFollowingReport = trans.AmountFollowingReport;
+            result.DeemedExecDate = trans.DeemedExecDate;
+            result.EarlyVoluntarilyReport = trans.EarlyVoluntarilyReport;
+            result.NatureOfIndirectOwnership = trans.NatureOfIndirectOwnership;
+            result.Price = trans.Price;
+            result.SharesAmount = trans.SharesAmount;
+            result.TitleOfSecurity = trans.TitleOfSecurity;
+            result.TransactionDate = trans.TransactionDate;
 
             return result;
+        }
+
+        protected DerivativeTransaction Convert(ITM.Parser.Form4.DerivativeTransaction trans)
+        {
+            var result = new DerivativeTransaction();
+            result.TransactionTypeID = (long)GetTransactionTypeIDByCode(trans.TransactionADType);
+            result.TransactionCodeID = (long)GetTransactionCodeIDByCode(trans.TransactionCode);
+            result.OwnershipTypeID = (long)GetOwnershipTypeIDByCode(trans.OwnershipType);
+            result.AmountFollowingReport = trans.AmountFollowingReport;
+            result.ConversionExercisePrice = trans.ConversionExcercisePrice;
+            result.DateExercisable = result.DateExercisable;
+            result.DerivativeSecurityPrice = result.DerivativeSecurityPrice;
+            result.EarlyVoluntarilyReport = trans.EarlyVoluntarilyReport;
+            result.ExpirationDate = trans.ExpirationDate;
+            result.NatureOfIndirectOwnership = trans.NatureOfIndirectOwnership;
+            result.SharesAmount = trans.SharesAmount;
+            result.TitleOfDerivative = trans.TitleOfDerivative;
+            result.TransactionDate = trans.TransactionDate;
+            result.UnderlyingSharesAmount = trans.UnderlyingSharesAmount;
+            result.UnderlyingTitle = trans.UnderlyingTitle;
+
+            return result;
+        } 
+
+        protected long UpsertReporter(ITM.Parser.Form4.Form4Report report)
+        {
+            long? id = GetEntityIDByCIK(report.OwnerCIK, (long)EEntityType.Person);
+
+            if(id == null)
+            {
+                var dtoEntity = new ITM.Interfaces.Entities.Entity()
+                {
+                    CIK = report.OwnerCIK,
+                    Name = report.OwnerName,
+                    EntityTypeID = (long)EEntityType.Person                    
+                };
+
+                var dtoNewReporter = _entityDal.Insert(dtoEntity);
+                id = dtoNewReporter.ID;
+            }
+
+            return (long)id;
         }
 
         protected long? GetTransactionCodeIDByCode(string transCode)

@@ -1,4 +1,7 @@
-﻿using ITM.Service.DataImporter.Workers;
+﻿using ITM.Interfaces;
+using ITM.Service.DataImporter.Helpers;
+using ITM.Service.DataImporter.Workers;
+using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -38,6 +41,7 @@ namespace ITM.Test.Service.DataImporter.Workers
 
             source.Init(sourceInitParams);
 
+            var form4DalWrapper = PrepareForm4DalWrapper();
 
             var impParams = new Form4ImporterParams()
             {
@@ -45,11 +49,35 @@ namespace ITM.Test.Service.DataImporter.Workers
                 DateFrom = DateTime.Parse("2022/04/19"),
                 DateTo = DateTime.Parse("2022/04/20"),
                 FilingParser = parser,
-                Source = source
+                Source = source,
+                
             };
 
             var wrapper = new For4ImporterTestWrapper(impParams);
             wrapper.ImporterThread();
         }
+
+        #region Support methods
+        private IForm4DalWrapper PrepareForm4DalWrapper()
+        {
+            IForm4DalWrapper wrapper = null;
+
+            return wrapper;
+        }
+
+        private TDal CreateDal<TDal, TEntity>(string configParamName) where TDal : IDalBase<TEntity>, new()
+        {
+            IConfiguration config = GetConfiguration();
+            var initParams = config.GetSection("DALInitParams").Get<TestDalInitParams>();
+
+            TDal dal = new TDal();
+            var dalInitParams = dal.CreateInitParams();
+            dalInitParams.Parameters["ConnectionString"] = initParams.ConnectionString;
+            dal.Init(dalInitParams);
+
+            return dal;
+        }
+
+        #endregion
     }
 }

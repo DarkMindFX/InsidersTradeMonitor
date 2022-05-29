@@ -172,6 +172,10 @@ namespace ITM.Service.DataImporter
             var dalConnTest = InitDal<IConnectionTestDal>(serviceCfg);
             services.AddSingleton<IConnectionTestDal>(dalConnTest);
 
+
+            /** Adding Form4 DAL wrapper **/
+            services.AddSingleton<IForm4DalWrapper, Form4DalWrapper>();
+
         }
 
         private TDal InitDal<TDal>(ServiceConfig serviceCfg) where TDal : IInitializable

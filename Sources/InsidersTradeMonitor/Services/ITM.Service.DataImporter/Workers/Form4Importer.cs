@@ -1,4 +1,5 @@
-﻿using ITM.Source.SEC;
+﻿using ITM.Service.DataImporter.Helpers;
+using ITM.Source.SEC;
 
 namespace ITM.Service.DataImporter.Workers
 {
@@ -13,6 +14,8 @@ namespace ITM.Service.DataImporter.Workers
         public ITM.Interfaces.ISource Source { get; set; }
 
         public ITM.Interfaces.IFilingParser FilingParser { get; set; }
+
+        public IForm4DalWrapper Form4DalWrappwer { get; set; }
     }
 
     public class Form4Importer
@@ -113,7 +116,8 @@ namespace ITM.Service.DataImporter.Workers
                             var resultParse = _importerParams.FilingParser.Parse(parserParams);
                             if(resultParse.Success)
                             {
-                                // TODO: save statement to storage 
+                                // Save statement to storage 
+                                _importerParams.Form4DalWrappwer.InsertReport(resultParse.Statement);
                             }
 
                         }
