@@ -1,4 +1,6 @@
-﻿using ITM.Interfaces;
+﻿using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
 using ITM.Service.DataImporter.Helpers;
 using ITM.Service.DataImporter.Workers;
 using Microsoft.Extensions.Configuration;
@@ -50,7 +52,8 @@ namespace ITM.Test.Service.DataImporter.Workers
                 DateTo = DateTime.Parse("2022/04/20"),
                 FilingParser = parser,
                 Source = source,
-                
+                Form4DalWrappwer = form4DalWrapper
+
             };
 
             var wrapper = new For4ImporterTestWrapper(impParams);
@@ -60,7 +63,16 @@ namespace ITM.Test.Service.DataImporter.Workers
         #region Support methods
         private IForm4DalWrapper PrepareForm4DalWrapper()
         {
-            IForm4DalWrapper wrapper = null;
+            IForm4DalWrapper wrapper = new Form4DalWrapper(
+                CreateDal<Form4ReportDal, Form4Report>("DALInitParams"),
+                CreateDal<DerivativeTransactionDal, DerivativeTransaction>("DALInitParams"),
+                CreateDal<NonDerivativeTransactionDal, NonDerivativeTransaction>("DALInitParams"),
+                CreateDal<EntityDal, Entity>("DALInitParams"),
+                CreateDal<EntityTypeDal, EntityType>("DALInitParams"),
+                CreateDal<OwnershipTypeDal, OwnershipType>("DALInitParams"),
+                CreateDal<TransactionCodeDal, TransactionCode>("DALInitParams"),
+                CreateDal<TransactionTypeDal, TransactionType>("DALInitParams")
+                );
 
             return wrapper;
         }
@@ -68,7 +80,7 @@ namespace ITM.Test.Service.DataImporter.Workers
         private TDal CreateDal<TDal, TEntity>(string configParamName) where TDal : IDalBase<TEntity>, new()
         {
             IConfiguration config = GetConfiguration();
-            var initParams = config.GetSection("DALInitParams").Get<TestDalInitParams>();
+            var initParams = config.GetSection(configParamName).Get<TestDalInitParams>();
 
             TDal dal = new TDal();
             var dalInitParams = dal.CreateInitParams();

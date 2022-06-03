@@ -15,11 +15,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\ITM.DAL.Interfaces\ITM.DAL.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Libraries\ITM.DAL.MSSQL\ITM.DAL.MSSQL.csproj" />
     <ProjectReference Include="..\..\Libraries\ITM.Logging\ITM.Logging.csproj" />
     <ProjectReference Include="..\..\Parsers\ITM.Parser.Form4\ITM.Parser.Form4.csproj" />
     <ProjectReference Include="..\..\Services\ITM.Service.DataImporter\ITM.Service.DataImporter.csproj" />
     <ProjectReference Include="..\..\SourceApi\ITM.Source.SEC\ITM.Source.SEC.csproj" />
     <ProjectReference Include="..\ITM.Test.Common\ITM.Test.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appconfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

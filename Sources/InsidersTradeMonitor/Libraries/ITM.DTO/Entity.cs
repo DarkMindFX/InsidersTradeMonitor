@@ -1,6 +1,5 @@
 
 
-
 using System.Text.Json.Serialization;
 
 namespace ITM.DTO
@@ -14,13 +13,16 @@ namespace ITM.DTO
         public System.Int64 EntityTypeID { get; set; }
 
         [JsonPropertyName("CIK")]
-        public System.String CIK { get; set; }
+        public System.Int32 CIK { get; set; }
 
         [JsonPropertyName("Name")]
         public System.String Name { get; set; }
 
         [JsonPropertyName("TradingSymbol")]
         public System.String TradingSymbol { get; set; }
+
+        [JsonPropertyName("IsMonitored")]
+        public System.Boolean IsMonitored { get; set; }
 
 
     }

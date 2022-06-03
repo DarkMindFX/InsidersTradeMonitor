@@ -13,9 +13,10 @@ GO
 CREATE PROCEDURE [dbo].[p_Entity_Update]
 			@ID BIGINT,
 			@EntityTypeID BIGINT,
-			@CIK NVARCHAR(250),
+			@CIK INT,
 			@Name NVARCHAR(250),
-			@TradingSymbol NVARCHAR(50)
+			@TradingSymbol NVARCHAR(50),
+			@IsMonitored BIT
 	AS
 BEGIN
 
@@ -34,7 +35,8 @@ BEGIN
 									[EntityTypeID] = IIF( @EntityTypeID IS NOT NULL, @EntityTypeID, [EntityTypeID] ) ,
 									[CIK] = IIF( @CIK IS NOT NULL, @CIK, [CIK] ) ,
 									[Name] = IIF( @Name IS NOT NULL, @Name, [Name] ) ,
-									[TradingSymbol] = IIF( @TradingSymbol IS NOT NULL, @TradingSymbol, [TradingSymbol] ) 
+									[TradingSymbol] = IIF( @TradingSymbol IS NOT NULL, @TradingSymbol, [TradingSymbol] ) ,
+									[IsMonitored] = IIF( @IsMonitored IS NOT NULL, @IsMonitored, [IsMonitored] ) 
 						WHERE 
 												[ID] = @ID	
 					
@@ -55,6 +57,7 @@ BEGIN
 				(CASE WHEN @EntityTypeID IS NOT NULL THEN (CASE WHEN e.[EntityTypeID] = @EntityTypeID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 				(CASE WHEN @CIK IS NOT NULL THEN (CASE WHEN e.[CIK] = @CIK THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 				(CASE WHEN @Name IS NOT NULL THEN (CASE WHEN e.[Name] = @Name THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
-				(CASE WHEN @TradingSymbol IS NOT NULL THEN (CASE WHEN e.[TradingSymbol] = @TradingSymbol THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+				(CASE WHEN @TradingSymbol IS NOT NULL THEN (CASE WHEN e.[TradingSymbol] = @TradingSymbol THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+				(CASE WHEN @IsMonitored IS NOT NULL THEN (CASE WHEN e.[IsMonitored] = @IsMonitored THEN 1 ELSE 0 END) ELSE 1 END) = 1 
 		END
 GO

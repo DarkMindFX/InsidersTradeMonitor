@@ -1,4 +1,5 @@
 
+
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -6,9 +7,9 @@ namespace ITM.Utils.Convertors
 {
     public class EntityConvertor
     {
-        public static ITM.DTO.Entity Convert(ITM.Interfaces.Entities.Entity entity, IUrlHelper url)
+        public static DTO.Entity Convert(Interfaces.Entities.Entity entity, IUrlHelper url)
         {
-            var dto = new ITM.DTO.Entity()
+            var dto = new DTO.Entity()
             {
                 ID = entity.ID,
 
@@ -20,23 +21,25 @@ namespace ITM.Utils.Convertors
 
                 TradingSymbol = entity.TradingSymbol,
 
+                IsMonitored = entity.IsMonitored,
+
 
             };
 
             if (url != null)
             {
-                dto.Links.Add(new ITM.DTO.Link(url.Action("GetEntity", "entities", new { id = dto.ID }), "self", "GET"));
-                dto.Links.Add(new ITM.DTO.Link(url.Action("DeleteEntity", "entities", new { id = dto.ID }), "delete_entity", "DELETE"));
-                dto.Links.Add(new ITM.DTO.Link(url.Action("InsertEntity", "entities"), "insert_entity", "POST"));
-                dto.Links.Add(new ITM.DTO.Link(url.Action("UpdateEntity", "entities"), "update_entity", "PUT"));
+                dto.Links.Add(new DTO.Link(url.Action("GetEntity", "entities", new { id = dto.ID }), "self", "GET"));
+                dto.Links.Add(new DTO.Link(url.Action("DeleteEntity", "entities", new { id = dto.ID }), "delete_entity", "DELETE"));
+                dto.Links.Add(new DTO.Link(url.Action("InsertEntity", "entities"), "insert_entity", "POST"));
+                dto.Links.Add(new DTO.Link(url.Action("UpdateEntity", "entities"), "update_entity", "PUT"));
             }
             return dto;
 
         }
 
-        public static ITM.Interfaces.Entities.Entity Convert(ITM.DTO.Entity dto)
+        public static Interfaces.Entities.Entity Convert(DTO.Entity dto)
         {
-            var entity = new ITM.Interfaces.Entities.Entity()
+            var entity = new Interfaces.Entities.Entity()
             {
 
                 ID = dto.ID,
@@ -48,6 +51,11 @@ namespace ITM.Utils.Convertors
                 Name = dto.Name,
 
                 TradingSymbol = dto.TradingSymbol,
+
+                IsMonitored = dto.IsMonitored,
+
+
+
             };
 
             return entity;

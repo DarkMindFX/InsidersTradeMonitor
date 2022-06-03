@@ -18,7 +18,7 @@ namespace ITM.Interfaces
         bool Delete(System.Int64 ID);
 
         IList<Entity> GetByEntityTypeID(System.Int64 EntityTypeID);
-
-    }
+        
+            }
 }
 

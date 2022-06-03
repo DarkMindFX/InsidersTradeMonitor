@@ -39,8 +39,10 @@ namespace ITM.Service.DataImporter.Helpers
 
             var form4 = new Form4Report();
 
-            form4.IssuerID = (long)GetEntityIDByCIK(form4Report.IssuerCIK, (long)EEntityType.Company);
-            form4.ReporterID = (long)GetEntityIDByCIK(form4Report.OwnerCIK, (long)EEntityType.Person);
+            int cik = Int32.Parse(form4Report.IssuerCIK);
+
+            form4.IssuerID = (long)GetEntityIDByCIK(cik, (long)EEntityType.Company);
+            form4.ReporterID = (long)GetEntityIDByCIK(cik, (long)EEntityType.Person);
             form4.Is10PctHolder = form4Report.IsTenPercentHolder;
             form4.IsDirector = form4Report.IsDirector;
             form4.IsOfficer = form4Report.IsOfficer;
@@ -110,13 +112,13 @@ namespace ITM.Service.DataImporter.Helpers
 
         protected long UpsertReporter(ITM.Parser.Form4.Form4Report report)
         {
-            long? id = GetEntityIDByCIK(report.OwnerCIK, (long)EEntityType.Person);
+            long? id = GetEntityIDByCIK(Int32.Parse(report.OwnerCIK), (long)EEntityType.Person);
 
             if(id == null)
             {
                 var dtoEntity = new ITM.Interfaces.Entities.Entity()
                 {
-                    CIK = report.OwnerCIK,
+                    CIK = Int32.Parse(report.OwnerCIK),
                     Name = report.OwnerName,
                     EntityTypeID = (long)EEntityType.Person                    
                 };
@@ -146,7 +148,7 @@ namespace ITM.Service.DataImporter.Helpers
             return entity != null ? entity.ID : null;
         }
 
-        protected long? GetEntityIDByCIK(string cik, long entityTypeId)
+        protected long? GetEntityIDByCIK(int cik, long entityTypeId)
         {
             var entity = _entityDal.GetByEntityTypeID(entityTypeId).FirstOrDefault(e => e.CIK == cik);
             return entity != null ? entity.ID : null;

@@ -18,7 +18,7 @@ CREATE PROCEDURE [dbo].[p_Form4Report_Update]
 			@IsDirector BIT,
 			@Is10PctHolder BIT,
 			@IsOther BIT,
-			@OtherText BIT,
+			@OtherText NVARCHAR(250),
 			@OfficerTitle NVARCHAR(50),
 			@Date DATE
 	AS
