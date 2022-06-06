@@ -1,4 +1,101 @@
-﻿ID,Form4ReportID,TitleOfDerivative,ConversionExercisePrice,TransactionDate,TransactionCodeID,EarlyVoluntarilyReport,SharesAmount,DerivativeSecurityPrice,TransactionTypeID,DateExercisable,ExpirationDate,UnderlyingTitle,UnderlyingSharesAmount,AmountFollowingReport,OwnershipTypeID,NatureOfIndirectOwnership
-,100001,Class B Common Stock,0.00,3/14/2019,9,0,1000,120,1,4/4/2022,,Class A Common Stock,120,500,D,
-,100001,Class B Common Stock,1.00,3/15/2019,9,0,200,130,1,4/5/2022,,Class A Common Stock,200,600,D,
-,100001,Class B Common Stock,2.00,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,800,I,Trust
+ID,Form4ReportID,TitleOfDerivative,ConversionExercisePrice,TransactionDate,TransactionCodeID,EarlyVoluntarilyReport,SharesAmount,DerivativeSecurityPrice,TransactionTypeID,DateExercisable,ExpirationDate,UnderlyingTitle,UnderlyingSharesAmount,AmountFollowingReport,OwnershipTypeID,NatureOfIndirectOwnership
+100001,100025,Class B Common Stock,0,3/14/2019,9,0,1000,120,1,4/4/2022,,Class A Common Stock,120,500,1,
+100002,100017,Class B Common Stock,0,3/15/2019,9,0,200,130,1,4/5/2022,,Class A Common Stock,200,600,1,
+100003,100016,Class B Common Stock,0,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,800,2,Trust
+100004,100018,Option,50,3/17/2019,1,1,200,20,1,4/7/2022,5/5/2022,Class A Common Stock,1290,300,1,
+100005,100016,Option,50,3/18/2019,2,1,300,22,1,4/8/2022,5/6/2022,Class A Common Stock,1220,300,1,
+100006,100002,Option,55,3/19/2019,8,1,400,24,1,4/9/2022,5/7/2022,Class A Common Stock,1230,300,1,
+100007,100014,Option,55,3/19/2019,8,1,400,24,1,4/9/2022,5/7/2022,Class A Common Stock,1230,300,1,
+100008,100019,Class B Common Stock,0,3/14/2019,3,0,200,50,1,4/4/2022,,Class A Common Stock,3000,500,1,
+100009,100002,Class B Common Stock,0,3/15/2019,4,0,300,60,1,4/5/2022,,Class A Common Stock,4000,600,2,Family Trust
+100010,100029,Class B Common Stock,0,3/16/2019,5,0,400,65,1,4/6/2022,,Class A Common Stock,5000,800,1,
+100011,100003,Class C Common Stock,0,3/15/2019,9,0,200,130,1,4/5/2022,,Class A Common Stock,200,600,1,
+100012,100018,Class C Common Stock,0,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,800,2,Investment Fund
+100013,100010,Option,2.5,3/17/2019,1,1,20,20,1,4/7/2022,5/5/2022,Class B Common Stock,120,300,1,
+100014,100006,Option,3.5,3/18/2019,2,1,30,22,1,4/8/2022,5/6/2022,Class B Common Stock,300,300,1,
+100015,100017,Class B Common Stock,0,3/14/2019,9,0,1000,265,1,4/4/2022,,Class A Common Stock,120,5820,1,
+100016,100018,Class B Common Stock,0,3/15/2019,9,0,200,78,1,4/5/2022,,Class A Common Stock,200,2076,1,
+100017,100024,Class B Common Stock,0,3/16/2019,9,0,100,275,1,4/6/2022,,Class A Common Stock,400,1467,2,Trust
+100018,100009,Option,50,3/17/2019,1,1,200,188,1,4/7/2022,5/5/2022,Class A Common Stock,1290,3959,1,
+100019,100022,Option,50,3/18/2019,2,1,300,203,1,4/8/2022,5/6/2022,Class A Common Stock,1220,1521,1,
+100020,100007,Option,55,3/19/2019,8,1,400,98,1,4/9/2022,5/7/2022,Class A Common Stock,1230,3420,1,
+100021,100006,Option,55,3/19/2019,8,1,400,102,1,4/9/2022,5/7/2022,Class A Common Stock,1230,5645,1,
+100022,100001,Class B Common Stock,0,3/14/2019,3,0,200,181,1,4/4/2022,,Class A Common Stock,3000,4321,1,
+100023,100026,Class B Common Stock,0,3/15/2019,4,0,300,148,1,4/5/2022,,Class A Common Stock,4000,1144,2,Family Trust
+100024,100021,Class B Common Stock,0,3/16/2019,5,0,400,283,1,4/6/2022,,Class A Common Stock,5000,3860,1,
+100025,100028,Class C Common Stock,0,3/15/2019,9,0,200,183,1,4/5/2022,,Class A Common Stock,200,893,1,
+100026,100003,Class C Common Stock,0,3/16/2019,9,0,100,211,1,4/6/2022,,Class A Common Stock,400,1343,2,Investment Fund
+100027,100028,Option,2.5,3/17/2019,1,1,20,161,1,4/7/2022,5/5/2022,Class B Common Stock,120,2250,1,
+100028,100007,Option,3.5,3/18/2019,2,1,30,68,1,4/8/2022,5/6/2022,Class B Common Stock,300,5887,1,
+100029,100020,Class B Common Stock,0,3/14/2019,3,0,200,50,1,4/4/2022,,Class A Common Stock,3000,500,1,
+100030,100010,Class B Common Stock,0,3/15/2019,4,0,300,60,1,4/5/2022,,Class A Common Stock,4000,600,2,Family Trust
+100031,100003,Class B Common Stock,0,3/16/2019,5,0,400,65,1,4/6/2022,,Class A Common Stock,5000,800,1,
+100032,100014,Class C Common Stock,0,3/15/2019,9,0,200,130,1,4/5/2022,,Class A Common Stock,200,600,1,
+100033,100007,Class C Common Stock,0,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,800,2,Investment Fund
+100034,100030,Option,2.5,3/17/2019,1,1,20,20,1,4/7/2022,5/5/2022,Class B Common Stock,120,300,1,
+100035,100005,Option,3.5,3/18/2019,2,1,30,22,1,4/8/2022,5/6/2022,Class B Common Stock,300,300,1,
+100036,100009,Class B Common Stock,0,3/14/2019,9,0,1000,65,1,4/4/2022,,Class A Common Stock,120,1453,1,
+100037,100001,Class B Common Stock,0,3/15/2019,9,0,200,215,1,4/5/2022,,Class A Common Stock,200,1456,1,
+100038,100006,Class B Common Stock,0,3/16/2019,9,0,100,26,1,4/6/2022,,Class A Common Stock,400,870,2,Trust
+100039,100005,Option,50,3/17/2019,1,1,200,97,1,4/7/2022,5/5/2022,Class A Common Stock,1290,2645,1,
+100040,100009,Option,50,3/18/2019,2,1,300,76,1,4/8/2022,5/6/2022,Class A Common Stock,1220,4518,1,
+100041,100016,Option,55,3/19/2019,8,1,400,189,1,4/9/2022,5/7/2022,Class A Common Stock,1230,5574,1,
+100042,100006,Option,55,3/19/2019,8,1,400,216,1,4/9/2022,5/7/2022,Class A Common Stock,1230,506,1,
+100043,100010,Class B Common Stock,0,3/14/2019,3,0,200,74,1,4/4/2022,,Class A Common Stock,3000,3361,1,
+100044,100024,Class B Common Stock,0,3/15/2019,4,0,300,52,1,4/5/2022,,Class A Common Stock,4000,2003,2,Family Trust
+100045,100008,Class B Common Stock,0,3/16/2019,5,0,400,154,1,4/6/2022,,Class A Common Stock,5000,1662,1,
+100046,100023,Class C Common Stock,0,3/15/2019,9,0,200,159,1,4/5/2022,,Class A Common Stock,200,2863,1,
+100047,100020,Class C Common Stock,0,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,5416,2,Investment Fund
+100048,100014,Option,12,3/17/2019,1,1,20,105,1,4/7/2022,5/5/2022,Class B Common Stock,120,2832,1,
+100049,100015,Option,18,3/18/2019,2,1,30,226,1,4/8/2022,5/6/2022,Class B Common Stock,300,2135,1,
+100050,100012,Option,18,3/18/2019,2,1,30,288,1,4/8/2022,5/6/2022,Class B Common Stock,300,3221,1,
+100051,100026,Class B Common Stock,0,3/14/2019,9,0,1000,120,1,4/4/2022,,Class A Common Stock,120,500,1,
+100052,100020,Class B Common Stock,0,3/15/2019,9,0,200,130,1,4/5/2022,,Class A Common Stock,200,600,1,
+100053,100014,Class B Common Stock,0,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,800,2,Trust
+100054,100001,Option,50,3/17/2019,1,1,200,20,1,4/7/2022,5/5/2022,Class A Common Stock,1290,300,1,
+100055,100023,Option,50,3/18/2019,2,1,300,22,1,4/8/2022,5/6/2022,Class A Common Stock,1220,300,1,
+100056,100014,Option,55,3/19/2019,8,1,400,24,1,4/9/2022,5/7/2022,Class A Common Stock,1230,300,1,
+100057,100015,Option,55,3/19/2019,8,1,400,24,1,4/9/2022,5/7/2022,Class A Common Stock,1230,300,1,
+100058,100018,Class B Common Stock,0,3/14/2019,3,0,200,50,1,4/4/2022,,Class A Common Stock,3000,500,1,
+100059,100025,Class B Common Stock,0,3/15/2019,4,0,300,60,1,4/5/2022,,Class A Common Stock,4000,600,2,Family Trust
+100060,100027,Class B Common Stock,0,3/16/2019,5,0,400,65,1,4/6/2022,,Class A Common Stock,5000,800,1,
+100061,100016,Class C Common Stock,0,3/15/2019,9,0,200,130,1,4/5/2022,,Class A Common Stock,200,600,1,
+100062,100015,Class C Common Stock,0,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,800,2,Investment Fund
+100063,100014,Option,2.5,3/17/2019,1,1,20,20,1,4/7/2022,5/5/2022,Class B Common Stock,120,300,1,
+100064,100021,Option,3.5,3/18/2019,2,1,30,22,1,4/8/2022,5/6/2022,Class B Common Stock,300,300,1,
+100065,100017,Class B Common Stock,0,3/14/2019,9,0,1000,101,1,4/4/2022,,Class A Common Stock,120,1233,1,
+100066,100029,Class B Common Stock,0,3/15/2019,9,0,200,215,1,4/5/2022,,Class A Common Stock,200,4817,1,
+100067,100008,Class B Common Stock,0,3/16/2019,9,0,100,287,1,4/6/2022,,Class A Common Stock,400,405,2,Trust
+100068,100014,Option,50,3/17/2019,1,1,200,93,1,4/7/2022,5/5/2022,Class A Common Stock,1290,2534,1,
+100069,100007,Option,50,3/18/2019,2,1,300,147,1,4/8/2022,5/6/2022,Class A Common Stock,1220,1797,1,
+100070,100008,Option,55,3/19/2019,8,1,400,113,1,4/9/2022,5/7/2022,Class A Common Stock,1230,3927,1,
+100071,100025,Option,55,3/19/2019,8,1,400,145,1,4/9/2022,5/7/2022,Class A Common Stock,1230,5881,1,
+100072,100002,Class B Common Stock,0,3/14/2019,3,0,200,262,1,4/4/2022,,Class A Common Stock,3000,1304,1,
+100073,100026,Class B Common Stock,0,3/15/2019,4,0,300,277,1,4/5/2022,,Class A Common Stock,4000,5855,2,Family Trust
+100074,100003,Class B Common Stock,0,3/16/2019,5,0,400,270,1,4/6/2022,,Class A Common Stock,5000,5806,1,
+100075,100014,Class C Common Stock,0,3/15/2019,9,0,200,67,1,4/5/2022,,Class A Common Stock,200,4708,1,
+100076,100024,Class C Common Stock,0,3/16/2019,9,0,100,79,1,4/6/2022,,Class A Common Stock,400,4099,2,Investment Fund
+100077,100025,Option,2.5,3/17/2019,1,1,20,74,1,4/7/2022,5/5/2022,Class B Common Stock,120,2348,1,
+100078,100003,Option,3.5,3/18/2019,2,1,30,62,1,4/8/2022,5/6/2022,Class B Common Stock,300,1641,1,
+100079,100018,Class B Common Stock,0,3/14/2019,3,0,200,50,1,4/4/2022,,Class A Common Stock,3000,500,1,
+100080,100006,Class B Common Stock,0,3/15/2019,4,0,300,60,1,4/5/2022,,Class A Common Stock,4000,600,2,Family Trust
+100081,100015,Class B Common Stock,0,3/16/2019,5,0,400,65,1,4/6/2022,,Class A Common Stock,5000,800,1,
+100082,100029,Class C Common Stock,0,3/15/2019,9,0,200,130,1,4/5/2022,,Class A Common Stock,200,600,1,
+100083,100029,Class C Common Stock,0,3/16/2019,9,0,100,140,1,4/6/2022,,Class A Common Stock,400,800,2,Investment Fund
+100084,100013,Option,2.5,3/17/2019,1,1,20,20,1,4/7/2022,5/5/2022,Class B Common Stock,120,300,1,
+100085,100010,Option,3.5,3/18/2019,2,1,30,22,1,4/8/2022,5/6/2022,Class B Common Stock,300,300,1,
+100086,100026,Class B Common Stock,0,3/14/2019,9,0,1000,84,1,4/4/2022,,Class A Common Stock,120,2287,1,
+100087,100014,Class B Common Stock,0,3/15/2019,9,0,200,210,1,4/5/2022,,Class A Common Stock,200,3372,1,
+100088,100010,Class B Common Stock,0,3/16/2019,9,0,100,29,1,4/6/2022,,Class A Common Stock,400,4663,2,Trust
+100089,100011,Option,50,3/17/2019,1,1,200,203,1,4/7/2022,5/5/2022,Class A Common Stock,1290,2267,1,
+100090,100015,Option,50,3/18/2019,2,1,300,251,1,4/8/2022,5/6/2022,Class A Common Stock,1220,2477,1,
+100091,100028,Option,55,3/19/2019,8,1,400,149,1,4/9/2022,5/7/2022,Class A Common Stock,1230,3407,1,
+100092,100028,Option,55,3/19/2019,8,1,400,210,1,4/9/2022,5/7/2022,Class A Common Stock,1230,2147,1,
+100093,100016,Class B Common Stock,0,3/14/2019,3,0,200,65,1,4/4/2022,,Class A Common Stock,3000,2464,1,
+100094,100026,Class B Common Stock,0,3/15/2019,4,0,300,265,1,4/5/2022,,Class A Common Stock,4000,3443,2,Family Trust
+100095,100005,Class B Common Stock,0,3/16/2019,5,0,400,127,1,4/6/2022,,Class A Common Stock,5000,4681,1,
+100096,100019,Class C Common Stock,0,3/15/2019,9,0,200,279,1,4/5/2022,,Class A Common Stock,200,1560,1,
+100097,100006,Class C Common Stock,0,3/16/2019,9,0,100,217,1,4/6/2022,,Class A Common Stock,400,3222,2,Investment Fund
+100098,100030,Option,12,3/17/2019,1,1,20,94,1,4/7/2022,5/5/2022,Class B Common Stock,120,4944,1,
+100099,100030,Option,18,3/18/2019,2,1,30,104,1,4/8/2022,5/6/2022,Class B Common Stock,300,4193,1,
+100100,100017,Option,18,3/18/2019,2,1,30,215,1,4/8/2022,5/6/2022,Class B Common Stock,300,1453,1,

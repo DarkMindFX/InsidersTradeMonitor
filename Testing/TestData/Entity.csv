@@ -1,13 +1,13 @@
-ID,EntityTypeID,CIK,Name,TradingSymbol
-100001,1,1288776,Google Inc.,GOOG
-100002,1,320193,Apple,AAPL
-100003,1,51143,IBM,IBM
-100004,1,1318605,Tesla Inc.,TSLA
-100005,1,40545,General Electric Co,GE
-100006,2,1295032,Sergey Brin,
-100007,2,1806242,William Eric Schultz,
-100008,2,1214156,Cook Timothy D,
-100009,2,1629898,Krishna Arvind,
-100010,2,1494730,Musk Elon,
-100011,2,1790565,Andrew D. Baglino,
-100012,2,1205247,H. Lawrence Culp Jr.,
+ID,EntityTypeID,CIK,Name,TradingSymbol,IsMonitored
+100001,1,1288776,Google Inc.,GOOG,0
+100002,1,320193,Apple,AAPL,0
+100003,1,51143,IBM,IBM,0
+100004,1,1318605,Tesla Inc.,TSLA,0
+100005,1,40545,General Electric Co,GE,0
+100006,2,1295032,Sergey Brin,,0
+100007,2,1806242,William Eric Schultz,,0
+100008,2,1214156,Cook Timothy D,,0
+100009,2,1629898,Krishna Arvind,,0
+100010,2,1494730,Musk Elon,,0
+100011,2,1790565,Andrew D. Baglino,,0
+100012,2,1205247,H. Lawrence Culp Jr.,,0
