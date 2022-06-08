@@ -31,6 +31,7 @@ namespace ITM.Service.DataImporter.Workers
         {
             _importerParams = impParams;
             _processId = Guid.NewGuid().ToString();
+            _reportIds = new List<long>();
         }
 
         public string ProcessID
@@ -46,6 +47,14 @@ namespace ITM.Service.DataImporter.Workers
             get
             {
                 return _isRunning;
+            }
+        }
+
+        public IList<long> ImportedReportsIDs
+        {
+            get
+            {
+                return _reportIds;
             }
         }
 
@@ -72,6 +81,7 @@ namespace ITM.Service.DataImporter.Workers
             validateParams.CIK = _importerParams.CIK;
             validateParams.UpdateFromDate = _importerParams.DateFrom;
             validateParams.UpdateToDate = _importerParams.DateTo;
+            _reportIds.Clear();
 
             // getting list of filings for CIK
             var resultFuilings = _importerParams.Source.GetFilingsList(validateParams).Result;
@@ -117,7 +127,8 @@ namespace ITM.Service.DataImporter.Workers
                             if(resultParse.Success)
                             {
                                 // Save statement to storage 
-                                _importerParams.Form4DalWrappwer.InsertReport(resultParse.Statement);
+                                long newReportID = _importerParams.Form4DalWrappwer.InsertReport(resultParse.Statement);
+                                _reportIds.Add(newReportID);
                             }
 
                         }

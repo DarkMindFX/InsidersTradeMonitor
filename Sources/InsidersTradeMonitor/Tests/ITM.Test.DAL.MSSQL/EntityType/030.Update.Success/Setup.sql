@@ -2,7 +2,7 @@
 
 
 DECLARE @ID BIGINT = NULL
-DECLARE @TypeName NVARCHAR(50) = 'TypeName c6c88f808e9349c08609b41f84a5afa4'
+DECLARE @TypeName NVARCHAR(50) = 'TypeName 7d95d0585ce94d04a335038fe34caafd'
  
 
 

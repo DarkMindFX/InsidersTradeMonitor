@@ -2,22 +2,22 @@
 
 
 DECLARE @ID BIGINT = NULL
-DECLARE @Form4ReportID BIGINT = NULL
-DECLARE @TitleOfDerivative NVARCHAR(250) = 'TitleOfDerivative c40605e344bc4b33af0612a39c79085b'
-DECLARE @ConversionExercisePrice DECIMAL(20, 6) = 320975.769926
-DECLARE @TransactionDate DATE = '4/24/2021 6:37:45 AM'
-DECLARE @TransactionCodeID BIGINT = 13
-DECLARE @EarlyVoluntarilyReport BIT = 0
-DECLARE @SharesAmount BIGINT = 888251
-DECLARE @DerivativeSecurityPrice DECIMAL(20, 6) = 888251.712494
-DECLARE @TransactionTypeID BIGINT = 1
-DECLARE @DateExercisable DATE = '8/30/2024 12:51:45 PM'
-DECLARE @ExpirationDate DATE = '8/30/2024 12:51:45 PM'
-DECLARE @UnderlyingTitle NVARCHAR(250) = 'UnderlyingTitle c40605e344bc4b33af0612a39c79085b'
-DECLARE @UnderlyingSharesAmount BIGINT = 933102
-DECLARE @AmountFollowingReport BIGINT = 933102
-DECLARE @OwnershipTypeID BIGINT = NULL
-DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership c40605e344bc4b33af0612a39c79085b'
+DECLARE @Form4ReportID BIGINT = 100007
+DECLARE @TitleOfDerivative NVARCHAR(250) = 'TitleOfDerivative 735dce9f4ebe44a9a11bd76db27a4745'
+DECLARE @ConversionExercisePrice DECIMAL(20, 6) = 181431.783448
+DECLARE @TransactionDate DATE = '9/9/2020'
+DECLARE @TransactionCodeID BIGINT = 15
+DECLARE @EarlyVoluntarilyReport BIT = 1
+DECLARE @SharesAmount BIGINT = 226283
+DECLARE @DerivativeSecurityPrice DECIMAL(20, 6) = 226282.411826
+DECLARE @TransactionTypeID BIGINT = 2
+DECLARE @DateExercisable DATE = '10/19/2023'
+DECLARE @ExpirationDate DATE = '10/19/2023'
+DECLARE @UnderlyingTitle NVARCHAR(250) = 'UnderlyingTitle 735dce9f4ebe44a9a11bd76db27a4745'
+DECLARE @UnderlyingSharesAmount BIGINT = 748707
+DECLARE @AmountFollowingReport BIGINT = 748707
+DECLARE @OwnershipTypeID BIGINT = 2
+DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership 735dce9f4ebe44a9a11bd76db27a4745'
  
 
 

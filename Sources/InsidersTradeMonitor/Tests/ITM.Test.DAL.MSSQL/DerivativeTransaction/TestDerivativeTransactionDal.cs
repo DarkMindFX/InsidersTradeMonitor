@@ -1,9 +1,10 @@
 
 
 
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Test.Common;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -45,34 +46,36 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareDerivativeTransactionDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             DerivativeTransaction entity = dal.Get(paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TitleOfDerivative c40605e344bc4b33af0612a39c79085b", entity.TitleOfDerivative);
-                            Assert.AreEqual(320975.769926M, entity.ConversionExercisePrice);
-                            Assert.AreEqual(DateTime.Parse("4/24/2021 6:37:45 AM"), entity.TransactionDate);
-                            Assert.AreEqual(13, entity.TransactionCodeID);
-                            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
-                            Assert.AreEqual(888251, entity.SharesAmount);
-                            Assert.AreEqual(888251.712494M, entity.DerivativeSecurityPrice);
-                            Assert.AreEqual(1, entity.TransactionTypeID);
-                            Assert.AreEqual(DateTime.Parse("8/30/2024 12:51:45 PM"), entity.DateExercisable);
-                            Assert.AreEqual(DateTime.Parse("8/30/2024 12:51:45 PM"), entity.ExpirationDate);
-                            Assert.AreEqual("UnderlyingTitle c40605e344bc4b33af0612a39c79085b", entity.UnderlyingTitle);
-                            Assert.AreEqual(933102, entity.UnderlyingSharesAmount);
-                            Assert.AreEqual(933102, entity.AmountFollowingReport);
-                            Assert.AreEqual("NatureOfIndirectOwnership c40605e344bc4b33af0612a39c79085b", entity.NatureOfIndirectOwnership);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(100007, entity.Form4ReportID);
+            Assert.AreEqual("TitleOfDerivative 735dce9f4ebe44a9a11bd76db27a4745", entity.TitleOfDerivative);
+            Assert.AreEqual(181431.783448M, entity.ConversionExercisePrice);
+            Assert.AreEqual(DateTime.Parse("9/9/2020"), entity.TransactionDate);
+            Assert.AreEqual(15, entity.TransactionCodeID);
+            Assert.AreEqual(true, entity.EarlyVoluntarilyReport);
+            Assert.AreEqual(226283, entity.SharesAmount);
+            Assert.AreEqual(226282.411826M, entity.DerivativeSecurityPrice);
+            Assert.AreEqual(2, entity.TransactionTypeID);
+            Assert.AreEqual(DateTime.Parse("10/19/2023"), entity.DateExercisable);
+            Assert.AreEqual(DateTime.Parse("10/19/2023"), entity.ExpirationDate);
+            Assert.AreEqual("UnderlyingTitle 735dce9f4ebe44a9a11bd76db27a4745", entity.UnderlyingTitle);
+            Assert.AreEqual(748707, entity.UnderlyingSharesAmount);
+            Assert.AreEqual(748707, entity.AmountFollowingReport);
+            Assert.AreEqual(2, entity.OwnershipTypeID);
+            Assert.AreEqual("NatureOfIndirectOwnership 735dce9f4ebe44a9a11bd76db27a4745", entity.NatureOfIndirectOwnership);
+        }
 
         [Test]
         public void DerivativeTransaction_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareDerivativeTransactionDal("DALInitParams");
 
             DerivativeTransaction entity = dal.Get(paramID);
@@ -87,7 +90,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareDerivativeTransactionDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             bool removed = dal.Delete(paramID);
 
             TeardownCase(conn, caseName);
@@ -99,8 +102,8 @@ namespace Test.PPT.DAL.MSSQL
         public void DerivativeTransaction_Delete_InvalidId()
         {
             var dal = PrepareDerivativeTransactionDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -115,43 +118,47 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareDerivativeTransactionDal("DALInitParams");
 
             var entity = new DerivativeTransaction();
-                          entity.TitleOfDerivative = "TitleOfDerivative d570b00042d94321889af3c435f3652c";
-                            entity.ConversionExercisePrice = 67654.226007M;
-                            entity.TransactionDate = DateTime.Parse("12/4/2019 4:52:45 AM");
-                            entity.TransactionCodeID = 2;
-                            entity.EarlyVoluntarilyReport = true;              
-                            entity.SharesAmount = 67655;
-                            entity.DerivativeSecurityPrice = 67654.226007M;
-                            entity.TransactionTypeID = 1;
-                            entity.DateExercisable = DateTime.Parse("12/4/2019 4:52:45 AM");
-                            entity.ExpirationDate = DateTime.Parse("12/4/2019 4:52:45 AM");
-                            entity.UnderlyingTitle = "UnderlyingTitle d570b00042d94321889af3c435f3652c";
-                            entity.UnderlyingSharesAmount = 67655;
-                            entity.AmountFollowingReport = 67655;
-                            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership d570b00042d94321889af3c435f3652c";
-                          
+            entity.Form4ReportID = 100013;
+            entity.TitleOfDerivative = "TitleOfDerivative 82799dcf64f9462791f901cd16b3424c";
+            entity.ConversionExercisePrice = 793558.354393M;
+            entity.TransactionDate = DateTime.Parse("1/16/2024");
+            entity.TransactionCodeID = 11;
+            entity.EarlyVoluntarilyReport = false;
+            entity.SharesAmount = 315984;
+            entity.DerivativeSecurityPrice = 315983.668583M;
+            entity.TransactionTypeID = 1;
+            entity.DateExercisable = DateTime.Parse("6/5/2021");
+            entity.ExpirationDate = DateTime.Parse("6/5/2021");
+            entity.UnderlyingTitle = "UnderlyingTitle 82799dcf64f9462791f901cd16b3424c";
+            entity.UnderlyingSharesAmount = 315984;
+            entity.AmountFollowingReport = 315984;
+            entity.OwnershipTypeID = 1;
+            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership 82799dcf64f9462791f901cd16b3424c";
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TitleOfDerivative d570b00042d94321889af3c435f3652c", entity.TitleOfDerivative);
-                            Assert.AreEqual(67654.226007M, entity.ConversionExercisePrice);
-                            Assert.AreEqual(DateTime.Parse("12/4/2019 4:52:45 AM"), entity.TransactionDate);
-                            Assert.AreEqual(2, entity.TransactionCodeID);
-                            Assert.AreEqual(true, entity.EarlyVoluntarilyReport);
-                            Assert.AreEqual(67655, entity.SharesAmount);
-                            Assert.AreEqual(67654.226007M, entity.DerivativeSecurityPrice);
-                            Assert.AreEqual(1, entity.TransactionTypeID);
-                            Assert.AreEqual(DateTime.Parse("12/4/2019 4:52:45 AM"), entity.DateExercisable);
-                            Assert.AreEqual(DateTime.Parse("12/4/2019 4:52:45 AM"), entity.ExpirationDate);
-                            Assert.AreEqual("UnderlyingTitle d570b00042d94321889af3c435f3652c", entity.UnderlyingTitle);
-                            Assert.AreEqual(67655, entity.UnderlyingSharesAmount);
-                            Assert.AreEqual(67655, entity.AmountFollowingReport);
-                            Assert.AreEqual("NatureOfIndirectOwnership d570b00042d94321889af3c435f3652c", entity.NatureOfIndirectOwnership);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(100013, entity.Form4ReportID);
+            Assert.AreEqual("TitleOfDerivative 82799dcf64f9462791f901cd16b3424c", entity.TitleOfDerivative);
+            Assert.AreEqual(793558.354393M, entity.ConversionExercisePrice);
+            Assert.AreEqual(DateTime.Parse("1/16/2024"), entity.TransactionDate);
+            Assert.AreEqual(11, entity.TransactionCodeID);
+            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
+            Assert.AreEqual(315984, entity.SharesAmount);
+            Assert.AreEqual(315983.668583M, entity.DerivativeSecurityPrice);
+            Assert.AreEqual(1, entity.TransactionTypeID);
+            Assert.AreEqual(DateTime.Parse("6/5/2021"), entity.DateExercisable);
+            Assert.AreEqual(DateTime.Parse("6/5/2021"), entity.ExpirationDate);
+            Assert.AreEqual("UnderlyingTitle 82799dcf64f9462791f901cd16b3424c", entity.UnderlyingTitle);
+            Assert.AreEqual(315984, entity.UnderlyingSharesAmount);
+            Assert.AreEqual(315984, entity.AmountFollowingReport);
+            Assert.AreEqual(1, entity.OwnershipTypeID);
+            Assert.AreEqual("NatureOfIndirectOwnership 82799dcf64f9462791f901cd16b3424c", entity.NatureOfIndirectOwnership);
+
         }
 
         [TestCase("DerivativeTransaction\\030.Update.Success")]
@@ -161,46 +168,50 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareDerivativeTransactionDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             DerivativeTransaction entity = dal.Get(paramID);
 
-                          entity.TitleOfDerivative = "TitleOfDerivative 91450a0a311744e39a8e6fadb41eb6f0";
-                            entity.ConversionExercisePrice = 590079.540196M;
-                            entity.TransactionDate = DateTime.Parse("10/14/2022 2:39:45 PM");
-                            entity.TransactionCodeID = 9;
-                            entity.EarlyVoluntarilyReport = false;              
-                            entity.SharesAmount = 112505;
-                            entity.DerivativeSecurityPrice = 112504.854385M;
-                            entity.TransactionTypeID = 1;
-                            entity.DateExercisable = DateTime.Parse("3/4/2020 12:26:45 AM");
-                            entity.ExpirationDate = DateTime.Parse("3/4/2020 12:26:45 AM");
-                            entity.UnderlyingTitle = "UnderlyingTitle 91450a0a311744e39a8e6fadb41eb6f0";
-                            entity.UnderlyingSharesAmount = 112505;
-                            entity.AmountFollowingReport = 112505;
-                            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership 91450a0a311744e39a8e6fadb41eb6f0";
-              
+            entity.Form4ReportID = 100019;
+            entity.TitleOfDerivative = "TitleOfDerivative 664806d526eb4758ac9d975bb2ca7419";
+            entity.ConversionExercisePrice = 315983.668583M;
+            entity.TransactionDate = DateTime.Parse("6/5/2021");
+            entity.TransactionCodeID = 2;
+            entity.EarlyVoluntarilyReport = false;
+            entity.SharesAmount = 838409;
+            entity.DerivativeSecurityPrice = 838408.982772M;
+            entity.TransactionTypeID = 1;
+            entity.DateExercisable = DateTime.Parse("4/15/2024");
+            entity.ExpirationDate = DateTime.Parse("4/15/2024");
+            entity.UnderlyingTitle = "UnderlyingTitle 664806d526eb4758ac9d975bb2ca7419";
+            entity.UnderlyingSharesAmount = 838409;
+            entity.AmountFollowingReport = 838409;
+            entity.OwnershipTypeID = 1;
+            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership 664806d526eb4758ac9d975bb2ca7419";
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TitleOfDerivative 91450a0a311744e39a8e6fadb41eb6f0", entity.TitleOfDerivative);
-                            Assert.AreEqual(590079.540196M, entity.ConversionExercisePrice);
-                            Assert.AreEqual(DateTime.Parse("10/14/2022 2:39:45 PM"), entity.TransactionDate);
-                            Assert.AreEqual(9, entity.TransactionCodeID);
-                            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
-                            Assert.AreEqual(112505, entity.SharesAmount);
-                            Assert.AreEqual(112504.854385M, entity.DerivativeSecurityPrice);
-                            Assert.AreEqual(1, entity.TransactionTypeID);
-                            Assert.AreEqual(DateTime.Parse("3/4/2020 12:26:45 AM"), entity.DateExercisable);
-                            Assert.AreEqual(DateTime.Parse("3/4/2020 12:26:45 AM"), entity.ExpirationDate);
-                            Assert.AreEqual("UnderlyingTitle 91450a0a311744e39a8e6fadb41eb6f0", entity.UnderlyingTitle);
-                            Assert.AreEqual(112505, entity.UnderlyingSharesAmount);
-                            Assert.AreEqual(112505, entity.AmountFollowingReport);
-                            Assert.AreEqual("NatureOfIndirectOwnership 91450a0a311744e39a8e6fadb41eb6f0", entity.NatureOfIndirectOwnership);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(100019, entity.Form4ReportID);
+            Assert.AreEqual("TitleOfDerivative 664806d526eb4758ac9d975bb2ca7419", entity.TitleOfDerivative);
+            Assert.AreEqual(315983.668583M, entity.ConversionExercisePrice);
+            Assert.AreEqual(DateTime.Parse("6/5/2021"), entity.TransactionDate);
+            Assert.AreEqual(2, entity.TransactionCodeID);
+            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
+            Assert.AreEqual(838409, entity.SharesAmount);
+            Assert.AreEqual(838408.982772M, entity.DerivativeSecurityPrice);
+            Assert.AreEqual(1, entity.TransactionTypeID);
+            Assert.AreEqual(DateTime.Parse("4/15/2024"), entity.DateExercisable);
+            Assert.AreEqual(DateTime.Parse("4/15/2024"), entity.ExpirationDate);
+            Assert.AreEqual("UnderlyingTitle 664806d526eb4758ac9d975bb2ca7419", entity.UnderlyingTitle);
+            Assert.AreEqual(838409, entity.UnderlyingSharesAmount);
+            Assert.AreEqual(838409, entity.AmountFollowingReport);
+            Assert.AreEqual(1, entity.OwnershipTypeID);
+            Assert.AreEqual("NatureOfIndirectOwnership 664806d526eb4758ac9d975bb2ca7419", entity.NatureOfIndirectOwnership);
+
         }
 
         [Test]
@@ -209,21 +220,23 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareDerivativeTransactionDal("DALInitParams");
 
             var entity = new DerivativeTransaction();
-                          entity.TitleOfDerivative = "TitleOfDerivative 91450a0a311744e39a8e6fadb41eb6f0";
-                            entity.ConversionExercisePrice = 590079.540196M;
-                            entity.TransactionDate = DateTime.Parse("10/14/2022 2:39:45 PM");
-                            entity.TransactionCodeID = 9;
-                            entity.EarlyVoluntarilyReport = false;              
-                            entity.SharesAmount = 112505;
-                            entity.DerivativeSecurityPrice = 112504.854385M;
-                            entity.TransactionTypeID = 1;
-                            entity.DateExercisable = DateTime.Parse("3/4/2020 12:26:45 AM");
-                            entity.ExpirationDate = DateTime.Parse("3/4/2020 12:26:45 AM");
-                            entity.UnderlyingTitle = "UnderlyingTitle 91450a0a311744e39a8e6fadb41eb6f0";
-                            entity.UnderlyingSharesAmount = 112505;
-                            entity.AmountFollowingReport = 112505;
-                            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership 91450a0a311744e39a8e6fadb41eb6f0";
-              
+            entity.Form4ReportID = 100019;
+            entity.TitleOfDerivative = "TitleOfDerivative 664806d526eb4758ac9d975bb2ca7419";
+            entity.ConversionExercisePrice = 315983.668583M;
+            entity.TransactionDate = DateTime.Parse("6/5/2021");
+            entity.TransactionCodeID = 2;
+            entity.EarlyVoluntarilyReport = false;
+            entity.SharesAmount = 838409;
+            entity.DerivativeSecurityPrice = 838408.982772M;
+            entity.TransactionTypeID = 1;
+            entity.DateExercisable = DateTime.Parse("4/15/2024");
+            entity.ExpirationDate = DateTime.Parse("4/15/2024");
+            entity.UnderlyingTitle = "UnderlyingTitle 664806d526eb4758ac9d975bb2ca7419";
+            entity.UnderlyingSharesAmount = 838409;
+            entity.AmountFollowingReport = 838409;
+            entity.OwnershipTypeID = 1;
+            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership 664806d526eb4758ac9d975bb2ca7419";
+
             try
             {
                 entity = dal.Update(entity);

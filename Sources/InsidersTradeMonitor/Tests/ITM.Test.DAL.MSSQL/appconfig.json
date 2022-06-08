@@ -1,14 +1,14 @@
 {
   "DALInitParams": {
-    "ConnectionString": "Data Source=localhost; Initial Catalog=PhotoPrint; User ID=ppt_test_account; Password=PPTTestAccount2021;"
+    "ConnectionString": "Data Source=127.0.0.1,1433; Initial Catalog=InsidersTradeMonitor; User ID=itm_test_account; Password=ITMTestAccountService2022!;"
   },
 
   "DALInitParams_InvalidHost": {
-    "ConnectionString": "Data Source=nosuchhost; Initial Catalog=PhotoPrint; User ID=ppt_test_account; Password=PPTTestAccount2021;"
+    "ConnectionString": "Data Source=111.0.0.1,1433; Initial Catalog=InsidersTradeMonitor; User ID=itm_test_account; Password=ITMTestAccountService2022!;"
   },
 
   "DALInitParams_InvalidDb": {
-    "ConnectionString": "Data Source=localhost; Initial Catalog=nosuchdb; User ID=hrt_test_account; Password=PPTTestAccount2021;"
+    "ConnectionString": "Data Source=127.0.0.1,1433; Initial Catalog=InvalidDB; User ID=itm_test_account; Password=ITMTestAccountService2022!;"
   }
 
 }

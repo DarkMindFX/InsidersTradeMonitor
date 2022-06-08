@@ -1,9 +1,10 @@
 
 
 
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Test.Common;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -53,8 +54,8 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
                         Assert.IsNotNull(entity.ID);
             
-                          Assert.AreEqual("Code 2a3a1", entity.Code);
-                            Assert.AreEqual("Description 2a3a13feb5424105b6dabe0873934b8b", entity.Description);
+                          Assert.AreEqual("Code 926f1", entity.Code);
+                            Assert.AreEqual("Description 926f19be56db42dbbc6c83009834c264", entity.Description);
                       }
 
         [Test]
@@ -103,8 +104,8 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             var entity = new TransactionType();
-                          entity.Code = "Code 45b88";
-                            entity.Description = "Description 45b88d21fc5048b3a6a94d2876e7b621";
+                          entity.Code = "Code 31b65";
+                            entity.Description = "Description 31b65ad02809464590c1dfa2a46b2b4e";
                           
             entity = dal.Insert(entity);
 
@@ -113,8 +114,8 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
                         Assert.IsNotNull(entity.ID);
             
-                          Assert.AreEqual("Code 45b88", entity.Code);
-                            Assert.AreEqual("Description 45b88d21fc5048b3a6a94d2876e7b621", entity.Description);
+                          Assert.AreEqual("Code 31b65", entity.Code);
+                            Assert.AreEqual("Description 31b65ad02809464590c1dfa2a46b2b4e", entity.Description);
               
         }
 
@@ -128,8 +129,8 @@ namespace Test.PPT.DAL.MSSQL
                 var paramID = (System.Int64?)objIds[0];
             TransactionType entity = dal.Get(paramID);
 
-                          entity.Code = "Code e7c33";
-                            entity.Description = "Description e7c337dda94b46c5bea5d7730fc8eda5";
+                          entity.Code = "Code 6d517";
+                            entity.Description = "Description 6d517bbe8f374571ab4ea5dbb6ffdd5b";
               
             entity = dal.Update(entity);
 
@@ -138,8 +139,8 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
                         Assert.IsNotNull(entity.ID);
             
-                          Assert.AreEqual("Code e7c33", entity.Code);
-                            Assert.AreEqual("Description e7c337dda94b46c5bea5d7730fc8eda5", entity.Description);
+                          Assert.AreEqual("Code 6d517", entity.Code);
+                            Assert.AreEqual("Description 6d517bbe8f374571ab4ea5dbb6ffdd5b", entity.Description);
               
         }
 
@@ -149,8 +150,8 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             var entity = new TransactionType();
-                          entity.Code = "Code e7c33";
-                            entity.Description = "Description e7c337dda94b46c5bea5d7730fc8eda5";
+                          entity.Code = "Code 6d517";
+                            entity.Description = "Description 6d517bbe8f374571ab4ea5dbb6ffdd5b";
               
             try
             {

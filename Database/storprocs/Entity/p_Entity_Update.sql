@@ -31,7 +31,6 @@ BEGIN
 	BEGIN
 		UPDATE [dbo].[Entity]
 		SET
-									[ID] = IIF( @ID IS NOT NULL, @ID, [ID] ) ,
 									[EntityTypeID] = IIF( @EntityTypeID IS NOT NULL, @EntityTypeID, [EntityTypeID] ) ,
 									[CIK] = IIF( @CIK IS NOT NULL, @CIK, [CIK] ) ,
 									[Name] = IIF( @Name IS NOT NULL, @Name, [Name] ) ,

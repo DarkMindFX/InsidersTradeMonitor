@@ -3,7 +3,7 @@
 
 DECLARE @ID BIGINT = NULL
 DECLARE @Code NCHAR(1) = 'C'
-DECLARE @Description NVARCHAR(50) = 'Description 0c96a714996e40b49ff7074e80564bfa'
+DECLARE @Description NVARCHAR(50) = 'Description 551331c4138e443da5ae6323f444af8f'
  
 DECLARE @Fail AS BIT = 0
 

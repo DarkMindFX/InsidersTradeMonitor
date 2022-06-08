@@ -2,8 +2,8 @@
 
 
 DECLARE @ID BIGINT = NULL
-DECLARE @Code NVARCHAR(10) = 'Code c12fb'
-DECLARE @Description NVARCHAR(250) = 'Description c12fb2a8b1f2434ca516a48ee1e5534e'
+DECLARE @Code NVARCHAR(10) = 'Code b4702'
+DECLARE @Description NVARCHAR(250) = 'Description b47026094d5c4eb28d4e22f7bcd2f2cd'
  
 
 

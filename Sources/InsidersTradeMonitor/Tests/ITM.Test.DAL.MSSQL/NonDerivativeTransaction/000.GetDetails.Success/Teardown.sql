@@ -2,18 +2,18 @@
 
 
 DECLARE @ID BIGINT = NULL
-DECLARE @Form4ReportID BIGINT = NULL
-DECLARE @TitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity 80b9e2b0657c499fb4b00e444b82162a'
-DECLARE @TransactionDate DATE = '10/13/2019 8:14:45 AM'
-DECLARE @DeemedExecDate DATE = '10/13/2019 8:14:45 AM'
-DECLARE @TransactionCodeID BIGINT = 2
-DECLARE @EarlyVoluntarilyReport BIT = 1
-DECLARE @SharesAmount BIGINT = 41082
-DECLARE @TransactionTypeID BIGINT = 2
-DECLARE @Price DECIMAL(20, 6) = 563507.18884
-DECLARE @AmountFollowingReport BIGINT = 563507
-DECLARE @OwnershipTypeID BIGINT = NULL
-DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership 80b9e2b0657c499fb4b00e444b82162a'
+DECLARE @Form4ReportID BIGINT = 100026
+DECLARE @TitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity c27ff82e6ff9424e814c5b98ee1c2f24'
+DECLARE @TransactionDate DATE = '1/28/2023'
+DECLARE @DeemedExecDate DATE = '1/28/2023'
+DECLARE @TransactionCodeID BIGINT = 14
+DECLARE @EarlyVoluntarilyReport BIT = 0
+DECLARE @SharesAmount BIGINT = 616652
+DECLARE @TransactionTypeID BIGINT = 1
+DECLARE @Price DECIMAL(20, 6) = 616651.891552
+DECLARE @AmountFollowingReport BIGINT = 616652
+DECLARE @OwnershipTypeID BIGINT = 2
+DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership c27ff82e6ff9424e814c5b98ee1c2f24'
  
 
 DELETE FROM [NonDerivativeTransaction]

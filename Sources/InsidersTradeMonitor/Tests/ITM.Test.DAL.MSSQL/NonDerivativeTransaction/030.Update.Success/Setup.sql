@@ -2,18 +2,18 @@
 
 
 DECLARE @ID BIGINT = NULL
-DECLARE @Form4ReportID BIGINT = NULL
-DECLARE @TitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity 6339133fe5084d4f83e519b230414185'
-DECLARE @TransactionDate DATE = '7/8/2020 12:15:45 AM'
-DECLARE @DeemedExecDate DATE = '7/8/2020 12:15:45 AM'
-DECLARE @TransactionCodeID BIGINT = 12
-DECLARE @EarlyVoluntarilyReport BIT = 0
-DECLARE @SharesAmount BIGINT = 698059
+DECLARE @Form4ReportID BIGINT = 100028
+DECLARE @TitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity 4cf0dd55e89a4a33ad5d62de6c21f419'
+DECLARE @TransactionDate DATE = '9/13/2020'
+DECLARE @DeemedExecDate DATE = '9/13/2020'
+DECLARE @TransactionCodeID BIGINT = 5
+DECLARE @EarlyVoluntarilyReport BIT = 1
+DECLARE @SharesAmount BIGINT = 183928
 DECLARE @TransactionTypeID BIGINT = 1
-DECLARE @Price DECIMAL(20, 6) = 698059.073974
-DECLARE @AmountFollowingReport BIGINT = 698059
-DECLARE @OwnershipTypeID BIGINT = NULL
-DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership 6339133fe5084d4f83e519b230414185'
+DECLARE @Price DECIMAL(20, 6) = 183927.83412
+DECLARE @AmountFollowingReport BIGINT = 183928
+DECLARE @OwnershipTypeID BIGINT = 2
+DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership 4cf0dd55e89a4a33ad5d62de6c21f419'
  
 
 

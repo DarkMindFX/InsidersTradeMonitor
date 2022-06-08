@@ -25,7 +25,6 @@ BEGIN
 
 	INSERT INTO [dbo].[Entity]
 	SELECT 
-		@ID,
 		@EntityTypeID,
 		@CIK,
 		@Name,

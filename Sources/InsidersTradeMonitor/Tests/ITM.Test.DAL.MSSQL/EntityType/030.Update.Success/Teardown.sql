@@ -3,12 +3,12 @@
 
 -- original values --
 DECLARE @ID BIGINT = NULL
-DECLARE @TypeName NVARCHAR(50) = 'TypeName c6c88f808e9349c08609b41f84a5afa4'
+DECLARE @TypeName NVARCHAR(50) = 'TypeName 7d95d0585ce94d04a335038fe34caafd'
  
 -- updated values --
 
 DECLARE @updID BIGINT = NULL
-DECLARE @updTypeName NVARCHAR(50) = 'TypeName 08279d6f87304e0f875f9e9fc8486c04'
+DECLARE @updTypeName NVARCHAR(50) = 'TypeName 4900b709aeed475f9bdd20dc927f2bb1'
  
 
 DECLARE @Fail AS BIT = 0

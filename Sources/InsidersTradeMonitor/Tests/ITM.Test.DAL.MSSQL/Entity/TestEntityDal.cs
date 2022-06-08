@@ -1,9 +1,10 @@
 
 
 
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Test.Common;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -45,24 +46,25 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64)objIds[0];
-            Entity entity = dal.Get(paramID);
+            var paramID = (System.Int64?)objIds[0];
+            Entity entity = dal.Get((long)paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual(323472, entity.ID);
-                            Assert.AreEqual("CIK d1d8f4bf320246ea84b8233bd50ddaaf", entity.CIK);
-                            Assert.AreEqual("Name d1d8f4bf320246ea84b8233bd50ddaaf", entity.Name);
-                            Assert.AreEqual("TradingSymbol d1d8f4bf320246ea84b8233bd50ddaaf", entity.TradingSymbol);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(1, entity.EntityTypeID);
+            Assert.AreEqual(735, entity.CIK);
+            Assert.AreEqual("Name b0f5c74af5374d68b863a3207a175683", entity.Name);
+            Assert.AreEqual("TradingSymbol b0f5c74af5374d68b863a3207a175683", entity.TradingSymbol);
+            Assert.AreEqual(true, entity.IsMonitored);
+        }
 
         [Test]
         public void Entity_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareEntityDal("DALInitParams");
 
             Entity entity = dal.Get(paramID);
@@ -77,8 +79,8 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64)objIds[0];
-            bool removed = dal.Delete(paramID);
+            var paramID = (System.Int64?)objIds[0];
+            bool removed = dal.Delete((long)paramID);
 
             TeardownCase(conn, caseName);
 
@@ -89,8 +91,8 @@ namespace Test.PPT.DAL.MSSQL
         public void Entity_Delete_InvalidId()
         {
             var dal = PrepareEntityDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -105,23 +107,25 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityDal("DALInitParams");
 
             var entity = new Entity();
-                          entity.ID = 890747;
-                            entity.CIK = "CIK 6040a272638844719fda814739096578";
-                            entity.Name = "Name 6040a272638844719fda814739096578";
-                            entity.TradingSymbol = "TradingSymbol 6040a272638844719fda814739096578";
-                          
+            entity.EntityTypeID = 1;
+            entity.CIK = 258;
+            entity.Name = "Name 967135663aa542908c8c518c3ddd06b5";
+            entity.TradingSymbol = "TradingSymbol 967135663aa542908c8c518c3ddd06b5";
+            entity.IsMonitored = false;
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual(890747, entity.ID);
-                            Assert.AreEqual("CIK 6040a272638844719fda814739096578", entity.CIK);
-                            Assert.AreEqual("Name 6040a272638844719fda814739096578", entity.Name);
-                            Assert.AreEqual("TradingSymbol 6040a272638844719fda814739096578", entity.TradingSymbol);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(1, entity.EntityTypeID);
+            Assert.AreEqual(258, entity.CIK);
+            Assert.AreEqual("Name 967135663aa542908c8c518c3ddd06b5", entity.Name);
+            Assert.AreEqual("TradingSymbol 967135663aa542908c8c518c3ddd06b5", entity.TradingSymbol);
+            Assert.AreEqual(false, entity.IsMonitored);
+
         }
 
         [TestCase("Entity\\030.Update.Success")]
@@ -131,25 +135,28 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64)objIds[0];
-            Entity entity = dal.Get(paramID);
+            var paramID = (System.Int64?)objIds[0];
+            Entity entity = dal.Get((long)paramID);
 
-                          entity.CIK = "CIK 948ff2c72e1e4918af8e10dc67ed125b";
-                            entity.Name = "Name 948ff2c72e1e4918af8e10dc67ed125b";
-                            entity.TradingSymbol = "TradingSymbol 948ff2c72e1e4918af8e10dc67ed125b";
-              
+            entity.EntityTypeID = 1;
+            entity.CIK = 258;
+            entity.Name = "Name 7df99239cc0f46e48a6ae2c439012918";
+            entity.TradingSymbol = "TradingSymbol 7df99239cc0f46e48a6ae2c439012918";
+            entity.IsMonitored = false;
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual(890747, entity.ID);
-                            Assert.AreEqual("CIK 948ff2c72e1e4918af8e10dc67ed125b", entity.CIK);
-                            Assert.AreEqual("Name 948ff2c72e1e4918af8e10dc67ed125b", entity.Name);
-                            Assert.AreEqual("TradingSymbol 948ff2c72e1e4918af8e10dc67ed125b", entity.TradingSymbol);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(1, entity.EntityTypeID);
+            Assert.AreEqual(258, entity.CIK);
+            Assert.AreEqual("Name 7df99239cc0f46e48a6ae2c439012918", entity.Name);
+            Assert.AreEqual("TradingSymbol 7df99239cc0f46e48a6ae2c439012918", entity.TradingSymbol);
+            Assert.AreEqual(false, entity.IsMonitored);
+
         }
 
         [Test]
@@ -158,11 +165,12 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityDal("DALInitParams");
 
             var entity = new Entity();
-                          entity.ID = 890747;
-                            entity.CIK = "CIK 948ff2c72e1e4918af8e10dc67ed125b";
-                            entity.Name = "Name 948ff2c72e1e4918af8e10dc67ed125b";
-                            entity.TradingSymbol = "TradingSymbol 948ff2c72e1e4918af8e10dc67ed125b";
-              
+            entity.EntityTypeID = 1;
+            entity.CIK = 258;
+            entity.Name = "Name 7df99239cc0f46e48a6ae2c439012918";
+            entity.TradingSymbol = "TradingSymbol 7df99239cc0f46e48a6ae2c439012918";
+            entity.IsMonitored = false;
+
             try
             {
                 entity = dal.Update(entity);

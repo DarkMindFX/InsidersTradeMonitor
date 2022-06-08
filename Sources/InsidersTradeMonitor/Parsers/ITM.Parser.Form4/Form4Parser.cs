@@ -68,7 +68,8 @@ namespace ITM.Parser.Form4
             {
                 "issuerName",
                 "issuerTradingSymbol", 
-                "issuerCik"
+                "issuerCik",
+                "periodOfReport"
             };
 
             Dictionary<string, string> values = new Dictionary<string, string>();
@@ -78,6 +79,7 @@ namespace ITM.Parser.Form4
             statement.IssuerName = values[tags[0]];
             statement.IssuerSymbol = values[tags[1]];
             statement.IssuerCIK = values[tags[2]];
+            statement.PeriodOfReport = DateTime.Parse(values[tags[3]]);
         }
 
         private void ExtractReportingOwnerData(XmlDocument xmlDoc, Form4Report statement)

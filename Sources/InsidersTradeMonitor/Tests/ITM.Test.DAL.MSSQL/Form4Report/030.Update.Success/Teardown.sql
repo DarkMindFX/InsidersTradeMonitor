@@ -3,28 +3,28 @@
 
 -- original values --
 DECLARE @ID BIGINT = NULL
-DECLARE @IssuerID BIGINT = NULL
-DECLARE @ReporterID BIGINT = NULL
-DECLARE @IsOfficer BIT = 0
-DECLARE @IsDirector BIT = 0
-DECLARE @Is10PctHolder BIT = 0
-DECLARE @IsOther BIT = 0
-DECLARE @OtherText BIT = 0
-DECLARE @OfficerTitle NVARCHAR(50) = 'OfficerTitle 4a2750f825214cc89e67b7c702f0c6b8'
-DECLARE @Date DATE = '4/9/2024 8:39:45 PM'
+DECLARE @IssuerID BIGINT = 100003
+DECLARE @ReporterID BIGINT = 100013
+DECLARE @IsOfficer BIT = 1
+DECLARE @IsDirector BIT = 1
+DECLARE @Is10PctHolder BIT = 1
+DECLARE @IsOther BIT = 1
+DECLARE @OtherText NVARCHAR(250) = 'OtherText a156a83b49984e13aa36c16eca8aa528'
+DECLARE @OfficerTitle NVARCHAR(50) = 'OfficerTitle a156a83b49984e13aa36c16eca8aa528'
+DECLARE @Date DATE = '9/21/2019'
  
 -- updated values --
 
 DECLARE @updID BIGINT = NULL
-DECLARE @updIssuerID BIGINT = NULL
-DECLARE @updReporterID BIGINT = NULL
-DECLARE @updIsOfficer BIT = 0
-DECLARE @updIsDirector BIT = 0
-DECLARE @updIs10PctHolder BIT = 0
-DECLARE @updIsOther BIT = 0
-DECLARE @updOtherText BIT = 0
-DECLARE @updOfficerTitle NVARCHAR(50) = 'OfficerTitle cd23acfb4a4749f7b8b586d9d030083c'
-DECLARE @updDate DATE = '4/9/2024 8:39:45 PM'
+DECLARE @updIssuerID BIGINT = 100008
+DECLARE @updReporterID BIGINT = 100003
+DECLARE @updIsOfficer BIT = 1
+DECLARE @updIsDirector BIT = 1
+DECLARE @updIs10PctHolder BIT = 1
+DECLARE @updIsOther BIT = 1
+DECLARE @updOtherText NVARCHAR(250) = 'OtherText c268e54f65404093b67ecb0dfd2d949b'
+DECLARE @updOfficerTitle NVARCHAR(50) = 'OfficerTitle c268e54f65404093b67ecb0dfd2d949b'
+DECLARE @updDate DATE = '7/31/2022'
  
 
 DECLARE @Fail AS BIT = 0

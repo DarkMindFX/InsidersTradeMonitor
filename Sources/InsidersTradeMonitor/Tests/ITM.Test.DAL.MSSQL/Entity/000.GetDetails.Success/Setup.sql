@@ -1,39 +1,40 @@
 
 
 
-DECLARE @ID BIGINT = 323472
-DECLARE @EntityTypeID BIGINT = NULL
-DECLARE @CIK NVARCHAR(250) = 'CIK d1d8f4bf320246ea84b8233bd50ddaaf'
-DECLARE @Name NVARCHAR(250) = 'Name d1d8f4bf320246ea84b8233bd50ddaaf'
-DECLARE @TradingSymbol NVARCHAR(50) = 'TradingSymbol d1d8f4bf320246ea84b8233bd50ddaaf'
+DECLARE @ID BIGINT = NULL
+DECLARE @EntityTypeID BIGINT = 1
+DECLARE @CIK INT = 735
+DECLARE @Name NVARCHAR(250) = 'Name b0f5c74af5374d68b863a3207a175683'
+DECLARE @TradingSymbol NVARCHAR(50) = 'TradingSymbol b0f5c74af5374d68b863a3207a175683'
+DECLARE @IsMonitored BIT = 1
  
 
 
 IF(NOT EXISTS(SELECT 1 FROM 
 					[dbo].[Entity]
 				WHERE 
-	(CASE WHEN @ID IS NOT NULL THEN (CASE WHEN [ID] = @ID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @EntityTypeID IS NOT NULL THEN (CASE WHEN [EntityTypeID] = @EntityTypeID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @CIK IS NOT NULL THEN (CASE WHEN [CIK] = @CIK THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @Name IS NOT NULL THEN (CASE WHEN [Name] = @Name THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
-	(CASE WHEN @TradingSymbol IS NOT NULL THEN (CASE WHEN [TradingSymbol] = @TradingSymbol THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+	(CASE WHEN @TradingSymbol IS NOT NULL THEN (CASE WHEN [TradingSymbol] = @TradingSymbol THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @IsMonitored IS NOT NULL THEN (CASE WHEN [IsMonitored] = @IsMonitored THEN 1 ELSE 0 END) ELSE 1 END) = 1 
  ))
 					
 BEGIN
 	INSERT INTO [dbo].[Entity]
 		(
-	 [ID],
 	 [EntityTypeID],
 	 [CIK],
 	 [Name],
-	 [TradingSymbol]
+	 [TradingSymbol],
+	 [IsMonitored]
 		)
 	SELECT 		
-			 @ID,
-	 @EntityTypeID,
+			 @EntityTypeID,
 	 @CIK,
 	 @Name,
-	 @TradingSymbol
+	 @TradingSymbol,
+	 @IsMonitored
 END
 
 SELECT TOP 1 
@@ -41,11 +42,11 @@ SELECT TOP 1
 FROM 
 	[dbo].[Entity] e
 WHERE
-	(CASE WHEN @ID IS NOT NULL THEN (CASE WHEN [ID] = @ID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @EntityTypeID IS NOT NULL THEN (CASE WHEN [EntityTypeID] = @EntityTypeID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @CIK IS NOT NULL THEN (CASE WHEN [CIK] = @CIK THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @Name IS NOT NULL THEN (CASE WHEN [Name] = @Name THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
-	(CASE WHEN @TradingSymbol IS NOT NULL THEN (CASE WHEN [TradingSymbol] = @TradingSymbol THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+	(CASE WHEN @TradingSymbol IS NOT NULL THEN (CASE WHEN [TradingSymbol] = @TradingSymbol THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @IsMonitored IS NOT NULL THEN (CASE WHEN [IsMonitored] = @IsMonitored THEN 1 ELSE 0 END) ELSE 1 END) = 1 
 
 SELECT 
 	@ID

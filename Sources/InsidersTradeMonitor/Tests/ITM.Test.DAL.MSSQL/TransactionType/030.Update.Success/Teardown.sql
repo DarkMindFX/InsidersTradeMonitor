@@ -3,14 +3,14 @@
 
 -- original values --
 DECLARE @ID BIGINT = NULL
-DECLARE @Code NVARCHAR(10) = 'Code efe69'
-DECLARE @Description NVARCHAR(250) = 'Description efe69490bfd346f58c6c2342a248c6ed'
+DECLARE @Code NVARCHAR(10) = 'Code 4a007'
+DECLARE @Description NVARCHAR(250) = 'Description 4a00744efbad48a895640cd0f68dd3dd'
  
 -- updated values --
 
 DECLARE @updID BIGINT = NULL
-DECLARE @updCode NVARCHAR(10) = 'Code e7c33'
-DECLARE @updDescription NVARCHAR(250) = 'Description e7c337dda94b46c5bea5d7730fc8eda5'
+DECLARE @updCode NVARCHAR(10) = 'Code 6d517'
+DECLARE @updDescription NVARCHAR(250) = 'Description 6d517bbe8f374571ab4ea5dbb6ffdd5b'
  
 
 DECLARE @Fail AS BIT = 0

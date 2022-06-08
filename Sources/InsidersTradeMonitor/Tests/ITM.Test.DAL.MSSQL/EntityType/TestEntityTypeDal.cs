@@ -1,9 +1,10 @@
 
 
 
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Test.Common;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -53,7 +54,7 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
                         Assert.IsNotNull(entity.ID);
             
-                          Assert.AreEqual("TypeName 8d93df8644334861be00419a0c830837", entity.TypeName);
+                          Assert.AreEqual("TypeName 8ea83002c9a54e2a81c3886644b8bc2f", entity.TypeName);
                       }
 
         [Test]
@@ -102,7 +103,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             var entity = new EntityType();
-                          entity.TypeName = "TypeName 918f1ab269ca400ba1f312d92dd014e5";
+                          entity.TypeName = "TypeName d8f9da4dbee3422eb45828ecda25bbc7";
                           
             entity = dal.Insert(entity);
 
@@ -111,7 +112,7 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
                         Assert.IsNotNull(entity.ID);
             
-                          Assert.AreEqual("TypeName 918f1ab269ca400ba1f312d92dd014e5", entity.TypeName);
+                          Assert.AreEqual("TypeName d8f9da4dbee3422eb45828ecda25bbc7", entity.TypeName);
               
         }
 
@@ -125,7 +126,7 @@ namespace Test.PPT.DAL.MSSQL
                 var paramID = (System.Int64?)objIds[0];
             EntityType entity = dal.Get(paramID);
 
-                          entity.TypeName = "TypeName 08279d6f87304e0f875f9e9fc8486c04";
+                          entity.TypeName = "TypeName 4900b709aeed475f9bdd20dc927f2bb1";
               
             entity = dal.Update(entity);
 
@@ -134,7 +135,7 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
                         Assert.IsNotNull(entity.ID);
             
-                          Assert.AreEqual("TypeName 08279d6f87304e0f875f9e9fc8486c04", entity.TypeName);
+                          Assert.AreEqual("TypeName 4900b709aeed475f9bdd20dc927f2bb1", entity.TypeName);
               
         }
 
@@ -144,7 +145,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             var entity = new EntityType();
-                          entity.TypeName = "TypeName 08279d6f87304e0f875f9e9fc8486c04";
+                          entity.TypeName = "TypeName 4900b709aeed475f9bdd20dc927f2bb1";
               
             try
             {

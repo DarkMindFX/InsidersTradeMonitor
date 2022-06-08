@@ -1,9 +1,10 @@
 
 
 
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Test.Common;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -45,30 +46,32 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareNonDerivativeTransactionDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             NonDerivativeTransaction entity = dal.Get(paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TitleOfSecurity 80b9e2b0657c499fb4b00e444b82162a", entity.TitleOfSecurity);
-                            Assert.AreEqual(DateTime.Parse("10/13/2019 8:14:45 AM"), entity.TransactionDate);
-                            Assert.AreEqual(DateTime.Parse("10/13/2019 8:14:45 AM"), entity.DeemedExecDate);
-                            Assert.AreEqual(2, entity.TransactionCodeID);
-                            Assert.AreEqual(true, entity.EarlyVoluntarilyReport);
-                            Assert.AreEqual(41082, entity.SharesAmount);
-                            Assert.AreEqual(2, entity.TransactionTypeID);
-                            Assert.AreEqual(563507.18884M, entity.Price);
-                            Assert.AreEqual(563507, entity.AmountFollowingReport);
-                            Assert.AreEqual("NatureOfIndirectOwnership 80b9e2b0657c499fb4b00e444b82162a", entity.NatureOfIndirectOwnership);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(100026, entity.Form4ReportID);
+            Assert.AreEqual("TitleOfSecurity c27ff82e6ff9424e814c5b98ee1c2f24", entity.TitleOfSecurity);
+            Assert.AreEqual(DateTime.Parse("1/28/2023"), entity.TransactionDate);
+            Assert.AreEqual(DateTime.Parse("1/28/2023"), entity.DeemedExecDate);
+            Assert.AreEqual(14, entity.TransactionCodeID);
+            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
+            Assert.AreEqual(616652, entity.SharesAmount);
+            Assert.AreEqual(1, entity.TransactionTypeID);
+            Assert.AreEqual(616651.891552M, entity.Price);
+            Assert.AreEqual(616652, entity.AmountFollowingReport);
+            Assert.AreEqual(2, entity.OwnershipTypeID);
+            Assert.AreEqual("NatureOfIndirectOwnership c27ff82e6ff9424e814c5b98ee1c2f24", entity.NatureOfIndirectOwnership);
+        }
 
         [Test]
         public void NonDerivativeTransaction_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareNonDerivativeTransactionDal("DALInitParams");
 
             NonDerivativeTransaction entity = dal.Get(paramID);
@@ -83,7 +86,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareNonDerivativeTransactionDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             bool removed = dal.Delete(paramID);
 
             TeardownCase(conn, caseName);
@@ -95,8 +98,8 @@ namespace Test.PPT.DAL.MSSQL
         public void NonDerivativeTransaction_Delete_InvalidId()
         {
             var dal = PrepareNonDerivativeTransactionDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -111,35 +114,39 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareNonDerivativeTransactionDal("DALInitParams");
 
             var entity = new NonDerivativeTransaction();
-                          entity.TitleOfSecurity = "TitleOfSecurity b7b1bd38ad73418388a9cda589639f2d";
-                            entity.TransactionDate = DateTime.Parse("2/17/2023 2:28:45 PM");
-                            entity.DeemedExecDate = DateTime.Parse("2/17/2023 2:28:45 PM");
-                            entity.TransactionCodeID = 12;
-                            entity.EarlyVoluntarilyReport = true;              
-                            entity.SharesAmount = 653208;
-                            entity.TransactionTypeID = 2;
-                            entity.Price = 653208.445596M;
-                            entity.AmountFollowingReport = 175634;
-                            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership b7b1bd38ad73418388a9cda589639f2d";
-                          
+            entity.Form4ReportID = 100016;
+            entity.TitleOfSecurity = "TitleOfSecurity 8f1b249b767b44d6a82e2b583ccb4550";
+            entity.TransactionDate = DateTime.Parse("4/27/2023");
+            entity.DeemedExecDate = DateTime.Parse("4/27/2023");
+            entity.TransactionCodeID = 11;
+            entity.EarlyVoluntarilyReport = false;
+            entity.SharesAmount = 661502;
+            entity.TransactionTypeID = 1;
+            entity.Price = 661502.51993M;
+            entity.AmountFollowingReport = 661502;
+            entity.OwnershipTypeID = 1;
+            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership 8f1b249b767b44d6a82e2b583ccb4550";
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TitleOfSecurity b7b1bd38ad73418388a9cda589639f2d", entity.TitleOfSecurity);
-                            Assert.AreEqual(DateTime.Parse("2/17/2023 2:28:45 PM"), entity.TransactionDate);
-                            Assert.AreEqual(DateTime.Parse("2/17/2023 2:28:45 PM"), entity.DeemedExecDate);
-                            Assert.AreEqual(12, entity.TransactionCodeID);
-                            Assert.AreEqual(true, entity.EarlyVoluntarilyReport);
-                            Assert.AreEqual(653208, entity.SharesAmount);
-                            Assert.AreEqual(2, entity.TransactionTypeID);
-                            Assert.AreEqual(653208.445596M, entity.Price);
-                            Assert.AreEqual(175634, entity.AmountFollowingReport);
-                            Assert.AreEqual("NatureOfIndirectOwnership b7b1bd38ad73418388a9cda589639f2d", entity.NatureOfIndirectOwnership);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(100016, entity.Form4ReportID);
+            Assert.AreEqual("TitleOfSecurity 8f1b249b767b44d6a82e2b583ccb4550", entity.TitleOfSecurity);
+            Assert.AreEqual(DateTime.Parse("4/27/2023"), entity.TransactionDate);
+            Assert.AreEqual(DateTime.Parse("4/27/2023"), entity.DeemedExecDate);
+            Assert.AreEqual(11, entity.TransactionCodeID);
+            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
+            Assert.AreEqual(661502, entity.SharesAmount);
+            Assert.AreEqual(1, entity.TransactionTypeID);
+            Assert.AreEqual(661502.51993M, entity.Price);
+            Assert.AreEqual(661502, entity.AmountFollowingReport);
+            Assert.AreEqual(1, entity.OwnershipTypeID);
+            Assert.AreEqual("NatureOfIndirectOwnership 8f1b249b767b44d6a82e2b583ccb4550", entity.NatureOfIndirectOwnership);
+
         }
 
         [TestCase("NonDerivativeTransaction\\030.Update.Success")]
@@ -149,38 +156,42 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareNonDerivativeTransactionDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             NonDerivativeTransaction entity = dal.Get(paramID);
 
-                          entity.TitleOfSecurity = "TitleOfSecurity a783b1b8ad8243e182246b297d158e51";
-                            entity.TransactionDate = DateTime.Parse("10/4/2020 10:28:45 AM");
-                            entity.DeemedExecDate = DateTime.Parse("10/4/2020 10:28:45 AM");
-                            entity.TransactionCodeID = 5;
-                            entity.EarlyVoluntarilyReport = false;              
-                            entity.SharesAmount = 220485;
-                            entity.TransactionTypeID = 1;
-                            entity.Price = 220484.388164M;
-                            entity.AmountFollowingReport = 220485;
-                            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership a783b1b8ad8243e182246b297d158e51";
-              
+            entity.Form4ReportID = 100007;
+            entity.TitleOfSecurity = "TitleOfSecurity ae48528ef3ce45c7ba52835f59ad6350";
+            entity.TransactionDate = DateTime.Parse("9/13/2020");
+            entity.DeemedExecDate = DateTime.Parse("9/13/2020");
+            entity.TransactionCodeID = 4;
+            entity.EarlyVoluntarilyReport = false;
+            entity.SharesAmount = 706353;
+            entity.TransactionTypeID = 2;
+            entity.Price = 706353.148309M;
+            entity.AmountFollowingReport = 706353;
+            entity.OwnershipTypeID = 2;
+            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership ae48528ef3ce45c7ba52835f59ad6350";
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TitleOfSecurity a783b1b8ad8243e182246b297d158e51", entity.TitleOfSecurity);
-                            Assert.AreEqual(DateTime.Parse("10/4/2020 10:28:45 AM"), entity.TransactionDate);
-                            Assert.AreEqual(DateTime.Parse("10/4/2020 10:28:45 AM"), entity.DeemedExecDate);
-                            Assert.AreEqual(5, entity.TransactionCodeID);
-                            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
-                            Assert.AreEqual(220485, entity.SharesAmount);
-                            Assert.AreEqual(1, entity.TransactionTypeID);
-                            Assert.AreEqual(220484.388164M, entity.Price);
-                            Assert.AreEqual(220485, entity.AmountFollowingReport);
-                            Assert.AreEqual("NatureOfIndirectOwnership a783b1b8ad8243e182246b297d158e51", entity.NatureOfIndirectOwnership);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.AreEqual(100007, entity.Form4ReportID);
+            Assert.AreEqual("TitleOfSecurity ae48528ef3ce45c7ba52835f59ad6350", entity.TitleOfSecurity);
+            Assert.AreEqual(DateTime.Parse("9/13/2020"), entity.TransactionDate);
+            Assert.AreEqual(DateTime.Parse("9/13/2020"), entity.DeemedExecDate);
+            Assert.AreEqual(4, entity.TransactionCodeID);
+            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
+            Assert.AreEqual(706353, entity.SharesAmount);
+            Assert.AreEqual(2, entity.TransactionTypeID);
+            Assert.AreEqual(706353.148309M, entity.Price);
+            Assert.AreEqual(706353, entity.AmountFollowingReport);
+            Assert.AreEqual(2, entity.OwnershipTypeID);
+            Assert.AreEqual("NatureOfIndirectOwnership ae48528ef3ce45c7ba52835f59ad6350", entity.NatureOfIndirectOwnership);
+
         }
 
         [Test]
@@ -189,17 +200,19 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareNonDerivativeTransactionDal("DALInitParams");
 
             var entity = new NonDerivativeTransaction();
-                          entity.TitleOfSecurity = "TitleOfSecurity a783b1b8ad8243e182246b297d158e51";
-                            entity.TransactionDate = DateTime.Parse("10/4/2020 10:28:45 AM");
-                            entity.DeemedExecDate = DateTime.Parse("10/4/2020 10:28:45 AM");
-                            entity.TransactionCodeID = 5;
-                            entity.EarlyVoluntarilyReport = false;              
-                            entity.SharesAmount = 220485;
-                            entity.TransactionTypeID = 1;
-                            entity.Price = 220484.388164M;
-                            entity.AmountFollowingReport = 220485;
-                            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership a783b1b8ad8243e182246b297d158e51";
-              
+            entity.Form4ReportID = 100007;
+            entity.TitleOfSecurity = "TitleOfSecurity ae48528ef3ce45c7ba52835f59ad6350";
+            entity.TransactionDate = DateTime.Parse("9/13/2020");
+            entity.DeemedExecDate = DateTime.Parse("9/13/2020");
+            entity.TransactionCodeID = 4;
+            entity.EarlyVoluntarilyReport = false;
+            entity.SharesAmount = 706353;
+            entity.TransactionTypeID = 2;
+            entity.Price = 706353.148309M;
+            entity.AmountFollowingReport = 706353;
+            entity.OwnershipTypeID = 2;
+            entity.NatureOfIndirectOwnership = "NatureOfIndirectOwnership ae48528ef3ce45c7ba52835f59ad6350";
+
             try
             {
                 entity = dal.Update(entity);

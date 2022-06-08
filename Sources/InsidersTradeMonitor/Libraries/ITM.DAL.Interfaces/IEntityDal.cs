@@ -13,12 +13,12 @@ namespace ITM.Interfaces
 {
     public interface IEntityDal : IDalBase<Entity>
     {
-        Entity Get(System.Int64 ID);
+        Entity Get(System.Int64? ID);
 
-        bool Delete(System.Int64 ID);
+        bool Delete(System.Int64? ID);
 
         IList<Entity> GetByEntityTypeID(System.Int64 EntityTypeID);
-        
-            }
+
+    }
 }
 

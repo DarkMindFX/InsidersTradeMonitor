@@ -1,9 +1,10 @@
 
 
 
-using PPT.DAL.MSSQL;
-using PPT.Interfaces;
-using PPT.Interfaces.Entities;
+using ITM.DAL.MSSQL;
+using ITM.Interfaces;
+using ITM.Interfaces.Entities;
+using ITM.Test.Common;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -54,7 +55,7 @@ namespace Test.PPT.DAL.MSSQL
                         Assert.IsNotNull(entity.ID);
             
                           Assert.AreEqual("C", entity.Code);
-                            Assert.AreEqual("Description 65cd3c0b2ca8405c9747b0db27b0490a", entity.Description);
+                            Assert.AreEqual("Description 0635c222641c4d3f884406c2c7709082", entity.Description);
                       }
 
         [Test]
@@ -104,7 +105,7 @@ namespace Test.PPT.DAL.MSSQL
 
             var entity = new OwnershipType();
                           entity.Code = "C";
-                            entity.Description = "Description 0c96a714996e40b49ff7074e80564bfa";
+                            entity.Description = "Description 551331c4138e443da5ae6323f444af8f";
                           
             entity = dal.Insert(entity);
 
@@ -114,7 +115,7 @@ namespace Test.PPT.DAL.MSSQL
                         Assert.IsNotNull(entity.ID);
             
                           Assert.AreEqual("C", entity.Code);
-                            Assert.AreEqual("Description 0c96a714996e40b49ff7074e80564bfa", entity.Description);
+                            Assert.AreEqual("Description 551331c4138e443da5ae6323f444af8f", entity.Description);
               
         }
 
@@ -129,7 +130,7 @@ namespace Test.PPT.DAL.MSSQL
             OwnershipType entity = dal.Get(paramID);
 
                           entity.Code = "C";
-                            entity.Description = "Description f73e3ed948bd4c17a5adb738ee8bcf3d";
+                            entity.Description = "Description fab82e3caa4f4bf9aaf114a58bf57025";
               
             entity = dal.Update(entity);
 
@@ -139,7 +140,7 @@ namespace Test.PPT.DAL.MSSQL
                         Assert.IsNotNull(entity.ID);
             
                           Assert.AreEqual("C", entity.Code);
-                            Assert.AreEqual("Description f73e3ed948bd4c17a5adb738ee8bcf3d", entity.Description);
+                            Assert.AreEqual("Description fab82e3caa4f4bf9aaf114a58bf57025", entity.Description);
               
         }
 
@@ -150,7 +151,7 @@ namespace Test.PPT.DAL.MSSQL
 
             var entity = new OwnershipType();
                           entity.Code = "C";
-                            entity.Description = "Description f73e3ed948bd4c17a5adb738ee8bcf3d";
+                            entity.Description = "Description fab82e3caa4f4bf9aaf114a58bf57025";
               
             try
             {

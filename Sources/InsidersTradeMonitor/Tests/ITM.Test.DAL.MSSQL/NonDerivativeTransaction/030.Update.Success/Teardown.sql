@@ -3,34 +3,34 @@
 
 -- original values --
 DECLARE @ID BIGINT = NULL
-DECLARE @Form4ReportID BIGINT = NULL
-DECLARE @TitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity 6339133fe5084d4f83e519b230414185'
-DECLARE @TransactionDate DATE = '7/8/2020 12:15:45 AM'
-DECLARE @DeemedExecDate DATE = '7/8/2020 12:15:45 AM'
-DECLARE @TransactionCodeID BIGINT = 12
-DECLARE @EarlyVoluntarilyReport BIT = 0
-DECLARE @SharesAmount BIGINT = 698059
+DECLARE @Form4ReportID BIGINT = 100028
+DECLARE @TitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity 4cf0dd55e89a4a33ad5d62de6c21f419'
+DECLARE @TransactionDate DATE = '9/13/2020'
+DECLARE @DeemedExecDate DATE = '9/13/2020'
+DECLARE @TransactionCodeID BIGINT = 5
+DECLARE @EarlyVoluntarilyReport BIT = 1
+DECLARE @SharesAmount BIGINT = 183928
 DECLARE @TransactionTypeID BIGINT = 1
-DECLARE @Price DECIMAL(20, 6) = 698059.073974
-DECLARE @AmountFollowingReport BIGINT = 698059
-DECLARE @OwnershipTypeID BIGINT = NULL
-DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership 6339133fe5084d4f83e519b230414185'
+DECLARE @Price DECIMAL(20, 6) = 183927.83412
+DECLARE @AmountFollowingReport BIGINT = 183928
+DECLARE @OwnershipTypeID BIGINT = 2
+DECLARE @NatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership 4cf0dd55e89a4a33ad5d62de6c21f419'
  
 -- updated values --
 
 DECLARE @updID BIGINT = NULL
-DECLARE @updForm4ReportID BIGINT = NULL
-DECLARE @updTitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity a783b1b8ad8243e182246b297d158e51'
-DECLARE @updTransactionDate DATE = '10/4/2020 10:28:45 AM'
-DECLARE @updDeemedExecDate DATE = '10/4/2020 10:28:45 AM'
-DECLARE @updTransactionCodeID BIGINT = 5
+DECLARE @updForm4ReportID BIGINT = 100007
+DECLARE @updTitleOfSecurity NVARCHAR(250) = 'TitleOfSecurity ae48528ef3ce45c7ba52835f59ad6350'
+DECLARE @updTransactionDate DATE = '9/13/2020'
+DECLARE @updDeemedExecDate DATE = '9/13/2020'
+DECLARE @updTransactionCodeID BIGINT = 4
 DECLARE @updEarlyVoluntarilyReport BIT = 0
-DECLARE @updSharesAmount BIGINT = 220485
-DECLARE @updTransactionTypeID BIGINT = 1
-DECLARE @updPrice DECIMAL(20, 6) = 220484.388164
-DECLARE @updAmountFollowingReport BIGINT = 220485
-DECLARE @updOwnershipTypeID BIGINT = NULL
-DECLARE @updNatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership a783b1b8ad8243e182246b297d158e51'
+DECLARE @updSharesAmount BIGINT = 706353
+DECLARE @updTransactionTypeID BIGINT = 2
+DECLARE @updPrice DECIMAL(20, 6) = 706353.148309
+DECLARE @updAmountFollowingReport BIGINT = 706353
+DECLARE @updOwnershipTypeID BIGINT = 2
+DECLARE @updNatureOfIndirectOwnership NVARCHAR(250) = 'NatureOfIndirectOwnership ae48528ef3ce45c7ba52835f59ad6350'
  
 
 DECLARE @Fail AS BIT = 0

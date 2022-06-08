@@ -4,13 +4,13 @@
 -- original values --
 DECLARE @ID BIGINT = NULL
 DECLARE @Code NCHAR(1) = 'C'
-DECLARE @Description NVARCHAR(50) = 'Description 52f0d9604a8b46ae98e382f3b66c2513'
+DECLARE @Description NVARCHAR(50) = 'Description 790d313d67cb4b6b885b4353d21ceff5'
  
 -- updated values --
 
 DECLARE @updID BIGINT = NULL
 DECLARE @updCode NCHAR(1) = 'C'
-DECLARE @updDescription NVARCHAR(50) = 'Description f73e3ed948bd4c17a5adb738ee8bcf3d'
+DECLARE @updDescription NVARCHAR(50) = 'Description fab82e3caa4f4bf9aaf114a58bf57025'
  
 
 DECLARE @Fail AS BIT = 0
