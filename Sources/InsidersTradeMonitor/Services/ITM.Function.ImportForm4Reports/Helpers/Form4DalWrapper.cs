@@ -1,27 +1,30 @@
 ﻿using ITM.Interfaces;
 using ITM.Interfaces.Entities;
+using ITM.Services.Dal;
+using System;
+using System.Linq;
 
-namespace ITM.Service.DataImporter.Helpers
+namespace ITM.Function.ImportForm4Reports.Helpers
 {
     public class Form4DalWrapper : IForm4DalWrapper
     {
-        private ITM.Interfaces.IForm4ReportDal _form4ReportDal = null;
-        private ITM.Interfaces.IDerivativeTransactionDal _derivTransDal = null;
-        private ITM.Interfaces.INonDerivativeTransactionDal _nonDerivTransDal = null;
-        private ITM.Interfaces.IEntityDal _entityDal = null;
-        private ITM.Interfaces.IEntityTypeDal _entityTypeDal = null;
-        private ITM.Interfaces.IOwnershipTypeDal _ownershipTypeDal = null;
-        private ITM.Interfaces.ITransactionCodeDal _transCodeDal = null;
-        private ITM.Interfaces.ITransactionTypeDal _transTypeDal = null;
+        private ITM.Services.Dal.IForm4ReportDal _form4ReportDal = null;
+        private ITM.Services.Dal.IDerivativeTransactionDal _derivTransDal = null;
+        private ITM.Services.Dal.INonDerivativeTransactionDal _nonDerivTransDal = null;
+        private ITM.Services.Dal.IEntityDal _entityDal = null;
+        private ITM.Services.Dal.IEntityTypeDal _entityTypeDal = null;
+        private ITM.Services.Dal.IOwnershipTypeDal _ownershipTypeDal = null;
+        private ITM.Services.Dal.ITransactionCodeDal _transCodeDal = null;
+        private ITM.Services.Dal.ITransactionTypeDal _transTypeDal = null;
 
-        public Form4DalWrapper( IForm4ReportDal form4ReportDal,
-                                IDerivativeTransactionDal derivTransDal,
-                                INonDerivativeTransactionDal nonDerivTransDal,
-                                IEntityDal entityDal,
-                                IEntityTypeDal entityTypeDal,
-                                IOwnershipTypeDal ownershipTypeDal,
-                                ITransactionCodeDal transCodeDal,
-                                ITransactionTypeDal transTypeDal)
+        public Form4DalWrapper(ITM.Services.Dal.IForm4ReportDal form4ReportDal,
+                                ITM.Services.Dal.IDerivativeTransactionDal derivTransDal,
+                                ITM.Services.Dal.INonDerivativeTransactionDal nonDerivTransDal,
+                                ITM.Services.Dal.IEntityDal entityDal,
+                                ITM.Services.Dal.IEntityTypeDal entityTypeDal,
+                                ITM.Services.Dal.IOwnershipTypeDal ownershipTypeDal,
+                                ITM.Services.Dal.ITransactionCodeDal transCodeDal,
+                                ITM.Services.Dal.ITransactionTypeDal transTypeDal)
         {
             _form4ReportDal = form4ReportDal;
             _derivTransDal = derivTransDal;

@@ -18,12 +18,12 @@ namespace ITM.Services.Dal
 
         public NonDerivativeTransaction Get(System.Int64? ID)
         {
-            return _dalImpl.Get(            ID);
+            return _dalImpl.Get(ID);
         }
 
         public bool Delete(System.Int64? ID)
         {
-            return _dalImpl.Delete(            ID);
+            return _dalImpl.Delete(ID);
         }
 
 
@@ -43,5 +43,5 @@ namespace ITM.Services.Dal
         {
             return _dalImpl.GetByOwnershipTypeID(OwnershipTypeID);
         }
-            }
+    }
 }

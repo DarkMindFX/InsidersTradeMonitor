@@ -35,29 +35,49 @@ namespace ITM.Test.Service.DataImporter.Workers
         [Test]
         public void ImportOneDay_Success()
         {
-            var parser = new ITM.Parser.Form4.Form4Parser();
-
-            var source = new ITM.Source.SEC.SECSource();
-            var sourceInitParams = source.CreateInitParams();
-            sourceInitParams.Logger = new ITM.Logging.NullLogger();
-
-            source.Init(sourceInitParams);
-
-            var form4DalWrapper = PrepareForm4DalWrapper();
-
-            var impParams = new Form4ImporterParams()
+            IList<long> ids = null;
+            ISourceInitParams sourceInitParams = null;
+            try
             {
-                CIK = "320193",
-                DateFrom = DateTime.Parse("2022/04/19"),
-                DateTo = DateTime.Parse("2022/04/20"),
-                FilingParser = parser,
-                Source = source,
-                Form4DalWrappwer = form4DalWrapper
+                var parser = new ITM.Parser.Form4.Form4Parser();
 
-            };
+                var source = new ITM.Source.SEC.SECSource();
+                sourceInitParams = source.CreateInitParams();
+                sourceInitParams.Logger = new ITM.Logging.NullLogger();
 
-            var wrapper = new For4ImporterTestWrapper(impParams);
-            wrapper.ImporterThread();
+                source.Init(sourceInitParams);
+
+                var form4DalWrapper = PrepareForm4DalWrapper();
+
+                var impParams = new Form4ImporterParams()
+                {
+                    CIK = "320193",
+                    DateFrom = DateTime.Parse("2022/04/19"),
+                    DateTo = DateTime.Parse("2022/04/20"),
+                    FilingParser = parser,
+                    Source = source,
+                    Form4DalWrappwer = form4DalWrapper
+
+                };
+
+                var wrapper = new For4ImporterTestWrapper(impParams);
+                wrapper.ImporterThread();
+
+                ids = wrapper.ImportedReportsIDs;
+            }
+            finally
+            {
+                // Cleaning up
+                if(ids != null)
+                {
+                    Form4ReportDal form4ReportDal = CreateDal<Form4ReportDal, Form4Report>("DALInitParams");
+
+                    foreach (var id in ids)
+                    {
+                        form4ReportDal.Delete(id);
+                    }
+                }
+            }
         }
 
         #region Support methods

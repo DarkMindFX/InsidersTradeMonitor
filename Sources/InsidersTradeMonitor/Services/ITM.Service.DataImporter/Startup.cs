@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using ITM.Service.DataImporter.Helpers;
 using ITM.Service.DataImporter.MiddleWare;
+using ITM.Service.DataImporter.Workers;
 
 namespace ITM.Service.DataImporter
 {
@@ -172,9 +173,11 @@ namespace ITM.Service.DataImporter
             var dalConnTest = InitDal<IConnectionTestDal>(serviceCfg);
             services.AddSingleton<IConnectionTestDal>(dalConnTest);
 
-
             /** Adding Form4 DAL wrapper **/
             services.AddSingleton<IForm4DalWrapper, Form4DalWrapper>();
+
+            /** Adding repository to store running processes **/
+            services.AddSingleton<IForm4ImportersRespository, Form4ImportersRespository>();
 
         }
 
