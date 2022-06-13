@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.Functions.Common", "Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.Test.Function.ImportForm4Reports", "Tests\ITM.Test.Function.ImportForm4Reports\ITM.Test.Function.ImportForm4Reports.csproj", "{568721E4-17A8-470D-8837-7807BE920525}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.Service.API", "Services\ITM.Service.API\ITM.Service.API.csproj", "{AFCFCF1B-78F9-404C-957E-CAAB01F0B609}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{568721E4-17A8-470D-8837-7807BE920525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{568721E4-17A8-470D-8837-7807BE920525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{568721E4-17A8-470D-8837-7807BE920525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFCFCF1B-78F9-404C-957E-CAAB01F0B609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFCFCF1B-78F9-404C-957E-CAAB01F0B609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFCFCF1B-78F9-404C-957E-CAAB01F0B609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFCFCF1B-78F9-404C-957E-CAAB01F0B609}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,6 +169,7 @@ Global
 		{A2CB5BFA-8CB0-4DBF-9A47-5A0232C41181} = {5AE2C5C5-DEA8-45C7-8B7D-9E481B7D701C}
 		{29F7A709-4DFB-4758-A8B3-1A7822F092F3} = {5AE2C5C5-DEA8-45C7-8B7D-9E481B7D701C}
 		{568721E4-17A8-470D-8837-7807BE920525} = {5396A3B3-AB60-4FF3-B499-59F5BD16D4A5}
+		{AFCFCF1B-78F9-404C-957E-CAAB01F0B609} = {5AE2C5C5-DEA8-45C7-8B7D-9E481B7D701C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {112D1B39-C705-441D-BF7A-0DE30FA85509}
