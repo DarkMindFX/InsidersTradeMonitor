@@ -4,7 +4,7 @@
       "commandName": "Project",
       "environmentVariables": {
         "ServiceConfig__DALType": "MSSQL",
-        "ServiceConfig__DalInitParams__ConnectionString": "Data Source=127.0.0.1"
+        "ServiceConfig__DalInitParams__ConnectionString": "Data Source=127.0.0.1,1433; Initial Catalog=InsidersTradeMonitor; User ID=itm_svc_dataimporter; Password=ITMDataImporterService2022!;"
       }
     }
   }
