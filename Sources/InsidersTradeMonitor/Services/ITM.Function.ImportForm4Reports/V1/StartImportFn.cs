@@ -14,25 +14,28 @@ namespace ITM.Function.V1.ImportForm4Reports
 {
     public class StartImportFn 
     {
-        [FunctionName("StartImport")]
-        public void Run(
-                        [QueueTrigger("itm-notifications", Connection = "AzureConnectionString")] string message,
-                        IForm4DalWrapper form4DalWrapper,
-                        Microsoft.Extensions.Logging.ILogger log)
+        private readonly IForm4DalWrapper _form4DalWrapper;
+        public StartImportFn(IForm4DalWrapper form4DalWrapper)
         {
+            _form4DalWrapper = form4DalWrapper;
+        }
 
+        [FunctionName("StartImport")]
+        public void Run([QueueTrigger("itm-notifications", Connection = "AzureWebJobsStorage")] string message)
+        {
+            
             MessageBase msgObject = JsonSerializer.Deserialize<MessageBase>(message);
             if(msgObject != null && msgObject.Name.Equals("StartImport"))
             {
                 RpcStartImport request = JsonSerializer.Deserialize<RpcStartImport>(msgObject.Payload);
                 if(request != null)
                 {
-                    ReportsIDs = Import(request, form4DalWrapper);
+                    ReportsIDs = Import(request, _form4DalWrapper);
                 }
             }
         }
 
-        protected IList<long> ReportsIDs
+        public IList<long> ReportsIDs
         {
             get; set;
         }

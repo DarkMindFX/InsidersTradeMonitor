@@ -46,20 +46,25 @@ namespace ITM.Functions.Common
         private void PrepareComposition()
         {
             AggregateCatalog catalog = new AggregateCatalog();
-            DirectoryCatalog directoryCatalog = new DirectoryCatalog(AssemblyDirectory);
-            catalog.Catalogs.Add(directoryCatalog);
+            var pluginsRoot = PluginsDirectory;
+            var dirs = Directory.GetDirectories(pluginsRoot);
+            foreach (var pluginDir in dirs)
+            {
+                DirectoryCatalog directoryCatalog = new DirectoryCatalog(pluginDir);
+                catalog.Catalogs.Add(directoryCatalog);
+            }
             Container = new CompositionContainer(catalog);
             Container.ComposeParts(this);
         }
 
-        private string AssemblyDirectory
+        private string PluginsDirectory
         {
             get
             {
                 string codeBase = Assembly.GetExecutingAssembly().Location;
                 UriBuilder uri = new UriBuilder(codeBase);
                 string path = Uri.UnescapeDataString(uri.Path);
-                return Path.GetDirectoryName(path);
+                return Path.Combine(Path.GetDirectoryName(path), "Plugins");
             }
         }
 

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ITM.Function.ImportForm4Reports": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ServiceConfig__DALType": "MSSQL",
+        "ServiceConfig__DalInitParams__ConnectionString": "Data Source=127.0.0.1"
+      }
+    }
+  }
+}

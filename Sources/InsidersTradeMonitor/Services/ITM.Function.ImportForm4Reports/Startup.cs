@@ -49,6 +49,7 @@ namespace ITM.Functions.ImportForm4Reports
 
             /** Adding Form4 DAL wrapper **/
             builder.Services.AddSingleton<IForm4DalWrapper, Form4DalWrapper>();
+
         }
     }
 }
