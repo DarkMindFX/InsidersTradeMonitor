@@ -34,6 +34,8 @@ namespace ITM.Parser.Form4
                     result = new Form4ParserResult();
                     var statement = new Form4Report();
 
+                    statement.ReportID = form4Params.ReportID;
+
                     ExtractReportInfo(xmlDoc, statement);
                     ExtractReportingOwnerData(xmlDoc, statement);
                     ExtractNonDerivaties(xmlDoc, statement);
@@ -69,7 +71,8 @@ namespace ITM.Parser.Form4
                 "issuerName",
                 "issuerTradingSymbol", 
                 "issuerCik",
-                "periodOfReport"
+                "periodOfReport",
+                "signatureDate"
             };
 
             Dictionary<string, string> values = new Dictionary<string, string>();
@@ -80,6 +83,7 @@ namespace ITM.Parser.Form4
             statement.IssuerSymbol = values[tags[1]];
             statement.IssuerCIK = values[tags[2]];
             statement.PeriodOfReport = DateTime.Parse(values[tags[3]]);
+            statement.SignatureDate = DateTime.Parse(values[tags[4]]);
         }
 
         private void ExtractReportingOwnerData(XmlDocument xmlDoc, Form4Report statement)

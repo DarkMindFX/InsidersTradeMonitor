@@ -149,6 +149,7 @@ namespace Test.E2E.API.Controllers.V1
                     Assert.NotNull(respDto.ID);
                     Assert.Equal(reqDto.IssuerID, respDto.IssuerID);
                     Assert.Equal(reqDto.ReporterID, respDto.ReporterID);
+                    Assert.Equal(reqDto.ReportID, respDto.ReportID);
                     Assert.Equal(reqDto.IsOfficer, respDto.IsOfficer);
                     Assert.Equal(reqDto.IsDirector, respDto.IsDirector);
                     Assert.Equal(reqDto.Is10PctHolder, respDto.Is10PctHolder);
@@ -156,6 +157,7 @@ namespace Test.E2E.API.Controllers.V1
                     Assert.Equal(reqDto.OtherText, respDto.OtherText);
                     Assert.Equal(reqDto.OfficerTitle, respDto.OfficerTitle);
                     Assert.Equal(reqDto.Date, respDto.Date);
+                    Assert.Equal(reqDto.DateSubmitted, respDto.DateSubmitted);
 
                     respEntity = Form4ReportConvertor.Convert(respDto);
                 }
@@ -178,15 +180,17 @@ namespace Test.E2E.API.Controllers.V1
                 ITM.Interfaces.Entities.Form4Report testEntity = AddTestEntity();
                 try
                 {
-                    testEntity.IssuerID = 100009;
-                    testEntity.ReporterID = 100001;
+                    testEntity.IssuerID = 100003;
+                    testEntity.ReporterID = 100009;
+                    testEntity.ReportID = "ReportID 1501349ac9ad4de58a54f6b2c0ab6b64";
                     testEntity.IsOfficer = true;
                     testEntity.IsDirector = true;
                     testEntity.Is10PctHolder = true;
                     testEntity.IsOther = true;
-                    testEntity.OtherText = "OtherText 9e64f6dfb4c54160a770ff3aa0dbb0d0";
-                    testEntity.OfficerTitle = "OfficerTitle 9e64f6dfb4c54160a770ff3aa0dbb0d0";
-                    testEntity.Date = DateTime.Parse("8/19/2023");
+                    testEntity.OtherText = "OtherText 1501349ac9ad4de58a54f6b2c0ab6b64";
+                    testEntity.OfficerTitle = "OfficerTitle 1501349ac9ad4de58a54f6b2c0ab6b64";
+                    testEntity.Date = DateTime.Parse("8/14/2023");
+                    testEntity.DateSubmitted = DateTime.Parse("8/14/2023");
 
                     var reqDto = Form4ReportConvertor.Convert(testEntity, null);
 
@@ -201,6 +205,7 @@ namespace Test.E2E.API.Controllers.V1
                     Assert.NotNull(respDto.ID);
                     Assert.Equal(reqDto.IssuerID, respDto.IssuerID);
                     Assert.Equal(reqDto.ReporterID, respDto.ReporterID);
+                    Assert.Equal(reqDto.ReportID, respDto.ReportID);
                     Assert.Equal(reqDto.IsOfficer, respDto.IsOfficer);
                     Assert.Equal(reqDto.IsDirector, respDto.IsDirector);
                     Assert.Equal(reqDto.Is10PctHolder, respDto.Is10PctHolder);
@@ -208,6 +213,7 @@ namespace Test.E2E.API.Controllers.V1
                     Assert.Equal(reqDto.OtherText, respDto.OtherText);
                     Assert.Equal(reqDto.OfficerTitle, respDto.OfficerTitle);
                     Assert.Equal(reqDto.Date, respDto.Date);
+                    Assert.Equal(reqDto.DateSubmitted, respDto.DateSubmitted);
 
                 }
                 finally
@@ -230,15 +236,17 @@ namespace Test.E2E.API.Controllers.V1
                 try
                 {
                     testEntity.ID = Int64.MaxValue;
-                    testEntity.IssuerID = 100009;
-                    testEntity.ReporterID = 100001;
+                    testEntity.IssuerID = 100003;
+                    testEntity.ReporterID = 100009;
+                    testEntity.ReportID = "ReportID 1501349ac9ad4de58a54f6b2c0ab6b64";
                     testEntity.IsOfficer = true;
                     testEntity.IsDirector = true;
                     testEntity.Is10PctHolder = true;
                     testEntity.IsOther = true;
-                    testEntity.OtherText = "OtherText 9e64f6dfb4c54160a770ff3aa0dbb0d0";
-                    testEntity.OfficerTitle = "OfficerTitle 9e64f6dfb4c54160a770ff3aa0dbb0d0";
-                    testEntity.Date = DateTime.Parse("8/19/2023");
+                    testEntity.OtherText = "OtherText 1501349ac9ad4de58a54f6b2c0ab6b64";
+                    testEntity.OfficerTitle = "OfficerTitle 1501349ac9ad4de58a54f6b2c0ab6b64";
+                    testEntity.Date = DateTime.Parse("8/14/2023");
+                    testEntity.DateSubmitted = DateTime.Parse("8/14/2023");
 
                     var reqDto = Form4ReportConvertor.Convert(testEntity, null);
 
@@ -277,15 +285,17 @@ namespace Test.E2E.API.Controllers.V1
         protected ITM.Interfaces.Entities.Form4Report CreateTestEntity()
         {
             var entity = new ITM.Interfaces.Entities.Form4Report();
-            entity.IssuerID = 100011;
+            entity.IssuerID = 100004;
             entity.ReporterID = 100009;
+            entity.ReportID = "ReportID 0afcb7c826e74b218dc63cad1f413dd9";
             entity.IsOfficer = true;
             entity.IsDirector = true;
             entity.Is10PctHolder = true;
             entity.IsOther = true;
-            entity.OtherText = "OtherText 10191aaab64e4de3bd103718a32d54cf";
-            entity.OfficerTitle = "OfficerTitle 10191aaab64e4de3bd103718a32d54cf";
-            entity.Date = DateTime.Parse("8/19/2023");
+            entity.OtherText = "OtherText 0afcb7c826e74b218dc63cad1f413dd9";
+            entity.OfficerTitle = "OfficerTitle 0afcb7c826e74b218dc63cad1f413dd9";
+            entity.Date = DateTime.Parse("8/14/2023");
+            entity.DateSubmitted = DateTime.Parse("8/14/2023");
 
             return entity;
         }

@@ -125,6 +125,7 @@ namespace ITM.Function.ImportForm4Reports.Workers
                             MemoryStream ms = new MemoryStream(i.Content.ToArray());
                             var parserParams = _importerParams.FilingParser.CreateFilingParserParams();
                             parserParams.FileContent = ms;
+                            parserParams.ReportID = i.FilingName;
 
                             var resultParse = _importerParams.FilingParser.Parse(parserParams);
                             if(resultParse.Success)

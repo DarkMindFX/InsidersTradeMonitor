@@ -21,7 +21,7 @@ namespace ITM.Interfaces.Entities
 
 				public System.DateTime TransactionDate { get; set; }
 
-				public System.Int64 TransactionCodeID { get; set; }
+				public System.Int64? TransactionCodeID { get; set; }
 
 				public System.Boolean EarlyVoluntarilyReport { get; set; }
 
@@ -41,7 +41,7 @@ namespace ITM.Interfaces.Entities
 
 				public System.Int64 AmountFollowingReport { get; set; }
 
-				public System.Int64 OwnershipTypeID { get; set; }
+				public System.Int64? OwnershipTypeID { get; set; }
 
 				public System.String NatureOfIndirectOwnership { get; set; }
 

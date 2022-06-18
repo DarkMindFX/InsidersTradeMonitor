@@ -54,15 +54,17 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100004, entity.IssuerID);
-            Assert.AreEqual(100004, entity.ReporterID);
+            Assert.AreEqual(100001, entity.IssuerID);
+            Assert.AreEqual(100008, entity.ReporterID);
+            Assert.AreEqual("ReportID 3f9cfc7cebd5406bb0dd8f1205276f64", entity.ReportID);
             Assert.AreEqual(false, entity.IsOfficer);
             Assert.AreEqual(false, entity.IsDirector);
             Assert.AreEqual(false, entity.Is10PctHolder);
             Assert.AreEqual(false, entity.IsOther);
-            Assert.AreEqual("OtherText 2b512676eb5b451eaaad7d001271987e", entity.OtherText);
-            Assert.AreEqual("OfficerTitle 2b512676eb5b451eaaad7d001271987e", entity.OfficerTitle);
-            Assert.AreEqual(DateTime.Parse("12/14/2024"), entity.Date);
+            Assert.AreEqual("OtherText 3f9cfc7cebd5406bb0dd8f1205276f64", entity.OtherText);
+            Assert.AreEqual("OfficerTitle 3f9cfc7cebd5406bb0dd8f1205276f64", entity.OfficerTitle);
+            Assert.AreEqual(DateTime.Parse("10/6/2023"), entity.Date);
+            Assert.AreEqual(DateTime.Parse("10/6/2023"), entity.DateSubmitted);
         }
 
         [Test]
@@ -111,15 +113,17 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareForm4ReportDal("DALInitParams");
 
             var entity = new Form4Report();
-            entity.IssuerID = 100013;
-            entity.ReporterID = 100007;
-            entity.IsOfficer = true;
-            entity.IsDirector = true;
-            entity.Is10PctHolder = true;
-            entity.IsOther = true;
-            entity.OtherText = "OtherText 4bb880efd3784e27ab2a1ac6b006e038";
-            entity.OfficerTitle = "OfficerTitle 4bb880efd3784e27ab2a1ac6b006e038";
-            entity.Date = DateTime.Parse("9/21/2019");
+            entity.IssuerID = 100005;
+            entity.ReporterID = 100006;
+            entity.ReportID = "ReportID 9b939500b75b48f3be633fc3b3b1663e";
+            entity.IsOfficer = false;
+            entity.IsDirector = false;
+            entity.Is10PctHolder = false;
+            entity.IsOther = false;
+            entity.OtherText = "OtherText 9b939500b75b48f3be633fc3b3b1663e";
+            entity.OfficerTitle = "OfficerTitle 9b939500b75b48f3be633fc3b3b1663e";
+            entity.Date = DateTime.Parse("2/23/2021");
+            entity.DateSubmitted = DateTime.Parse("2/23/2021");
 
             entity = dal.Insert(entity);
 
@@ -128,15 +132,17 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100013, entity.IssuerID);
-            Assert.AreEqual(100007, entity.ReporterID);
-            Assert.AreEqual(true, entity.IsOfficer);
-            Assert.AreEqual(true, entity.IsDirector);
-            Assert.AreEqual(true, entity.Is10PctHolder);
-            Assert.AreEqual(true, entity.IsOther);
-            Assert.AreEqual("OtherText 4bb880efd3784e27ab2a1ac6b006e038", entity.OtherText);
-            Assert.AreEqual("OfficerTitle 4bb880efd3784e27ab2a1ac6b006e038", entity.OfficerTitle);
-            Assert.AreEqual(DateTime.Parse("9/21/2019"), entity.Date);
+            Assert.AreEqual(100005, entity.IssuerID);
+            Assert.AreEqual(100006, entity.ReporterID);
+            Assert.AreEqual("ReportID 9b939500b75b48f3be633fc3b3b1663e", entity.ReportID);
+            Assert.AreEqual(false, entity.IsOfficer);
+            Assert.AreEqual(false, entity.IsDirector);
+            Assert.AreEqual(false, entity.Is10PctHolder);
+            Assert.AreEqual(false, entity.IsOther);
+            Assert.AreEqual("OtherText 9b939500b75b48f3be633fc3b3b1663e", entity.OtherText);
+            Assert.AreEqual("OfficerTitle 9b939500b75b48f3be633fc3b3b1663e", entity.OfficerTitle);
+            Assert.AreEqual(DateTime.Parse("2/23/2021"), entity.Date);
+            Assert.AreEqual(DateTime.Parse("2/23/2021"), entity.DateSubmitted);
 
         }
 
@@ -150,15 +156,17 @@ namespace Test.PPT.DAL.MSSQL
             var paramID = (System.Int64?)objIds[0];
             Form4Report entity = dal.Get(paramID);
 
-            entity.IssuerID = 100008;
-            entity.ReporterID = 100003;
-            entity.IsOfficer = true;
-            entity.IsDirector = true;
-            entity.Is10PctHolder = true;
-            entity.IsOther = true;
-            entity.OtherText = "OtherText c268e54f65404093b67ecb0dfd2d949b";
-            entity.OfficerTitle = "OfficerTitle c268e54f65404093b67ecb0dfd2d949b";
-            entity.Date = DateTime.Parse("7/31/2022");
+            entity.IssuerID = 100005;
+            entity.ReporterID = 100006;
+            entity.ReportID = "ReportID c843fad9b39b4eabba16844bc734cb6d";
+            entity.IsOfficer = false;
+            entity.IsDirector = false;
+            entity.Is10PctHolder = false;
+            entity.IsOther = false;
+            entity.OtherText = "OtherText c843fad9b39b4eabba16844bc734cb6d";
+            entity.OfficerTitle = "OfficerTitle c843fad9b39b4eabba16844bc734cb6d";
+            entity.Date = DateTime.Parse("1/5/2024");
+            entity.DateSubmitted = DateTime.Parse("1/5/2024");
 
             entity = dal.Update(entity);
 
@@ -167,15 +175,17 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100008, entity.IssuerID);
-            Assert.AreEqual(100003, entity.ReporterID);
-            Assert.AreEqual(true, entity.IsOfficer);
-            Assert.AreEqual(true, entity.IsDirector);
-            Assert.AreEqual(true, entity.Is10PctHolder);
-            Assert.AreEqual(true, entity.IsOther);
-            Assert.AreEqual("OtherText c268e54f65404093b67ecb0dfd2d949b", entity.OtherText);
-            Assert.AreEqual("OfficerTitle c268e54f65404093b67ecb0dfd2d949b", entity.OfficerTitle);
-            Assert.AreEqual(DateTime.Parse("7/31/2022"), entity.Date);
+            Assert.AreEqual(100005, entity.IssuerID);
+            Assert.AreEqual(100006, entity.ReporterID);
+            Assert.AreEqual("ReportID c843fad9b39b4eabba16844bc734cb6d", entity.ReportID);
+            Assert.AreEqual(false, entity.IsOfficer);
+            Assert.AreEqual(false, entity.IsDirector);
+            Assert.AreEqual(false, entity.Is10PctHolder);
+            Assert.AreEqual(false, entity.IsOther);
+            Assert.AreEqual("OtherText c843fad9b39b4eabba16844bc734cb6d", entity.OtherText);
+            Assert.AreEqual("OfficerTitle c843fad9b39b4eabba16844bc734cb6d", entity.OfficerTitle);
+            Assert.AreEqual(DateTime.Parse("1/5/2024"), entity.Date);
+            Assert.AreEqual(DateTime.Parse("1/5/2024"), entity.DateSubmitted);
 
         }
 
@@ -185,15 +195,17 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareForm4ReportDal("DALInitParams");
 
             var entity = new Form4Report();
-            entity.IssuerID = 100008;
-            entity.ReporterID = 100003;
-            entity.IsOfficer = true;
-            entity.IsDirector = true;
-            entity.Is10PctHolder = true;
-            entity.IsOther = true;
-            entity.OtherText = "OtherText c268e54f65404093b67ecb0dfd2d949b";
-            entity.OfficerTitle = "OfficerTitle c268e54f65404093b67ecb0dfd2d949b";
-            entity.Date = DateTime.Parse("7/31/2022");
+            entity.IssuerID = 100005;
+            entity.ReporterID = 100006;
+            entity.ReportID = "ReportID c843fad9b39b4eabba16844bc734cb6d";
+            entity.IsOfficer = false;
+            entity.IsDirector = false;
+            entity.Is10PctHolder = false;
+            entity.IsOther = false;
+            entity.OtherText = "OtherText c843fad9b39b4eabba16844bc734cb6d";
+            entity.OfficerTitle = "OfficerTitle c843fad9b39b4eabba16844bc734cb6d";
+            entity.Date = DateTime.Parse("1/5/2024");
+            entity.DateSubmitted = DateTime.Parse("1/5/2024");
 
             try
             {

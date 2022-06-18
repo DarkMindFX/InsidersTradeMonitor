@@ -7,6 +7,11 @@
             get;
             set;
         }
+
+        string ReportID
+        {
+            get; set;
+        }
     }
 
     public interface IStatement

@@ -1,6 +1,5 @@
 
 
-
 using System.Text.Json.Serialization;
 
 namespace ITM.DTO
@@ -15,6 +14,9 @@ namespace ITM.DTO
 
         [JsonPropertyName("ReporterID")]
         public System.Int64 ReporterID { get; set; }
+
+        [JsonPropertyName("ReportID")]
+        public System.String ReportID { get; set; }
 
         [JsonPropertyName("IsOfficer")]
         public System.Boolean IsOfficer { get; set; }
@@ -36,6 +38,9 @@ namespace ITM.DTO
 
         [JsonPropertyName("Date")]
         public System.DateTime Date { get; set; }
+
+        [JsonPropertyName("DateSubmitted")]
+        public System.DateTime DateSubmitted { get; set; }
 
 
     }

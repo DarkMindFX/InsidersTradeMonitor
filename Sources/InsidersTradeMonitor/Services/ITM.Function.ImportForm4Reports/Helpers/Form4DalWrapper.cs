@@ -47,6 +47,7 @@ namespace ITM.Function.ImportForm4Reports.Helpers
 
             form4.IssuerID = (long)GetEntityIDByCIK(cik, (long)EEntityType.Company);
             form4.ReporterID = (long)GetEntityIDByCIK(ownerCik, (long)EEntityType.Person, true, form4Report);
+            form4.ReportID = form4Report.ReportID;
             form4.Is10PctHolder = form4Report.IsTenPercentHolder;
             form4.IsDirector = form4Report.IsDirector;
             form4.IsOfficer = form4Report.IsOfficer;
@@ -54,21 +55,28 @@ namespace ITM.Function.ImportForm4Reports.Helpers
             form4.OfficerTitle = form4Report.OfficerTitle;
             form4.OtherText = form4Report.OwnerOtherText;
             form4.Date = form4Report.PeriodOfReport;
+            form4.DateSubmitted = form4Report.SignatureDate;
 
             var result = _form4ReportDal.Insert(form4);
 
-            foreach(var r in form4Report.NonDerivativeTransactions)
+            if (form4Report.NonDerivativeTransactions != null)
             {
-                var ndt = Convert(r);
-                ndt.Form4ReportID = (long)result.ID;
-                var ndtResult = _nonDerivTransDal.Insert(ndt);
+                foreach (var r in form4Report.NonDerivativeTransactions)
+                {
+                    var ndt = Convert(r);
+                    ndt.Form4ReportID = (long)result.ID;
+                    var ndtResult = _nonDerivTransDal.Insert(ndt);
+                }
             }
 
-            foreach (var r in form4Report.DerivativeTransactions)
+            if (form4Report.DerivativeTransactions != null)
             {
-                var dt = Convert(r);
-                dt.Form4ReportID = (long)result.ID;
-                var dtResult = _derivTransDal.Insert(dt);
+                foreach (var r in form4Report.DerivativeTransactions)
+                {
+                    var dt = Convert(r);
+                    dt.Form4ReportID = (long)result.ID;
+                    var dtResult = _derivTransDal.Insert(dt);
+                }
             }
 
             return (long)result.ID;
@@ -77,9 +85,9 @@ namespace ITM.Function.ImportForm4Reports.Helpers
         protected NonDerivativeTransaction Convert(ITM.Parser.Form4.NonDerivativeTransaction trans)
         {
             var result = new NonDerivativeTransaction();
-            result.TransactionTypeID = (long)GetTransactionTypeIDByCode(trans.TransactionADType);
-            result.TransactionCodeID = (long)GetTransactionCodeIDByCode(trans.TransactionCode);
-            result.OwnershipTypeID = (long)GetOwnershipTypeIDByCode(trans.OwnershipType);
+            result.TransactionTypeID = GetTransactionTypeIDByCode(trans.TransactionADType);
+            result.TransactionCodeID = GetTransactionCodeIDByCode(trans.TransactionCode);
+            result.OwnershipTypeID = GetOwnershipTypeIDByCode(trans.OwnershipType);
             result.AmountFollowingReport = trans.AmountFollowingReport;
             result.DeemedExecDate = trans.DeemedExecDate;
             result.EarlyVoluntarilyReport = trans.EarlyVoluntarilyReport;
@@ -95,7 +103,7 @@ namespace ITM.Function.ImportForm4Reports.Helpers
         protected DerivativeTransaction Convert(ITM.Parser.Form4.DerivativeTransaction trans)
         {
             var result = new DerivativeTransaction();
-            result.TransactionTypeID = (long)GetTransactionTypeIDByCode(trans.TransactionADType);
+            result.TransactionTypeID = GetTransactionTypeIDByCode(trans.TransactionADType);
             result.TransactionCodeID = (long)GetTransactionCodeIDByCode(trans.TransactionCode);
             result.OwnershipTypeID = (long)GetOwnershipTypeIDByCode(trans.OwnershipType);
             result.AmountFollowingReport = trans.AmountFollowingReport;

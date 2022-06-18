@@ -62,8 +62,8 @@ namespace ITM.Test.Function.ImportForm4Reports
                 var payload = new RpcStartImport()
                 {
                     CIK = "320193", // AAPL
-                    DateFrom = DateTime.Parse("2022/03/20"),
-                    DateTo = DateTime.Parse("2022/04/20")
+                    DateFrom = DateTime.Parse("2022/01/01"),
+                    DateTo = DateTime.Parse("2022/06/30")
                 };
 
                 var message = new MessageBase()

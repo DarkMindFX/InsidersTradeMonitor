@@ -11,6 +11,8 @@ namespace ITM.Parser.Form4
 
         #endregion
 
+        public string ReportID { get; set; }
+
         public string IssuerName { get; set; }
 
         public string IssuerSymbol { get; set; }
@@ -18,6 +20,8 @@ namespace ITM.Parser.Form4
         public string IssuerCIK { get; set; }
 
         public DateTime PeriodOfReport { get; set; }
+
+        public DateTime SignatureDate { get; set; }
 
         public string DocumentType { get; set; }
 

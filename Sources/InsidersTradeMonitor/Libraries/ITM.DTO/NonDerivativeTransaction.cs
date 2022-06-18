@@ -23,7 +23,7 @@ namespace ITM.DTO
         public System.DateTime? DeemedExecDate { get; set; }
 
         [JsonPropertyName("TransactionCodeID")]
-        public System.Int64 TransactionCodeID { get; set; }
+        public System.Int64? TransactionCodeID { get; set; }
 
         [JsonPropertyName("EarlyVoluntarilyReport")]
         public System.Boolean EarlyVoluntarilyReport { get; set; }
@@ -32,7 +32,7 @@ namespace ITM.DTO
         public System.Int64? SharesAmount { get; set; }
 
         [JsonPropertyName("TransactionTypeID")]
-        public System.Int64 TransactionTypeID { get; set; }
+        public System.Int64? TransactionTypeID { get; set; }
 
         [JsonPropertyName("Price")]
         public System.Decimal Price { get; set; }
@@ -41,7 +41,7 @@ namespace ITM.DTO
         public System.Int64 AmountFollowingReport { get; set; }
 
         [JsonPropertyName("OwnershipTypeID")]
-        public System.Int64 OwnershipTypeID { get; set; }
+        public System.Int64? OwnershipTypeID { get; set; }
 
         [JsonPropertyName("NatureOfIndirectOwnership")]
         public System.String NatureOfIndirectOwnership { get; set; }

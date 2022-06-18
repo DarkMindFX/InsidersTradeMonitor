@@ -2,15 +2,17 @@
 
 
 DECLARE @ID BIGINT = NULL
-DECLARE @IssuerID BIGINT = 100003
-DECLARE @ReporterID BIGINT = 100013
-DECLARE @IsOfficer BIT = 1
-DECLARE @IsDirector BIT = 1
-DECLARE @Is10PctHolder BIT = 1
-DECLARE @IsOther BIT = 1
-DECLARE @OtherText NVARCHAR(250) = 'OtherText a156a83b49984e13aa36c16eca8aa528'
-DECLARE @OfficerTitle NVARCHAR(50) = 'OfficerTitle a156a83b49984e13aa36c16eca8aa528'
-DECLARE @Date DATE = '9/21/2019'
+DECLARE @IssuerID BIGINT = 100007
+DECLARE @ReporterID BIGINT = 100004
+DECLARE @ReportID NVARCHAR(50) = 'ReportID 2eba2b437e83421dad688e2c8f62f5ae'
+DECLARE @IsOfficer BIT = 0
+DECLARE @IsDirector BIT = 0
+DECLARE @Is10PctHolder BIT = 0
+DECLARE @IsOther BIT = 0
+DECLARE @OtherText NVARCHAR(250) = 'OtherText 2eba2b437e83421dad688e2c8f62f5ae'
+DECLARE @OfficerTitle NVARCHAR(50) = 'OfficerTitle 2eba2b437e83421dad688e2c8f62f5ae'
+DECLARE @Date DATE = '1/5/2024 2:45:34 AM'
+DECLARE @DateSubmitted DATE = '1/5/2024 2:45:34 AM'
  
 
 
@@ -19,13 +21,15 @@ IF(NOT EXISTS(SELECT 1 FROM
 				WHERE 
 	(CASE WHEN @IssuerID IS NOT NULL THEN (CASE WHEN [IssuerID] = @IssuerID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @ReporterID IS NOT NULL THEN (CASE WHEN [ReporterID] = @ReporterID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @ReportID IS NOT NULL THEN (CASE WHEN [ReportID] = @ReportID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @IsOfficer IS NOT NULL THEN (CASE WHEN [IsOfficer] = @IsOfficer THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @IsDirector IS NOT NULL THEN (CASE WHEN [IsDirector] = @IsDirector THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @Is10PctHolder IS NOT NULL THEN (CASE WHEN [Is10PctHolder] = @Is10PctHolder THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @IsOther IS NOT NULL THEN (CASE WHEN [IsOther] = @IsOther THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @OtherText IS NOT NULL THEN (CASE WHEN [OtherText] = @OtherText THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @OfficerTitle IS NOT NULL THEN (CASE WHEN [OfficerTitle] = @OfficerTitle THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
-	(CASE WHEN @Date IS NOT NULL THEN (CASE WHEN [Date] = @Date THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+	(CASE WHEN @Date IS NOT NULL THEN (CASE WHEN [Date] = @Date THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @DateSubmitted IS NOT NULL THEN (CASE WHEN [DateSubmitted] = @DateSubmitted THEN 1 ELSE 0 END) ELSE 1 END) = 1 
  ))
 					
 BEGIN
@@ -33,24 +37,28 @@ BEGIN
 		(
 	 [IssuerID],
 	 [ReporterID],
+	 [ReportID],
 	 [IsOfficer],
 	 [IsDirector],
 	 [Is10PctHolder],
 	 [IsOther],
 	 [OtherText],
 	 [OfficerTitle],
-	 [Date]
+	 [Date],
+	 [DateSubmitted]
 		)
 	SELECT 		
 			 @IssuerID,
 	 @ReporterID,
+	 @ReportID,
 	 @IsOfficer,
 	 @IsDirector,
 	 @Is10PctHolder,
 	 @IsOther,
 	 @OtherText,
 	 @OfficerTitle,
-	 @Date
+	 @Date,
+	 @DateSubmitted
 END
 
 SELECT TOP 1 
@@ -60,13 +68,15 @@ FROM
 WHERE
 	(CASE WHEN @IssuerID IS NOT NULL THEN (CASE WHEN [IssuerID] = @IssuerID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @ReporterID IS NOT NULL THEN (CASE WHEN [ReporterID] = @ReporterID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @ReportID IS NOT NULL THEN (CASE WHEN [ReportID] = @ReportID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @IsOfficer IS NOT NULL THEN (CASE WHEN [IsOfficer] = @IsOfficer THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @IsDirector IS NOT NULL THEN (CASE WHEN [IsDirector] = @IsDirector THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @Is10PctHolder IS NOT NULL THEN (CASE WHEN [Is10PctHolder] = @Is10PctHolder THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @IsOther IS NOT NULL THEN (CASE WHEN [IsOther] = @IsOther THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @OtherText IS NOT NULL THEN (CASE WHEN [OtherText] = @OtherText THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
 	(CASE WHEN @OfficerTitle IS NOT NULL THEN (CASE WHEN [OfficerTitle] = @OfficerTitle THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
-	(CASE WHEN @Date IS NOT NULL THEN (CASE WHEN [Date] = @Date THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+	(CASE WHEN @Date IS NOT NULL THEN (CASE WHEN [Date] = @Date THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @DateSubmitted IS NOT NULL THEN (CASE WHEN [DateSubmitted] = @DateSubmitted THEN 1 ELSE 0 END) ELSE 1 END) = 1 
 
 SELECT 
 	@ID

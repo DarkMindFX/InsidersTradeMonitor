@@ -23,7 +23,6 @@ namespace ITM.Function.V1.ImportForm4Reports
         [FunctionName("StartImport")]
         public void Run([QueueTrigger("itm-notifications", Connection = "AzureWebJobsStorage")] string message)
         {
-            
             MessageBase msgObject = JsonSerializer.Deserialize<MessageBase>(message);
             if(msgObject != null && msgObject.Name.Equals("StartImport"))
             {

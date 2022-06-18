@@ -21,19 +21,19 @@ namespace ITM.Interfaces.Entities
 
 				public System.DateTime? DeemedExecDate { get; set; }
 
-				public System.Int64 TransactionCodeID { get; set; }
+				public System.Int64? TransactionCodeID { get; set; }
 
 				public System.Boolean EarlyVoluntarilyReport { get; set; }
 
 				public System.Int64? SharesAmount { get; set; }
 
-				public System.Int64 TransactionTypeID { get; set; }
+				public System.Int64? TransactionTypeID { get; set; }
 
 				public System.Decimal Price { get; set; }
 
 				public System.Int64 AmountFollowingReport { get; set; }
 
-				public System.Int64 OwnershipTypeID { get; set; }
+				public System.Int64? OwnershipTypeID { get; set; }
 
 				public System.String NatureOfIndirectOwnership { get; set; }
 
