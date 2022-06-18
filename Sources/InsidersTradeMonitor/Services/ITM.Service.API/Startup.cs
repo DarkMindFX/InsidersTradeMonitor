@@ -151,6 +151,10 @@ namespace ITM.API
             services.AddSingleton<ITransactionTypeDal>(dalTransactionTypeDal);
             services.AddSingleton<ITM.Services.Dal.ITransactionTypeDal, ITM.Services.Dal.TransactionTypeDal>();
 
+            var dalUserDal = InitDal<IUserDal>(serviceCfg);
+            services.AddSingleton<IUserDal>(dalUserDal);
+            services.AddSingleton<ITM.Services.Dal.IUserDal, ITM.Services.Dal.UserDal>();
+
 
             /** Connection Tester for health endpoint **/
             var dalConnTest = InitDal<IConnectionTestDal>(serviceCfg);

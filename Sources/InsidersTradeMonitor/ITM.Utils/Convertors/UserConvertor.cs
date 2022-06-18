@@ -15,8 +15,6 @@ namespace ITM.Utils.Convertors
 
 				        Login = entity.Login,
 
-				        PwdHash = entity.PwdHash,
-
 				        Salt = entity.Salt,
 
 				        FirstName = entity.FirstName,
@@ -56,8 +54,6 @@ namespace ITM.Utils.Convertors
 
 				        Login = dto.Login,
 
-				        PwdHash = dto.PwdHash,
-
 				        Salt = dto.Salt,
 
 				        FirstName = dto.FirstName,
@@ -73,8 +69,6 @@ namespace ITM.Utils.Convertors
 				        ModifiedDate = dto.ModifiedDate,
 
 				        ModifiedByID = dto.ModifiedByID,
-
-				
      
             };
 

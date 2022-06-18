@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ITM.API.Helpers;
-using ITM.API.Dal;
+using ITM.Services.Dal;
 
 namespace ITM.API.MiddleWare
 {

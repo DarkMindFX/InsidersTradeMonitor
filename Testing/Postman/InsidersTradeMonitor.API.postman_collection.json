@@ -1,0 +1,2184 @@
+
+
+
+{
+	"info": {
+		"_postman_id": "BC1C4F03-F7A1-4A11-8F35-EDB40AD47891",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		
+		
+	{
+			"name": "DerivativeTransaction",
+			"item": [
+				{
+					"name": "DerivativeTransaction - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Form4ReportID\": 9999999,\r\n  \"TitleOfDerivative\": \"TitleOfDerivative a1f5b325-98b9-43b0-ae53-6421ee4c0bef\",\r\n  \"ConversionExercisePrice\": 9999999,\r\n  \"TransactionDate\": \"2021-10-01 21:35:00\",\r\n  \"TransactionCodeID\": 9999999,\r\n  \"EarlyVoluntarilyReport\": false,\r\n  \"SharesAmount\": 9999999,\r\n  \"DerivativeSecurityPrice\": 9999999,\r\n  \"TransactionTypeID\": 9999999,\r\n  \"DateExercisable\": \"2021-10-01 21:35:00\",\r\n  \"ExpirationDate\": \"2021-10-01 21:35:00\",\r\n  \"UnderlyingTitle\": \"UnderlyingTitle 33a5d5f0-a13b-4b46-bd21-796e726b9eaf\",\r\n  \"UnderlyingSharesAmount\": 9999999,\r\n  \"AmountFollowingReport\": 9999999,\r\n  \"OwnershipTypeID\": 9999999,\r\n  \"NatureOfIndirectOwnership\": \"NatureOfIndirectOwnership 80e072ce-7c37-48eb-9814-5a2769a2282b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DerivativeTransaction - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DerivativeTransaction - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Form4ReportID\": 9999999,\r\n  \"TitleOfDerivative\": \"TitleOfDerivative a1f5b325-98b9-43b0-ae53-6421ee4c0bef\",\r\n  \"ConversionExercisePrice\": 9999999,\r\n  \"TransactionDate\": \"2021-10-01 21:35:00\",\r\n  \"TransactionCodeID\": 9999999,\r\n  \"EarlyVoluntarilyReport\": false,\r\n  \"SharesAmount\": 9999999,\r\n  \"DerivativeSecurityPrice\": 9999999,\r\n  \"TransactionTypeID\": 9999999,\r\n  \"DateExercisable\": \"2021-10-01 21:35:00\",\r\n  \"ExpirationDate\": \"2021-10-01 21:35:00\",\r\n  \"UnderlyingTitle\": \"UnderlyingTitle 33a5d5f0-a13b-4b46-bd21-796e726b9eaf\",\r\n  \"UnderlyingSharesAmount\": 9999999,\r\n  \"AmountFollowingReport\": 9999999,\r\n  \"OwnershipTypeID\": 9999999,\r\n  \"NatureOfIndirectOwnership\": \"NatureOfIndirectOwnership 80e072ce-7c37-48eb-9814-5a2769a2282b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DerivativeTransaction - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DerivativeTransaction - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "DerivativeTransaction - Get By Form4ReportID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions/byform4reportid/:form4reportid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions",
+								"byform4reportid",
+								":form4reportid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "DerivativeTransaction - Get By TransactionCodeID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions/bytransactioncodeid/:transactioncodeid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions",
+								"bytransactioncodeid",
+								":transactioncodeid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "DerivativeTransaction - Get By TransactionTypeID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions/bytransactiontypeid/:transactiontypeid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions",
+								"bytransactiontypeid",
+								":transactiontypeid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "DerivativeTransaction - Get By OwnershipTypeID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/derivativetransactions/byownershiptypeid/:ownershiptypeid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"derivativetransactions",
+								"byownershiptypeid",
+								":ownershiptypeid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "Entity",
+			"item": [
+				{
+					"name": "Entity - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"EntityTypeID\": 9999999,\r\n  \"CIK\": 9999999,\r\n  \"Name\": \"Name 1f64b3ca-c84c-43b5-9bc6-fbc331123752\",\r\n  \"TradingSymbol\": \"TradingSymbol 96989220-d4da-4108-8f1d-3148e813a8ec\",\r\n  \"IsMonitored\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entities",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entity - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entities",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entity - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"EntityTypeID\": 9999999,\r\n  \"CIK\": 9999999,\r\n  \"Name\": \"Name 1f64b3ca-c84c-43b5-9bc6-fbc331123752\",\r\n  \"TradingSymbol\": \"TradingSymbol 96989220-d4da-4108-8f1d-3148e813a8ec\",\r\n  \"IsMonitored\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entities",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entity - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entities/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entities"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entity - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entities/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entities"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "Entity - Get By EntityTypeID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entities/byentitytypeid/:entitytypeid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entities",
+								"byentitytypeid",
+								":entitytypeid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "EntityType",
+			"item": [
+				{
+					"name": "EntityType - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"TypeName\": \"TypeName 2a39ae7f-c6e7-4813-b390-1dd294caf09a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entitytypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entitytypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityType - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entitytypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entitytypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityType - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"TypeName\": \"TypeName 2a39ae7f-c6e7-4813-b390-1dd294caf09a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entitytypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entitytypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityType - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entitytypes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entitytypes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EntityType - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/entitytypes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"entitytypes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "Form4Report",
+			"item": [
+				{
+					"name": "Form4Report - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"IssuerID\": 9999999,\r\n  \"ReporterID\": 9999999,\r\n  \"IsOfficer\": false,\r\n  \"IsDirector\": false,\r\n  \"Is10PctHolder\": false,\r\n  \"IsOther\": false,\r\n  \"OtherText\": \"OtherText c78c896e-b408-488a-b92c-61d0502e33fb\",\r\n  \"OfficerTitle\": \"OfficerTitle 89369493-eeb8-4af7-a6fe-bc6607f19097\",\r\n  \"Date\": \"2021-10-01 21:35:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/form4reports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"form4reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form4Report - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/form4reports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"form4reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form4Report - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"IssuerID\": 9999999,\r\n  \"ReporterID\": 9999999,\r\n  \"IsOfficer\": false,\r\n  \"IsDirector\": false,\r\n  \"Is10PctHolder\": false,\r\n  \"IsOther\": false,\r\n  \"OtherText\": \"OtherText c78c896e-b408-488a-b92c-61d0502e33fb\",\r\n  \"OfficerTitle\": \"OfficerTitle 89369493-eeb8-4af7-a6fe-bc6607f19097\",\r\n  \"Date\": \"2021-10-01 21:35:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/form4reports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"form4reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form4Report - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/form4reports/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"form4reports"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Form4Report - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/form4reports/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"form4reports"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "Form4Report - Get By IssuerID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/form4reports/byissuerid/:issuerid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"form4reports",
+								"byissuerid",
+								":issuerid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "Form4Report - Get By ReporterID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/form4reports/byreporterid/:reporterid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"form4reports",
+								"byreporterid",
+								":reporterid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "NonDerivativeTransaction",
+			"item": [
+				{
+					"name": "NonDerivativeTransaction - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Form4ReportID\": 9999999,\r\n  \"TitleOfSecurity\": \"TitleOfSecurity 44368888-5e98-4c68-b660-d908375ab8b6\",\r\n  \"TransactionDate\": \"2021-10-01 21:35:00\",\r\n  \"DeemedExecDate\": \"2021-10-01 21:35:00\",\r\n  \"TransactionCodeID\": 9999999,\r\n  \"EarlyVoluntarilyReport\": false,\r\n  \"SharesAmount\": 9999999,\r\n  \"TransactionTypeID\": 9999999,\r\n  \"Price\": 9999999,\r\n  \"AmountFollowingReport\": 9999999,\r\n  \"OwnershipTypeID\": 9999999,\r\n  \"NatureOfIndirectOwnership\": \"NatureOfIndirectOwnership cdc39b5e-4cb6-46bc-9505-8f13b7ed48b9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NonDerivativeTransaction - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NonDerivativeTransaction - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Form4ReportID\": 9999999,\r\n  \"TitleOfSecurity\": \"TitleOfSecurity 44368888-5e98-4c68-b660-d908375ab8b6\",\r\n  \"TransactionDate\": \"2021-10-01 21:35:00\",\r\n  \"DeemedExecDate\": \"2021-10-01 21:35:00\",\r\n  \"TransactionCodeID\": 9999999,\r\n  \"EarlyVoluntarilyReport\": false,\r\n  \"SharesAmount\": 9999999,\r\n  \"TransactionTypeID\": 9999999,\r\n  \"Price\": 9999999,\r\n  \"AmountFollowingReport\": 9999999,\r\n  \"OwnershipTypeID\": 9999999,\r\n  \"NatureOfIndirectOwnership\": \"NatureOfIndirectOwnership cdc39b5e-4cb6-46bc-9505-8f13b7ed48b9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NonDerivativeTransaction - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NonDerivativeTransaction - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "NonDerivativeTransaction - Get By Form4ReportID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions/byform4reportid/:form4reportid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions",
+								"byform4reportid",
+								":form4reportid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "NonDerivativeTransaction - Get By TransactionCodeID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions/bytransactioncodeid/:transactioncodeid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions",
+								"bytransactioncodeid",
+								":transactioncodeid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "NonDerivativeTransaction - Get By TransactionTypeID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions/bytransactiontypeid/:transactiontypeid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions",
+								"bytransactiontypeid",
+								":transactiontypeid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "NonDerivativeTransaction - Get By OwnershipTypeID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/nonderivativetransactions/byownershiptypeid/:ownershiptypeid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"nonderivativetransactions",
+								"byownershiptypeid",
+								":ownershiptypeid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "OwnershipType",
+			"item": [
+				{
+					"name": "OwnershipType - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Code\": \"Code 937c430b-8f83-4aff-9be0-322f4bb962c6\",\r\n  \"Description\": \"Description 88de7ad3-8886-4078-91dc-08389f823c38\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/ownershiptypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"ownershiptypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OwnershipType - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/ownershiptypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"ownershiptypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OwnershipType - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Code\": \"Code 937c430b-8f83-4aff-9be0-322f4bb962c6\",\r\n  \"Description\": \"Description 88de7ad3-8886-4078-91dc-08389f823c38\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/ownershiptypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"ownershiptypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OwnershipType - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/ownershiptypes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"ownershiptypes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OwnershipType - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/ownershiptypes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"ownershiptypes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "sysdiagrams",
+			"item": [
+				{
+					"name": "sysdiagrams - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": 9999999,\r\n  \"principal_id\": 9999999,\r\n  \"diagram_id\": 9999999,\r\n  \"version\": 9999999,\r\n  \"definition\": 9999999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/sysdiagramses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"sysdiagramses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sysdiagrams - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/sysdiagramses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"sysdiagramses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sysdiagrams - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": 9999999,\r\n  \"principal_id\": 9999999,\r\n  \"diagram_id\": 9999999,\r\n  \"version\": 9999999,\r\n  \"definition\": 9999999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/sysdiagramses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"sysdiagramses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sysdiagrams - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/sysdiagramses/:diagram_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"sysdiagramses"
+													,
+														
+								":diagram_id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sysdiagrams - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/sysdiagramses/:diagram_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"sysdiagramses"
+													,
+														
+								":diagram_id"
+													]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "TransactionCode",
+			"item": [
+				{
+					"name": "TransactionCode - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Code\": \"Code 2975553e-a110-4657-9d70-e8ed9cca6d15\",\r\n  \"Description\": \"Description 3ee1f354-aad3-4fce-944e-6e771dce272b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactioncodes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactioncodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionCode - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactioncodes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactioncodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionCode - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Code\": \"Code 2975553e-a110-4657-9d70-e8ed9cca6d15\",\r\n  \"Description\": \"Description 3ee1f354-aad3-4fce-944e-6e771dce272b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactioncodes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactioncodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionCode - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactioncodes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactioncodes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionCode - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactioncodes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactioncodes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "TransactionType",
+			"item": [
+				{
+					"name": "TransactionType - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Code\": \"Code 6ab36a99-56cc-4860-9a04-702a03437fb3\",\r\n  \"Description\": \"Description e59eac5d-2f73-4c24-84b5-fb76f72f2dbf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactiontypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactiontypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionType - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactiontypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactiontypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionType - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Code\": \"Code 6ab36a99-56cc-4860-9a04-702a03437fb3\",\r\n  \"Description\": \"Description e59eac5d-2f73-4c24-84b5-fb76f72f2dbf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactiontypes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactiontypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionType - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactiontypes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactiontypes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TransactionType - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/transactiontypes/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"transactiontypes"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					]
+		},
+		
+	{
+			"name": "User",
+			"item": [
+				{
+					"name": "User - Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Login\": \"Login 04898afd-a77b-4eb7-b920-69c2b6364ed4\",\r\n  \"PwdHash\": \"PwdHash d65ed94f-65e3-4fed-bf86-84ee1c6baaa6\",\r\n  \"Salt\": \"Salt cb59c871-9836-4729-9aee-e417443148c7\",\r\n  \"FirstName\": \"FirstName abfd5e81-0a4c-422c-afa2-44fb04087e1d\",\r\n  \"MiddleName\": \"MiddleName 00fcc5ce-6cf1-4af9-b608-fed4caaa6782\",\r\n  \"LastName\": \"LastName 73e124dd-4837-41ba-ad01-2ac1b2fb7b12\",\r\n  \"FriendlyName\": \"FriendlyName ebb19a39-037e-4c95-bdb1-003225e65fa1\",\r\n  \"CreatedDate\": \"2021-10-01 21:35:00\",\r\n  \"ModifiedDate\": \"2021-10-01 21:35:00\",\r\n  \"ModifiedByID\": 9999999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ID\": 9999999,\r\n  \"Login\": \"Login 04898afd-a77b-4eb7-b920-69c2b6364ed4\",\r\n  \"PwdHash\": \"PwdHash d65ed94f-65e3-4fed-bf86-84ee1c6baaa6\",\r\n  \"Salt\": \"Salt cb59c871-9836-4729-9aee-e417443148c7\",\r\n  \"FirstName\": \"FirstName abfd5e81-0a4c-422c-afa2-44fb04087e1d\",\r\n  \"MiddleName\": \"MiddleName 00fcc5ce-6cf1-4af9-b608-fed4caaa6782\",\r\n  \"LastName\": \"LastName 73e124dd-4837-41ba-ad01-2ac1b2fb7b12\",\r\n  \"FriendlyName\": \"FriendlyName ebb19a39-037e-4c95-bdb1-003225e65fa1\",\r\n  \"CreatedDate\": \"2021-10-01 21:35:00\",\r\n  \"ModifiedDate\": \"2021-10-01 21:35:00\",\r\n  \"ModifiedByID\": 9999999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Get By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/users/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"users"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/users/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"users"
+													,
+														
+								":id"
+													]
+						}
+					},
+					"response": []
+				}
+					,
+			{
+					"name": "User - Get By ModifiedByID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMDAwMDY3IiwibmJmIjoxNjIyMzEwMDQ1LCJleHAiOjE2MjIzMTM2NDUsImlhdCI6MTYyMjMxMDA0NX0.2tvSqOpEYqOZ7VX0eVoUuaH3xY57-zKQil69oRWoabU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/users/bymodifiedbyid/:modifiedbyid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"bymodifiedbyid",
+								":modifiedbyid"
+						
+							]
+						}
+					},
+					"response": []
+				}
+					]
+		}
+		]
+		
+}
