@@ -1,0 +1,12 @@
+
+
+
+DECLARE @ID BIGINT = NULL
+DECLARE @Name NVARCHAR(50) = 'Name fef168bb5d3f4b8486b2e7b3330fbdc9'
+ 
+
+DELETE FROM [ImportRunState]
+FROM 
+	[dbo].[ImportRunState] e
+WHERE
+	(CASE WHEN @Name IS NOT NULL THEN (CASE WHEN [Name] = @Name THEN 1 ELSE 0 END) ELSE 1 END) = 1 

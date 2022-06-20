@@ -1,0 +1,36 @@
+
+
+
+DECLARE @ID BIGINT = NULL
+DECLARE @ImportRunID BIGINT = 100005
+DECLARE @Form4ReportID BIGINT = 100014
+DECLARE @TimeStarted DATETIME = '5/15/2023 7:50:20 PM'
+DECLARE @TimeCompleted DATETIME = '5/15/2023 7:50:20 PM'
+ 
+DECLARE @Fail AS BIT = 0
+
+IF(NOT EXISTS(SELECT 1 FROM 
+				[dbo].[ImportRunForm4Report]
+				WHERE 
+	(CASE WHEN @ImportRunID IS NOT NULL THEN (CASE WHEN [ImportRunID] = @ImportRunID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @Form4ReportID IS NOT NULL THEN (CASE WHEN [Form4ReportID] = @Form4ReportID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @TimeStarted IS NOT NULL THEN (CASE WHEN [TimeStarted] = @TimeStarted THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @TimeCompleted IS NOT NULL THEN (CASE WHEN [TimeCompleted] = @TimeCompleted THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+ ))
+					
+BEGIN
+	SET @Fail = 1
+END
+
+DELETE FROM 
+	[dbo].[ImportRunForm4Report]
+	WHERE 
+	(CASE WHEN @ImportRunID IS NOT NULL THEN (CASE WHEN [ImportRunID] = @ImportRunID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @Form4ReportID IS NOT NULL THEN (CASE WHEN [Form4ReportID] = @Form4ReportID THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @TimeStarted IS NOT NULL THEN (CASE WHEN [TimeStarted] = @TimeStarted THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @TimeCompleted IS NOT NULL THEN (CASE WHEN [TimeCompleted] = @TimeCompleted THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+
+IF(@Fail = 1) 
+BEGIN
+	THROW 51001, 'ImportRunForm4Report was not inserted', 1
+END

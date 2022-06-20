@@ -1,0 +1,58 @@
+
+
+
+-- original values --
+DECLARE @ID BIGINT = NULL
+DECLARE @TimeStart DATETIME = '1/7/2020 4:15:20 AM'
+DECLARE @TimeEnd DATETIME = '1/7/2020 4:15:20 AM'
+DECLARE @RequestJson NVARCHAR(1000) = 'RequestJson 188a82dea08240448ce2b34a01953b34'
+DECLARE @StateID BIGINT = 2
+ 
+-- updated values --
+
+DECLARE @updID BIGINT = NULL
+DECLARE @updTimeStart DATETIME = '1/7/2020 4:15:20 AM'
+DECLARE @updTimeEnd DATETIME = '1/7/2020 4:15:20 AM'
+DECLARE @updRequestJson NVARCHAR(1000) = 'RequestJson 7624bb2396c14384b5413b858b376ce6'
+DECLARE @updStateID BIGINT = 3
+ 
+
+DECLARE @Fail AS BIT = 0
+
+IF(NOT EXISTS(SELECT 1 FROM 
+				[dbo].[ImportRun]
+				WHERE 
+	(CASE WHEN @updTimeStart IS NOT NULL THEN (CASE WHEN [TimeStart] = @updTimeStart THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updTimeEnd IS NOT NULL THEN (CASE WHEN [TimeEnd] = @updTimeEnd THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updRequestJson IS NOT NULL THEN (CASE WHEN [RequestJson] = @updRequestJson THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updStateID IS NOT NULL THEN (CASE WHEN [StateID] = @updStateID THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+ ))
+					
+BEGIN
+
+DELETE FROM 
+	[dbo].[ImportRun]
+	WHERE 
+	(CASE WHEN @TimeStart IS NOT NULL THEN (CASE WHEN [TimeStart] = @TimeStart THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @TimeEnd IS NOT NULL THEN (CASE WHEN [TimeEnd] = @TimeEnd THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @RequestJson IS NOT NULL THEN (CASE WHEN [RequestJson] = @RequestJson THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @StateID IS NOT NULL THEN (CASE WHEN [StateID] = @StateID THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+
+	SET @Fail = 1
+END
+ELSE
+BEGIN
+DELETE FROM 
+	[dbo].[ImportRun]
+	WHERE 
+	(CASE WHEN @updTimeStart IS NOT NULL THEN (CASE WHEN [TimeStart] = @updTimeStart THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updTimeEnd IS NOT NULL THEN (CASE WHEN [TimeEnd] = @updTimeEnd THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updRequestJson IS NOT NULL THEN (CASE WHEN [RequestJson] = @updRequestJson THEN 1 ELSE 0 END) ELSE 1 END) = 1 AND
+	(CASE WHEN @updStateID IS NOT NULL THEN (CASE WHEN [StateID] = @updStateID THEN 1 ELSE 0 END) ELSE 1 END) = 1 
+END
+
+
+IF(@Fail = 1) 
+BEGIN
+	THROW 51001, 'ImportRun was not updated', 1
+END
