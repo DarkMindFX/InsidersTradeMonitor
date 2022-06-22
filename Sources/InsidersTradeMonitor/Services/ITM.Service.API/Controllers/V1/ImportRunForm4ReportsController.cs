@@ -22,12 +22,12 @@ namespace ITM.API.Controllers.V1
     [UnhandledExceptionFilter]
     public class ImportRunForm4ReportsController : BaseController
     {
-        private readonly IImportRunForm4ReportDal _dalImportRunForm4Report;
+        private readonly Services.Dal.IImportRunForm4ReportDal _dalImportRunForm4Report;
         private readonly ILogger<ImportRunForm4ReportsController> _logger;
         private readonly IOptions<AppSettings> _appSettings;
 
 
-        public ImportRunForm4ReportsController( IImportRunForm4ReportDal dalImportRunForm4Report,
+        public ImportRunForm4ReportsController(Services.Dal.IImportRunForm4ReportDal dalImportRunForm4Report,
                                     ILogger<ImportRunForm4ReportsController> logger,
                                     IOptions<AppSettings> appSettings)
         {

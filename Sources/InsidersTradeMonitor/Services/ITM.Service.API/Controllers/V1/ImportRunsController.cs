@@ -22,12 +22,12 @@ namespace ITM.API.Controllers.V1
     [UnhandledExceptionFilter]
     public class ImportRunsController : BaseController
     {
-        private readonly IImportRunDal _dalImportRun;
+        private readonly Services.Dal.IImportRunDal _dalImportRun;
         private readonly ILogger<ImportRunsController> _logger;
         private readonly IOptions<AppSettings> _appSettings;
 
 
-        public ImportRunsController( IImportRunDal dalImportRun,
+        public ImportRunsController(Services.Dal.IImportRunDal dalImportRun,
                                     ILogger<ImportRunsController> logger,
                                     IOptions<AppSettings> appSettings)
         {

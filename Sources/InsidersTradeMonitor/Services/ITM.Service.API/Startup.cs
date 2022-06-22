@@ -155,6 +155,18 @@ namespace ITM.API
             services.AddSingleton<IUserDal>(dalUserDal);
             services.AddSingleton<ITM.Services.Dal.IUserDal, ITM.Services.Dal.UserDal>();
 
+            var dalImportRunDal = InitDal<IImportRunDal>(serviceCfg);
+            services.AddSingleton<IImportRunDal>(dalImportRunDal);
+            services.AddSingleton<ITM.Services.Dal.IImportRunDal, ITM.Services.Dal.ImportRunDal>();
+
+            var dalImportRunForm4ReportDal = InitDal<IImportRunForm4ReportDal>(serviceCfg);
+            services.AddSingleton<IImportRunForm4ReportDal>(dalImportRunForm4ReportDal);
+            services.AddSingleton<ITM.Services.Dal.IImportRunForm4ReportDal, ITM.Services.Dal.ImportRunForm4ReportDal>();
+
+            var dalImportRunStateDal = InitDal<IImportRunStateDal>(serviceCfg);
+            services.AddSingleton<IImportRunStateDal>(dalImportRunStateDal);
+            services.AddSingleton<ITM.Services.Dal.IImportRunStateDal, ITM.Services.Dal.ImportRunStateDal>();
+
 
             /** Connection Tester for health endpoint **/
             var dalConnTest = InitDal<IConnectionTestDal>(serviceCfg);
