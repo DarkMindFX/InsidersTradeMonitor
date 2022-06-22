@@ -21,7 +21,8 @@ namespace ITM.Test.Function.ImportForm4Reports
             IList<long> ids = null;
             try
             {
-                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper());
+                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper(),
+                                                                              base.PrepareImportRunDalFacade());
 
                 var payload = new RpcStartImport()
                 {
@@ -57,7 +58,8 @@ namespace ITM.Test.Function.ImportForm4Reports
             IList<long> ids = null;
             try
             {
-                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper());
+                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper(),
+                                                                              base.PrepareImportRunDalFacade());
 
                 var payload = new RpcStartImport()
                 {
@@ -93,7 +95,8 @@ namespace ITM.Test.Function.ImportForm4Reports
             IList<long> ids = null;
             try
             {
-                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper());
+                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper(),
+                                                                              base.PrepareImportRunDalFacade());
 
                 var payload = new RpcStartImport()
                 {
@@ -128,7 +131,8 @@ namespace ITM.Test.Function.ImportForm4Reports
             IList<long> ids = null;
             try
             {
-                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper());
+                var fn = new ITM.Function.V1.ImportForm4Reports.StartImportFn(base.PrepareForm4DalWrapper(),
+                                                                              base.PrepareImportRunDalFacade());
 
                 var payload = new RpcStartImport()
                 {

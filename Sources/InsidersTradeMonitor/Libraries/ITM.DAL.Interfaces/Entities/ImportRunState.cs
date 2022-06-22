@@ -8,12 +8,20 @@ using System.Threading.Tasks;
 
 namespace ITM.Interfaces.Entities
 {
-    public class ImportRunState 
+
+    public enum EImportRunState
     {
-				public System.Int64? ID { get; set; }
+        InProgress = 1,
+        Success = 2,
+        Fail = 3
+    }
 
-				public System.String Name { get; set; }
+    public class ImportRunState
+    {
+        public System.Int64? ID { get; set; }
 
-				
+        public System.String Name { get; set; }
+
+
     }
 }

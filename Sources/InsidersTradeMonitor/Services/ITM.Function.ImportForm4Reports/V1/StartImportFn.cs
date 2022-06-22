@@ -15,9 +15,11 @@ namespace ITM.Function.V1.ImportForm4Reports
     public class StartImportFn 
     {
         private readonly IForm4DalWrapper _form4DalWrapper;
-        public StartImportFn(IForm4DalWrapper form4DalWrapper)
+        private readonly IImportRunDalFacade _importRunDalFacade;
+        public StartImportFn(IForm4DalWrapper form4DalWrapper, IImportRunDalFacade importRunDalFacade)
         {
             _form4DalWrapper = form4DalWrapper;
+            _importRunDalFacade = importRunDalFacade;
         }
 
         [FunctionName("StartImport")]
@@ -26,10 +28,27 @@ namespace ITM.Function.V1.ImportForm4Reports
             MessageBase msgObject = JsonSerializer.Deserialize<MessageBase>(message);
             if(msgObject != null && msgObject.Name.Equals("StartImport"))
             {
-                RpcStartImport request = JsonSerializer.Deserialize<RpcStartImport>(msgObject.Payload);
-                if(request != null)
+                ITM.Interfaces.Entities.ImportRun importRun = null;
+                try
                 {
-                    ReportsIDs = Import(request, _form4DalWrapper);
+                    importRun = LogRunStarted(message);
+
+                    RpcStartImport request = JsonSerializer.Deserialize<RpcStartImport>(msgObject.Payload);
+                    if (request != null)
+                    {
+                        ReportsIDs = Import(request, _form4DalWrapper);
+
+                        importRun = LogRunSucceeded(importRun);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("StartImport message: failed to cast Paylod to type RpcStartImport");
+                    }
+                }
+                catch
+                {
+                    importRun = LogRunFailed(importRun);
+                    throw;
                 }
             }
         }
@@ -59,6 +78,31 @@ namespace ITM.Function.V1.ImportForm4Reports
 
             var importer = new Form4Importer(impParams);
             return importer.Import();
+        }
+
+        protected ITM.Interfaces.Entities.ImportRun LogRunStarted(string message)
+        {
+            var importRun = new ITM.Interfaces.Entities.ImportRun()
+            {
+                RequestJson = message,
+                StateID = (long)Interfaces.Entities.EImportRunState.InProgress,
+                TimeStart = DateTime.UtcNow
+            };
+
+            importRun = _importRunDalFacade.InsertImportRun(importRun);
+            return importRun;
+        }
+
+        protected ITM.Interfaces.Entities.ImportRun LogRunSucceeded(ITM.Interfaces.Entities.ImportRun importRun)
+        {
+            importRun = _importRunDalFacade.SetRunSucceeded((long)importRun.ID);
+            return importRun;
+        }
+
+        protected ITM.Interfaces.Entities.ImportRun LogRunFailed(ITM.Interfaces.Entities.ImportRun importRun)
+        {
+            importRun = _importRunDalFacade.SetRunFailed((long)importRun.ID);
+            return importRun;
         }
     }
 }

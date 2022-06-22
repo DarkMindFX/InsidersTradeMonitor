@@ -21,6 +21,8 @@ namespace ITM.Function.ImportForm4Reports.Workers
         public ITM.Interfaces.IFilingParser FilingParser { get; set; }
 
         public IForm4DalWrapper Form4DalWrappwer { get; set; }
+
+        public IImportRunDalFacade ImportRunDalFacade { get; set; }
     }
 
     public class Form4Importer

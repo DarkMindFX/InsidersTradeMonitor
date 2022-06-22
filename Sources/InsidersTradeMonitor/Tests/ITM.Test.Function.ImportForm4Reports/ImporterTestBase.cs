@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITM.Function.ImportForm4Reports
+namespace ITM.Test.Function.ImportForm4Reports
 {
     public class ImporterTestBase : ITM.Test.Common.TestBase
     {
@@ -28,8 +28,13 @@ namespace ITM.Function.ImportForm4Reports
             return wrapper;
         }
 
+        protected IImportRunDalFacade PrepareImportRunDalFacade()
+        {
+            return new NullImportRunDalFacade();
+        }
+
         protected TServiceDal CreateDal<TServiceDal, TDal, TEntity>(string configParamName) where TDal : ITM.Interfaces.IDalBase<TEntity>, new()
-                                                                                          where TServiceDal : ITM.Services.Dal.IDalBase<TEntity>
+                                                                                      where TServiceDal : ITM.Services.Dal.IDalBase<TEntity>
         {
             IConfiguration config = GetConfiguration();
             var initParams = config.GetSection(configParamName).Get<TestDalInitParams>();
