@@ -10,7 +10,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-
+using System.Linq;
 
 namespace Test.PPT.DAL.MSSQL
 {
@@ -181,6 +181,26 @@ namespace Test.PPT.DAL.MSSQL
             {
                 Assert.Pass("Success - exception thrown as expected");
             }
+        }
+
+        [TestCase("Entity\\040.GetMonitoredList.Success")]
+        public void Entity_GetMonitoredList_Success(string caseName)
+        {
+            SqlConnection conn = OpenConnection("DALInitParams");
+            var dal = PrepareEntityDal("DALInitParams");
+
+            IList<object> objIds = SetupCase(conn, caseName);
+            var paramID = (System.Int64?)objIds[0];
+
+            var entities = dal.GetMonitoredList();
+
+            TeardownCase(conn, caseName);
+
+            Assert.IsNotNull(entities);
+            Assert.IsNotEmpty(entities);
+            Assert.IsNotEmpty(entities.Where(e => e.IsMonitored == true));
+            Assert.IsEmpty(entities.Where(e => e.IsMonitored == false));
+            Assert.IsNotNull(entities.FirstOrDefault( e => e.ID == paramID));
         }
 
 

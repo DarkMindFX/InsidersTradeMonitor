@@ -18,12 +18,12 @@ namespace ITM.Services.Dal
 
         public Entity Get(System.Int64 ID)
         {
-            return _dalImpl.Get(            ID);
+            return _dalImpl.Get(ID);
         }
 
         public bool Delete(System.Int64 ID)
         {
-            return _dalImpl.Delete(            ID);
+            return _dalImpl.Delete(ID);
         }
 
 
@@ -31,5 +31,10 @@ namespace ITM.Services.Dal
         {
             return _dalImpl.GetByEntityTypeID(EntityTypeID);
         }
-            }
+
+        public IList<Entity> GetMonitoredList()
+        {
+            return _dalImpl.GetMonitoredList();
+        }
+    }
 }

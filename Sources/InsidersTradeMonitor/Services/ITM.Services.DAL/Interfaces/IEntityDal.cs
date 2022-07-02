@@ -14,7 +14,9 @@ namespace ITM.Services.Dal
 
         bool Delete(System.Int64 ID);
 
-            IList<Entity> GetByEntityTypeID(System.Int64 EntityTypeID);
-    
-        }
+        IList<Entity> GetByEntityTypeID(System.Int64 EntityTypeID);
+
+        IList<Entity> GetMonitoredList();
+
+    }
 }

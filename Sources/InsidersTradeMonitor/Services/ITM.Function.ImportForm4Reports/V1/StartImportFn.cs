@@ -26,30 +26,37 @@ namespace ITM.Function.V1.ImportForm4Reports
         public void Run([QueueTrigger("itm-notifications", Connection = "AzureWebJobsStorage")] string message)
         {
             MessageBase msgObject = JsonSerializer.Deserialize<MessageBase>(message);
-            if(msgObject != null && msgObject.Name.Equals("StartImport"))
+            if(msgObject != null)
             {
-                ITM.Interfaces.Entities.ImportRun importRun = null;
-                try
+                if (msgObject.Name.Equals("StartImport"))
                 {
-                    importRun = LogRunStarted(message);
-
-                    RpcStartImport request = JsonSerializer.Deserialize<RpcStartImport>(msgObject.Payload);
-                    if (request != null)
+                    ITM.Interfaces.Entities.ImportRun importRun = null;
+                    try
                     {
-                        ReportsIDs = Import(request, _form4DalWrapper);
+                        importRun = LogRunStarted(message);
 
-                        importRun = LogRunSucceeded(importRun);
+                        RpcStartImport request = JsonSerializer.Deserialize<RpcStartImport>(msgObject.Payload);
+                        if (request != null)
+                        {
+                            ReportsIDs = Import(request, _form4DalWrapper);
+
+                            importRun = LogRunSucceeded(importRun);
+                        }
+                        else
+                        {
+                            throw new ArgumentException("StartImport message: failed to cast Paylod to type RpcStartImport");
+                        }
                     }
-                    else
+                    catch
                     {
-                        throw new ArgumentException("StartImport message: failed to cast Paylod to type RpcStartImport");
+                        importRun = LogRunFailed(importRun);
+                        throw;
                     }
                 }
-                catch
-                {
-                    importRun = LogRunFailed(importRun);
-                    throw;
-                }
+            }
+            else
+            {
+                throw new ArgumentException("Failed to parse incoming message - skipping");
             }
         }
 
