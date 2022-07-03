@@ -47,6 +47,18 @@ namespace ITM.Functions.ImportForm4Reports
             builder.Services.AddSingleton<Interfaces.ITransactionCodeDal>(dalTransactionCodeDal);
             builder.Services.AddSingleton<ITM.Services.Dal.ITransactionCodeDal, ITM.Services.Dal.TransactionCodeDal>();
 
+            var dalImportRunDal = InitDal<Interfaces.IImportRunDal>();
+            builder.Services.AddSingleton<Interfaces.IImportRunDal>(dalImportRunDal);
+            builder.Services.AddSingleton<ITM.Services.Dal.IImportRunDal, ITM.Services.Dal.ImportRunDal>();
+
+            var dalImportRunForm4ReportDal = InitDal<Interfaces.IImportRunForm4ReportDal>();
+            builder.Services.AddSingleton<Interfaces.IImportRunForm4ReportDal>(dalImportRunForm4ReportDal);
+            builder.Services.AddSingleton<ITM.Services.Dal.IImportRunForm4ReportDal, ITM.Services.Dal.ImportRunForm4ReportDal>();
+
+            var dalImportRunStateDal = InitDal<Interfaces.IImportRunStateDal>();
+            builder.Services.AddSingleton<Interfaces.IImportRunStateDal>(dalImportRunStateDal);
+            builder.Services.AddSingleton<ITM.Services.Dal.IImportRunStateDal, ITM.Services.Dal.ImportRunStateDal>();
+
             /** Adding Form4 DAL wrapper **/
             builder.Services.AddSingleton<IForm4DalWrapper, Form4DalWrapper>();
 

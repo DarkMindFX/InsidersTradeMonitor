@@ -9,7 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net;
-using Xunit; 
+using Xunit;
+using System.Linq;
 
 namespace Test.E2E.API.Controllers.V1
 {
@@ -40,6 +41,35 @@ namespace Test.E2E.API.Controllers.V1
         }
 
         [Fact]
+        public void Entity_GetMonitoredList_Success()
+        {
+            ITM.Interfaces.Entities.Entity testEntity = AddTestEntity();
+            using (var client = _factory.CreateClient())
+            {
+                try
+                {
+                    var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
+
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
+
+                    var respGetAll = client.GetAsync($"/api/v1/entities/monitoredlist");
+
+                    Assert.Equal(HttpStatusCode.OK, respGetAll.Result.StatusCode);
+
+                    IList<Entity> dtos = ExtractContentJson<List<Entity>>(respGetAll.Result.Content);
+
+                    Assert.NotEmpty(dtos);
+                    Assert.NotEmpty(dtos.Where(e => e.IsMonitored));
+                    Assert.Empty(dtos.Where(e => !e.IsMonitored));
+                }
+                finally
+                {
+                    RemoveTestEntity(testEntity);
+                }
+            }
+        }
+
+        [Fact]
         public void Entity_Get_Success()
         {
             ITM.Interfaces.Entities.Entity testEntity = AddTestEntity();
@@ -50,7 +80,7 @@ namespace Test.E2E.API.Controllers.V1
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
                 try
                 {
-                var paramID = testEntity.ID;
+                    var paramID = testEntity.ID;
                     var respGet = client.GetAsync($"/api/v1/entities/{paramID}");
 
                     Assert.Equal(HttpStatusCode.OK, respGet.Result.StatusCode);
@@ -94,7 +124,7 @@ namespace Test.E2E.API.Controllers.V1
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
                 try
                 {
-                var paramID = testEntity.ID;
+                    var paramID = testEntity.ID;
 
                     var respDel = client.DeleteAsync($"/api/v1/entities/{paramID}");
 
@@ -146,13 +176,13 @@ namespace Test.E2E.API.Controllers.V1
 
                     Entity respDto = ExtractContentJson<Entity>(respInsert.Result.Content);
 
-                                    Assert.NotNull(respDto.ID);
-                                    Assert.Equal(reqDto.EntityTypeID, respDto.EntityTypeID);
-                                    Assert.Equal(reqDto.CIK, respDto.CIK);
-                                    Assert.Equal(reqDto.Name, respDto.Name);
-                                    Assert.Equal(reqDto.TradingSymbol, respDto.TradingSymbol);
-                                    Assert.Equal(reqDto.IsMonitored, respDto.IsMonitored);
-                
+                    Assert.NotNull(respDto.ID);
+                    Assert.Equal(reqDto.EntityTypeID, respDto.EntityTypeID);
+                    Assert.Equal(reqDto.CIK, respDto.CIK);
+                    Assert.Equal(reqDto.Name, respDto.Name);
+                    Assert.Equal(reqDto.TradingSymbol, respDto.TradingSymbol);
+                    Assert.Equal(reqDto.IsMonitored, respDto.IsMonitored);
+
                     respEntity = EntityConvertor.Convert(respDto);
                 }
                 finally
@@ -174,12 +204,12 @@ namespace Test.E2E.API.Controllers.V1
                 ITM.Interfaces.Entities.Entity testEntity = AddTestEntity();
                 try
                 {
-                          testEntity.EntityTypeID = 2 ;
-                            testEntity.CIK = 669 ;
-                            testEntity.Name = "Name 904b28b988bd4c48a13ccb777ee94825";
-                            testEntity.TradingSymbol = "TradingSymbol 904b28b988bd4c48a13ccb777ee94825";
-                            testEntity.IsMonitored = true;              
-              
+                    testEntity.EntityTypeID = 2;
+                    testEntity.CIK = 669;
+                    testEntity.Name = "Name 904b28b988bd4c48a13ccb777ee94825";
+                    testEntity.TradingSymbol = "TradingSymbol 904b28b988bd4c48a13ccb777ee94825";
+                    testEntity.IsMonitored = true;
+
                     var reqDto = EntityConvertor.Convert(testEntity, null);
 
                     var content = CreateContentJson(reqDto);
@@ -190,13 +220,13 @@ namespace Test.E2E.API.Controllers.V1
 
                     Entity respDto = ExtractContentJson<Entity>(respUpdate.Result.Content);
 
-                                     Assert.NotNull(respDto.ID);
-                                    Assert.Equal(reqDto.EntityTypeID, respDto.EntityTypeID);
-                                    Assert.Equal(reqDto.CIK, respDto.CIK);
-                                    Assert.Equal(reqDto.Name, respDto.Name);
-                                    Assert.Equal(reqDto.TradingSymbol, respDto.TradingSymbol);
-                                    Assert.Equal(reqDto.IsMonitored, respDto.IsMonitored);
-                
+                    Assert.NotNull(respDto.ID);
+                    Assert.Equal(reqDto.EntityTypeID, respDto.EntityTypeID);
+                    Assert.Equal(reqDto.CIK, respDto.CIK);
+                    Assert.Equal(reqDto.Name, respDto.Name);
+                    Assert.Equal(reqDto.TradingSymbol, respDto.TradingSymbol);
+                    Assert.Equal(reqDto.IsMonitored, respDto.IsMonitored);
+
                 }
                 finally
                 {
@@ -217,13 +247,13 @@ namespace Test.E2E.API.Controllers.V1
                 ITM.Interfaces.Entities.Entity testEntity = CreateTestEntity();
                 try
                 {
-                             testEntity.ID = Int64.MaxValue;
-                             testEntity.EntityTypeID = 2;
-                            testEntity.CIK = 669;
-                            testEntity.Name = "Name 904b28b988bd4c48a13ccb777ee94825";
-                            testEntity.TradingSymbol = "TradingSymbol 904b28b988bd4c48a13ccb777ee94825";
-                            testEntity.IsMonitored = true;              
-              
+                    testEntity.ID = Int64.MaxValue;
+                    testEntity.EntityTypeID = 2;
+                    testEntity.CIK = 669;
+                    testEntity.Name = "Name 904b28b988bd4c48a13ccb777ee94825";
+                    testEntity.TradingSymbol = "TradingSymbol 904b28b988bd4c48a13ccb777ee94825";
+                    testEntity.IsMonitored = true;
+
                     var reqDto = EntityConvertor.Convert(testEntity, null);
 
                     var content = CreateContentJson(reqDto);
@@ -249,7 +279,7 @@ namespace Test.E2E.API.Controllers.V1
 
 
 
-                return dal.Delete(                        entity.ID
+                return dal.Delete(entity.ID
                 );
             }
             else
@@ -261,12 +291,12 @@ namespace Test.E2E.API.Controllers.V1
         protected ITM.Interfaces.Entities.Entity CreateTestEntity()
         {
             var entity = new ITM.Interfaces.Entities.Entity();
-                          entity.EntityTypeID = 2;
-                            entity.CIK = 669;
-                            entity.Name = "Name 191f2739e3964fa099dbca598c15e616";
-                            entity.TradingSymbol = "TradingSymbol 191f2739e3964fa099dbca598c15e616";
-                            entity.IsMonitored = true;              
-              
+            entity.EntityTypeID = 2;
+            entity.CIK = 669;
+            entity.Name = "Name 191f2739e3964fa099dbca598c15e616";
+            entity.TradingSymbol = "TradingSymbol 191f2739e3964fa099dbca598c15e616";
+            entity.IsMonitored = true;
+
             return entity;
         }
 

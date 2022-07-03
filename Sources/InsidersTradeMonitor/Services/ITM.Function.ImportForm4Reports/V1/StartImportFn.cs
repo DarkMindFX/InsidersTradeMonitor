@@ -23,7 +23,7 @@ namespace ITM.Function.V1.ImportForm4Reports
         }
 
         [FunctionName("StartImport")]
-        public void Run([QueueTrigger("itm-notifications", Connection = "AzureWebJobsStorage")] string message)
+        public void Run([QueueTrigger("itm-import-requests", Connection = "AzureWebJobsStorage")] string message)
         {
             MessageBase msgObject = JsonSerializer.Deserialize<MessageBase>(message);
             if(msgObject != null)
@@ -38,7 +38,7 @@ namespace ITM.Function.V1.ImportForm4Reports
                         RpcStartImport request = JsonSerializer.Deserialize<RpcStartImport>(msgObject.Payload);
                         if (request != null)
                         {
-                            ReportsIDs = Import(request, _form4DalWrapper);
+                            ReportsIDs = Import(request, importRun, _form4DalWrapper, _importRunDalFacade);
 
                             importRun = LogRunSucceeded(importRun);
                         }
@@ -65,7 +65,7 @@ namespace ITM.Function.V1.ImportForm4Reports
             get; set;
         }
 
-        protected IList<long> Import(RpcStartImport request, IForm4DalWrapper form4DalWrapper)
+        protected IList<long> Import(RpcStartImport request, ITM.Interfaces.Entities.ImportRun importRun, IForm4DalWrapper form4DalWrapper, IImportRunDalFacade importRunDalFacade)
         {
             var parser = new ITM.Parser.Form4.Form4Parser();
 
@@ -80,6 +80,8 @@ namespace ITM.Function.V1.ImportForm4Reports
                 DateTo = request.DateTo,
                 FilingParser = parser,
                 Form4DalWrappwer = form4DalWrapper,
+                ImportRunDalFacade = importRunDalFacade,
+                ImportRun = importRun,
                 Source = source
             };
 

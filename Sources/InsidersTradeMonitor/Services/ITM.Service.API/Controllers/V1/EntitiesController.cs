@@ -190,6 +190,30 @@ namespace ITM.API.Controllers.V1
 
             return response;
         }
+
+        [HttpGet("monitoredlist")]
+        public IActionResult GetMonitoredList()
+        {
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Started");
+            IActionResult response = null;
+
+            var entities = _dalEntity.GetMonitoredList();
+
+            IList<DTO.Entity> dtos = new List<DTO.Entity>();
+
+            foreach (var p in entities)
+            {
+                var dto = EntityConvertor.Convert(p, this.Url);
+
+                dtos.Add(dto);
+            }
+
+            response = Ok(dtos);
+
+            _logger.LogTrace($"{System.Reflection.MethodInfo.GetCurrentMethod()} Ended");
+
+            return response;
+        }
     }
 }
 

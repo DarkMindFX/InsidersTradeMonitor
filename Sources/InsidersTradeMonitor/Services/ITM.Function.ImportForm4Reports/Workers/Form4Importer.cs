@@ -23,6 +23,8 @@ namespace ITM.Function.ImportForm4Reports.Workers
         public IForm4DalWrapper Form4DalWrappwer { get; set; }
 
         public IImportRunDalFacade ImportRunDalFacade { get; set; }
+
+        public Interfaces.Entities.ImportRun ImportRun { get; set; }
     }
 
     public class Form4Importer
@@ -31,7 +33,7 @@ namespace ITM.Function.ImportForm4Reports.Workers
         private string _processId = null;
         private bool _isRunning = false;
         private IList<long> _reportIds = null;
-        
+
 
         public Form4Importer(Form4ImporterParams impParams)
         {
@@ -66,7 +68,7 @@ namespace ITM.Function.ImportForm4Reports.Workers
 
         public IList<long> Import()
         {
-            if(!_isRunning)
+            if (!_isRunning)
             {
                 _reportIds = new List<long>();
                 ImporterThread();
@@ -102,11 +104,12 @@ namespace ITM.Function.ImportForm4Reports.Workers
                 // getting submissions info - list of files - for each filing
                 var resultSubInfo = _importerParams.Source.GetSubmissionsInfo(getInfoParams).Result;
 
-                if(resultSubInfo.Success)
+                if (resultSubInfo.Success)
                 {
-                    
+
                     var extractParams = _importerParams.Source.CreateExtractParams();
-                    resultSubInfo.Submissions.ForEach(s => {
+                    resultSubInfo.Submissions.ForEach(s =>
+                    {
                         if (s.Type == "4")
                         {
                             extractParams.Items.Add(new SECSourceItemInfo()
@@ -119,22 +122,35 @@ namespace ITM.Function.ImportForm4Reports.Workers
 
                     // getting filings content for Form 4 filings
                     var extractResults = _importerParams.Source.ExtractReports(extractParams).Result;
-                    if(extractResults.Success)
+                    if (extractResults.Success)
                     {
                         // parsing reports
-                        foreach(var i in extractResults.Items)
+                        foreach (var i in extractResults.Items)
                         {
+                            DateTime dtStart = DateTime.UtcNow; // start time
+
                             MemoryStream ms = new MemoryStream(i.Content.ToArray());
                             var parserParams = _importerParams.FilingParser.CreateFilingParserParams();
                             parserParams.FileContent = ms;
                             parserParams.ReportID = i.FilingName;
 
                             var resultParse = _importerParams.FilingParser.Parse(parserParams);
-                            if(resultParse.Success)
+                            if (resultParse.Success)
                             {
                                 // Save statement to storage 
                                 long newReportID = _importerParams.Form4DalWrappwer.InsertReport(resultParse.Statement);
                                 _reportIds.Add(newReportID);
+
+                                // adding run/report info 
+                                ITM.Interfaces.Entities.ImportRunForm4Report importRunForm4Report = new Interfaces.Entities.ImportRunForm4Report()
+                                {
+                                    Form4ReportID = newReportID,
+                                    ImportRunID = (long)_importerParams.ImportRun.ID,
+                                    TimeStarted = dtStart,
+                                    TimeCompleted = DateTime.UtcNow
+                                };
+                                importRunForm4Report = _importerParams.ImportRunDalFacade.InsertImportRunForm4Report(importRunForm4Report);
+
                             }
 
                         }
