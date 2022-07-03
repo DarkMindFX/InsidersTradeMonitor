@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data;
 
 namespace ITM.Utils.Convertors
 {
@@ -101,6 +102,31 @@ namespace ITM.Utils.Convertors
 
 
             };
+
+            return entity;
+        }
+
+        public static ITM.Interfaces.Entities.DerivativeTransaction DerivativeTransactionFromRow(DataRow row)
+        {
+            var entity = new ITM.Interfaces.Entities.DerivativeTransaction();
+
+            entity.ID = !DBNull.Value.Equals(row["ID"]) ? (System.Int64?)row["ID"] : default(System.Int64?);
+            entity.Form4ReportID = !DBNull.Value.Equals(row["Form4ReportID"]) ? (System.Int64)row["Form4ReportID"] : default(System.Int64);
+            entity.TitleOfDerivative = !DBNull.Value.Equals(row["TitleOfDerivative"]) ? (System.String)row["TitleOfDerivative"] : default(System.String);
+            entity.ConversionExercisePrice = !DBNull.Value.Equals(row["ConversionExercisePrice"]) ? (System.Decimal)row["ConversionExercisePrice"] : default(System.Decimal);
+            entity.TransactionDate = !DBNull.Value.Equals(row["TransactionDate"]) ? (System.DateTime)row["TransactionDate"] : default(System.DateTime);
+            entity.TransactionCodeID = !DBNull.Value.Equals(row["TransactionCodeID"]) ? (System.Int64)row["TransactionCodeID"] : default(System.Int64);
+            entity.EarlyVoluntarilyReport = !DBNull.Value.Equals(row["EarlyVoluntarilyReport"]) ? (System.Boolean)row["EarlyVoluntarilyReport"] : default(System.Boolean);
+            entity.SharesAmount = !DBNull.Value.Equals(row["SharesAmount"]) ? (System.Int64?)row["SharesAmount"] : default(System.Int64?);
+            entity.DerivativeSecurityPrice = !DBNull.Value.Equals(row["DerivativeSecurityPrice"]) ? (System.Decimal?)row["DerivativeSecurityPrice"] : default(System.Decimal?);
+            entity.TransactionTypeID = !DBNull.Value.Equals(row["TransactionTypeID"]) ? (System.Int64?)row["TransactionTypeID"] : default(System.Int64?);
+            entity.DateExercisable = !DBNull.Value.Equals(row["DateExercisable"]) ? (System.DateTime?)row["DateExercisable"] : default(System.DateTime?);
+            entity.ExpirationDate = !DBNull.Value.Equals(row["ExpirationDate"]) ? (System.DateTime?)row["ExpirationDate"] : default(System.DateTime?);
+            entity.UnderlyingTitle = !DBNull.Value.Equals(row["UnderlyingTitle"]) ? (System.String)row["UnderlyingTitle"] : default(System.String);
+            entity.UnderlyingSharesAmount = !DBNull.Value.Equals(row["UnderlyingSharesAmount"]) ? (System.Int64)row["UnderlyingSharesAmount"] : default(System.Int64);
+            entity.AmountFollowingReport = !DBNull.Value.Equals(row["AmountFollowingReport"]) ? (System.Int64)row["AmountFollowingReport"] : default(System.Int64);
+            entity.OwnershipTypeID = !DBNull.Value.Equals(row["OwnershipTypeID"]) ? (System.Int64)row["OwnershipTypeID"] : default(System.Int64);
+            entity.NatureOfIndirectOwnership = !DBNull.Value.Equals(row["NatureOfIndirectOwnership"]) ? (System.String)row["NatureOfIndirectOwnership"] : default(System.String);
 
             return entity;
         }

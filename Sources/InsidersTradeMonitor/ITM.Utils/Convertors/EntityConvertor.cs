@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data;
 
 namespace ITM.Utils.Convertors
 {
@@ -54,9 +55,21 @@ namespace ITM.Utils.Convertors
 
                 IsMonitored = dto.IsMonitored,
 
-
-
             };
+
+            return entity;
+        }
+
+        public static ITM.Interfaces.Entities.Entity EntityFromRow(DataRow row)
+        {
+            var entity = new ITM.Interfaces.Entities.Entity();
+
+            entity.ID = !DBNull.Value.Equals(row["ID"]) ? (System.Int64?)row["ID"] : default(System.Int64?);
+            entity.EntityTypeID = !DBNull.Value.Equals(row["EntityTypeID"]) ? (System.Int64)row["EntityTypeID"] : default(System.Int64);
+            entity.CIK = !DBNull.Value.Equals(row["CIK"]) ? (System.Int32)row["CIK"] : default(System.Int32);
+            entity.Name = !DBNull.Value.Equals(row["Name"]) ? (System.String)row["Name"] : default(System.String);
+            entity.TradingSymbol = !DBNull.Value.Equals(row["TradingSymbol"]) ? (System.String)row["TradingSymbol"] : default(System.String);
+            entity.IsMonitored = !DBNull.Value.Equals(row["IsMonitored"]) ? (System.Boolean)row["IsMonitored"] : default(System.Boolean);
 
             return entity;
         }

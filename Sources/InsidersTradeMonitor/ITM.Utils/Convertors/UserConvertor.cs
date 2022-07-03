@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data;
 
 namespace ITM.Utils.Convertors
 {
@@ -71,6 +72,25 @@ namespace ITM.Utils.Convertors
 				        ModifiedByID = dto.ModifiedByID,
      
             };
+
+            return entity;
+        }
+
+        public static ITM.Interfaces.Entities.User UserFromRow(DataRow row)
+        {
+            var entity = new ITM.Interfaces.Entities.User();
+
+            entity.ID = !DBNull.Value.Equals(row["ID"]) ? (System.Int64?)row["ID"] : default(System.Int64?);
+            entity.Login = !DBNull.Value.Equals(row["Login"]) ? (System.String)row["Login"] : default(System.String);
+            entity.PwdHash = !DBNull.Value.Equals(row["PwdHash"]) ? (System.String)row["PwdHash"] : default(System.String);
+            entity.Salt = !DBNull.Value.Equals(row["Salt"]) ? (System.String)row["Salt"] : default(System.String);
+            entity.FirstName = !DBNull.Value.Equals(row["FirstName"]) ? (System.String)row["FirstName"] : default(System.String);
+            entity.MiddleName = !DBNull.Value.Equals(row["MiddleName"]) ? (System.String)row["MiddleName"] : default(System.String);
+            entity.LastName = !DBNull.Value.Equals(row["LastName"]) ? (System.String)row["LastName"] : default(System.String);
+            entity.FriendlyName = !DBNull.Value.Equals(row["FriendlyName"]) ? (System.String)row["FriendlyName"] : default(System.String);
+            entity.CreatedDate = !DBNull.Value.Equals(row["CreatedDate"]) ? (System.DateTime)row["CreatedDate"] : default(System.DateTime);
+            entity.ModifiedDate = !DBNull.Value.Equals(row["ModifiedDate"]) ? (System.DateTime?)row["ModifiedDate"] : default(System.DateTime?);
+            entity.ModifiedByID = !DBNull.Value.Equals(row["ModifiedByID"]) ? (System.Int64?)row["ModifiedByID"] : default(System.Int64?);
 
             return entity;
         }

@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data;
 
 namespace ITM.Utils.Convertors
 {
@@ -39,6 +40,17 @@ namespace ITM.Utils.Convertors
 
                 Description = dto.Description,
             };
+
+            return entity;
+        }
+
+        public static ITM.Interfaces.Entities.TransactionCode TransactionCodeFromRow(DataRow row)
+        {
+            var entity = new ITM.Interfaces.Entities.TransactionCode();
+
+            entity.ID = !DBNull.Value.Equals(row["ID"]) ? (System.Int64?)row["ID"] : default(System.Int64?);
+            entity.Code = !DBNull.Value.Equals(row["Code"]) ? (System.String)row["Code"] : default(System.String);
+            entity.Description = !DBNull.Value.Equals(row["Description"]) ? (System.String)row["Description"] : default(System.String);
 
             return entity;
         }

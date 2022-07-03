@@ -1,11 +1,7 @@
 
-
-
-
-
-
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data;
 
 namespace ITM.Utils.Convertors
 {
@@ -42,6 +38,16 @@ namespace ITM.Utils.Convertors
 
                 TypeName = dto.TypeName,
             };
+
+            return entity;
+        }
+
+        public static ITM.Interfaces.Entities.EntityType EntityTypeFromRow(DataRow row)
+        {
+            var entity = new ITM.Interfaces.Entities.EntityType();
+
+            entity.ID = !DBNull.Value.Equals(row["ID"]) ? (System.Int64?)row["ID"] : default(System.Int64?);
+            entity.TypeName = !DBNull.Value.Equals(row["TypeName"]) ? (System.String)row["TypeName"] : default(System.String);
 
             return entity;
         }
