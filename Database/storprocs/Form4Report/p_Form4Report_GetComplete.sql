@@ -32,6 +32,7 @@ BEGIN
 			r.Date,
 			r.DateSubmitted,
 			r.ReportID,
+			r.ReporterID,
 			reporter.CIK,
 			reporter.Name,
 			r.IssuerID,
@@ -53,6 +54,7 @@ BEGIN
 		-- Non-derivatives
 		SELECT
 			ndt.ID,
+			ndt.Form4ReportID,
 			ndt.TransactionDate,
 			ndt.TitleOfSecurity,
 			ndt.Price,
@@ -79,12 +81,14 @@ BEGIN
 		-- Derivatives
 		SELECT
 			dt.ID,
+			dt.Form4ReportID,
 			dt.TransactionDate,
 			dt.TitleOfDerivative,
 			dt.DerivativeSecurityPrice,
 			dt.SharesAmount,
 			dt.UnderlyingTitle,
 			dt.UnderlyingSharesAmount,
+			dt.ConversionExercisePrice,
 			
 			dt.TransactionTypeID,
 			tt.Code as TransactionType,
@@ -93,6 +97,7 @@ BEGIN
 			tc.Description as TransactionDescription,
 			dt.AmountFollowingReport,
 			dt.DateExercisable,
+			dt.ExpirationDate,
 			dt.EarlyVoluntarilyReport,
 			dt.NatureOfIndirectOwnership,
 			dt.OwnershipTypeID,
@@ -115,7 +120,7 @@ BEGIN
 END
 GO
 
-DECLARE @ReportID AS BIGINT = 100194
+DECLARE @ReportID AS BIGINT = 100001
 DECLARE @Found AS BIT = 0
 
 EXEC [dbo].[p_Form4Report_GetComplete] @ReportID, @Found OUT

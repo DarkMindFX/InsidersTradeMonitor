@@ -36,7 +36,7 @@ namespace ITM.DAL.MSSQL
 
             using (SqlConnection conn = OpenConnection())
             {
-                SqlCommand cmd = new SqlCommand("p_Form4Report_GetDetails", conn);
+                SqlCommand cmd = new SqlCommand("p_Form4Report_GetComplete", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 AddParameter(cmd, "@ID", System.Data.SqlDbType.BigInt, 0,

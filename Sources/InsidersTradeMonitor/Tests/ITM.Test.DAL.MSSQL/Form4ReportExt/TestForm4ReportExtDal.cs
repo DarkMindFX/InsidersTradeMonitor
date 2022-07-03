@@ -36,6 +36,20 @@ namespace Test.PPT.DAL.MSSQL
 
             Assert.IsNotNull(report);
             Assert.IsNotNull(report.ReportDetails);
+            Assert.IsNotNull(report.NonDerivativeTransactions);
+            Assert.IsNotNull(report.DerivativeTransactions);
+        }
+
+        [Test]
+        public void Form4ReportExt_GetComplete_InvalidId()
+        {
+            var dal = PrepareForm4ReportExtDal("DALInitParams");
+
+            long reportID = Int64.MaxValue - 1;
+
+            var report = dal.GetComplete(reportID);
+
+            Assert.IsNull(report);
         }
 
         #region Support methods
