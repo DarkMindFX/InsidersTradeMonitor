@@ -1,7 +1,3 @@
-
-
-
-
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -120,7 +116,3 @@ BEGIN
 END
 GO
 
-DECLARE @ReportID AS BIGINT = 100001
-DECLARE @Found AS BIT = 0
-
-EXEC [dbo].[p_Form4Report_GetComplete] @ReportID, @Found OUT
