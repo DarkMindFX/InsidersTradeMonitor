@@ -1,6 +1,5 @@
 
 
-
 using System.Text.Json.Serialization;
 
 namespace ITM.DTO
