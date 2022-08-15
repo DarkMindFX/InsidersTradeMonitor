@@ -28,8 +28,8 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.EntityTypes.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
-                dbContext.SaveChanges();
+							dbContext.Remove(entity);
+			                dbContext.SaveChanges();
                 return true;
             }
             else
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.EntityType Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.EntityType result = null;
-            var entity = dbContext.EntityTypes.Where(e =>         e.ID = ID  ).FirstOrDefault();
+            var entity = dbContext.EntityTypes.Where(e =>         e.ID == ID  ).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.EntityTypeConvertor.FromEFEntity(entity);

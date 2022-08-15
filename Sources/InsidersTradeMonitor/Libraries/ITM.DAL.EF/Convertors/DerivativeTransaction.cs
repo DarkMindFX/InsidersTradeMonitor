@@ -75,7 +75,7 @@ namespace ITM.DAL.EF.Convertors
             {
                 result.ExpirationDate = (System.DateTime)entity.ExpirationDate;
             }
-            if (entity.NatureOfIndirectOwnership.HasValue)
+            if (entity.NatureOfIndirectOwnership != null)
             {
                 result.NatureOfIndirectOwnership = (System.String)entity.NatureOfIndirectOwnership;
             }

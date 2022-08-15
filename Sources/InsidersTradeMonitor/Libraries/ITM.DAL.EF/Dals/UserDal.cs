@@ -28,8 +28,8 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.Users.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
-                dbContext.SaveChanges();
+							dbContext.Remove(entity);
+			                dbContext.SaveChanges();
                 return true;
             }
             else
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.User Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.User result = null;
-            var entity = dbContext.Users.Where(e =>         e.ID = ID  ).FirstOrDefault();
+            var entity = dbContext.Users.Where(e =>         e.ID == ID  ).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.UserConvertor.FromEFEntity(entity);
@@ -59,7 +59,7 @@ namespace ITM.DAL.EF.Dals
             return result;
         }
 
-                public IList<User> GetByModifiedByID(System.Int64? ModifiedByID)
+                public IList<ITM.Interfaces.Entities.User> GetByModifiedByID(System.Int64? ModifiedByID)
         {
             var entities = dbContext.Users.Where(e => e.ModifiedByID == ModifiedByID).ToList();
 

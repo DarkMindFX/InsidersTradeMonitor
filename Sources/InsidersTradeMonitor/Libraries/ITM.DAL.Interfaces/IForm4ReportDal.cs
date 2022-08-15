@@ -19,7 +19,7 @@ namespace ITM.Interfaces
 
         IList<Form4Report> GetByIssuerID(System.Int64 IssuerID);
         IList<Form4Report> GetByReporterID(System.Int64 ReporterID);
-
-    }
+        
+            }
 }
 

@@ -28,7 +28,7 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.NonDerivativeTransactions.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
+                dbContext.Remove(entity);
                 dbContext.SaveChanges();
                 return true;
             }
@@ -59,7 +59,7 @@ namespace ITM.DAL.EF.Dals
             return result;
         }
 
-        public IList<NonDerivativeTransaction> GetByForm4ReportID(System.Int64 Form4ReportID)
+        public IList<ITM.Interfaces.Entities.NonDerivativeTransaction> GetByForm4ReportID(System.Int64 Form4ReportID)
         {
             var entities = dbContext.NonDerivativeTransactions.Where(e => e.Form4ReportID == Form4ReportID).ToList();
 
@@ -67,7 +67,7 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-        public IList<NonDerivativeTransaction> GetByTransactionCodeID(System.Int64? TransactionCodeID)
+        public IList<ITM.Interfaces.Entities.NonDerivativeTransaction> GetByTransactionCodeID(System.Int64? TransactionCodeID)
         {
             var entities = dbContext.NonDerivativeTransactions.Where(e => e.TransactionCodeID == TransactionCodeID).ToList();
 
@@ -75,7 +75,7 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-        public IList<NonDerivativeTransaction> GetByTransactionTypeID(System.Int64? TransactionTypeID)
+        public IList<ITM.Interfaces.Entities.NonDerivativeTransaction> GetByTransactionTypeID(System.Int64? TransactionTypeID)
         {
             var entities = dbContext.NonDerivativeTransactions.Where(e => e.TransactionTypeID == TransactionTypeID).ToList();
 
@@ -83,7 +83,7 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-        public IList<NonDerivativeTransaction> GetByOwnershipTypeID(System.Int64? OwnershipTypeID)
+        public IList<ITM.Interfaces.Entities.NonDerivativeTransaction> GetByOwnershipTypeID(System.Int64? OwnershipTypeID)
         {
             var entities = dbContext.NonDerivativeTransactions.Where(e => e.OwnershipTypeID == OwnershipTypeID).ToList();
 

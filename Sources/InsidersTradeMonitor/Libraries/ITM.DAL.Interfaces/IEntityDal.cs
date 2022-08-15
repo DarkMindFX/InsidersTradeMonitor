@@ -19,11 +19,8 @@ namespace ITM.Interfaces
 
         IList<Entity> GetByEntityTypeID(System.Int64 EntityTypeID);
 
-        /// <summary>
-        /// Returns list of entities marked as monitored
-        /// </summary>
-        /// <returns></returns>
         IList<Entity> GetMonitoredList();
+
 
     }
 }

@@ -28,8 +28,8 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.TransactionTypes.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
-                dbContext.SaveChanges();
+							dbContext.Remove(entity);
+			                dbContext.SaveChanges();
                 return true;
             }
             else
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.TransactionType Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.TransactionType result = null;
-            var entity = dbContext.TransactionTypes.Where(e =>         e.ID = ID  ).FirstOrDefault();
+            var entity = dbContext.TransactionTypes.Where(e =>         e.ID == ID  ).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.TransactionTypeConvertor.FromEFEntity(entity);

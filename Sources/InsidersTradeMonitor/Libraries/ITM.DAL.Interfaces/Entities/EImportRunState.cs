@@ -1,6 +1,4 @@
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace ITM.Interfaces.Entities
 {
-    public class EntityType
+    public enum EImportRunState
     {
-        public System.Int64? ID { get; set; }
-
-        public System.String TypeName { get; set; }
-
-
+        InProgress  = 1,
+        Success     = 2,
+        Fail        = 3
     }
 }

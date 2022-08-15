@@ -28,8 +28,8 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.Form4Reports.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
-                dbContext.SaveChanges();
+							dbContext.Remove(entity);
+			                dbContext.SaveChanges();
                 return true;
             }
             else
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.Form4Report Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.Form4Report result = null;
-            var entity = dbContext.Form4Reports.Where(e =>         e.ID = ID  ).FirstOrDefault();
+            var entity = dbContext.Form4Reports.Where(e =>         e.ID == ID  ).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.Form4ReportConvertor.FromEFEntity(entity);
@@ -59,7 +59,7 @@ namespace ITM.DAL.EF.Dals
             return result;
         }
 
-                public IList<Form4Report> GetByIssuerID(System.Int64 IssuerID)
+                public IList<ITM.Interfaces.Entities.Form4Report> GetByIssuerID(System.Int64 IssuerID)
         {
             var entities = dbContext.Form4Reports.Where(e => e.IssuerID == IssuerID).ToList();
 
@@ -67,7 +67,7 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-                public IList<Form4Report> GetByReporterID(System.Int64 ReporterID)
+                public IList<ITM.Interfaces.Entities.Form4Report> GetByReporterID(System.Int64 ReporterID)
         {
             var entities = dbContext.Form4Reports.Where(e => e.ReporterID == ReporterID).ToList();
 

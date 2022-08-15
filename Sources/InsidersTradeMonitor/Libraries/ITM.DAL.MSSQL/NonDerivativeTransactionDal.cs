@@ -84,21 +84,21 @@ namespace ITM.DAL.MSSQL
 
             return entitiesOut;
         }
-        public IList<NonDerivativeTransaction> GetByTransactionCodeID(System.Int64 TransactionCodeID)
+        public IList<NonDerivativeTransaction> GetByTransactionCodeID(System.Int64? TransactionCodeID)
         {
-            var entitiesOut = base.GetBy<NonDerivativeTransaction, System.Int64>("p_NonDerivativeTransaction_GetByTransactionCodeID", TransactionCodeID, "@TransactionCodeID", SqlDbType.BigInt, 0, NonDerivativeTransactionFromRow);
+            var entitiesOut = base.GetBy<NonDerivativeTransaction, System.Int64?>("p_NonDerivativeTransaction_GetByTransactionCodeID", TransactionCodeID, "@TransactionCodeID", SqlDbType.BigInt, 0, NonDerivativeTransactionFromRow);
 
             return entitiesOut;
         }
-        public IList<NonDerivativeTransaction> GetByTransactionTypeID(System.Int64 TransactionTypeID)
+        public IList<NonDerivativeTransaction> GetByTransactionTypeID(System.Int64? TransactionTypeID)
         {
-            var entitiesOut = base.GetBy<NonDerivativeTransaction, System.Int64>("p_NonDerivativeTransaction_GetByTransactionTypeID", TransactionTypeID, "@TransactionTypeID", SqlDbType.BigInt, 0, NonDerivativeTransactionFromRow);
+            var entitiesOut = base.GetBy<NonDerivativeTransaction, System.Int64?>("p_NonDerivativeTransaction_GetByTransactionTypeID", TransactionTypeID, "@TransactionTypeID", SqlDbType.BigInt, 0, NonDerivativeTransactionFromRow);
 
             return entitiesOut;
         }
-        public IList<NonDerivativeTransaction> GetByOwnershipTypeID(System.Int64 OwnershipTypeID)
+        public IList<NonDerivativeTransaction> GetByOwnershipTypeID(System.Int64? OwnershipTypeID)
         {
-            var entitiesOut = base.GetBy<NonDerivativeTransaction, System.Int64>("p_NonDerivativeTransaction_GetByOwnershipTypeID", OwnershipTypeID, "@OwnershipTypeID", SqlDbType.BigInt, 0, NonDerivativeTransactionFromRow);
+            var entitiesOut = base.GetBy<NonDerivativeTransaction, System.Int64?>("p_NonDerivativeTransaction_GetByOwnershipTypeID", OwnershipTypeID, "@OwnershipTypeID", SqlDbType.BigInt, 0, NonDerivativeTransactionFromRow);
 
             return entitiesOut;
         }

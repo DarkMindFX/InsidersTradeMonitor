@@ -21,7 +21,7 @@ namespace ITM.Interfaces
         IList<DerivativeTransaction> GetByTransactionCodeID(System.Int64 TransactionCodeID);
         IList<DerivativeTransaction> GetByTransactionTypeID(System.Int64? TransactionTypeID);
         IList<DerivativeTransaction> GetByOwnershipTypeID(System.Int64 OwnershipTypeID);
-
-    }
+        
+            }
 }
 

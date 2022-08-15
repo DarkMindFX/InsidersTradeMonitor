@@ -28,8 +28,8 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.ImportRunForm4Reports.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
-                dbContext.SaveChanges();
+							dbContext.Remove(entity);
+			                dbContext.SaveChanges();
                 return true;
             }
             else
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.ImportRunForm4Report Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.ImportRunForm4Report result = null;
-            var entity = dbContext.ImportRunForm4Reports.Where(e =>         e.ID = ID  ).FirstOrDefault();
+            var entity = dbContext.ImportRunForm4Reports.Where(e =>         e.ID == ID  ).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.ImportRunForm4ReportConvertor.FromEFEntity(entity);
@@ -59,7 +59,7 @@ namespace ITM.DAL.EF.Dals
             return result;
         }
 
-                public IList<ImportRunForm4Report> GetByImportRunID(System.Int64 ImportRunID)
+                public IList<ITM.Interfaces.Entities.ImportRunForm4Report> GetByImportRunID(System.Int64 ImportRunID)
         {
             var entities = dbContext.ImportRunForm4Reports.Where(e => e.ImportRunID == ImportRunID).ToList();
 
@@ -67,7 +67,7 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-                public IList<ImportRunForm4Report> GetByForm4ReportID(System.Int64 Form4ReportID)
+                public IList<ITM.Interfaces.Entities.ImportRunForm4Report> GetByForm4ReportID(System.Int64 Form4ReportID)
         {
             var entities = dbContext.ImportRunForm4Reports.Where(e => e.Form4ReportID == Form4ReportID).ToList();
 

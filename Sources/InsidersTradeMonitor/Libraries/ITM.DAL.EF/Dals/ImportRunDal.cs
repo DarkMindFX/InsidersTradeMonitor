@@ -28,8 +28,8 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.ImportRuns.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
-                dbContext.SaveChanges();
+							dbContext.Remove(entity);
+			                dbContext.SaveChanges();
                 return true;
             }
             else
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.ImportRun Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.ImportRun result = null;
-            var entity = dbContext.ImportRuns.Where(e =>         e.ID = ID  ).FirstOrDefault();
+            var entity = dbContext.ImportRuns.Where(e =>         e.ID == ID  ).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.ImportRunConvertor.FromEFEntity(entity);
@@ -59,7 +59,7 @@ namespace ITM.DAL.EF.Dals
             return result;
         }
 
-                public IList<ImportRun> GetByStateID(System.Int64 StateID)
+                public IList<ITM.Interfaces.Entities.ImportRun> GetByStateID(System.Int64 StateID)
         {
             var entities = dbContext.ImportRuns.Where(e => e.StateID == StateID).ToList();
 

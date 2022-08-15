@@ -28,7 +28,7 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.Entities.Find(ID);
             if (entity != null)
             {
-                entity.IsDeleted = true;
+                dbContext.Remove(entity);
                 dbContext.SaveChanges();
                 return true;
             }
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.Entity Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.Entity result = null;
-            var entity = dbContext.Entities.Where(e =>         e.ID = ID  ).FirstOrDefault();
+            var entity = dbContext.Entities.Where(e => e.ID == ID).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.EntityConvertor.FromEFEntity(entity);
@@ -55,11 +55,11 @@ namespace ITM.DAL.EF.Dals
             var entities = dbContext.Entities.ToList();
 
             IList<ITM.Interfaces.Entities.Entity> result = ToList(entities);
-            
+
             return result;
         }
 
-                public IList<Entity> GetByEntityTypeID(System.Int64 EntityTypeID)
+        public IList<ITM.Interfaces.Entities.Entity> GetByEntityTypeID(System.Int64 EntityTypeID)
         {
             var entities = dbContext.Entities.Where(e => e.EntityTypeID == EntityTypeID).ToList();
 
@@ -67,7 +67,11 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-                
+
+        public IList<Interfaces.Entities.Entity> GetMonitoredList()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public void Init(IInitParams initParams)
         {
@@ -89,17 +93,17 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.Entity Update(ITM.Interfaces.Entities.Entity entity)
         {
             ITM.Interfaces.Entities.Entity result = null;
-            var efEntity = dbContext.Entities.Where(e =>         e.ID == entity.ID  ).FirstOrDefault();
+            var efEntity = dbContext.Entities.Where(e => e.ID == entity.ID).FirstOrDefault();
             if (efEntity != null)
             {
-        				efEntity.EntityTypeID = entity.EntityTypeID;
-						efEntity.CIK = entity.CIK;
-						efEntity.Name = entity.Name;
-						efEntity.TradingSymbol = entity.TradingSymbol;
-						efEntity.IsMonitored = entity.IsMonitored;
-		                dbContext.SaveChanges();
+                efEntity.EntityTypeID = entity.EntityTypeID;
+                efEntity.CIK = entity.CIK;
+                efEntity.Name = entity.Name;
+                efEntity.TradingSymbol = entity.TradingSymbol;
+                efEntity.IsMonitored = entity.IsMonitored;
+                dbContext.SaveChanges();
 
-                efEntity = dbContext.Entities.Where(e =>         e.ID == entity.ID  ).FirstOrDefault();
+                efEntity = dbContext.Entities.Where(e => e.ID == entity.ID).FirstOrDefault();
                 result = Convertors.EntityConvertor.FromEFEntity(efEntity);
             }
             return result;
@@ -118,7 +122,7 @@ namespace ITM.DAL.EF.Dals
             }
             return result;
         }
-        
+
         #endregion
     }
 }
