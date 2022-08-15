@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ITM.Interfaces\ITM.Interfaces.csproj" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)*.dll&quot; &quot;$(SolutionDir)Plugins\ITM.DAL.EF\&quot; /K /D /H /Y" />
+  </Target>
+
 </Project>

@@ -70,7 +70,11 @@ namespace ITM.DAL.EF.Dals
 
         public IList<Interfaces.Entities.Entity> GetMonitoredList()
         {
-            throw new System.NotImplementedException();
+            var entities = dbContext.Entities.Where(e => e.IsMonitored).ToList();
+
+            IList<ITM.Interfaces.Entities.Entity> result = ToList(entities);
+
+            return result;
         }
 
         public void Init(IInitParams initParams)

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(TargetDir)*.dll&quot; &quot;$(SolutionDir)Plugins\ITM.DAL.MSSQL&quot; /K /D /H /Y" />
+    <Exec Command="xcopy &quot;$(TargetDir)*.dll&quot; &quot;$(SolutionDir)Plugins\ITM.DAL.MSSQL\&quot; /K /D /H /Y" />
   </Target>
 
 </Project>

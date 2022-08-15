@@ -1,13 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-namespace ITM.Service.DataImporter
+namespace ITM.Service.GraphQL
 {
     public class Program
     {
@@ -20,7 +11,7 @@ namespace ITM.Service.DataImporter
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<ITM.Service.DataImporter.Startup>();
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }

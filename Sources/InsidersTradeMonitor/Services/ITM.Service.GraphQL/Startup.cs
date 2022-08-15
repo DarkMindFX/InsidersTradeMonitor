@@ -1,25 +1,10 @@
-
-
-
-using System;
+﻿using ITM.API.Helpers;
+using ITM.Interfaces;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-using System.IO;
 using System.Reflection;
-using System.Text;
-using ITM.Service.DataImporter.Helpers;
-using ITM.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using ITM.Service.DataImporter.Helpers;
-using ITM.Service.DataImporter.MiddleWare;
-using ITM.Service.DataImporter.Workers;
 
-namespace ITM.Service.DataImporter
+namespace ITM.Service.GraphQL
 {
     public class Startup
     {
@@ -35,9 +20,6 @@ namespace ITM.Service.DataImporter
         {
             var serviceConfig = Configuration.GetSection("ServiceConfig").Get<ServiceConfig>();
 
-            Console.WriteLine("Starting service with parameters:");
-            Console.WriteLine("StorageInitParams");
-            
             Console.WriteLine($"DALType: {serviceConfig.DALType}");
             foreach (var k in serviceConfig.DALInitParams.Keys)
             {
@@ -46,62 +28,23 @@ namespace ITM.Service.DataImporter
 
             PrepareComposition();
 
-            services.AddCors();
-            services.AddControllers();
-
-            services.AddSwaggerGen(c =>
-           {
-               c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "ITM.Service.DataImporter", Version = "v1" });
-           });
-
-            // configure strongly typed settings objects
-            var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
-
-            // configure jwt authentication
-            var appSettings = appSettingsSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero
-                };
-            });
-
-            AddInjections(services, serviceConfig);
+            services.AddControllers()
+                .AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
+            if (env.IsDevelopment())
             {
-                c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "PhotoPrint API v1");
-            });
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-
-            app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
@@ -112,20 +55,25 @@ namespace ITM.Service.DataImporter
         private void PrepareComposition()
         {
             AggregateCatalog catalog = new AggregateCatalog();
-            DirectoryCatalog directoryCatalog = new DirectoryCatalog(AssemblyDirectory);
-            catalog.Catalogs.Add(directoryCatalog);
+            var pluginsRoot = PluginsDirectory;
+            var dirs = Directory.GetDirectories(pluginsRoot);
+            foreach (var pluginDir in dirs)
+            {
+                DirectoryCatalog directoryCatalog = new DirectoryCatalog(pluginDir);
+                catalog.Catalogs.Add(directoryCatalog);
+            }
             Container = new CompositionContainer(catalog);
             Container.ComposeParts(this);
         }
 
-        private string AssemblyDirectory
+        private string PluginsDirectory
         {
             get
             {
-                string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+                string codeBase = Assembly.GetExecutingAssembly().Location;
                 UriBuilder uri = new UriBuilder(codeBase);
                 string path = Uri.UnescapeDataString(uri.Path);
-                return Path.GetDirectoryName(path);
+                return Path.Combine(Path.GetDirectoryName(path), "Plugins");
             }
         }
 
@@ -169,16 +117,26 @@ namespace ITM.Service.DataImporter
             services.AddSingleton<ITransactionTypeDal>(dalTransactionTypeDal);
             services.AddSingleton<ITM.Services.Dal.ITransactionTypeDal, ITM.Services.Dal.TransactionTypeDal>();
 
+            var dalUserDal = InitDal<IUserDal>(serviceCfg);
+            services.AddSingleton<IUserDal>(dalUserDal);
+            services.AddSingleton<ITM.Services.Dal.IUserDal, ITM.Services.Dal.UserDal>();
+
+            var dalImportRunDal = InitDal<IImportRunDal>(serviceCfg);
+            services.AddSingleton<IImportRunDal>(dalImportRunDal);
+            services.AddSingleton<ITM.Services.Dal.IImportRunDal, ITM.Services.Dal.ImportRunDal>();
+
+            var dalImportRunForm4ReportDal = InitDal<IImportRunForm4ReportDal>(serviceCfg);
+            services.AddSingleton<IImportRunForm4ReportDal>(dalImportRunForm4ReportDal);
+            services.AddSingleton<ITM.Services.Dal.IImportRunForm4ReportDal, ITM.Services.Dal.ImportRunForm4ReportDal>();
+
+            var dalImportRunStateDal = InitDal<IImportRunStateDal>(serviceCfg);
+            services.AddSingleton<IImportRunStateDal>(dalImportRunStateDal);
+            services.AddSingleton<ITM.Services.Dal.IImportRunStateDal, ITM.Services.Dal.ImportRunStateDal>();
+
+
             /** Connection Tester for health endpoint **/
             var dalConnTest = InitDal<IConnectionTestDal>(serviceCfg);
             services.AddSingleton<IConnectionTestDal>(dalConnTest);
-
-            /** Adding Form4 DAL wrapper **/
-            services.AddSingleton<IForm4DalWrapper, Form4DalWrapper>();
-
-            /** Adding repository to store running processes **/
-            services.AddSingleton<IForm4ImportersRespository, Form4ImportersRespository>();
-
         }
 
         private TDal InitDal<TDal>(ServiceConfig serviceCfg) where TDal : IInitializable
@@ -190,7 +148,7 @@ namespace ITM.Service.DataImporter
             dal.Init(dalInitParams);
 
             return dal;
-        }
 
+        }
     }
 }
