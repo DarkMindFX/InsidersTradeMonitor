@@ -1,5 +1,8 @@
-﻿using ITM.API.Helpers;
+﻿using GraphQL;
+using GraphQL.Server;
+using ITM.API.Helpers;
 using ITM.Interfaces;
+using ITM.Service.GraphQL.Controllers;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
@@ -28,8 +31,17 @@ namespace ITM.Service.GraphQL
 
             PrepareComposition();
 
+            services.AddScoped<AppSchema>();
+
+            services.AddGraphQL()
+                .AddSystemTextJson()
+                .AddGraphTypes(typeof(AppSchema), ServiceLifetime.Scoped);
+
+
             services.AddControllers()
                 .AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            AddInjections(services, serviceConfig);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
