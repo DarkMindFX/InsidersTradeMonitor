@@ -13,7 +13,8 @@ namespace ITM.DAL.EF.Models
     {
         public Entity()
         {
-            Form4Reports = new HashSet<Form4Report>();
+            IssuerForm4Reports = new HashSet<Form4Report>();
+            ReporterForm4Reports = new HashSet<Form4Report>();
         }
 
 
@@ -29,6 +30,8 @@ namespace ITM.DAL.EF.Models
 
         public virtual EntityType EntityType { get; set; }
 
-        public virtual ICollection<Form4Report> Form4Reports { get; set; }
+        public virtual ICollection<Form4Report> IssuerForm4Reports { get; set; }
+
+        public virtual ICollection<Form4Report> ReporterForm4Reports { get; set; }
     }
 }

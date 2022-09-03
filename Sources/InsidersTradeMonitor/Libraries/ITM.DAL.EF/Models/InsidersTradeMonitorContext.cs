@@ -141,6 +141,11 @@ namespace ITM.DAL.EF.Models
         entity.Property(e => e.IsMonitored).HasColumnName("IsMonitored")
                 .IsRequired()
 ;
+        entity.HasOne(e => e.EntityType)
+                .WithMany(p => p.Entities)
+                .HasForeignKey(e => e.EntityTypeID)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_Entity_EntityType");
     });
 
             modelBuilder.Entity<EntityType>(entity =>
@@ -197,6 +202,18 @@ namespace ITM.DAL.EF.Models
         entity.Property(e => e.DateSubmitted).HasColumnName("DateSubmitted")
                 .IsRequired()
 ;
+
+        entity.HasOne(e => e.Issuer)
+                .WithMany(d => d.IssuerForm4Reports)
+                .HasForeignKey( e => e.IssuerID )
+                .HasConstraintName("FK_Form4Report_Issuer")
+                .OnDelete(DeleteBehavior.Cascade);
+
+        entity.HasOne(e => e.Reporter)
+                .WithMany(d => d.ReporterForm4Reports)
+                .HasForeignKey(e => e.ReporterID)
+                .HasConstraintName("FK_Form4Report_Reporter")
+                .OnDelete(DeleteBehavior.Cascade);
     });
 
             modelBuilder.Entity<ImportRun>(entity =>

@@ -40,7 +40,7 @@ namespace ITM.DAL.EF.Models
 
 
         public virtual Entity Issuer { get; set; }
-        //public virtual Entity Reporter { get; set; }
+        public virtual Entity Reporter { get; set; }
 
         public virtual ICollection<DerivativeTransaction> DerivativeTransactions { get; set; }
         public virtual ICollection<ImportRunForm4Report> ImportRunForm4Reports { get; set; }
