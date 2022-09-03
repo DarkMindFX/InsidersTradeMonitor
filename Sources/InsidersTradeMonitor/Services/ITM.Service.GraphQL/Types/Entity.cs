@@ -7,7 +7,8 @@ namespace ITM.Service.GraphQL.Types
     {
         public Entity()
         {
-            Field(x => x.ID).Description("Record PK");
+            Name = "Entity";
+            Field(x => x.ID, nullable: true).Description("Record PK");
             Field(x => x.Name).Description("Full entity name: company or person's full name");
             Field(x => x.CIK).Description("Entity CIK defined by Sec.gov");
             Field(x => x.TradingSymbol).Description("For companies - ticker");

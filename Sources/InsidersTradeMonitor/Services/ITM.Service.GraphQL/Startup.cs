@@ -1,5 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
 using ITM.API.Helpers;
 using ITM.Interfaces;
 using ITM.Service.GraphQL.Controllers;
@@ -57,6 +58,9 @@ namespace ITM.Service.GraphQL
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseGraphQL<AppSchema>();
+            app.UseGraphQLPlayground(options: new GraphQLPlaygroundOptions());
 
             app.UseEndpoints(endpoints =>
             {

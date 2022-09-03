@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.Test.Service.API", "Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.DAL.EF", "Libraries\ITM.DAL.EF\ITM.DAL.EF.csproj", "{C19DD313-EC35-4EFF-9D0E-FAA5F0C69DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITM.Service.GraphQL", "Services\ITM.Service.GraphQL\ITM.Service.GraphQL.csproj", "{3DD9A086-6345-4599-BFF1-73347524FFAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.Service.GraphQL", "Services\ITM.Service.GraphQL\ITM.Service.GraphQL.csproj", "{3DD9A086-6345-4599-BFF1-73347524FFAE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EFBB9D59-7B5F-4627-98FA-C654DE5F04E7} = {EFBB9D59-7B5F-4627-98FA-C654DE5F04E7}
 	EndProjectSection
