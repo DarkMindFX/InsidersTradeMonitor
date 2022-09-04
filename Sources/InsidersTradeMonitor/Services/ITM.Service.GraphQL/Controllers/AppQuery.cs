@@ -5,11 +5,17 @@ namespace ITM.Service.GraphQL.Controllers
 {
     public class AppQuery : ObjectGraphType
     {
-        public AppQuery(IEntityDal entityDal)
+        public AppQuery(IEntityDal entityDal,
+                        IEntityTypeDal entityTypeDal)
         {
             Field<ListGraphType<ITM.Service.GraphQL.Types.Entity>>(
-                "entities",
+                name: "entities",
                 resolve: context => entityDal.GetAll()
+                );
+
+            Field<ListGraphType<ITM.Service.GraphQL.Types.EntityType>>(
+                name: "entitytypes",
+                resolve: context => entityTypeDal.GetAll()
                 );
         }
     }

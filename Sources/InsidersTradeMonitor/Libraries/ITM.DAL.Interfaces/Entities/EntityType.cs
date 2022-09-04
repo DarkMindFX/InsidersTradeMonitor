@@ -13,7 +13,5 @@ namespace ITM.Interfaces.Entities
         public System.Int64? ID { get; set; }
 
         public System.String TypeName { get; set; }
-
-
     }
 }
