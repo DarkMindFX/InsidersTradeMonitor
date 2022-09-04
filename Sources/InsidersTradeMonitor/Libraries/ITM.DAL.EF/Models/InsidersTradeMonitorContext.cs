@@ -116,6 +116,30 @@ namespace ITM.DAL.EF.Models
         entity.Property(e => e.NatureOfIndirectOwnership).HasColumnName("NatureOfIndirectOwnership")
                 .HasMaxLength(250)
 ;
+        entity.HasOne(e => e.Form4Report)
+                .WithMany(p => p.DerivativeTransactions)
+                .HasForeignKey(e => e.Form4ReportID)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_DerivativeTransaction_Form4Report");
+
+        entity.HasOne(e => e.TransactionCode)
+                .WithMany(p => p.DerivativeTransactions)
+                .HasForeignKey(e => e.TransactionCodeID)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_DerivativeTransaction_TransactionCode");
+
+        entity.HasOne(e => e.TransactionType)
+                .WithMany(p => p.DerivativeTransactions)
+                .HasForeignKey(e => e.TransactionTypeID)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_DerivativeTransaction_TransactionType");
+
+        entity.HasOne(e => e.OwnershipType)
+                .WithMany(p => p.DerivativeTransactions)
+                .HasForeignKey(e => e.OwnershipTypeID)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_DerivativeTransaction_OwnershipType");
+
     });
 
             modelBuilder.Entity<Entity>(entity =>
