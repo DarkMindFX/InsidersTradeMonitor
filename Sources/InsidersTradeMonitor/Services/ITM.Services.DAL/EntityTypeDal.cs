@@ -18,14 +18,14 @@ namespace ITM.Services.Dal
 
         public EntityType Get(System.Int64? ID)
         {
-            return _dalImpl.Get(            ID);
+            return _dalImpl.Get(ID);
         }
 
         public bool Delete(System.Int64? ID)
         {
-            return _dalImpl.Delete(            ID);
+            return _dalImpl.Delete(ID);
         }
 
 
-            }
+    }
 }

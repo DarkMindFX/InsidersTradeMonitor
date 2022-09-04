@@ -7,7 +7,8 @@ namespace ITM.Service.GraphQL.Controllers
     {
         public AppQuery(IEntityDal entityDal,
                         IEntityTypeDal entityTypeDal,
-                        IDerivativeTransactionDal derivativeTransactionDal)
+                        IDerivativeTransactionDal derivativeTransactionDal,
+                        IForm4ReportDal form4ReportDal)
         {
             Field<ListGraphType<ITM.Service.GraphQL.Types.Entity>>(
                 name: "entities",
@@ -22,6 +23,11 @@ namespace ITM.Service.GraphQL.Controllers
             Field<ListGraphType<ITM.Service.GraphQL.Types.DerivativeTransaction>>(
                 name: "derivativetransactions",
                 resolve: context => derivativeTransactionDal.GetAll()
+                );
+
+            Field<ListGraphType<ITM.Service.GraphQL.Types.Form4Report>>(
+                name: "form4reports",
+                resolve: context => form4ReportDal.GetAll()
                 );
         }
     }
