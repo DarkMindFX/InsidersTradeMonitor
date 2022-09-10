@@ -1,0 +1,10 @@
+{
+  entities {
+    id,
+    name,
+    cik,
+    tradingsymbol,
+    entitytypeid,
+    ismonitored
+  }
+}
