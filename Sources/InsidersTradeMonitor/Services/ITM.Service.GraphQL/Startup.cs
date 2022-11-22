@@ -4,6 +4,7 @@ using GraphQL.Server.Ui.Playground;
 using ITM.API.Helpers;
 using ITM.Interfaces;
 using ITM.Service.GraphQL.Controllers;
+using Microsoft.Extensions.Options;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
@@ -34,9 +35,11 @@ namespace ITM.Service.GraphQL
 
             services.AddScoped<AppSchema>();
 
-            services.AddGraphQL()
+            services.AddGraphQL(builder => builder
                 .AddSystemTextJson()
-                .AddGraphTypes(typeof(AppSchema), ServiceLifetime.Scoped);
+                .AddSchema<AppSchema>()
+                .AddGraphTypes(typeof(AppQuery).Assembly)
+            );
 
 
             services.AddControllers()
@@ -60,7 +63,7 @@ namespace ITM.Service.GraphQL
             app.UseAuthorization();
 
             app.UseGraphQL<AppSchema>();
-            app.UseGraphQLPlayground(options: new GraphQLPlaygroundOptions());
+            app.UseGraphQLPlayground();
 
             app.UseEndpoints(endpoints =>
             {

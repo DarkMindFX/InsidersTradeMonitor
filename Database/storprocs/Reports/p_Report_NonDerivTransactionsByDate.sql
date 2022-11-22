@@ -12,7 +12,7 @@ Returns list of all non-derivative transactions for given date for given company
 
 */
 CREATE PROCEDURE [dbo].[p_Report_NonDerivTransactionsByDate]
-		@IssuerID	 BIGINT,
+		@IssuerID	BIGINT,
 		@Date		DATETIME
 AS
 BEGIN

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITM.Test.Service.GraphQL
+namespace ITM.Test.Service.GraphQLTests
 {
     public abstract class E2ETestBase
     {

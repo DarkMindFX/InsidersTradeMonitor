@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using Xunit;
 using GraphQL.Client.Serializer.Newtonsoft;
+using GraphQL.Common.Response;
+using ITM.Service.GraphQL.Types;
 using GraphQL.Types;
 
-namespace ITM.Test.Service.GraphQL
+namespace ITM.Test.Service.GraphQLTests
 {
     public class EntitiesTest : E2ETestBase, IClassFixture<WebApplicationFactory<Startup>>
     {
@@ -25,20 +27,27 @@ namespace ITM.Test.Service.GraphQL
 
             var serializer = new NewtonsoftJsonSerializer();
 
+            var client = _factory.CreateClient();
+
             var graphQLOptions = new GraphQLHttpClientOptions
             {
-                EndPoint = new Uri("http://localhost/graphql", UriKind.Absolute),
+                EndPoint = new Uri("https://localhost:7014/graphql", UriKind.Absolute),
             };
 
-            var graphClient = new GraphQLHttpClient(graphQLOptions, serializer);
+            var graphClient = new GraphQLHttpClient(graphQLOptions, serializer, client);
 
             var query = new GraphQLHttpRequest
             {
                 Query = queryContent
             };
 
-            var response = await graphClient.SendQueryAsync<ListGraphType<ITM.Service.GraphQL.Types.Entity>>(query);
+            var response = await graphClient.SendQueryAsync<ListGraphType<Entity>>(query);
 
+            Assert.NotNull(response);
+            Assert.NotNull(response.Data);
+            
+                
+            
         }
     }
 }
