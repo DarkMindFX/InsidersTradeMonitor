@@ -91,6 +91,13 @@ namespace ITM.DAL.MSSQL
             return entitiesOut;
         }
 
+        public IList<Form4Report> GetByReportID(System.String ReportID)
+        {
+            var entitiesOut = base.GetBy<Form4Report, System.String>("p_Form4Report_GetByReportID", ReportID, "@ReportID", SqlDbType.NVarChar, 50, Form4ReportFromRow);
+
+            return entitiesOut;
+        }
+
         public IList<Form4Report> GetAll()
         {
             IList<Form4Report> result = base.GetAll<Form4Report>("p_Form4Report_GetAll", Form4ReportFromRow);

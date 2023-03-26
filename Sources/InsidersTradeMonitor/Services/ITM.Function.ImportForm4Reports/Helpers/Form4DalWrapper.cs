@@ -36,9 +36,16 @@ namespace ITM.Function.ImportForm4Reports.Helpers
             _transTypeDal = transTypeDal;
         }
 
+        /// <summary>
+        /// Inserts Form4 report and all its artifacts
+        /// </summary>
+        /// <param name="form4Statement"></param>
+        /// <returns></returns>
         public long InsertReport(IStatement form4Statement)
         {
             var form4Report = form4Statement as ITM.Parser.Form4.Form4Report;
+
+            DeleteReportIfExists(form4Report.ReportID);
 
             var form4 = new Form4Report();
 
@@ -80,6 +87,19 @@ namespace ITM.Function.ImportForm4Reports.Helpers
             }
 
             return (long)result.ID;
+        }
+
+        /// <summary>
+        /// Checking - if such report already exists - removing it
+        /// </summary>
+        /// <param name="reportID"></param>
+        protected void DeleteReportIfExists(string reportID)
+        {
+            var reports = _form4ReportDal.GetByReportID(reportID);
+            if(reports != null && reports.Count > 0)
+            {
+                reports.ToList().ForEach(r => { _form4ReportDal.Delete(r.ID); });
+            }
         }
 
         protected NonDerivativeTransaction Convert(ITM.Parser.Form4.NonDerivativeTransaction trans)

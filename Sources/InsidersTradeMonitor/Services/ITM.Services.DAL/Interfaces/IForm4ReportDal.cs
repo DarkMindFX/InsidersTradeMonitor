@@ -14,8 +14,10 @@ namespace ITM.Services.Dal
 
         bool Delete(System.Int64? ID);
 
-            IList<Form4Report> GetByIssuerID(System.Int64 IssuerID);
-            IList<Form4Report> GetByReporterID(System.Int64 ReporterID);
-    
-        }
+        IList<Form4Report> GetByIssuerID(System.Int64 IssuerID);
+        IList<Form4Report> GetByReporterID(System.Int64 ReporterID);
+
+        IList<Form4Report> GetByReportID(System.String ReportID);
+
+    }
 }

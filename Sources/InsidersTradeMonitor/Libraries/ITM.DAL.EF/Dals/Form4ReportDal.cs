@@ -28,8 +28,8 @@ namespace ITM.DAL.EF.Dals
             var entity = dbContext.Form4Reports.Find(ID);
             if (entity != null)
             {
-							dbContext.Remove(entity);
-			                dbContext.SaveChanges();
+                dbContext.Remove(entity);
+                dbContext.SaveChanges();
                 return true;
             }
             else
@@ -42,7 +42,7 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.Form4Report Get(System.Int64? ID)
         {
             ITM.Interfaces.Entities.Form4Report result = null;
-            var entity = dbContext.Form4Reports.Where(e =>         e.ID == ID  ).FirstOrDefault();
+            var entity = dbContext.Form4Reports.Where(e => e.ID == ID).FirstOrDefault();
             if (entity != null)
             {
                 result = Convertors.Form4ReportConvertor.FromEFEntity(entity);
@@ -55,11 +55,11 @@ namespace ITM.DAL.EF.Dals
             var entities = dbContext.Form4Reports.ToList();
 
             IList<ITM.Interfaces.Entities.Form4Report> result = ToList(entities);
-            
+
             return result;
         }
 
-                public IList<ITM.Interfaces.Entities.Form4Report> GetByIssuerID(System.Int64 IssuerID)
+        public IList<ITM.Interfaces.Entities.Form4Report> GetByIssuerID(System.Int64 IssuerID)
         {
             var entities = dbContext.Form4Reports.Where(e => e.IssuerID == IssuerID).ToList();
 
@@ -67,7 +67,7 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-                public IList<ITM.Interfaces.Entities.Form4Report> GetByReporterID(System.Int64 ReporterID)
+        public IList<ITM.Interfaces.Entities.Form4Report> GetByReporterID(System.Int64 ReporterID)
         {
             var entities = dbContext.Form4Reports.Where(e => e.ReporterID == ReporterID).ToList();
 
@@ -75,7 +75,16 @@ namespace ITM.DAL.EF.Dals
 
             return result;
         }
-                
+
+        public IList<ITM.Interfaces.Entities.Form4Report> GetByReportID(System.String ReportID)
+        {
+            var entities = dbContext.Form4Reports.Where(e => e.ReportID == ReportID).ToList();
+
+            IList<ITM.Interfaces.Entities.Form4Report> result = ToList(entities);
+
+            return result;
+        }
+
 
         public void Init(IInitParams initParams)
         {
@@ -97,23 +106,23 @@ namespace ITM.DAL.EF.Dals
         public ITM.Interfaces.Entities.Form4Report Update(ITM.Interfaces.Entities.Form4Report entity)
         {
             ITM.Interfaces.Entities.Form4Report result = null;
-            var efEntity = dbContext.Form4Reports.Where(e =>         e.ID == entity.ID  ).FirstOrDefault();
+            var efEntity = dbContext.Form4Reports.Where(e => e.ID == entity.ID).FirstOrDefault();
             if (efEntity != null)
             {
-        				efEntity.IssuerID = entity.IssuerID;
-						efEntity.ReporterID = entity.ReporterID;
-						efEntity.ReportID = entity.ReportID;
-						efEntity.IsOfficer = entity.IsOfficer;
-						efEntity.IsDirector = entity.IsDirector;
-						efEntity.Is10PctHolder = entity.Is10PctHolder;
-						efEntity.IsOther = entity.IsOther;
-						efEntity.OtherText = entity.OtherText;
-						efEntity.OfficerTitle = entity.OfficerTitle;
-						efEntity.Date = entity.Date;
-						efEntity.DateSubmitted = entity.DateSubmitted;
-		                dbContext.SaveChanges();
+                efEntity.IssuerID = entity.IssuerID;
+                efEntity.ReporterID = entity.ReporterID;
+                efEntity.ReportID = entity.ReportID;
+                efEntity.IsOfficer = entity.IsOfficer;
+                efEntity.IsDirector = entity.IsDirector;
+                efEntity.Is10PctHolder = entity.Is10PctHolder;
+                efEntity.IsOther = entity.IsOther;
+                efEntity.OtherText = entity.OtherText;
+                efEntity.OfficerTitle = entity.OfficerTitle;
+                efEntity.Date = entity.Date;
+                efEntity.DateSubmitted = entity.DateSubmitted;
+                dbContext.SaveChanges();
 
-                efEntity = dbContext.Form4Reports.Where(e =>         e.ID == entity.ID  ).FirstOrDefault();
+                efEntity = dbContext.Form4Reports.Where(e => e.ID == entity.ID).FirstOrDefault();
                 result = Convertors.Form4ReportConvertor.FromEFEntity(efEntity);
             }
             return result;
@@ -132,7 +141,7 @@ namespace ITM.DAL.EF.Dals
             }
             return result;
         }
-        
+
         #endregion
     }
 }

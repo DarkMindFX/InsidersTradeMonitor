@@ -35,5 +35,10 @@ namespace ITM.Services.Dal
         {
             return _dalImpl.GetByReporterID(ReporterID);
         }
+
+        public IList<Form4Report> GetByReportID(System.String ReportID)
+        {
+            return _dalImpl.GetByReportID(ReportID);
+        }
     }
 }
