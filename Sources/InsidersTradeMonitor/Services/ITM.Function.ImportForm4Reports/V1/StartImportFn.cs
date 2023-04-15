@@ -45,7 +45,7 @@ namespace ITM.Function.V1.ImportForm4Reports
 
                             importRun = LogRunSucceeded(importRun);
 
-                            msgRes = PrepareReportsImportedResp(ReportsIDs, importRun);
+                            msgRes = PrepareReportsImportedResp(ReportsIDs, importRun, request.CIK);
                             
                         }
                         else
@@ -106,13 +106,14 @@ namespace ITM.Function.V1.ImportForm4Reports
 
         }
 
-        protected MessageBase PrepareReportsImportedResp(IList<long> reportIDs, ITM.Interfaces.Entities.ImportRun importRun)
+        protected MessageBase PrepareReportsImportedResp(IList<long> reportIDs, ITM.Interfaces.Entities.ImportRun importRun, string cik)
         {
             MessageBase msgResponse = new MessageBase();
 
             DTO.ReportsImported dtoReportsImported = new ReportsImported();
             dtoReportsImported.ImportRunID = (long)importRun.ID;
             dtoReportsImported.ReportIDs = reportIDs;
+            dtoReportsImported.CIK = cik;
 
             msgResponse.Name = "Form4ImportResults";
             msgResponse.Payload = JsonSerializer.Serialize(dtoReportsImported);
