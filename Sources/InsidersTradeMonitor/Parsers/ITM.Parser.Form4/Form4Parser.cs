@@ -223,12 +223,12 @@ namespace ITM.Parser.Form4
         {
             string[] xpaths = { "//nonDerivativeTable//nonDerivativeTransaction", "//nonDerivativeTable//nonDerivativeHolding" };
 
+            statement.NonDerivativeTransactions = new List<NonDerivativeTransaction>();
             foreach (var xpath in xpaths)
             {
                 XmlNodeList nsNonDerivs = xmlDoc.SelectNodes(xpath);
                 if (nsNonDerivs != null && nsNonDerivs.Count > 0)
-                {
-                    statement.NonDerivativeTransactions = new List<NonDerivativeTransaction>();
+                {                    
                     foreach (XmlNode n in nsNonDerivs)
                     {
                         XmlNode? nSecurityTitle = n.SelectSingleNode("securityTitle//value");
