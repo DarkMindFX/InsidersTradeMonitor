@@ -9,6 +9,7 @@ using ITM.Interfaces;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
+using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace ITM.Function.V1.ImportForm4Reports
 {
@@ -23,8 +24,10 @@ namespace ITM.Function.V1.ImportForm4Reports
         }
 
         [FunctionName("StartImport")]
-        public void Run([QueueTrigger("itm-import-requests", Connection = "AzureWebJobsStorage")] string message)
+        [return: Queue("itm-reports-imported", Connection = "AzureWebJobsStorage")]
+        public MessageBase Run([QueueTrigger("itm-import-requests", Connection = "AzureWebJobsStorage")] string message)
         {
+            MessageBase msgRes = null;
             MessageBase msgObject = JsonSerializer.Deserialize<MessageBase>(message);
             if(msgObject != null)
             {
@@ -38,9 +41,12 @@ namespace ITM.Function.V1.ImportForm4Reports
                         RpcStartImport request = JsonSerializer.Deserialize<RpcStartImport>(msgObject.Payload);
                         if (request != null)
                         {
-                            ReportsIDs = Import(request, importRun, _form4DalWrapper, _importRunDalFacade);
+                            ReportsIDs = Import(request, importRun, _form4DalWrapper, _importRunDalFacade);                            
 
                             importRun = LogRunSucceeded(importRun);
+
+                            msgRes = PrepareReportsImportedResp(ReportsIDs, importRun);
+                            
                         }
                         else
                         {
@@ -58,6 +64,8 @@ namespace ITM.Function.V1.ImportForm4Reports
             {
                 throw new ArgumentException("Failed to parse incoming message - skipping");
             }
+
+            return msgRes;
         }
 
         public IList<long> ReportsIDs
@@ -89,6 +97,29 @@ namespace ITM.Function.V1.ImportForm4Reports
             return importer.Import();
         }
 
+        #region Support methods
+
+        protected void SendOutputQueueMessage(CloudQueue queue, MessageBase msg)
+        {
+            var cqm = new CloudQueueMessage(JsonSerializer.Serialize(msg));
+            queue.AddMessageAsync(cqm);
+
+        }
+
+        protected MessageBase PrepareReportsImportedResp(IList<long> reportIDs, ITM.Interfaces.Entities.ImportRun importRun)
+        {
+            MessageBase msgResponse = new MessageBase();
+
+            DTO.ReportsImported dtoReportsImported = new ReportsImported();
+            dtoReportsImported.ImportRunID = (long)importRun.ID;
+            dtoReportsImported.ReportIDs = reportIDs;
+
+            msgResponse.Name = "Form4ImportResults";
+            msgResponse.Payload = JsonSerializer.Serialize(dtoReportsImported);
+
+            return msgResponse;
+        }
+
         protected ITM.Interfaces.Entities.ImportRun LogRunStarted(string message)
         {
             var importRun = new ITM.Interfaces.Entities.ImportRun()
@@ -113,5 +144,7 @@ namespace ITM.Function.V1.ImportForm4Reports
             importRun = _importRunDalFacade.SetRunFailed((long)importRun.ID);
             return importRun;
         }
+
+        #endregion
     }
 }

@@ -37,7 +37,7 @@ namespace ITM.Test.Function.ImportForm4Reports
                     Payload = JsonSerializer.Serialize<RpcStartImport>(payload)
                 };
 
-                fn.Run(JsonSerializer.Serialize<MessageBase>(message));
+                var result = fn.Run(JsonSerializer.Serialize<MessageBase>(message));
 
                 ids = fn.ReportsIDs;
 
@@ -74,7 +74,7 @@ namespace ITM.Test.Function.ImportForm4Reports
                     Payload = JsonSerializer.Serialize<RpcStartImport>(payload)
                 };
 
-                fn.Run(JsonSerializer.Serialize<MessageBase>(message));
+                var result = fn.Run(JsonSerializer.Serialize<MessageBase>(message));
 
                 ids = fn.ReportsIDs;
 
@@ -111,7 +111,7 @@ namespace ITM.Test.Function.ImportForm4Reports
                     Payload = JsonSerializer.Serialize<RpcStartImport>(payload)
                 };
 
-                fn.Run(JsonSerializer.Serialize<MessageBase>(message));
+                var result = fn.Run(JsonSerializer.Serialize<MessageBase>(message));
 
                 ids = fn.ReportsIDs;
 
@@ -147,7 +147,7 @@ namespace ITM.Test.Function.ImportForm4Reports
                     Payload = JsonSerializer.Serialize<RpcStartImport>(payload)
                 };
 
-                fn.Run(JsonSerializer.Serialize<MessageBase>(message));
+                var result = fn.Run(JsonSerializer.Serialize<MessageBase>(message));
 
                 ids = fn.ReportsIDs;
 
