@@ -190,7 +190,7 @@ namespace ITM.Parser.Form4
                         t.DateExercisable = !string.IsNullOrEmpty(nExDate.InnerText) ? DateTime.Parse(nExDate.InnerText) : null;
                     
                     if (nExpDate != null) 
-                        t.ExpirationDate = !string.IsNullOrEmpty(nExpDate.InnerText) ? DateTime.Parse(nExDate.InnerText) : null;
+                        t.ExpirationDate = !string.IsNullOrEmpty(nExpDate.InnerText) ? DateTime.Parse(nExpDate.InnerText) : null;
                     
                     if (nTransactionAmountShares != null) 
                         t.SharesAmount = long.Parse(nTransactionAmountShares.InnerText);
