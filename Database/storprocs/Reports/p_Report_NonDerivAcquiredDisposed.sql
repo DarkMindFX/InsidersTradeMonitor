@@ -21,11 +21,13 @@ BEGIN
 	SELECT
 		ndt.Date,
 		SUM(IIF( ndt.TransactionTypeID = 1, ndt.SharesAmount, 0 )) As Acquired,
-		SUM(IIF( ndt.TransactionTypeID = 2, ndt.SharesAmount, 0 )) As Disposed
+		SUM(IIF( ndt.TransactionTypeID = 2, ndt.SharesAmount, 0 )) As Disposed,
+		SUM(IIF( ndt.TransactionTypeID = 1, ndt.SharesAmount, 0 )) - SUM(IIF( ndt.TransactionTypeID = 2, ndt.SharesAmount, 0 )) As Net,
+		COUNT(DISTINCT ndt.Form4ReportID) As ReportsCount
 	FROM dbo.v_NonDerivativeTransaction ndt
 	WHERE 
 		ndt.Date BETWEEN @StartDate AND @EndDate AND
 		ndt.IssuerID = @IssuerID
-	GROUP BY ndt.Date
+	GROUP BY ndt.Date--, ndt.Form4ReportID
 
 END

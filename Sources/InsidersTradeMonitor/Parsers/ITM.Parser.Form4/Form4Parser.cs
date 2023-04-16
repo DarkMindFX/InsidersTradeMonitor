@@ -123,8 +123,8 @@ namespace ITM.Parser.Form4
             statement.IsOfficer = "1".Equals(values["isOfficer"]);
             statement.IsTenPercentHolder = "1".Equals(values["isTenPercentOwner"]);
             statement.IsOther = "1".Equals(values["isOther"]);
-            statement.OfficerTitle = values["officerTitle"];
-            statement.OwnerOtherText = values["otherText"];
+            statement.OfficerTitle = values.ContainsKey("officerTitle") ? values["officerTitle"] : null;
+            statement.OwnerOtherText = values.ContainsKey("otherText") ? values["otherText"] : null;
         }
 
         private void ExtractDerivaties(XmlDocument xmlDoc, Form4Report statement)
