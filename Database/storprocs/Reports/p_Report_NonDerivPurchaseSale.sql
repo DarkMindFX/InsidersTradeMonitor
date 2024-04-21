@@ -21,7 +21,9 @@ BEGIN
 	SELECT
 		ndt.Date,
 		SUM(IIF( ndt.TransactionCodeID = 1, ndt.SharesAmount, 0 )) As Purchased,
-		SUM(IIF( ndt.TransactionCodeID = 2, ndt.SharesAmount, 0 )) As Sold
+		SUM(IIF( ndt.TransactionCodeID = 2, ndt.SharesAmount, 0 )) As Sold,
+		SUM(IIF( ndt.TransactionCodeID = 1, ndt.SharesAmount, 0 )) - SUM(IIF( ndt.TransactionCodeID = 2, ndt.SharesAmount, 0 )) As Net,
+		COUNT(DISTINCT ndt.Form4ReportID) As ReportsCount
 	FROM dbo.v_NonDerivativeTransaction ndt
 	WHERE 
 		ndt.Date BETWEEN @StartDate AND @EndDate AND

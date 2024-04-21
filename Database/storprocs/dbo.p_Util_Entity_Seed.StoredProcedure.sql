@@ -15,7 +15,7 @@ GO
 Usage:
 1. From local file
 (Optionally) EXEC p_TestData_CleanUp
-EXEC dbo.p_Util_Entity_Seed 'd:\Projects\InsidersTradeMonitor\Testing\SeedData\'
+EXEC dbo.p_Util_Entity_Seed 'd:\Projects\InsidersTradeMonitor\Database\SeedData\'
 
 2. From Azure Blob
 
