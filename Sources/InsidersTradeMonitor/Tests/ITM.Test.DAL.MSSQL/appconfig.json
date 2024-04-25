@@ -1,6 +1,6 @@
 {
   "DALInitParams": {
-    "ConnectionString": "Data Source=127.0.0.1,1433; Initial Catalog=InsidersTradeMonitor; User ID=itm_test_account; Password=ITMTestAccountService2022!;"
+    "ConnectionString": "Data Source=127.0.0.1,1433; Initial Catalog=InsidersTradeMonitor_Tests; User ID=itm_test_account; Password=ITMTestAccountService2022!;"
   },
 
   "DALInitParams_InvalidHost": {
