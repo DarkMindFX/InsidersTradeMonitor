@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
@@ -68,7 +68,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.Test.Service.GraphQL", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{5339EFD1-9261-4B6C-A3CA-15403298921C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITM.Misc.EntitySECSeedDataGenerator", "Misc\ITM.Misc.EntitySECSeedDataGenerator\ITM.Misc.EntitySECSeedDataGenerator.csproj", "{3A1417EE-F906-4219-995D-2962BD1802A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITM.Misc.EntitySECSeedDataGenerator", "Misc\ITM.Misc.EntitySECSeedDataGenerator\ITM.Misc.EntitySECSeedDataGenerator.csproj", "{3A1417EE-F906-4219-995D-2962BD1802A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

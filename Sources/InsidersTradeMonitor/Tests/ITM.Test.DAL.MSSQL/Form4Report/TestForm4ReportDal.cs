@@ -54,17 +54,17 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100001, entity.IssuerID);
-            Assert.AreEqual(100008, entity.ReporterID);
-            Assert.AreEqual("ReportID 3f9cfc7cebd5406bb0dd8f1205276f64", entity.ReportID);
-            Assert.AreEqual(false, entity.IsOfficer);
-            Assert.AreEqual(false, entity.IsDirector);
-            Assert.AreEqual(false, entity.Is10PctHolder);
-            Assert.AreEqual(false, entity.IsOther);
-            Assert.AreEqual("OtherText 3f9cfc7cebd5406bb0dd8f1205276f64", entity.OtherText);
-            Assert.AreEqual("OfficerTitle 3f9cfc7cebd5406bb0dd8f1205276f64", entity.OfficerTitle);
-            Assert.AreEqual(DateTime.Parse("10/6/2023"), entity.Date);
-            Assert.AreEqual(DateTime.Parse("10/6/2023"), entity.DateSubmitted);
+            Assert.That(entity.IssuerID, Is.EqualTo(100001));
+            Assert.That(entity.ReporterID, Is.EqualTo(100008));
+            Assert.That(entity.ReportID, Is.EqualTo("ReportID 3f9cfc7cebd5406bb0dd8f1205276f64"));
+            Assert.That(entity.IsOfficer, Is.EqualTo(false));
+            Assert.That(entity.IsDirector, Is.EqualTo(false));
+            Assert.That(entity.Is10PctHolder, Is.EqualTo(false));
+            Assert.That(entity.IsOther, Is.EqualTo(false));
+            Assert.That(entity.OtherText, Is.EqualTo("OtherText 3f9cfc7cebd5406bb0dd8f1205276f64"));
+            Assert.That(entity.OfficerTitle, Is.EqualTo("OfficerTitle 3f9cfc7cebd5406bb0dd8f1205276f64"));
+            Assert.That(entity.Date, Is.EqualTo(DateTime.Parse("10/6/2023")));
+            Assert.That(entity.DateSubmitted, Is.EqualTo(DateTime.Parse("10/6/2023")));
         }
 
         [Test]
@@ -132,17 +132,17 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100005, entity.IssuerID);
-            Assert.AreEqual(100006, entity.ReporterID);
-            Assert.AreEqual("ReportID 9b939500b75b48f3be633fc3b3b1663e", entity.ReportID);
-            Assert.AreEqual(false, entity.IsOfficer);
-            Assert.AreEqual(false, entity.IsDirector);
-            Assert.AreEqual(false, entity.Is10PctHolder);
-            Assert.AreEqual(false, entity.IsOther);
-            Assert.AreEqual("OtherText 9b939500b75b48f3be633fc3b3b1663e", entity.OtherText);
-            Assert.AreEqual("OfficerTitle 9b939500b75b48f3be633fc3b3b1663e", entity.OfficerTitle);
-            Assert.AreEqual(DateTime.Parse("2/23/2021"), entity.Date);
-            Assert.AreEqual(DateTime.Parse("2/23/2021"), entity.DateSubmitted);
+            Assert.That(entity.IssuerID, Is.EqualTo(100005));
+            Assert.That(entity.ReporterID, Is.EqualTo(100006));
+            Assert.That(entity.ReportID, Is.EqualTo("ReportID 9b939500b75b48f3be633fc3b3b1663e"));
+            Assert.That(entity.IsOfficer, Is.EqualTo(false));
+            Assert.That(entity.IsDirector, Is.EqualTo(false));
+            Assert.That(entity.Is10PctHolder, Is.EqualTo(false));
+            Assert.That(entity.IsOther, Is.EqualTo(false));
+            Assert.That(entity.OtherText, Is.EqualTo("OtherText 9b939500b75b48f3be633fc3b3b1663e"));
+            Assert.That(entity.OfficerTitle, Is.EqualTo("OfficerTitle 9b939500b75b48f3be633fc3b3b1663e"));
+            Assert.That(entity.Date, Is.EqualTo(DateTime.Parse("2/23/2021")));
+            Assert.That(entity.DateSubmitted, Is.EqualTo(DateTime.Parse("2/23/2021")));
 
         }
 
@@ -175,17 +175,17 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100005, entity.IssuerID);
-            Assert.AreEqual(100006, entity.ReporterID);
-            Assert.AreEqual("ReportID c843fad9b39b4eabba16844bc734cb6d", entity.ReportID);
-            Assert.AreEqual(false, entity.IsOfficer);
-            Assert.AreEqual(false, entity.IsDirector);
-            Assert.AreEqual(false, entity.Is10PctHolder);
-            Assert.AreEqual(false, entity.IsOther);
-            Assert.AreEqual("OtherText c843fad9b39b4eabba16844bc734cb6d", entity.OtherText);
-            Assert.AreEqual("OfficerTitle c843fad9b39b4eabba16844bc734cb6d", entity.OfficerTitle);
-            Assert.AreEqual(DateTime.Parse("1/5/2024"), entity.Date);
-            Assert.AreEqual(DateTime.Parse("1/5/2024"), entity.DateSubmitted);
+            Assert.That(entity.IssuerID, Is.EqualTo(100005));
+            Assert.That(entity.ReporterID, Is.EqualTo(100006));
+            Assert.That(entity.ReportID, Is.EqualTo("ReportID c843fad9b39b4eabba16844bc734cb6d"));
+            Assert.That(entity.IsOfficer, Is.EqualTo(false));
+            Assert.That(entity.IsDirector, Is.EqualTo(false));
+            Assert.That(entity.Is10PctHolder, Is.EqualTo(false));
+            Assert.That(entity.IsOther, Is.EqualTo(false));
+            Assert.That(entity.OtherText, Is.EqualTo("OtherText c843fad9b39b4eabba16844bc734cb6d"));
+            Assert.That(entity.OfficerTitle, Is.EqualTo("OfficerTitle c843fad9b39b4eabba16844bc734cb6d"));
+            Assert.That(entity.Date, Is.EqualTo(DateTime.Parse("1/5/2024")));
+            Assert.That(entity.DateSubmitted, Is.EqualTo(DateTime.Parse("1/5/2024")));
 
         }
 

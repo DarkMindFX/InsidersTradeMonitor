@@ -54,10 +54,10 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(DateTime.Parse("10/9/2019 6:02:20 PM"), entity.TimeStart);
-            Assert.AreEqual(DateTime.Parse("10/9/2019 6:02:20 PM"), entity.TimeEnd);
-            Assert.AreEqual("RequestJson 24be0457da26426abb2365356302670b", entity.RequestJson);
-            Assert.AreEqual(1, entity.StateID);
+            Assert.That(entity.TimeStart, Is.EqualTo(DateTime.Parse("10/9/2019 6:02:20 PM")));
+            Assert.That(entity.TimeEnd, Is.EqualTo(DateTime.Parse("10/9/2019 6:02:20 PM")));
+            Assert.That(entity.RequestJson, Is.EqualTo("RequestJson 24be0457da26426abb2365356302670b"));
+            Assert.That(entity.StateID, Is.EqualTo(1));
         }
 
         [Test]
@@ -118,10 +118,10 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(DateTime.Parse("10/9/2019 6:02:20 PM"), entity.TimeStart);
-            Assert.AreEqual(DateTime.Parse("10/9/2019 6:02:20 PM"), entity.TimeEnd);
-            Assert.AreEqual("RequestJson a387175cb12b4b619f24b3ab62e5c6b7", entity.RequestJson);
-            Assert.AreEqual(1, entity.StateID);
+            Assert.That(entity.TimeStart, Is.EqualTo(DateTime.Parse("10/9/2019 6:02:20 PM")));
+            Assert.That(entity.TimeEnd, Is.EqualTo(DateTime.Parse("10/9/2019 6:02:20 PM")));
+            Assert.That(entity.RequestJson, Is.EqualTo("RequestJson a387175cb12b4b619f24b3ab62e5c6b7"));
+            Assert.That(entity.StateID, Is.EqualTo(1));
 
         }
 
@@ -147,10 +147,10 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(DateTime.Parse("1/7/2020 4:15:20 AM"), entity.TimeStart);
-            Assert.AreEqual(DateTime.Parse("1/7/2020 4:15:20 AM"), entity.TimeEnd);
-            Assert.AreEqual("RequestJson 7624bb2396c14384b5413b858b376ce6", entity.RequestJson);
-            Assert.AreEqual(3, entity.StateID);
+            Assert.That(entity.TimeStart, Is.EqualTo(DateTime.Parse("1/7/2020 4:15:20 AM")));
+            Assert.That(entity.TimeEnd, Is.EqualTo(DateTime.Parse("1/7/2020 4:15:20 AM")));
+            Assert.That(entity.RequestJson, Is.EqualTo("RequestJson 7624bb2396c14384b5413b858b376ce6"));
+            Assert.That(entity.StateID, Is.EqualTo(3));
 
         }
 

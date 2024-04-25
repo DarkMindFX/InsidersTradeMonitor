@@ -1,22 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>ITM.Utils</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <Folder Include="Convertors\" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Libraries\ITM.DAL.Interfaces\ITM.DAL.Interfaces.csproj" />
     <ProjectReference Include="..\Libraries\ITM.DTO\ITM.DTO.csproj" />
   </ItemGroup>
-
 </Project>

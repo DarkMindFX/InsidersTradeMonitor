@@ -46,22 +46,22 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareOwnershipTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             OwnershipType entity = dal.Get(paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("C", entity.Code);
-                            Assert.AreEqual("Description 0635c222641c4d3f884406c2c7709082", entity.Description);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Code, Is.EqualTo("C"));
+            Assert.That(entity.Description, Is.EqualTo("Description 0635c222641c4d3f884406c2c7709082"));
+        }
 
         [Test]
         public void OwnershipType_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareOwnershipTypeDal("DALInitParams");
 
             OwnershipType entity = dal.Get(paramID);
@@ -76,7 +76,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareOwnershipTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             bool removed = dal.Delete(paramID);
 
             TeardownCase(conn, caseName);
@@ -88,8 +88,8 @@ namespace Test.PPT.DAL.MSSQL
         public void OwnershipType_Delete_InvalidId()
         {
             var dal = PrepareOwnershipTypeDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -104,19 +104,19 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareOwnershipTypeDal("DALInitParams");
 
             var entity = new OwnershipType();
-                          entity.Code = "C";
-                            entity.Description = "Description 551331c4138e443da5ae6323f444af8f";
-                          
+            entity.Code = "C";
+            entity.Description = "Description 551331c4138e443da5ae6323f444af8f";
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("C", entity.Code);
-                            Assert.AreEqual("Description 551331c4138e443da5ae6323f444af8f", entity.Description);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Code, Is.EqualTo("C"));
+            Assert.That(entity.Description, Is.EqualTo("Description 551331c4138e443da5ae6323f444af8f"));
+
         }
 
         [TestCase("OwnershipType\\030.Update.Success")]
@@ -126,22 +126,22 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareOwnershipTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             OwnershipType entity = dal.Get(paramID);
 
-                          entity.Code = "C";
-                            entity.Description = "Description fab82e3caa4f4bf9aaf114a58bf57025";
-              
+            entity.Code = "C";
+            entity.Description = "Description fab82e3caa4f4bf9aaf114a58bf57025";
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("C", entity.Code);
-                            Assert.AreEqual("Description fab82e3caa4f4bf9aaf114a58bf57025", entity.Description);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Code, Is.EqualTo("C"));
+            Assert.That(entity.Description, Is.EqualTo("Description fab82e3caa4f4bf9aaf114a58bf57025"));
+
         }
 
         [Test]
@@ -150,9 +150,9 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareOwnershipTypeDal("DALInitParams");
 
             var entity = new OwnershipType();
-                          entity.Code = "C";
-                            entity.Description = "Description fab82e3caa4f4bf9aaf114a58bf57025";
-              
+            entity.Code = "C";
+            entity.Description = "Description fab82e3caa4f4bf9aaf114a58bf57025";
+
             try
             {
                 entity = dal.Update(entity);

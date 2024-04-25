@@ -46,24 +46,24 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunForm4ReportDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             ImportRunForm4Report entity = dal.Get(paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual(100004, entity.ImportRunID);
-                            Assert.AreEqual(100023, entity.Form4ReportID);
-                            Assert.AreEqual(DateTime.Parse("7/4/2020 10:03:20 AM"), entity.TimeStarted);
-                            Assert.AreEqual(DateTime.Parse("7/4/2020 10:03:20 AM"), entity.TimeCompleted);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.ImportRunID, Is.EqualTo(100004));
+            Assert.That(entity.Form4ReportID, Is.EqualTo(100023));
+            Assert.That(entity.TimeStarted, Is.EqualTo(DateTime.Parse("7/4/2020 10:03:20 AM")));
+            Assert.That(entity.TimeCompleted, Is.EqualTo(DateTime.Parse("7/4/2020 10:03:20 AM")));
+        }
 
         [Test]
         public void ImportRunForm4Report_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareImportRunForm4ReportDal("DALInitParams");
 
             ImportRunForm4Report entity = dal.Get(paramID);
@@ -78,7 +78,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunForm4ReportDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             bool removed = dal.Delete(paramID);
 
             TeardownCase(conn, caseName);
@@ -90,8 +90,8 @@ namespace Test.PPT.DAL.MSSQL
         public void ImportRunForm4Report_Delete_InvalidId()
         {
             var dal = PrepareImportRunForm4ReportDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -106,23 +106,23 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunForm4ReportDal("DALInitParams");
 
             var entity = new ImportRunForm4Report();
-                          entity.ImportRunID = 100005;
-                            entity.Form4ReportID = 100014;
-                            entity.TimeStarted = DateTime.Parse("5/15/2023 7:50:20 PM");
-                            entity.TimeCompleted = DateTime.Parse("5/15/2023 7:50:20 PM");
-                          
+            entity.ImportRunID = 100005;
+            entity.Form4ReportID = 100014;
+            entity.TimeStarted = DateTime.Parse("5/15/2023 7:50:20 PM");
+            entity.TimeCompleted = DateTime.Parse("5/15/2023 7:50:20 PM");
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual(100005, entity.ImportRunID);
-                            Assert.AreEqual(100014, entity.Form4ReportID);
-                            Assert.AreEqual(DateTime.Parse("5/15/2023 7:50:20 PM"), entity.TimeStarted);
-                            Assert.AreEqual(DateTime.Parse("5/15/2023 7:50:20 PM"), entity.TimeCompleted);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.ImportRunID, Is.EqualTo(100005));
+            Assert.That(entity.Form4ReportID, Is.EqualTo(100014));
+            Assert.That(entity.TimeStarted, Is.EqualTo(DateTime.Parse("5/15/2023 7:50:20 PM")));
+            Assert.That(entity.TimeCompleted, Is.EqualTo(DateTime.Parse("5/15/2023 7:50:20 PM")));
+
         }
 
         [TestCase("ImportRunForm4Report\\030.Update.Success")]
@@ -132,26 +132,26 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunForm4ReportDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             ImportRunForm4Report entity = dal.Get(paramID);
 
-                          entity.ImportRunID = 100009;
-                            entity.Form4ReportID = 100030;
-                            entity.TimeStarted = DateTime.Parse("5/15/2023 7:50:20 PM");
-                            entity.TimeCompleted = DateTime.Parse("5/15/2023 7:50:20 PM");
-              
+            entity.ImportRunID = 100009;
+            entity.Form4ReportID = 100030;
+            entity.TimeStarted = DateTime.Parse("5/15/2023 7:50:20 PM");
+            entity.TimeCompleted = DateTime.Parse("5/15/2023 7:50:20 PM");
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual(100009, entity.ImportRunID);
-                            Assert.AreEqual(100030, entity.Form4ReportID);
-                            Assert.AreEqual(DateTime.Parse("5/15/2023 7:50:20 PM"), entity.TimeStarted);
-                            Assert.AreEqual(DateTime.Parse("5/15/2023 7:50:20 PM"), entity.TimeCompleted);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.ImportRunID, Is.EqualTo(100009));
+            Assert.That(entity.Form4ReportID, Is.EqualTo(100030));
+            Assert.That(entity.TimeStarted, Is.EqualTo(DateTime.Parse("5/15/2023 7:50:20 PM")));
+            Assert.That(entity.TimeCompleted, Is.EqualTo(DateTime.Parse("5/15/2023 7:50:20 PM")));
+
         }
 
         [Test]
@@ -160,11 +160,11 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunForm4ReportDal("DALInitParams");
 
             var entity = new ImportRunForm4Report();
-                          entity.ImportRunID = 100009;
-                            entity.Form4ReportID = 100030;
-                            entity.TimeStarted = DateTime.Parse("5/15/2023 7:50:20 PM");
-                            entity.TimeCompleted = DateTime.Parse("5/15/2023 7:50:20 PM");
-              
+            entity.ImportRunID = 100009;
+            entity.Form4ReportID = 100030;
+            entity.TimeStarted = DateTime.Parse("5/15/2023 7:50:20 PM");
+            entity.TimeCompleted = DateTime.Parse("5/15/2023 7:50:20 PM");
+
             try
             {
                 entity = dal.Update(entity);

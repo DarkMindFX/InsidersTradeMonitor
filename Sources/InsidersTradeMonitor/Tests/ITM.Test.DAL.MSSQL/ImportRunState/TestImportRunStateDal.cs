@@ -46,21 +46,21 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunStateDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             ImportRunState entity = dal.Get(paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("Name fef168bb5d3f4b8486b2e7b3330fbdc9", entity.Name);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Name, Is.EqualTo("Name fef168bb5d3f4b8486b2e7b3330fbdc9"));
+        }
 
         [Test]
         public void ImportRunState_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareImportRunStateDal("DALInitParams");
 
             ImportRunState entity = dal.Get(paramID);
@@ -75,7 +75,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunStateDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             bool removed = dal.Delete(paramID);
 
             TeardownCase(conn, caseName);
@@ -87,8 +87,8 @@ namespace Test.PPT.DAL.MSSQL
         public void ImportRunState_Delete_InvalidId()
         {
             var dal = PrepareImportRunStateDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -103,17 +103,17 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunStateDal("DALInitParams");
 
             var entity = new ImportRunState();
-                          entity.Name = "Name c28ca28c93c141f5ac7c1442e11a70a1";
-                          
+            entity.Name = "Name c28ca28c93c141f5ac7c1442e11a70a1";
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("Name c28ca28c93c141f5ac7c1442e11a70a1", entity.Name);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Name, Is.EqualTo("Name c28ca28c93c141f5ac7c1442e11a70a1"));
+
         }
 
         [TestCase("ImportRunState\\030.Update.Success")]
@@ -123,20 +123,20 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunStateDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             ImportRunState entity = dal.Get(paramID);
 
-                          entity.Name = "Name 0d547fa30c4946d8ad1d76bff0aeebf5";
-              
+            entity.Name = "Name 0d547fa30c4946d8ad1d76bff0aeebf5";
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("Name 0d547fa30c4946d8ad1d76bff0aeebf5", entity.Name);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Name, Is.EqualTo("Name 0d547fa30c4946d8ad1d76bff0aeebf5"));
+
         }
 
         [Test]
@@ -145,8 +145,8 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareImportRunStateDal("DALInitParams");
 
             var entity = new ImportRunState();
-                          entity.Name = "Name 0d547fa30c4946d8ad1d76bff0aeebf5";
-              
+            entity.Name = "Name 0d547fa30c4946d8ad1d76bff0aeebf5";
+
             try
             {
                 entity = dal.Update(entity);

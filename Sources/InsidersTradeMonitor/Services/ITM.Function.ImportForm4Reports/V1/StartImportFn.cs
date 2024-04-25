@@ -4,11 +4,8 @@ using System.Text.Json;
 using ITM.DTO;
 using ITM.Function.ImportForm4Reports.Helpers;
 using ITM.Function.ImportForm4Reports.Workers;
-using ITM.Functions.Common;
 using ITM.Interfaces;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Extensions.Logging;
 using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace ITM.Function.V1.ImportForm4Reports

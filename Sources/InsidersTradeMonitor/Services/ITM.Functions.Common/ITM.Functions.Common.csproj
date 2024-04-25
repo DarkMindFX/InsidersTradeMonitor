@@ -1,10 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>ITM.Functions.Common</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
@@ -13,12 +11,10 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\ITM.DTO\ITM.DTO.csproj" />
     <ProjectReference Include="..\..\Libraries\ITM.Interfaces\ITM.Interfaces.csproj" />
     <ProjectReference Include="..\ITM.Services.Common\ITM.Services.Common.csproj" />
     <ProjectReference Include="..\ITM.Services.DAL\ITM.Services.DAL.csproj" />
   </ItemGroup>
-
 </Project>
