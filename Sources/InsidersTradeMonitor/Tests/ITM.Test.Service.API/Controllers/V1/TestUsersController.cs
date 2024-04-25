@@ -10,12 +10,25 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net;
 using Xunit;
+using Microsoft.AspNetCore.TestHost;
+using ITM.API.Helpers;
+using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Test.E2E.API.Controllers.V1
 {
     public class TestUsersController : E2ETestBase, IClassFixture<WebApplicationFactory<ITM.API.Startup>>
     {
-        public TestUsersController(WebApplicationFactory<ITM.API.Startup> factory) : base(factory)
+        public TestUsersController(WebApplicationFactory<ITM.API.Startup> factory) : base(factory,
+            new TestServer(new WebHostBuilder()
+                .ConfigureAppConfiguration((context, builder) =>
+                {
+                    builder.AddJsonFile("appsettings.ServiceAPI.json");
+                })
+                .UseStartup<ITM.API.Startup>())
+            )
         {
             _testParams = GetTestParams("GenericControllerTestSettings");
         }
@@ -23,7 +36,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void User_GetAll_Success()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 

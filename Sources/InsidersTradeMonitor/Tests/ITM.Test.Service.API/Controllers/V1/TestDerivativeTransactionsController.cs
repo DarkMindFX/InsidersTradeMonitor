@@ -291,10 +291,7 @@ namespace Test.E2E.API.Controllers.V1
             {
                 var dal = CreateDal();
 
-
-
-                return dal.Delete(entity.ID
-                );
+                return dal.Delete(entity.ID);
             }
             else
             {

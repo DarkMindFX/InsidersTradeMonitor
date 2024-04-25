@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -34,17 +35,19 @@ namespace Test.E2E.API
             }
         }
 
-        protected readonly WebApplicationFactory<ITM.API.Startup> _factory;
+        protected WebApplicationFactory<ITM.API.Startup> _factory;
         protected TestParams _testParams;
+        protected TestServer _testServer;
 
-        public E2ETestBase(WebApplicationFactory<ITM.API.Startup> factory)
+        public E2ETestBase(WebApplicationFactory<ITM.API.Startup> factory, TestServer testServer = null)
         {
             this._factory = factory;
+            this._testServer = testServer;
         }
 
         protected ITM.DTO.LoginResponse Login(string login, string password)
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var dtoLogin = new ITM.DTO.LoginRequest()
                 {
