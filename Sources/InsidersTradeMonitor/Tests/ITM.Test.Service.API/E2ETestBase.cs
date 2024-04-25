@@ -53,7 +53,9 @@ namespace Test.E2E.API
                 };
                 var content = CreateContentJson(dtoLogin);
 
-                var respLogin = client.PostAsync($"/api/v1/users/login/", content);
+                client.DefaultRequestHeaders.Host = "localhost:8082";
+
+                var respLogin = client.PostAsync($"/api/v1/users/login", content);
 
                 var dtoResponse = ExtractContentJson<ITM.DTO.LoginResponse>(respLogin.Result.Content);
 
