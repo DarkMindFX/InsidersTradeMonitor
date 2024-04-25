@@ -42,4 +42,8 @@ call functions.concat.bat
 
 %SQLCMD% -S %SERVER% -d %TEST_DB% -U %LOGIN% -P %PASSWORD% -i "CreateAllStorProcs.sql"
 
+%SQLCMD% -S %SERVER% -d %TEST_DB% -U %LOGIN% -P %PASSWORD% -i "scripts\InitialDataSeed.sql"
+
 cd %TESTINGROOT_PATH%
+
+%SQLCMD% -S %SERVER% -d %TEST_DB% -U %LOGIN% -P %PASSWORD% -i "InsertTestData.sql"

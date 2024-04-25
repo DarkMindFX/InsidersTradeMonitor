@@ -12,7 +12,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Test.E2E.API
 {
@@ -63,7 +65,7 @@ namespace Test.E2E.API
         {
             var content = JsonSerializer.Serialize(data);
             var buffer = System.Text.Encoding.UTF8.GetBytes(content);
-            var byteContent = new ByteArrayContent(buffer);
+            var byteContent = new StringContent(content, Encoding.UTF8, "application/json");
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             return byteContent;
