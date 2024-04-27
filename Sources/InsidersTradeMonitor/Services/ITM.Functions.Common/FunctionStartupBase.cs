@@ -1,21 +1,21 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using ITM.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ITM.Functions.Common
 {
     public class FunctionStartupBase : FunctionsStartup
     {
         public override void Configure(IFunctionsHostBuilder builder)
+        {
+            this.PrepareComposition();
+        }
+
+        public void Configure()
         {
             this.PrepareComposition();
         }
@@ -47,12 +47,17 @@ namespace ITM.Functions.Common
         {
             AggregateCatalog catalog = new AggregateCatalog();
             var pluginsRoot = PluginsDirectory;
-            var dirs = Directory.GetDirectories(pluginsRoot);
-            foreach (var pluginDir in dirs)
+
+            if (Directory.Exists(pluginsRoot))
             {
-                DirectoryCatalog directoryCatalog = new DirectoryCatalog(pluginDir);
-                catalog.Catalogs.Add(directoryCatalog);
+                var dirs = Directory.GetDirectories(pluginsRoot);
+                foreach (var pluginDir in dirs)
+                {
+                    DirectoryCatalog directoryCatalog = new DirectoryCatalog(pluginDir);
+                    catalog.Catalogs.Add(directoryCatalog);
+                }
             }
+
             Container = new CompositionContainer(catalog);
             Container.ComposeParts(this);
         }

@@ -1,14 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
-using Microsoft.IdentityModel.Tokens;
 using ITM.Services.Common.Helpers;
-using ITM.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Authentication;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
