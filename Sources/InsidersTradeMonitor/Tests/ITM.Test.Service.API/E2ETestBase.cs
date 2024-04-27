@@ -35,13 +35,11 @@ namespace Test.E2E.API
             }
         }
 
-        protected WebApplicationFactory<ITM.API.Startup> _factory;
-        protected TestParams _testParams;
-        protected TestServer _testServer;
-
-        public E2ETestBase(WebApplicationFactory<ITM.API.Startup> factory, TestServer testServer = null)
+        protected TestParams _testParams;      
+        protected readonly TestServer _testServer;
+       
+        public E2ETestBase(TestServer testServer)
         {
-            this._factory = factory;
             this._testServer = testServer;
         }
 

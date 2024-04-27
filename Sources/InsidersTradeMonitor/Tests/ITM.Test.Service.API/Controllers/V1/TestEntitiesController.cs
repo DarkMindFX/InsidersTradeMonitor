@@ -1,22 +1,28 @@
 
-
-
 using ITM.DTO;
 using ITM.Utils.Convertors;
-using Test.E2E.API;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net;
 using Xunit;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 using System.Linq;
 
 namespace Test.E2E.API.Controllers.V1
 {
-    public class TestEntitiesController : E2ETestBase, IClassFixture<WebApplicationFactory<ITM.API.Startup>>
+    public class TestEntitiesController : E2ETestBase
     {
-        public TestEntitiesController(WebApplicationFactory<ITM.API.Startup> factory) : base(factory)
+        public TestEntitiesController() : base(new TestServer(new WebHostBuilder()
+                .ConfigureAppConfiguration((context, builder) =>
+                {
+                    builder.AddJsonFile("appsettings.ServiceAPI.json");
+                })
+                .UseStartup<ITM.API.Startup>())
+            )
         {
             _testParams = GetTestParams("GenericControllerTestSettings");
         }
@@ -24,7 +30,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void Entity_GetAll_Success()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -44,7 +50,7 @@ namespace Test.E2E.API.Controllers.V1
         public void Entity_GetMonitoredList_Success()
         {
             ITM.Interfaces.Entities.Entity testEntity = AddTestEntity();
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 try
                 {
@@ -73,7 +79,7 @@ namespace Test.E2E.API.Controllers.V1
         public void Entity_Get_Success()
         {
             ITM.Interfaces.Entities.Entity testEntity = AddTestEntity();
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -100,7 +106,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void Entity_Get_InvalidID()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -117,7 +123,7 @@ namespace Test.E2E.API.Controllers.V1
         public void Entity_Delete_Success()
         {
             var testEntity = AddTestEntity();
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -140,7 +146,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void Entity_Delete_InvalidID()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -156,7 +162,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void Entity_Insert_Success()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -195,7 +201,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void Entity_Update_Success()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -238,7 +244,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void Entity_Update_InvalidID()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
