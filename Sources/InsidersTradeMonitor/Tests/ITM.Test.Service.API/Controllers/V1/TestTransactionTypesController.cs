@@ -1,21 +1,28 @@
 
 
-
 using ITM.DTO;
 using ITM.Utils.Convertors;
-using Test.E2E.API;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net;
-using Xunit; 
+using Xunit;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Test.E2E.API.Controllers.V1
 {
-    public class TestTransactionTypesController : E2ETestBase, IClassFixture<WebApplicationFactory<ITM.API.Startup>>
+    public class TestTransactionTypesController : E2ETestBase
     {
-        public TestTransactionTypesController(WebApplicationFactory<ITM.API.Startup> factory) : base(factory)
+        public TestTransactionTypesController() : base(new TestServer(new WebHostBuilder()
+                .ConfigureAppConfiguration((context, builder) =>
+                {
+                    builder.AddJsonFile("appsettings.ServiceAPI.json");
+                })
+                .UseStartup<ITM.API.Startup>())
+            )
         {
             _testParams = GetTestParams("GenericControllerTestSettings");
         }
@@ -23,7 +30,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void TransactionType_GetAll_Success()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -43,14 +50,14 @@ namespace Test.E2E.API.Controllers.V1
         public void TransactionType_Get_Success()
         {
             ITM.Interfaces.Entities.TransactionType testEntity = AddTestEntity();
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
                 try
                 {
-                var paramID = testEntity.ID;
+                    var paramID = testEntity.ID;
                     var respGet = client.GetAsync($"/api/v1/transactiontypes/{paramID}");
 
                     Assert.Equal(HttpStatusCode.OK, respGet.Result.StatusCode);
@@ -70,7 +77,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void TransactionType_Get_InvalidID()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -87,14 +94,14 @@ namespace Test.E2E.API.Controllers.V1
         public void TransactionType_Delete_Success()
         {
             var testEntity = AddTestEntity();
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", respLogin.Token);
                 try
                 {
-                var paramID = testEntity.ID;
+                    var paramID = testEntity.ID;
 
                     var respDel = client.DeleteAsync($"/api/v1/transactiontypes/{paramID}");
 
@@ -110,7 +117,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void TransactionType_Delete_InvalidID()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -126,7 +133,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void TransactionType_Insert_Success()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -146,10 +153,10 @@ namespace Test.E2E.API.Controllers.V1
 
                     TransactionType respDto = ExtractContentJson<TransactionType>(respInsert.Result.Content);
 
-                                    Assert.NotNull(respDto.ID);
-                                    Assert.Equal(reqDto.Code, respDto.Code);
-                                    Assert.Equal(reqDto.Description, respDto.Description);
-                
+                    Assert.NotNull(respDto.ID);
+                    Assert.Equal(reqDto.Code, respDto.Code);
+                    Assert.Equal(reqDto.Description, respDto.Description);
+
                     respEntity = TransactionTypeConvertor.Convert(respDto);
                 }
                 finally
@@ -162,7 +169,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void TransactionType_Update_Success()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -171,9 +178,9 @@ namespace Test.E2E.API.Controllers.V1
                 ITM.Interfaces.Entities.TransactionType testEntity = AddTestEntity();
                 try
                 {
-                          testEntity.Code = "Code 59c04";
-                            testEntity.Description = "Description 59c04fb74a694108a632f81af473d915";
-              
+                    testEntity.Code = "Code 59c04";
+                    testEntity.Description = "Description 59c04fb74a694108a632f81af473d915";
+
                     var reqDto = TransactionTypeConvertor.Convert(testEntity, null);
 
                     var content = CreateContentJson(reqDto);
@@ -184,10 +191,10 @@ namespace Test.E2E.API.Controllers.V1
 
                     TransactionType respDto = ExtractContentJson<TransactionType>(respUpdate.Result.Content);
 
-                                     Assert.NotNull(respDto.ID);
-                                    Assert.Equal(reqDto.Code, respDto.Code);
-                                    Assert.Equal(reqDto.Description, respDto.Description);
-                
+                    Assert.NotNull(respDto.ID);
+                    Assert.Equal(reqDto.Code, respDto.Code);
+                    Assert.Equal(reqDto.Description, respDto.Description);
+
                 }
                 finally
                 {
@@ -199,7 +206,7 @@ namespace Test.E2E.API.Controllers.V1
         [Fact]
         public void TransactionType_Update_InvalidID()
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var respLogin = Login((string)_testParams.Settings["test_user_login"], (string)_testParams.Settings["test_user_pwd"]);
 
@@ -208,10 +215,10 @@ namespace Test.E2E.API.Controllers.V1
                 ITM.Interfaces.Entities.TransactionType testEntity = CreateTestEntity();
                 try
                 {
-                             testEntity.ID = Int64.MaxValue;
-                             testEntity.Code = "Code 59c04";
-                            testEntity.Description = "Description 59c04fb74a694108a632f81af473d915";
-              
+                    testEntity.ID = Int64.MaxValue;
+                    testEntity.Code = "Code 59c04";
+                    testEntity.Description = "Description 59c04fb74a694108a632f81af473d915";
+
                     var reqDto = TransactionTypeConvertor.Convert(testEntity, null);
 
                     var content = CreateContentJson(reqDto);
@@ -237,7 +244,7 @@ namespace Test.E2E.API.Controllers.V1
 
 
 
-                return dal.Delete(                        entity.ID
+                return dal.Delete(entity.ID
                 );
             }
             else
@@ -249,9 +256,9 @@ namespace Test.E2E.API.Controllers.V1
         protected ITM.Interfaces.Entities.TransactionType CreateTestEntity()
         {
             var entity = new ITM.Interfaces.Entities.TransactionType();
-                          entity.Code = "Code 9339c";
-                            entity.Description = "Description 9339c5655a134603b5c40e8f257d83bb";
-              
+            entity.Code = "Code 9339c";
+            entity.Description = "Description 9339c5655a134603b5c40e8f257d83bb";
+
             return entity;
         }
 

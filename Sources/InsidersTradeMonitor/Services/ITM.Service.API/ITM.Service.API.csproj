@@ -1,25 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>ITM.API</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Helpers\EntityToDtoConvertor.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="0nf5ky13.4eb~" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="5.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="8.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\ITM.Utils\ITM.Utils.csproj" />
     <ProjectReference Include="..\..\Libraries\ITM.Common\ITM.Common.csproj" />
@@ -28,16 +23,12 @@
     <ProjectReference Include="..\ITM.Services.Common\ITM.Services.Common.csproj" />
     <ProjectReference Include="..\ITM.Services.DAL\ITM.Services.DAL.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="if not exist &quot;$(TargetDir)Plugins&quot; mkdir &quot;$(TargetDir)Plugins&quot;&#xD;&#xA;xcopy &quot;$(SolutionDir)Plugins\ITM.DAL.MSSQL&quot; &quot;$(TargetDir)Plugins\ITM.DAL.MSSQL&quot; /Y /E /H /C /I" />
   </Target>
-
-
 </Project>

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 
 
-namespace Test.PPT.DAL.MSSQL
+namespace Test.ITM.DAL.MSSQL
 {
     public class TestEntityTypeDal : TestBase
     {
@@ -46,21 +46,21 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             EntityType entity = dal.Get(paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TypeName 8ea83002c9a54e2a81c3886644b8bc2f", entity.TypeName);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.TypeName, Is.EqualTo("TypeName 8ea83002c9a54e2a81c3886644b8bc2f"));
+        }
 
         [Test]
         public void EntityType_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             EntityType entity = dal.Get(paramID);
@@ -75,7 +75,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             bool removed = dal.Delete(paramID);
 
             TeardownCase(conn, caseName);
@@ -87,8 +87,8 @@ namespace Test.PPT.DAL.MSSQL
         public void EntityType_Delete_InvalidId()
         {
             var dal = PrepareEntityTypeDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -103,17 +103,17 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             var entity = new EntityType();
-                          entity.TypeName = "TypeName d8f9da4dbee3422eb45828ecda25bbc7";
-                          
+            entity.TypeName = "TypeName d8f9da4dbee3422eb45828ecda25bbc7";
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TypeName d8f9da4dbee3422eb45828ecda25bbc7", entity.TypeName);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.TypeName, Is.EqualTo("TypeName d8f9da4dbee3422eb45828ecda25bbc7"));
+
         }
 
         [TestCase("EntityType\\030.Update.Success")]
@@ -123,20 +123,20 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             EntityType entity = dal.Get(paramID);
 
-                          entity.TypeName = "TypeName 4900b709aeed475f9bdd20dc927f2bb1";
-              
+            entity.TypeName = "TypeName 4900b709aeed475f9bdd20dc927f2bb1";
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("TypeName 4900b709aeed475f9bdd20dc927f2bb1", entity.TypeName);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.TypeName, Is.EqualTo("TypeName 4900b709aeed475f9bdd20dc927f2bb1"));
+
         }
 
         [Test]
@@ -145,8 +145,8 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareEntityTypeDal("DALInitParams");
 
             var entity = new EntityType();
-                          entity.TypeName = "TypeName 4900b709aeed475f9bdd20dc927f2bb1";
-              
+            entity.TypeName = "TypeName 4900b709aeed475f9bdd20dc927f2bb1";
+
             try
             {
                 entity = dal.Update(entity);

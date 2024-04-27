@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ITM.Interfaces;
 using System;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Text.Json;

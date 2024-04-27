@@ -1,0 +1,1 @@
+CREATE DATABASE InsidersTradeMonitor_Tests

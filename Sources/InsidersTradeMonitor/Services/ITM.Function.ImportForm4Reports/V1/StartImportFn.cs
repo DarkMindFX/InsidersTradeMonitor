@@ -1,15 +1,13 @@
+
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
+using Azure.Storage.Queues.Models;
 using ITM.DTO;
 using ITM.Function.ImportForm4Reports.Helpers;
 using ITM.Function.ImportForm4Reports.Workers;
-using ITM.Functions.Common;
 using ITM.Interfaces;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Extensions.Logging;
-using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.Azure.Functions.Worker;
 
 namespace ITM.Function.V1.ImportForm4Reports
 {
@@ -23,8 +21,8 @@ namespace ITM.Function.V1.ImportForm4Reports
             _importRunDalFacade = importRunDalFacade;
         }
 
-        [FunctionName("StartImport")]
-        [return: Queue("itm-reports-imported", Connection = "AzureWebJobsStorage")]
+        [Function("StartImport")]
+        [QueueOutput("itm-reports-imported", Connection = "AzureWebJobsStorage")]
         public MessageBase Run([QueueTrigger("itm-import-requests", Connection = "AzureWebJobsStorage")] string message)
         {
             MessageBase msgRes = null;
@@ -95,16 +93,11 @@ namespace ITM.Function.V1.ImportForm4Reports
 
             var importer = new Form4Importer(impParams);
             return importer.Import();
+
+            return null;
         }
 
         #region Support methods
-
-        protected void SendOutputQueueMessage(CloudQueue queue, MessageBase msg)
-        {
-            var cqm = new CloudQueueMessage(JsonSerializer.Serialize(msg));
-            queue.AddMessageAsync(cqm);
-
-        }
 
         protected MessageBase PrepareReportsImportedResp(IList<long> reportIDs, ITM.Interfaces.Entities.ImportRun importRun, string cik)
         {

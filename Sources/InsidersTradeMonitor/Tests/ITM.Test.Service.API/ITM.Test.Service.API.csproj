@@ -1,45 +1,46 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-
+    <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
-
     <AssemblyName>ITM.Test.Service.API</AssemblyName>
-
     <RootNamespace>ITM.Test.Service.API</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.16" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.16" />
+    <None Remove="appsettings.ServiceAPI.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.ServiceAPI.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="8.0.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
-    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\ITM.DAL.MSSQL\ITM.DAL.MSSQL.csproj" />
     <ProjectReference Include="..\..\Libraries\ITM.DTO\ITM.DTO.csproj" />
     <ProjectReference Include="..\..\Libraries\ITM.Interfaces\ITM.Interfaces.csproj" />
     <ProjectReference Include="..\..\Services\ITM.Service.API\ITM.Service.API.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="if not exist &quot;$(TargetDir)Plugins&quot; mkdir &quot;$(TargetDir)Plugins&quot;&#xD;&#xA;xcopy &quot;$(SolutionDir)Plugins\ITM.DAL.MSSQL&quot; &quot;$(TargetDir)Plugins\ITM.DAL.MSSQL&quot; /Y /E /H /C /I" />
   </Target>
-
 </Project>

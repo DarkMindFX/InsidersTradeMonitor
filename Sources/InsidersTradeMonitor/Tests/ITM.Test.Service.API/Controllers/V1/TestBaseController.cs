@@ -1,11 +1,4 @@
 ﻿using ITM.API.Controllers.V1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using ITM.API.Controllers.V1;
 
 namespace Test.E2E.API.Controllers.V1
 {

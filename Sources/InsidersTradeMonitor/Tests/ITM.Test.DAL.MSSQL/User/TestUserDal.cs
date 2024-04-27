@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 
 
-namespace Test.PPT.DAL.MSSQL
+namespace Test.ITM.DAL.MSSQL
 {
     public class TestUserDal : TestBase
     {
@@ -54,16 +54,16 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual("Login a703e85d20db418aa43e017d18d1559e", entity.Login);
-            Assert.AreEqual("PwdHash a703e85d20db418aa43e017d18d1559e", entity.PwdHash);
-            Assert.AreEqual("Salt a703e85d20db418aa43e017d18d1559e", entity.Salt);
-            Assert.AreEqual("FirstName a703e85d20db418aa43e017d18d1559e", entity.FirstName);
-            Assert.AreEqual("MiddleName a703e85d20db418aa43e017d18d1559e", entity.MiddleName);
-            Assert.AreEqual("LastName a703e85d20db418aa43e017d18d1559e", entity.LastName);
-            Assert.AreEqual("FriendlyName a703e85d20db418aa43e017d18d1559e", entity.FriendlyName);
-            Assert.AreEqual(DateTime.Parse("10/24/2021 3:20:17 AM"), entity.CreatedDate);
-            Assert.AreEqual(DateTime.Parse("10/24/2021 3:20:17 AM"), entity.ModifiedDate);
-            Assert.AreEqual(100001, entity.ModifiedByID);
+            Assert.That(entity.Login, Is.EqualTo("Login a703e85d20db418aa43e017d18d1559e"));
+            Assert.That(entity.PwdHash, Is.EqualTo("PwdHash a703e85d20db418aa43e017d18d1559e"));
+            Assert.That(entity.Salt, Is.EqualTo("Salt a703e85d20db418aa43e017d18d1559e"));
+            Assert.That(entity.FirstName, Is.EqualTo("FirstName a703e85d20db418aa43e017d18d1559e"));
+            Assert.That(entity.MiddleName, Is.EqualTo("MiddleName a703e85d20db418aa43e017d18d1559e"));
+            Assert.That(entity.LastName, Is.EqualTo("LastName a703e85d20db418aa43e017d18d1559e"));
+            Assert.That(entity.FriendlyName, Is.EqualTo("FriendlyName a703e85d20db418aa43e017d18d1559e"));
+            Assert.That(entity.CreatedDate, Is.EqualTo(DateTime.Parse("10/24/2021 3:20:17 AM")));
+            Assert.That(entity.ModifiedDate, Is.EqualTo(DateTime.Parse("10/24/2021 3:20:17 AM")));
+            Assert.That(entity.ModifiedByID, Is.EqualTo(100001));
         }
 
         [Test]
@@ -130,16 +130,16 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual("Login 694c81b1bb4648a081abb084b5a4a1ed", entity.Login);
-            Assert.AreEqual("PwdHash 694c81b1bb4648a081abb084b5a4a1ed", entity.PwdHash);
-            Assert.AreEqual("Salt 694c81b1bb4648a081abb084b5a4a1ed", entity.Salt);
-            Assert.AreEqual("FirstName 694c81b1bb4648a081abb084b5a4a1ed", entity.FirstName);
-            Assert.AreEqual("MiddleName 694c81b1bb4648a081abb084b5a4a1ed", entity.MiddleName);
-            Assert.AreEqual("LastName 694c81b1bb4648a081abb084b5a4a1ed", entity.LastName);
-            Assert.AreEqual("FriendlyName 694c81b1bb4648a081abb084b5a4a1ed", entity.FriendlyName);
-            Assert.AreEqual(DateTime.Parse("11/30/2024 11:20:17 PM"), entity.CreatedDate);
-            Assert.AreEqual(DateTime.Parse("11/30/2024 11:20:17 PM"), entity.ModifiedDate);
-            Assert.AreEqual(100004, entity.ModifiedByID);
+            Assert.That(entity.Login, Is.EqualTo("Login 694c81b1bb4648a081abb084b5a4a1ed"));
+            Assert.That(entity.PwdHash, Is.EqualTo("PwdHash 694c81b1bb4648a081abb084b5a4a1ed"));
+            Assert.That(entity.Salt, Is.EqualTo("Salt 694c81b1bb4648a081abb084b5a4a1ed"));
+            Assert.That(entity.FirstName, Is.EqualTo("FirstName 694c81b1bb4648a081abb084b5a4a1ed"));
+            Assert.That(entity.MiddleName, Is.EqualTo("MiddleName 694c81b1bb4648a081abb084b5a4a1ed"));
+            Assert.That(entity.LastName, Is.EqualTo("LastName 694c81b1bb4648a081abb084b5a4a1ed"));
+            Assert.That(entity.FriendlyName, Is.EqualTo("FriendlyName 694c81b1bb4648a081abb084b5a4a1ed"));
+            Assert.That(entity.CreatedDate, Is.EqualTo(DateTime.Parse("11/30/2024 11:20:17 PM")));
+            Assert.That(entity.ModifiedDate, Is.EqualTo(DateTime.Parse("11/30/2024 11:20:17 PM")));
+            Assert.That(entity.ModifiedByID, Is.EqualTo(100004));
 
         }
 
@@ -171,16 +171,16 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual("Login e8a38a804bb54b4d8108341fb6572d91", entity.Login);
-            Assert.AreEqual("PwdHash e8a38a804bb54b4d8108341fb6572d91", entity.PwdHash);
-            Assert.AreEqual("Salt e8a38a804bb54b4d8108341fb6572d91", entity.Salt);
-            Assert.AreEqual("FirstName e8a38a804bb54b4d8108341fb6572d91", entity.FirstName);
-            Assert.AreEqual("MiddleName e8a38a804bb54b4d8108341fb6572d91", entity.MiddleName);
-            Assert.AreEqual("LastName e8a38a804bb54b4d8108341fb6572d91", entity.LastName);
-            Assert.AreEqual("FriendlyName e8a38a804bb54b4d8108341fb6572d91", entity.FriendlyName);
-            Assert.AreEqual(DateTime.Parse("3/1/2025 6:54:17 PM"), entity.CreatedDate);
-            Assert.AreEqual(DateTime.Parse("3/1/2025 6:54:17 PM"), entity.ModifiedDate);
-            Assert.AreEqual(100009, entity.ModifiedByID);
+            Assert.That(entity.Login, Is.EqualTo("Login e8a38a804bb54b4d8108341fb6572d91"));
+            Assert.That(entity.PwdHash, Is.EqualTo("PwdHash e8a38a804bb54b4d8108341fb6572d91"));
+            Assert.That(entity.Salt, Is.EqualTo("Salt e8a38a804bb54b4d8108341fb6572d91"));
+            Assert.That(entity.FirstName, Is.EqualTo("FirstName e8a38a804bb54b4d8108341fb6572d91"));
+            Assert.That(entity.MiddleName, Is.EqualTo("MiddleName e8a38a804bb54b4d8108341fb6572d91"));
+            Assert.That(entity.LastName, Is.EqualTo("LastName e8a38a804bb54b4d8108341fb6572d91"));
+            Assert.That(entity.FriendlyName, Is.EqualTo("FriendlyName e8a38a804bb54b4d8108341fb6572d91"));
+            Assert.That(entity.CreatedDate, Is.EqualTo(DateTime.Parse("3/1/2025 6:54:17 PM")));
+            Assert.That(entity.ModifiedDate, Is.EqualTo(DateTime.Parse("3/1/2025 6:54:17 PM")));
+            Assert.That(entity.ModifiedByID, Is.EqualTo(100009));
 
         }
 

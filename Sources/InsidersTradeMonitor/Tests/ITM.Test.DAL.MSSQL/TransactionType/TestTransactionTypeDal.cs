@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 
 
-namespace Test.PPT.DAL.MSSQL
+namespace Test.ITM.DAL.MSSQL
 {
     public class TestTransactionTypeDal : TestBase
     {
@@ -46,22 +46,22 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             TransactionType entity = dal.Get(paramID);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("Code 926f1", entity.Code);
-                            Assert.AreEqual("Description 926f19be56db42dbbc6c83009834c264", entity.Description);
-                      }
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Code, Is.EqualTo("Code 926f1"));
+            Assert.That(entity.Description, Is.EqualTo("Description 926f19be56db42dbbc6c83009834c264"));
+        }
 
         [Test]
         public void TransactionType_GetDetails_InvalidId()
         {
-                var paramID = Int64.MaxValue - 1;
+            var paramID = Int64.MaxValue - 1;
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             TransactionType entity = dal.Get(paramID);
@@ -76,7 +76,7 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             bool removed = dal.Delete(paramID);
 
             TeardownCase(conn, caseName);
@@ -88,8 +88,8 @@ namespace Test.PPT.DAL.MSSQL
         public void TransactionType_Delete_InvalidId()
         {
             var dal = PrepareTransactionTypeDal("DALInitParams");
-                var paramID = Int64.MaxValue - 1;
-   
+            var paramID = Int64.MaxValue - 1;
+
             bool removed = dal.Delete(paramID);
             Assert.IsFalse(removed);
 
@@ -104,19 +104,19 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             var entity = new TransactionType();
-                          entity.Code = "Code 31b65";
-                            entity.Description = "Description 31b65ad02809464590c1dfa2a46b2b4e";
-                          
+            entity.Code = "Code 31b65";
+            entity.Description = "Description 31b65ad02809464590c1dfa2a46b2b4e";
+
             entity = dal.Insert(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("Code 31b65", entity.Code);
-                            Assert.AreEqual("Description 31b65ad02809464590c1dfa2a46b2b4e", entity.Description);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Code, Is.EqualTo("Code 31b65"));
+            Assert.That(entity.Description, Is.EqualTo("Description 31b65ad02809464590c1dfa2a46b2b4e"));
+
         }
 
         [TestCase("TransactionType\\030.Update.Success")]
@@ -126,22 +126,22 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             IList<object> objIds = SetupCase(conn, caseName);
-                var paramID = (System.Int64?)objIds[0];
+            var paramID = (System.Int64?)objIds[0];
             TransactionType entity = dal.Get(paramID);
 
-                          entity.Code = "Code 6d517";
-                            entity.Description = "Description 6d517bbe8f374571ab4ea5dbb6ffdd5b";
-              
+            entity.Code = "Code 6d517";
+            entity.Description = "Description 6d517bbe8f374571ab4ea5dbb6ffdd5b";
+
             entity = dal.Update(entity);
 
             TeardownCase(conn, caseName);
 
             Assert.IsNotNull(entity);
-                        Assert.IsNotNull(entity.ID);
-            
-                          Assert.AreEqual("Code 6d517", entity.Code);
-                            Assert.AreEqual("Description 6d517bbe8f374571ab4ea5dbb6ffdd5b", entity.Description);
-              
+            Assert.IsNotNull(entity.ID);
+
+            Assert.That(entity.Code, Is.EqualTo("Code 6d517"));
+            Assert.That(entity.Description, Is.EqualTo("Description 6d517bbe8f374571ab4ea5dbb6ffdd5b"));
+
         }
 
         [Test]
@@ -150,9 +150,9 @@ namespace Test.PPT.DAL.MSSQL
             var dal = PrepareTransactionTypeDal("DALInitParams");
 
             var entity = new TransactionType();
-                          entity.Code = "Code 6d517";
-                            entity.Description = "Description 6d517bbe8f374571ab4ea5dbb6ffdd5b";
-              
+            entity.Code = "Code 6d517";
+            entity.Description = "Description 6d517bbe8f374571ab4ea5dbb6ffdd5b";
+
             try
             {
                 entity = dal.Update(entity);

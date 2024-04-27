@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 
 
-namespace Test.PPT.DAL.MSSQL
+namespace Test.ITM.DAL.MSSQL
 {
     public class TestDerivativeTransactionDal : TestBase
     {
@@ -54,22 +54,22 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100007, entity.Form4ReportID);
-            Assert.AreEqual("TitleOfDerivative 735dce9f4ebe44a9a11bd76db27a4745", entity.TitleOfDerivative);
-            Assert.AreEqual(181431.783448M, entity.ConversionExercisePrice);
-            Assert.AreEqual(DateTime.Parse("9/9/2020"), entity.TransactionDate);
-            Assert.AreEqual(15, entity.TransactionCodeID);
-            Assert.AreEqual(true, entity.EarlyVoluntarilyReport);
-            Assert.AreEqual(226283, entity.SharesAmount);
-            Assert.AreEqual(226282.411826M, entity.DerivativeSecurityPrice);
-            Assert.AreEqual(2, entity.TransactionTypeID);
-            Assert.AreEqual(DateTime.Parse("10/19/2023"), entity.DateExercisable);
-            Assert.AreEqual(DateTime.Parse("10/19/2023"), entity.ExpirationDate);
-            Assert.AreEqual("UnderlyingTitle 735dce9f4ebe44a9a11bd76db27a4745", entity.UnderlyingTitle);
-            Assert.AreEqual(748707, entity.UnderlyingSharesAmount);
-            Assert.AreEqual(748707, entity.AmountFollowingReport);
-            Assert.AreEqual(2, entity.OwnershipTypeID);
-            Assert.AreEqual("NatureOfIndirectOwnership 735dce9f4ebe44a9a11bd76db27a4745", entity.NatureOfIndirectOwnership);
+            Assert.That(entity.Form4ReportID, Is.EqualTo(100007));
+            Assert.That(entity.TitleOfDerivative, Is.EqualTo("TitleOfDerivative 735dce9f4ebe44a9a11bd76db27a4745"));
+            Assert.That(entity.ConversionExercisePrice, Is.EqualTo(181431.783448M));
+            Assert.That(entity.TransactionDate, Is.EqualTo(DateTime.Parse("9/9/2020")));
+            Assert.That(entity.TransactionCodeID, Is.EqualTo(15));
+            Assert.That(entity.EarlyVoluntarilyReport, Is.EqualTo(true));
+            Assert.That(entity.SharesAmount, Is.EqualTo(226283));
+            Assert.That(entity.DerivativeSecurityPrice, Is.EqualTo(226282.411826M));
+            Assert.That(entity.TransactionTypeID, Is.EqualTo(2));
+            Assert.That(entity.DateExercisable, Is.EqualTo(DateTime.Parse("10/19/2023")));
+            Assert.That(entity.ExpirationDate, Is.EqualTo(DateTime.Parse("10/19/2023")));
+            Assert.That(entity.UnderlyingTitle, Is.EqualTo("UnderlyingTitle 735dce9f4ebe44a9a11bd76db27a4745"));
+            Assert.That(entity.UnderlyingSharesAmount, Is.EqualTo(748707));
+            Assert.That(entity.AmountFollowingReport, Is.EqualTo(748707));
+            Assert.That(entity.OwnershipTypeID, Is.EqualTo(2));
+            Assert.That(entity.NatureOfIndirectOwnership, Is.EqualTo("NatureOfIndirectOwnership 735dce9f4ebe44a9a11bd76db27a4745"));
         }
 
         [Test]
@@ -142,22 +142,22 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100013, entity.Form4ReportID);
-            Assert.AreEqual("TitleOfDerivative 82799dcf64f9462791f901cd16b3424c", entity.TitleOfDerivative);
-            Assert.AreEqual(793558.354393M, entity.ConversionExercisePrice);
-            Assert.AreEqual(DateTime.Parse("1/16/2024"), entity.TransactionDate);
-            Assert.AreEqual(11, entity.TransactionCodeID);
-            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
-            Assert.AreEqual(315984, entity.SharesAmount);
-            Assert.AreEqual(315983.668583M, entity.DerivativeSecurityPrice);
-            Assert.AreEqual(1, entity.TransactionTypeID);
-            Assert.AreEqual(DateTime.Parse("6/5/2021"), entity.DateExercisable);
-            Assert.AreEqual(DateTime.Parse("6/5/2021"), entity.ExpirationDate);
-            Assert.AreEqual("UnderlyingTitle 82799dcf64f9462791f901cd16b3424c", entity.UnderlyingTitle);
-            Assert.AreEqual(315984, entity.UnderlyingSharesAmount);
-            Assert.AreEqual(315984, entity.AmountFollowingReport);
-            Assert.AreEqual(1, entity.OwnershipTypeID);
-            Assert.AreEqual("NatureOfIndirectOwnership 82799dcf64f9462791f901cd16b3424c", entity.NatureOfIndirectOwnership);
+            Assert.That(entity.Form4ReportID, Is.EqualTo(100013));
+            Assert.That(entity.TitleOfDerivative, Is.EqualTo("TitleOfDerivative 82799dcf64f9462791f901cd16b3424c"));
+            Assert.That(entity.ConversionExercisePrice, Is.EqualTo(793558.354393M));
+            Assert.That(entity.TransactionDate, Is.EqualTo(DateTime.Parse("1/16/2024")));
+            Assert.That(entity.TransactionCodeID, Is.EqualTo(11));
+            Assert.That(entity.EarlyVoluntarilyReport, Is.EqualTo(false));
+            Assert.That(entity.SharesAmount, Is.EqualTo(315984));
+            Assert.That(entity.DerivativeSecurityPrice, Is.EqualTo(315983.668583M));
+            Assert.That(entity.TransactionTypeID, Is.EqualTo(1));
+            Assert.That(entity.DateExercisable, Is.EqualTo(DateTime.Parse("6/5/2021")));
+            Assert.That(entity.ExpirationDate, Is.EqualTo(DateTime.Parse("6/5/2021")));
+            Assert.That(entity.UnderlyingTitle, Is.EqualTo("UnderlyingTitle 82799dcf64f9462791f901cd16b3424c"));
+            Assert.That(entity.UnderlyingSharesAmount, Is.EqualTo(315984));
+            Assert.That(entity.AmountFollowingReport, Is.EqualTo(315984));
+            Assert.That(entity.OwnershipTypeID, Is.EqualTo(1));
+            Assert.That(entity.NatureOfIndirectOwnership, Is.EqualTo("NatureOfIndirectOwnership 82799dcf64f9462791f901cd16b3424c"));
 
         }
 
@@ -195,22 +195,22 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(100019, entity.Form4ReportID);
-            Assert.AreEqual("TitleOfDerivative 664806d526eb4758ac9d975bb2ca7419", entity.TitleOfDerivative);
-            Assert.AreEqual(315983.668583M, entity.ConversionExercisePrice);
-            Assert.AreEqual(DateTime.Parse("6/5/2021"), entity.TransactionDate);
-            Assert.AreEqual(2, entity.TransactionCodeID);
-            Assert.AreEqual(false, entity.EarlyVoluntarilyReport);
-            Assert.AreEqual(838409, entity.SharesAmount);
-            Assert.AreEqual(838408.982772M, entity.DerivativeSecurityPrice);
-            Assert.AreEqual(1, entity.TransactionTypeID);
-            Assert.AreEqual(DateTime.Parse("4/15/2024"), entity.DateExercisable);
-            Assert.AreEqual(DateTime.Parse("4/15/2024"), entity.ExpirationDate);
-            Assert.AreEqual("UnderlyingTitle 664806d526eb4758ac9d975bb2ca7419", entity.UnderlyingTitle);
-            Assert.AreEqual(838409, entity.UnderlyingSharesAmount);
-            Assert.AreEqual(838409, entity.AmountFollowingReport);
-            Assert.AreEqual(1, entity.OwnershipTypeID);
-            Assert.AreEqual("NatureOfIndirectOwnership 664806d526eb4758ac9d975bb2ca7419", entity.NatureOfIndirectOwnership);
+            Assert.That(entity.Form4ReportID, Is.EqualTo(100019));
+            Assert.That(entity.TitleOfDerivative, Is.EqualTo("TitleOfDerivative 664806d526eb4758ac9d975bb2ca7419"));
+            Assert.That(entity.ConversionExercisePrice, Is.EqualTo(315983.668583M));
+            Assert.That(entity.TransactionDate, Is.EqualTo(DateTime.Parse("6/5/2021")));
+            Assert.That(entity.TransactionCodeID, Is.EqualTo(2));
+            Assert.That(entity.EarlyVoluntarilyReport, Is.EqualTo(false));
+            Assert.That(entity.SharesAmount, Is.EqualTo(838409));
+            Assert.That(entity.DerivativeSecurityPrice, Is.EqualTo(838408.982772M));
+            Assert.That(entity.TransactionTypeID, Is.EqualTo(1));
+            Assert.That(entity.DateExercisable, Is.EqualTo(DateTime.Parse("4/15/2024")));
+            Assert.That(entity.ExpirationDate, Is.EqualTo(DateTime.Parse("4/15/2024")));
+            Assert.That(entity.UnderlyingTitle, Is.EqualTo("UnderlyingTitle 664806d526eb4758ac9d975bb2ca7419"));
+            Assert.That(entity.UnderlyingSharesAmount, Is.EqualTo(838409));
+            Assert.That(entity.AmountFollowingReport, Is.EqualTo(838409));
+            Assert.That(entity.OwnershipTypeID, Is.EqualTo(1));
+            Assert.That(entity.NatureOfIndirectOwnership, Is.EqualTo("NatureOfIndirectOwnership 664806d526eb4758ac9d975bb2ca7419"));
 
         }
 

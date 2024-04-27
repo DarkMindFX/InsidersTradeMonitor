@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Test.E2E.API
 {
@@ -32,17 +35,17 @@ namespace Test.E2E.API
             }
         }
 
-        protected readonly WebApplicationFactory<ITM.API.Startup> _factory;
-        protected TestParams _testParams;
-
-        public E2ETestBase(WebApplicationFactory<ITM.API.Startup> factory)
+        protected TestParams _testParams;      
+        protected readonly TestServer _testServer;
+       
+        public E2ETestBase(TestServer testServer)
         {
-            this._factory = factory;
+            this._testServer = testServer;
         }
 
         protected ITM.DTO.LoginResponse Login(string login, string password)
         {
-            using (var client = _factory.CreateClient())
+            using (var client = _testServer.CreateClient())
             {
                 var dtoLogin = new ITM.DTO.LoginRequest()
                 {
@@ -51,7 +54,9 @@ namespace Test.E2E.API
                 };
                 var content = CreateContentJson(dtoLogin);
 
-                var respLogin = client.PostAsync($"/api/v1/users/login/", content);
+                client.DefaultRequestHeaders.Host = "localhost:8082";
+
+                var respLogin = client.PostAsync($"/api/v1/users/login", content);
 
                 var dtoResponse = ExtractContentJson<ITM.DTO.LoginResponse>(respLogin.Result.Content);
 
@@ -63,7 +68,7 @@ namespace Test.E2E.API
         {
             var content = JsonSerializer.Serialize(data);
             var buffer = System.Text.Encoding.UTF8.GetBytes(content);
-            var byteContent = new ByteArrayContent(buffer);
+            var byteContent = new StringContent(content, Encoding.UTF8, "application/json");
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             return byteContent;

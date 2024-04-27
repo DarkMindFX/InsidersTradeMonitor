@@ -12,32 +12,32 @@ namespace ITM.Test.Function.ImportForm4Reports
     {
         public ImportRun InsertImportRun(ImportRun importRun)
         {
-            return new ImportRun();
+            return new ImportRun() { ID = Int64.MaxValue };
         }
 
         public ImportRunForm4Report InsertImportRunForm4Report(ImportRunForm4Report importRunForm4Report)
         {
-            return new ImportRunForm4Report();
+            return new ImportRunForm4Report() { ID = Int64.MaxValue };
         }
 
         public ImportRun SetRunFailed(long runId)
         {
-            return new ImportRun();
+            return new ImportRun() { ID = runId };
         }
 
         public ImportRun SetRunSucceeded(long runId)
         {
-            return new ImportRun();
+            return new ImportRun() { ID = runId };
         }
 
         public ImportRun UpdateImportRun(ImportRun importRun)
         {
-            return new ImportRun();
+            return importRun;
         }
 
         public ImportRunForm4Report UpdateImportRunForm4Report(ImportRunForm4Report importRunForm4Report)
         {
-            return new ImportRunForm4Report();
+            return importRunForm4Report;
         }
     }
 }

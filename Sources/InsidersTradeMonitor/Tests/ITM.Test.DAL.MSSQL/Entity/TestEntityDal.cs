@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace Test.PPT.DAL.MSSQL
+namespace Test.ITM.DAL.MSSQL
 {
     public class TestEntityDal : TestBase
     {
@@ -54,11 +54,11 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(1, entity.EntityTypeID);
-            Assert.AreEqual(735, entity.CIK);
-            Assert.AreEqual("Name b0f5c74af5374d68b863a3207a175683", entity.Name);
-            Assert.AreEqual("TradingSymbol b0f5c74af5374d68b863a3207a175683", entity.TradingSymbol);
-            Assert.AreEqual(true, entity.IsMonitored);
+            Assert.That(entity.EntityTypeID, Is.EqualTo(1));
+            Assert.That(entity.CIK, Is.EqualTo(735));
+            Assert.That(entity.Name, Is.EqualTo("Name b0f5c74af5374d68b863a3207a175683"));
+            Assert.That(entity.TradingSymbol, Is.EqualTo("TradingSymbol b0f5c74af5374d68b863a3207a175683"));
+            Assert.That(entity.IsMonitored, Is.EqualTo(true));
         }
 
         [Test]
@@ -120,11 +120,11 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(1, entity.EntityTypeID);
-            Assert.AreEqual(258, entity.CIK);
-            Assert.AreEqual("Name 967135663aa542908c8c518c3ddd06b5", entity.Name);
-            Assert.AreEqual("TradingSymbol 967135663aa542908c8c518c3ddd06b5", entity.TradingSymbol);
-            Assert.AreEqual(false, entity.IsMonitored);
+            Assert.That(entity.EntityTypeID, Is.EqualTo(1));
+            Assert.That(entity.CIK, Is.EqualTo(258));
+            Assert.That(entity.Name, Is.EqualTo("Name 967135663aa542908c8c518c3ddd06b5"));
+            Assert.That(entity.TradingSymbol, Is.EqualTo("TradingSymbol 967135663aa542908c8c518c3ddd06b5"));
+            Assert.That(entity.IsMonitored, Is.EqualTo(false));
 
         }
 
@@ -151,11 +151,11 @@ namespace Test.PPT.DAL.MSSQL
             Assert.IsNotNull(entity);
             Assert.IsNotNull(entity.ID);
 
-            Assert.AreEqual(1, entity.EntityTypeID);
-            Assert.AreEqual(258, entity.CIK);
-            Assert.AreEqual("Name 7df99239cc0f46e48a6ae2c439012918", entity.Name);
-            Assert.AreEqual("TradingSymbol 7df99239cc0f46e48a6ae2c439012918", entity.TradingSymbol);
-            Assert.AreEqual(false, entity.IsMonitored);
+            Assert.That(entity.EntityTypeID, Is.EqualTo(1));
+            Assert.That(entity.CIK, Is.EqualTo(258));
+            Assert.That(entity.Name, Is.EqualTo("Name 7df99239cc0f46e48a6ae2c439012918"));
+            Assert.That(entity.TradingSymbol, Is.EqualTo("TradingSymbol 7df99239cc0f46e48a6ae2c439012918"));
+            Assert.That(entity.IsMonitored, Is.EqualTo(false));
 
         }
 
