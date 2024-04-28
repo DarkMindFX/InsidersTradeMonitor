@@ -105,9 +105,8 @@ namespace ITM.API
             get
             {
                 string codeBase = Assembly.GetExecutingAssembly().Location;
-                UriBuilder uri = new UriBuilder(codeBase);
-                string path = Uri.UnescapeDataString(uri.Path);
-                return Path.Combine(Path.GetDirectoryName(path), "Plugins");
+                string path = Path.GetDirectoryName(codeBase);
+                return Path.Combine(path, "Plugins");
             }
         }
 
